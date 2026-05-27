@@ -1,0 +1,51 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-05-27T08:15:11.658Z",
+  "baseLocale": "en-US",
+  "referenceLocale": "ja-JP",
+  "cachedLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "successfulLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "failedLocales": [],
+  "warnings": [],
+  "changedFiles": [
+    ".original/en-US.json",
+    ".original/ja-JP.json",
+    ".original/ja-JP.statsig.json"
+  ],
+  "needsTranslation": true,
+  "source": {
+    "main": {
+      "en": "/home/runner/work/claude-i18n/claude-i18n/.original/en-US.json",
+      "ja": "/home/runner/work/claude-i18n/claude-i18n/.original/ja-JP.json"
+    },
+    "statsig": {
+      "en": "/home/runner/work/claude-i18n/claude-i18n/.original/en-US.statsig.json",
+      "ja": "/home/runner/work/claude-i18n/claude-i18n/.original/ja-JP.statsig.json"
+    }
+  },
+  "pendingFiles": {
+    "manifest": "/home/runner/work/claude-i18n/claude-i18n/.pending/original-locale-update/manifest.json",
+    "mainDiff": "/home/runner/work/claude-i18n/claude-i18n/.pending/original-locale-update/main.diff.jsonl",
+    "statsigDiff": "/home/runner/work/claude-i18n/claude-i18n/.pending/original-locale-update/statsig.diff.jsonl"
+  },
+  "diffSummary": {
+    "main": {
+      "add": 146,
+      "update": 0,
+      "remove": 126,
+      "total": 272
+    },
+    "statsig": {
+      "add": 0,
+      "update": 0,
+      "remove": 0,
+      "total": 0
+    }
+  }
+}
