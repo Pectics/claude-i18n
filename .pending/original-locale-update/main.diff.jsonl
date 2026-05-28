@@ -1,0 +1,15 @@
+{"file":"main","op":"add","index":140,"key":"+dTxnpark1","beforeEn":null,"afterEn":"run a workflow","afterJa":"ワークフローを実行する"}
+{"file":"main","op":"add","index":974,"key":"2FeCu4ZLXQ","beforeEn":null,"afterEn":"Dynamic workflows run many subagents in parallel and can use a lot of your usage limit. Stop them any time from the <link>tasks panel</link>.","afterJa":"動的ワークフローは多数のサブエージェントを並列で実行するため、使用量の上限を大幅に消費する可能性があります。<link>タスクパネル</link>からいつでも停止できます。"}
+{"file":"main","op":"add","index":2737,"key":"9jut5bkOz9","beforeEn":null,"afterEn":"Cron expression (UTC)","afterJa":"cron式 (UTC)"}
+{"file":"main","op":"add","index":2763,"key":"9pdEp9yGRJ","beforeEn":null,"afterEn":"Switch to auto","afterJa":"自動に切り替える"}
+{"file":"main","op":"add","index":4146,"key":"FOps+uD7nE","beforeEn":null,"afterEn":"Dynamic workflows are disabled by your organization's policy.","afterJa":"ダイナミックワークフローは、組織のポリシーにより無効になっています。"}
+{"file":"main","op":"add","index":5594,"key":"LV/NY6rInQ","beforeEn":null,"afterEn":"5-field standard cron (no seconds).","afterJa":"5フィールド標準cron（秒なし）。"}
+{"file":"main","op":"add","index":5894,"key":"Mk29PIBUYN","beforeEn":null,"afterEn":"Enter a valid 5-field cron expression.","afterJa":"有効な5フィールドのcron式を入力してください。"}
+{"file":"main","op":"add","index":7294,"key":"StvyQfdEqi","beforeEn":null,"afterEn":"Let Claude run multiple agents in parallel for complex tasks. Workflows can use a lot of your usage limit quickly.","afterJa":"複雑なタスクに対して、Claudeが複数のエージェントを並列で実行できます。ワークフローは使用量の上限をすぐに大量に消費することがあります。"}
+{"file":"main","op":"add","index":7826,"key":"V0eXqTFDC+","beforeEn":null,"afterEn":"Dynamic workflows","afterJa":"ダイナミックワークフロー"}
+{"file":"main","op":"add","index":8440,"key":"XbjPrpLIRl","beforeEn":null,"afterEn":"Keep {currentModeLabel}","afterJa":"{currentModeLabel}を維持する"}
+{"file":"main","op":"add","index":8714,"key":"YmslQPt7DE","beforeEn":null,"afterEn":"Cron expression","afterJa":"cron式"}
+{"file":"main","op":"add","index":10754,"key":"h80VjAcT3+","beforeEn":null,"afterEn":"Starting workflow","afterJa":"ワークフローを開始中"}
+{"file":"main","op":"add","index":14000,"key":"ujEYpB6S5L","beforeEn":null,"afterEn":"<b>{title}</b> — {detail}","afterJa":"<b>{title}</b> — {detail}"}
+{"file":"main","op":"add","index":14572,"key":"xBFnls3REC","beforeEn":null,"afterEn":"Make auto mode your default permission mode?","afterJa":"自動モードをデフォルトの権限モードに設定しますか？"}
+{"file":"main","op":"add","index":14774,"key":"y2YNTXYpUu","beforeEn":null,"afterEn":"5-field standard cron (no seconds). Cloud tasks need at least a 1-hour interval.","afterJa":"5フィールド標準cron（秒なし）。クラウドタスクには最低1時間の間隔が必要です。"}
