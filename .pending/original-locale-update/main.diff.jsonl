@@ -1,0 +1,54 @@
+{"file":"main","op":"remove","index":null,"key":"88z5M/JghN","beforeEn":"Message from session {name}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"B952R9dKb7","beforeEn":"Not useful","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"E9QyQa8UYM","beforeEn":"Good suggestion","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ILKp/uAyD4","beforeEn":"Enterprise domain restriction","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"LvLxsnAfn4","beforeEn":"Reveal transcript file","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Oe+OxR6/MQ","beforeEn":"Restrict connectors to your verified domains","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"XGTz+an/W0","beforeEn":"Draft reply","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Z1ssd87d9Y","beforeEn":"Permission mode: {mode}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ZMK9Ub22Wu","beforeEn":"connector tool calls","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ZWBNsQsOwn","beforeEn":"Add a verified domain under Identity & provisioning first.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"bdBO1oObPN","beforeEn":"details","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"cZUIMo1bMW","beforeEn":"Radar · {summary}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"nPCyhEFOUG","beforeEn":"When members add a supported connector, the connected account must be on one of your enterprise's verified domains. This prevents personal Claude accounts from linking corporate data through these connectors. To request coverage for additional connectors, contact support.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"qaRHmfUDz5","beforeEn":"View in {source}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"u2DOo092Pq","beforeEn":"Usage limit reached · resets at {time}","afterEn":null,"afterJa":null}
+{"file":"main","op":"add","index":140,"key":"+dTxnpark1","beforeEn":null,"afterEn":"run a workflow","afterJa":"ワークフローを実行する"}
+{"file":"main","op":"add","index":441,"key":"/vjDPeOyDm","beforeEn":null,"afterEn":"Project ID","afterJa":"プロジェクトID"}
+{"file":"main","op":"add","index":814,"key":"1b9yRcGkrQ","beforeEn":null,"afterEn":"Downloaded {filename}","afterJa":"{filename} をダウンロードしました"}
+{"file":"main","op":"add","index":976,"key":"2FeCu4ZLXQ","beforeEn":null,"afterEn":"Dynamic workflows run many subagents in parallel and can use a lot of your usage limit. Stop them any time from the <link>tasks panel</link>.","afterJa":"動的ワークフローは多数のサブエージェントを並列で実行するため、使用量の上限を大幅に消費する可能性があります。<link>タスクパネル</link>からいつでも停止できます。"}
+{"file":"main","op":"add","index":1098,"key":"2n3WlAzStK","beforeEn":null,"afterEn":"Server is temporarily limiting requests","afterJa":"サーバーが一時的にリクエストを制限しています"}
+{"file":"main","op":"add","index":1159,"key":"32dBSoGoFj","beforeEn":null,"afterEn":"Restrict verified-domain connections to your enterprise","afterJa":"確認済みドメインの接続をエンタープライズに制限する"}
+{"file":"main","op":"add","index":1554,"key":"4mT4touUHE","beforeEn":null,"afterEn":"Connector domain restriction","afterJa":"コネクタドメイン制限"}
+{"file":"main","op":"add","index":1917,"key":"6JmsGLI59u","beforeEn":null,"afterEn":"Too many requests right now — try again in a moment.","afterJa":"ただいまリクエストが集中しています。しばらくしてからもう一度お試しください。"}
+{"file":"main","op":"add","index":2231,"key":"7WkvzNBqWd","beforeEn":null,"afterEn":"Max effort can use excessive tokens resulting in hitting limits. Consider using a lower effort setting.","afterJa":"Max effortは過剰なトークンを使用し、制限に達する可能性があります。より低いエフォート設定の使用をご検討ください。"}
+{"file":"main","op":"add","index":2494,"key":"8e0c1Eh+be","beforeEn":null,"afterEn":"Please select fewer images.","afterJa":"選択する画像を減らしてください。"}
+{"file":"main","op":"add","index":2744,"key":"9jut5bkOz9","beforeEn":null,"afterEn":"Cron expression (UTC)","afterJa":"cron式 (UTC)"}
+{"file":"main","op":"add","index":2770,"key":"9pdEp9yGRJ","beforeEn":null,"afterEn":"Switch to auto","afterJa":"自動に切り替える"}
+{"file":"main","op":"add","index":3093,"key":"B4eNbY3VOR","beforeEn":null,"afterEn":"Approaching extra usage limit","afterJa":"追加使用量の上限に近づいています"}
+{"file":"main","op":"add","index":3352,"key":"C33sdRxDco","beforeEn":null,"afterEn":"Resets at {time}","afterJa":"{time}にリセットされます"}
+{"file":"main","op":"add","index":4153,"key":"FOps+uD7nE","beforeEn":null,"afterEn":"Dynamic workflows are disabled by your organization's policy.","afterJa":"ダイナミックワークフローは、組織のポリシーにより無効になっています。"}
+{"file":"main","op":"add","index":4414,"key":"GQpLNSZoy5","beforeEn":null,"afterEn":"Everyone in {orgName} can view this session","afterJa":"{orgName}の全員がこのセッションを閲覧できます"}
+{"file":"main","op":"add","index":5085,"key":"JQCRTVSDaI","beforeEn":null,"afterEn":"Preview URL: {url}","afterJa":"プレビューURL: {url}"}
+{"file":"main","op":"add","index":5482,"key":"L1da6KXaMe","beforeEn":null,"afterEn":"Claude.ai import","afterJa":"Claude.ai インポート"}
+{"file":"main","op":"add","index":5603,"key":"LV/NY6rInQ","beforeEn":null,"afterEn":"5-field standard cron (no seconds).","afterJa":"5フィールド標準cron（秒なし）。"}
+{"file":"main","op":"add","index":5902,"key":"Mk29PIBUYN","beforeEn":null,"afterEn":"Enter a valid 5-field cron expression.","afterJa":"有効な5フィールドのcron式を入力してください。"}
+{"file":"main","op":"add","index":7301,"key":"StvyQfdEqi","beforeEn":null,"afterEn":"Let Claude run multiple agents in parallel for complex tasks. Workflows can use a lot of your usage limit quickly.","afterJa":"複雑なタスクに対して、Claudeが複数のエージェントを並列で実行できます。ワークフローは使用量の上限をすぐに大量に消費することがあります。"}
+{"file":"main","op":"add","index":7470,"key":"TVLQSOK0oC","beforeEn":null,"afterEn":"Approaching session usage limit","afterJa":"セッション使用量の上限に近づいています"}
+{"file":"main","op":"add","index":7591,"key":"Tydhl828po","beforeEn":null,"afterEn":"May use excessive tokens resulting in long response times and may hit token limits. Use sparingly for the hardest tasks.","afterJa":"過剰なトークンを使用し、応答時間が長くなったり、トークンの上限に達したりする可能性があります。最も難しいタスクにのみ、控えめにご使用ください。"}
+{"file":"main","op":"add","index":7835,"key":"V0eXqTFDC+","beforeEn":null,"afterEn":"Dynamic workflows","afterJa":"ダイナミックワークフロー"}
+{"file":"main","op":"add","index":8242,"key":"WgwrN+g0Z3","beforeEn":null,"afterEn":"From \"{name}\"","afterJa":"「{name}さん」より"}
+{"file":"main","op":"add","index":8449,"key":"XbjPrpLIRl","beforeEn":null,"afterEn":"Keep {currentModeLabel}","afterJa":"{currentModeLabel}を維持する"}
+{"file":"main","op":"add","index":8667,"key":"YXR9pA8OQJ","beforeEn":null,"afterEn":"Bring your conversations, projects, and files from Claude.ai into Cowork.","afterJa":"Claude.aiの会話、プロジェクト、ファイルをCoworkに取り込みましょう。"}
+{"file":"main","op":"add","index":8724,"key":"YmslQPt7DE","beforeEn":null,"afterEn":"Cron expression","afterJa":"cron式"}
+{"file":"main","op":"add","index":10044,"key":"eCHBYR3o7a","beforeEn":null,"afterEn":"Approaching usage credit limit","afterJa":"使用クレジットの上限に近づいています"}
+{"file":"main","op":"add","index":10760,"key":"h80VjAcT3+","beforeEn":null,"afterEn":"Starting workflow","afterJa":"ワークフローを開始中"}
+{"file":"main","op":"add","index":11908,"key":"luc2Ad6lea","beforeEn":null,"afterEn":"You can add at most {count, plural, one {# image} other {# images}} (including PDF pages) to a chat. {suggestion}","afterJa":"チャットに追加できる画像は最大{count, plural, one {#枚} other {#枚}}（PDFのページを含む）です。{suggestion}"}
+{"file":"main","op":"add","index":12684,"key":"pBe3uZPnMp","beforeEn":null,"afterEn":"Verify a domain above to turn this on.","afterJa":"この機能を有効にするには、上記でドメインを確認してください。"}
+{"file":"main","op":"add","index":13014,"key":"qcfyfKiSx6","beforeEn":null,"afterEn":"Only Claude accounts in your enterprise can connect supported tools using an email on your verified domains. Contact support to request additional connectors.","afterJa":"エンタープライズ内のClaudeアカウントのみ、確認済みドメインのメールアドレスを使用して対応ツールに接続できます。追加のコネクタをご希望の場合は、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":13268,"key":"rlHsLnmyiB","beforeEn":null,"afterEn":"Out of extra usage","afterJa":"追加使用量がなくなりました"}
+{"file":"main","op":"add","index":13441,"key":"sax3sR1uez","beforeEn":null,"afterEn":"Approaching weekly usage limit","afterJa":"週間使用量の上限に近づいています"}
+{"file":"main","op":"add","index":14008,"key":"ujEYpB6S5L","beforeEn":null,"afterEn":"<b>{title}</b> — {detail}","afterJa":"<b>{title}</b> — {detail}"}
+{"file":"main","op":"add","index":14580,"key":"xBFnls3REC","beforeEn":null,"afterEn":"Make auto mode your default permission mode?","afterJa":"自動モードをデフォルトの権限モードに設定しますか？"}
+{"file":"main","op":"add","index":14782,"key":"y2YNTXYpUu","beforeEn":null,"afterEn":"5-field standard cron (no seconds). Cloud tasks need at least a 1-hour interval.","afterJa":"5フィールド標準cron（秒なし）。クラウドタスクには最低1時間の間隔が必要です。"}
+{"file":"main","op":"add","index":14869,"key":"yWD4LRLOTL","beforeEn":null,"afterEn":"Copy project ID","afterJa":"プロジェクトIDをコピー"}
