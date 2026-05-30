@@ -1,0 +1,419 @@
+{"file":"main","op":"remove","index":null,"key":"+UxVPjmWv+","beforeEn":"You've reached your spend limit for this month. Manage spend limit to keep going now, or wait until {time} when your plan usage resets.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"+tkSlk1s2v","beforeEn":"Choose your own default","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"+w1YB5AI4t","beforeEn":"More actions for token {name}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/+oM5MFA0V","beforeEn":"Using {connectorName}...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/4+Um5HCfz","beforeEn":"Fetching page...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/9DGEQmJ8Y","beforeEn":"Searching files...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/HHfFvWS71","beforeEn":"session","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/OyPYShmOc","beforeEn":"You've reached your spend limit for this month. Your plan usage resets at {time}.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/QzLlaZUHu","beforeEn":"Editing file...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/VJMXsR6bv","beforeEn":"Too many verification attempts. Wait and try again later.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/gQocC77Od","beforeEn":"Starting the agent","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"0CaKKmtZPs","beforeEn":"You've reached your spend limit for this month. Request more to keep going now, or wait until {day} at {time} when your plan usage resets.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"0c7l5s5odf","beforeEn":"AI support","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"0k/A6/jM5x","beforeEn":"This project (personal)","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"0rDhOvgLin","beforeEn":"Failed to revoke service token. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2QKXfWnX8D","beforeEn":"{count, plural, one {# user will have no role assigned} other {# users will have no role assigned}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"3Q0d0kQ+5W","beforeEn":"Voice speed","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"3T2o/IA7rO","beforeEn":"You've reached your spend limit for this month. Manage spend limit to keep going now.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"3uW3yMbS8r","beforeEn":"Failed to update spend limits. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"5J779v0w4/","beforeEn":"Prompt ({length, number} characters)","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"5cbekPftj7","beforeEn":"These users are not assigned to any other role through their groups. After removing these groups from this role, they will no longer have access to any features enabled by roles.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"5dTGbvXD+o","beforeEn":"Choose groups to reach our human support team.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"6rCW37Ys45","beforeEn":"The model members with this role start new conversations on. Members with multiple roles get the most capable default.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"6zUqW/8hiB","beforeEn":"Ship code without leaving your team chat.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"7pbwpcvbVB","beforeEn":"Running command...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"81U+XPsJjL","beforeEn":"Using {toolName}...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"88z5M/JghN","beforeEn":"Message from session {name}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"8GzexEb0Ar","beforeEn":"Do you trust this prompt?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"8HFlJVOaaj","beforeEn":"Reading memory...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"AFVTqMDEF5","beforeEn":"You've reached your spend limit for this month. Your plan usage resets {day} at {time}.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"AUyLa6OUrt","beforeEn":"Admins and owners can reach human support even if they're not in a selected group.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Af/gB2U9Xj","beforeEn":"Creating memory...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"B952R9dKb7","beforeEn":"Not useful","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"BTVsXVTUh4","beforeEn":"Editing {fileName}...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Bal7txmD9x","beforeEn":"You've reached your spend limit for this month. Request more to keep going now, or wait until {time} when your plan usage resets.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"CCgrBYDB0X","beforeEn":"{count, plural, one {Editing # file...} other {Editing # files...}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"CqiCvCglOv","beforeEn":"Failed to create service token. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"E04rSnFzKs","beforeEn":"Updating installation","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"E9QyQa8UYM","beforeEn":"Good suggestion","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"EHhG7+TOgZ","beforeEn":"Also in: {projects}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"F2T75z4l04","beforeEn":"For me","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FJIeHUALRu","beforeEn":"This invite is meant for {inviteEmail}, but you are logged in as {currentEmail}.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FO1qhPaZSt","beforeEn":"View background task","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FXIz2Xrc2H","beforeEn":"Use Anthropic's recommended default","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"GmNln/SnAx","beforeEn":"Support contact settings saved.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"HkylnPP2Hs","beforeEn":"Claude Code for Slack","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ILKp/uAyD4","beforeEn":"Enterprise domain restriction","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"IRFt+f8PwR","beforeEn":"Start typing to search your repositories.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"IbMf0kzvyd","beforeEn":"This project (shared)","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"J/9zW8VFme","beforeEn":"Create long-lived tokens for applications calling the Claude Security API.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"JcfcZ04yO1","beforeEn":"Writing...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Kgx5XeA8Qd","beforeEn":"Anything authenticating with this token will lose access. This action cannot be undone.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"LvLxsnAfn4","beforeEn":"Reveal transcript file","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"M4xy96pFYp","beforeEn":"How does retrieval-augmented generation work? <link>Learn more</link>","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Mx4DdRg+JG","beforeEn":"Writing file...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"NSX5q967/k","beforeEn":"Prompt preview","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"OAAfQPPZO8","beforeEn":"Set a default spend limit for each member in the selected group.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Oe+OxR6/MQ","beforeEn":"Restrict connectors to your verified domains","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"OptidWQfpV","beforeEn":"Pick a specific model that will not change when new models are released.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"PcVJvkWDLE","beforeEn":"Multitasking...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"QvYxF2hB46","beforeEn":"Contact Claude Sales","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"T9mQEj6Yjy","beforeEn":"settings","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"TU6KL2gKFr","beforeEn":"Create a new service token","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"U8C1mTauzq","beforeEn":"Copied as text","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"V1BZzLP6Yo","beforeEn":"{count} unclaimed {count, plural, one {seat} other {seats}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"VP/RBnxzjx","beforeEn":"Copy as text","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"W0SBzkCd8H","beforeEn":"No service tokens have been created yet.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"WLsyv5gYgN","beforeEn":"Working on it...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Wf2sFA6AhZ","beforeEn":"Message the team","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"XGTz+an/W0","beforeEn":"Draft reply","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"XTI+nHDadn","beforeEn":"Finding matches...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Y5askoVbGs","beforeEn":"View options","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Yza/6EVU0q","beforeEn":"Started the agent","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Z1KmRwSAu/","beforeEn":"<b>Human support is off.</b> Everyone in your organization — including admins and owners — uses the AI support assistant. Selected groups are saved for when you turn it back on.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Z1ssd87d9Y","beforeEn":"Permission mode: {mode}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ZMK9Ub22Wu","beforeEn":"connector tool calls","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ZWBNsQsOwn","beforeEn":"Add a verified domain under Identity & provisioning first.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Zhf0h7AARy","beforeEn":"You've hit your monthly spend limit, but you have more credits.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"a/0PArw8AA","beforeEn":"{count, plural, one {Writing # file...} other {Writing # files...}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"a/pLy2qFJI","beforeEn":"You've reached your spend limit for this month. Manage spend limit to keep going now, or wait until {day} at {time} when your plan usage resets.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"b+nJiXoqJi","beforeEn":"Choose the starting model for new conversations. Claude remembers each member's last selection, so their next conversation starts on whichever model they last used. Role defaults and other managed settings can override this.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"bdBO1oObPN","beforeEn":"details","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"c+swVkDN3t","beforeEn":"Create token","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"cZUIMo1bMW","beforeEn":"Radar · {summary}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"csMCt23Z9V","beforeEn":"You've reached your spend limit for this month. Request more to keep going now.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"d5oLRD5Fub","beforeEn":"settings","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"eQMrHDwH0A","beforeEn":"Writing {fileName}...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"eclXxBQs7M","beforeEn":"project (local)","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"fDY1SdADiI","beforeEn":"Per-day spend limit. Only individual members can have a daily limit. Groups and seat tiers are monthly-only.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"fepA/hMcTZ","beforeEn":"<bold>Review this prompt and its length carefully before approving.</bold>","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"fzk/G7rA7E","beforeEn":"Editing memory...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"gNBjlRI7ie","beforeEn":"Create a new token","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"gSgL+AU8rp","beforeEn":"Sharing data from Labs features helps Anthropic improve Claude Design and future Labs products. You can change this anytime.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"guZdznamRe","beforeEn":"These users are not assigned to any other role through their groups. After deleting this role, they will no longer have access to any features enabled by roles.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"hRdB6QqiQK","beforeEn":"Indexing","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"hm834QYCVB","beforeEn":"Everyone in your organization gets instant answers from the AI support assistant.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"i8LgLGJ/2S","beforeEn":"Enforce as fixed default","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"iivVAGSaYT","beforeEn":"Token name must be 64 characters or less.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ikSDjJ8Q2T","beforeEn":"everywhere","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"jsLKtGuFs9","beforeEn":"Searching the web...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"l9Ar7t7nk3","beforeEn":"Service tokens","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"m1rw4ztU75","beforeEn":"unclaimed","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"mL0iinS96k","beforeEn":"Copy as table","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"me3a2ZTyNE","beforeEn":"Malicious conversation content could trick Claude into attempting harmful actions or sharing your data.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"nPCyhEFOUG","beforeEn":"When members add a supported connector, the connected account must be on one of your enterprise's verified domains. This prevents personal Claude accounts from linking corporate data through these connectors. To request coverage for additional connectors, contact support.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"o0X5+unDmV","beforeEn":"Reading {fileName}...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"pMkBIACj3b","beforeEn":"Service token created","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"pVxeGWLSAP","beforeEn":"Model optimized for everyday performance. Automatically updates to use the latest model.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"qaRHmfUDz5","beforeEn":"View in {source}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"qafWFURth/","beforeEn":"Failed to remove group spend limit. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"qfVcnCi7C0","beforeEn":"A descriptive name to identify this token.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"qn+0AN40B2","beforeEn":"You've reached your spend limit for this month.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"rRPebYm4sU","beforeEn":"Don't see a repo? <a>Install the GitHub App</a> on it.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"rZkmnhJktC","beforeEn":"Support Contacts","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"rnps5WQOpb","beforeEn":"Start the agent","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"sJhQFwWqSc","beforeEn":"Per-week spend limit. Only individual members can have a weekly limit. Groups and seat tiers are monthly-only.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"sLpHHDXlyF","beforeEn":"Copy this token now. You won't be able to see it again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"t/kRKjY19Y","beforeEn":"Get access to Cowork so Claude can work in your folders and browser.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"tXmfGMTmpi","beforeEn":"Token name is required.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"tiLFN7k0Pg","beforeEn":"Reading file...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"u2DOo092Pq","beforeEn":"Usage limit reached · resets at {time}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"uamCkavwvi","beforeEn":"Service token revoked","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"uvhT6bpyf0","beforeEn":"{count, plural, one {Reading # file...} other {Reading # files...}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"vUqvYt5l7H","beforeEn":"Installations ({count})","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"xQXSrujr+1","beforeEn":"Token name","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"y1X1ZRLitc","beforeEn":"Copied as table","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"y26s++iwVG","beforeEn":"Run once","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"z+k61mAi91","beforeEn":"Reset everyone to the admin default at the start of every new conversation, instead of keeping their own pick. Applies to this organization default and any role defaults.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"zGOzqI5f3D","beforeEn":"{count, plural, one {Running # command...} other {Running # commands...}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"zmj8pCGwFa","beforeEn":"Failed to create group spend limit. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"add","index":29,"key":"+7wBOtcfgZ","beforeEn":null,"afterEn":"Repurpose this blog post across channels","afterJa":"このブログ記事を各チャネル向けに転用する"}
+{"file":"main","op":"add","index":65,"key":"+GKWHWveHu","beforeEn":null,"afterEn":"Build me a 3-year financial model — base, bull, and bear cases, linked formulas, sensitivity table. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"3年間の財務モデルを作成してください。ベース・強気・弱気の3シナリオ、リンクされた数式、感度分析テーブルを含めてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":89,"key":"+MxL8DZZiQ","beforeEn":null,"afterEn":"Allow your team to run multi-agent workflows in Claude Code.","afterJa":"チームが Claude Code でマルチエージェントワークフローを実行できるようにします。"}
+{"file":"main","op":"add","index":142,"key":"+dTxnpark1","beforeEn":null,"afterEn":"run a workflow","afterJa":"ワークフローを実行する"}
+{"file":"main","op":"add","index":158,"key":"+jEQog5/Bd","beforeEn":null,"afterEn":"Reading memory…","afterJa":"メモリを読み込み中…"}
+{"file":"main","op":"add","index":174,"key":"+nkPjkM8vF","beforeEn":null,"afterEn":"no limit","afterJa":"上限なし"}
+{"file":"main","op":"add","index":359,"key":"/bW52d0sP+","beforeEn":null,"afterEn":"Helper run cancelled","afterJa":"ヘルパーの実行がキャンセルされました"}
+{"file":"main","op":"add","index":368,"key":"/cqjioq+55","beforeEn":null,"afterEn":"Editing {fileName}…","afterJa":"{fileName}を編集中…"}
+{"file":"main","op":"add","index":369,"key":"/dJ//G7jPC","beforeEn":null,"afterEn":"New conversations return to the default instead of the member's last-used model. Members can still switch models within a conversation. Also applies to role defaults.","afterJa":"新しい会話は、メンバーが最後に使用したモデルではなく、デフォルトのモデルに戻ります。メンバーは会話内でモデルを切り替えることができます。ロールのデフォルトにも適用されます。"}
+{"file":"main","op":"add","index":438,"key":"/vjDPeOyDm","beforeEn":null,"afterEn":"Project ID","afterJa":"プロジェクトID"}
+{"file":"main","op":"add","index":486,"key":"0A4Q6xDWgl","beforeEn":null,"afterEn":"You've hit your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit, but you have more credits.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しましたが、クレジットの残高があります。"}
+{"file":"main","op":"add","index":581,"key":"0ZtIccX+T2","beforeEn":null,"afterEn":"Using {toolName}…","afterJa":"{toolName}を使用中…"}
+{"file":"main","op":"add","index":620,"key":"0jm+4+uUDY","beforeEn":null,"afterEn":"Create polished slides, prototypes and designs.","afterJa":"洗練されたスライド、プロトタイプ、デザインを作成できます。"}
+{"file":"main","op":"add","index":646,"key":"0pbjL+qdYK","beforeEn":null,"afterEn":"Relaunch anyway","afterJa":"それでも再起動する"}
+{"file":"main","op":"add","index":654,"key":"0sJjwzeMC8","beforeEn":null,"afterEn":"Starting Claude…","afterJa":"Claudeを起動中…"}
+{"file":"main","op":"add","index":727,"key":"1Bzbhy1/I6","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Request more to keep going now, or wait until {day} at {time} when your plan usage resets.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。今すぐ続けるには上限の引き上げをリクエストするか、プランの利用量がリセットされる{day}の{time}までお待ちください。"}
+{"file":"main","op":"add","index":742,"key":"1GAyt5I8uf","beforeEn":null,"afterEn":"Claude for Outlook","afterJa":"Claude for Outlook"}
+{"file":"main","op":"add","index":762,"key":"1LlppFGnYb","beforeEn":null,"afterEn":"Set up a product metrics dashboard — DAU/WAU, weekly retention, funnel conversion, feature adoption, plus a quick read on the trends. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"プロダクトメトリクスダッシュボードを設定してください。DAU/WAU、週次リテンション、ファネルコンバージョン、機能の採用率に加え、トレンドの概要も含めてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":777,"key":"1PrIc0N1tK","beforeEn":null,"afterEn":"Design (opens in a new window)","afterJa":"Design（新しいウィンドウで開きます）"}
+{"file":"main","op":"add","index":816,"key":"1b9yRcGkrQ","beforeEn":null,"afterEn":"Downloaded {filename}","afterJa":"{filename} をダウンロードしました"}
+{"file":"main","op":"add","index":828,"key":"1fHnAx5y8M","beforeEn":null,"afterEn":"Set up a pipeline dashboard — stages, pipeline value over time, and what needs attention this week. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"パイプラインダッシュボードを設定してください。ステージ、パイプライン価値の推移、今週対応が必要な項目を含めてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":831,"key":"1fy7qkmmCd","beforeEn":null,"afterEn":"Surfaces one-click SSO for this email domain on the login screen, without restricting login.","afterJa":"ログイン画面でこのメールドメインのワンクリックSSOを表示しますが、ログイン方法は制限されません。"}
+{"file":"main","op":"add","index":899,"key":"1xpKfv7GwN","beforeEn":null,"afterEn":"{name} added to your team","afterJa":"{name}さんがチームに追加されました"}
+{"file":"main","op":"add","index":981,"key":"2FeCu4ZLXQ","beforeEn":null,"afterEn":"Dynamic workflows run many subagents in parallel and can use a lot of your usage limit. Stop them any time from the <link>tasks panel</link>.","afterJa":"動的ワークフローは多数のサブエージェントを並列で実行するため、使用量の上限を大幅に消費する可能性があります。<link>タスクパネル</link>からいつでも停止できます。"}
+{"file":"main","op":"add","index":982,"key":"2FlgXz0uda","beforeEn":null,"afterEn":"shells","afterJa":"シェル"}
+{"file":"main","op":"add","index":1018,"key":"2QWN8hlND7","beforeEn":null,"afterEn":"Sessions you start will show up here","afterJa":"開始したセッションがここに表示されます"}
+{"file":"main","op":"add","index":1104,"key":"2n3WlAzStK","beforeEn":null,"afterEn":"Server is temporarily limiting requests","afterJa":"サーバーが一時的にリクエストを制限しています"}
+{"file":"main","op":"add","index":1165,"key":"32LQlYNxi3","beforeEn":null,"afterEn":"The default weekly spend limit applied to each member of this group. Seat tiers are monthly-only.","afterJa":"このグループの各メンバーに適用されるデフォルトの週次利用上限です。シートプランは月次のみとなります。"}
+{"file":"main","op":"add","index":1172,"key":"359ygmQBPw","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。"}
+{"file":"main","op":"add","index":1178,"key":"371DelXUjL","beforeEn":null,"afterEn":"{count} tokens","afterJa":"{count} トークン"}
+{"file":"main","op":"add","index":1318,"key":"3ifzXrvIu/","beforeEn":null,"afterEn":"These users are not assigned to any other custom role through their groups. After deleting this role, they will no longer have access to any features enabled by custom roles.","afterJa":"これらのユーザーは、グループを通じて他のカスタムロールに割り当てられていません。このロールを削除すると、カスタムロールによって有効になっている機能にアクセスできなくなります。"}
+{"file":"main","op":"add","index":1346,"key":"3sR8EbZ7D2","beforeEn":null,"afterEn":"Now using extra usage","afterJa":"現在、追加使用量を使用中です"}
+{"file":"main","op":"add","index":1493,"key":"4W1TXf3c2q","beforeEn":null,"afterEn":"Failed to save the {failedList} spend {count, plural, one {limit} other {limits}}. Try again.","afterJa":"{failedList}の利用{count, plural, one {上限} other {上限}}を保存できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":1562,"key":"4mT4touUHE","beforeEn":null,"afterEn":"Connector domain restriction","afterJa":"コネクタドメイン制限"}
+{"file":"main","op":"add","index":1678,"key":"5DAxzM/clP","beforeEn":null,"afterEn":"Restrict verified-domain connectors to your enterprise","afterJa":"確認済みドメインのコネクターをエンタープライズに制限する"}
+{"file":"main","op":"add","index":1724,"key":"5RwmJxJ314","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Request more to keep going now, or wait until {time} when your plan usage resets.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。今すぐ続けるには上限の引き上げをリクエストするか、プランの利用量がリセットされる{time}までお待ちください。"}
+{"file":"main","op":"add","index":1793,"key":"5nvWQkBMdw","beforeEn":null,"afterEn":"Search eligible members","afterJa":"対象メンバーを検索"}
+{"file":"main","op":"add","index":1836,"key":"5yFg0M6lM9","beforeEn":null,"afterEn":"Enable a Custom Connector","afterJa":"カスタムコネクタを有効にする"}
+{"file":"main","op":"add","index":1926,"key":"6JmsGLI59u","beforeEn":null,"afterEn":"Too many requests right now — try again in a moment.","afterJa":"ただいまリクエストが集中しています。しばらくしてからもう一度お試しください。"}
+{"file":"main","op":"add","index":1931,"key":"6La3aSs7aY","beforeEn":null,"afterEn":"Workflows","afterJa":"ワークフロー"}
+{"file":"main","op":"add","index":2055,"key":"6p+YJwQX1o","beforeEn":null,"afterEn":"Local video attachments play in the lightbox","afterJa":"ローカルの動画添付ファイルがライトボックスで再生されます"}
+{"file":"main","op":"add","index":2124,"key":"76XKCsY1RU","beforeEn":null,"afterEn":"Choose how org members get help when they contact Anthropic support.","afterJa":"組織のメンバーがAnthropicサポートに問い合わせる際のサポート方法を選択してください。"}
+{"file":"main","op":"add","index":2172,"key":"7I76Gt7pqd","beforeEn":null,"afterEn":"Put together a customer-ready QBR deck — pull recent news on the account, work it into the slides, end with a recommendation. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"顧客向けのQBRデッキを作成してください。アカウントの最新ニュースを収集してスライドに組み込み、最後に提案で締めくくってください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":2242,"key":"7WkvzNBqWd","beforeEn":null,"afterEn":"Max effort can use excessive tokens resulting in hitting limits. Consider using a lower effort setting.","afterJa":"Max effortは過剰なトークンを使用し、制限に達する可能性があります。より低いエフォート設定の使用をご検討ください。"}
+{"file":"main","op":"add","index":2319,"key":"7uVqyrFzVP","beforeEn":null,"afterEn":"Too many attempts. Wait a few minutes before trying again.","afterJa":"試行回数が多すぎます。数分待ってから再試行してください。"}
+{"file":"main","op":"add","index":2394,"key":"8By5nlWG7I","beforeEn":null,"afterEn":"Dynamic workflows let Claude fan out to many subagents on a single task","afterJa":"ダイナミックワークフローにより、Claudeは1つのタスクを多数のサブエージェントに展開できます"}
+{"file":"main","op":"add","index":2402,"key":"8DwGRd/whZ","beforeEn":null,"afterEn":"Show all sessions","afterJa":"すべてのセッションを表示"}
+{"file":"main","op":"add","index":2436,"key":"8N9621GkBg","beforeEn":null,"afterEn":"No API keys have been created yet.","afterJa":"まだAPIキーが作成されていません。"}
+{"file":"main","op":"add","index":2447,"key":"8PGhCK5G81","beforeEn":null,"afterEn":"This default will update automatically when a more capable model is released.","afterJa":"より高性能なモデルがリリースされると、このデフォルトは自動的に更新されます。"}
+{"file":"main","op":"add","index":2464,"key":"8TyU5yY7ic","beforeEn":null,"afterEn":"Spend limits are still loading. Try again in a moment.","afterJa":"利用上限を読み込んでいます。しばらくしてからもう一度お試しください。"}
+{"file":"main","op":"add","index":2470,"key":"8UzT6d+sXk","beforeEn":null,"afterEn":"CSV","afterJa":"CSV"}
+{"file":"main","op":"add","index":2508,"key":"8e0c1Eh+be","beforeEn":null,"afterEn":"Please select fewer images.","afterJa":"選択する画像を減らしてください。"}
+{"file":"main","op":"add","index":2551,"key":"8pB3pA45eO","beforeEn":null,"afterEn":"To use {feature, select, voice {voice} other {dictation}}, select the site settings icon in your browser's address bar and allow the microphone.","afterJa":"{feature, select, voice {音声入力} other {ディクテーション}}を使用するには、ブラウザのアドレスバーにあるサイト設定アイコンを選択し、マイクを許可してください。"}
+{"file":"main","op":"add","index":2665,"key":"9JwFrHkhbZ","beforeEn":null,"afterEn":"Custom daily and weekly caps will be removed. Where a group sets a daily or weekly limit, that limit will still apply.","afterJa":"カスタムの日次および週次の上限は削除されます。グループで日次または週次の上限が設定されている場合、その上限は引き続き適用されます。"}
+{"file":"main","op":"add","index":2677,"key":"9Ni9ggkEz/","beforeEn":null,"afterEn":"Unknown group","afterJa":"不明なグループ"}
+{"file":"main","op":"add","index":2696,"key":"9Qm4oMKLGW","beforeEn":null,"afterEn":"Mock up 2-3 clickable mobile prototypes of a feature — each a different take — so my team can react to something real, not a doc. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"機能のクリッカブルなモバイルプロトタイプを2〜3パターン作成してください。それぞれ異なるアプローチで、チームがドキュメントではなく実際のものを見て意見を出せるようにしてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":2762,"key":"9jut5bkOz9","beforeEn":null,"afterEn":"Cron expression (UTC)","afterJa":"cron式 (UTC)"}
+{"file":"main","op":"add","index":2769,"key":"9leZTp+tqL","beforeEn":null,"afterEn":"Refreshing your payment method…","afterJa":"お支払い方法を更新中…"}
+{"file":"main","op":"add","index":2789,"key":"9pdEp9yGRJ","beforeEn":null,"afterEn":"Switch to auto","afterJa":"自動に切り替える"}
+{"file":"main","op":"add","index":2860,"key":"A7erSH45jI","beforeEn":null,"afterEn":"Try again in {remaining}","afterJa":"{remaining}後に再試行してください"}
+{"file":"main","op":"add","index":2889,"key":"AEHa55VPDw","beforeEn":null,"afterEn":"Your previous session was reset. Starting a new conversation.","afterJa":"前回のセッションがリセットされました。新しい会話を開始します。"}
+{"file":"main","op":"add","index":2909,"key":"AI5UUm6GEl","beforeEn":null,"afterEn":"Only Claude accounts in your enterprise can connect supported connectors using an email on your verified domains. Contact support to request additional connectors.","afterJa":"エンタープライズ内のClaudeアカウントのみが、確認済みドメインのメールアドレスを使用して対応コネクターに接続できます。追加のコネクターをリクエストするには、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":2926,"key":"AOC+33vwzD","beforeEn":null,"afterEn":"Write my weekly marketing review — pipeline vs goal, engagement by segment, biggest gaps, what to watch — for me to review before I post it. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"週次マーケティングレビューを作成してください。パイプラインと目標の比較、セグメント別エンゲージメント、主なギャップ、注目すべき点を含め、投稿前に私が確認できるようにしてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":2996,"key":"Ae+ocWZlqj","beforeEn":null,"afterEn":"Couldn't load existing limits. Refresh the page and try again.","afterJa":"既存の上限を読み込めませんでした。ページを更新してもう一度お試しください。"}
+{"file":"main","op":"add","index":3046,"key":"Aq6oidUiEi","beforeEn":null,"afterEn":"This number is temporarily blocked after repeated attempts. Try again later with the same number, or use a different one.","afterJa":"この番号は繰り返しの試行により一時的にブロックされています。同じ番号で後ほど再試行するか、別の番号をお使いください。"}
+{"file":"main","op":"add","index":3082,"key":"Ay7Mb52y9j","beforeEn":null,"afterEn":"Use the most capable model","afterJa":"最も高性能なモデルを使用する"}
+{"file":"main","op":"add","index":3116,"key":"B4eNbY3VOR","beforeEn":null,"afterEn":"Approaching extra usage limit","afterJa":"追加使用量の上限に近づいています"}
+{"file":"main","op":"add","index":3148,"key":"BBdIiDX7hr","beforeEn":null,"afterEn":"Claude Opus 4.8 is now available in the model picker","afterJa":"Claude Opus 4.8がモデルピッカーで利用できるようになりました"}
+{"file":"main","op":"add","index":3179,"key":"BIYQtyYBdw","beforeEn":null,"afterEn":"Search mode","afterJa":"検索モード"}
+{"file":"main","op":"add","index":3201,"key":"BNrlE9/X9N","beforeEn":null,"afterEn":"Creating memory…","afterJa":"メモリを作成中…"}
+{"file":"main","op":"add","index":3362,"key":"C/4uHXmPs/","beforeEn":null,"afterEn":"Background {noun}","afterJa":"バックグラウンド{noun}"}
+{"file":"main","op":"add","index":3377,"key":"C33sdRxDco","beforeEn":null,"afterEn":"Resets at {time}","afterJa":"{time}にリセットされます"}
+{"file":"main","op":"add","index":3416,"key":"CCLjcz8lBX","beforeEn":null,"afterEn":"Allow members to request a limit increase when they reach their weekly or monthly limit.","afterJa":"メンバーが週次または月次の上限に達した際に、上限の引き上げをリクエストできるようにします。"}
+{"file":"main","op":"add","index":3488,"key":"CV12DkOyvZ","beforeEn":null,"afterEn":"Searching the web…","afterJa":"ウェブを検索中…"}
+{"file":"main","op":"add","index":3504,"key":"CZtxXr6jop","beforeEn":null,"afterEn":"Take a blog post and turn it into a LinkedIn post, an email newsletter blurb, and a one-page PDF. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"ブログ記事をもとに、LinkedInの投稿、メールニュースレターの紹介文、1ページのPDFを作成してください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":3515,"key":"CbdzhlchNJ","beforeEn":null,"afterEn":"Draft my follow-up emails","afterJa":"フォローアップメールを下書きする"}
+{"file":"main","op":"add","index":3540,"key":"CjsWsZhIqS","beforeEn":null,"afterEn":"Searching file contents with `?` works for folders that aren't git repos","afterJa":"`?`を使ったファイル内容の検索が、gitリポジトリでないフォルダでも機能します"}
+{"file":"main","op":"add","index":3794,"key":"Do1vz/3MWU","beforeEn":null,"afterEn":"Build a comparison deck — positioning, pricing, key features, and where we win — across a few competitors. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"競合他社との比較デッキを作成してください。ポジショニング、価格、主な機能、自社が優位な点を複数の競合にわたってまとめてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":3823,"key":"Dvf9VEg4i3","beforeEn":null,"afterEn":"Remote Control turned on.","afterJa":"リモートコントロールがオンになりました。"}
+{"file":"main","op":"add","index":3885,"key":"ECOi79OgU1","beforeEn":null,"afterEn":"Choose the starting model for new conversations in Chat and Cowork. Members can switch, and Claude remembers each member's choice for next time. Role defaults take priority over this setting.","afterJa":"Chat と Cowork での新しい会話の開始モデルを選択します。メンバーはモデルを切り替えることができ、Claude は次回のために各メンバーの選択を記憶します。ロールのデフォルトはこの設定より優先されます。"}
+{"file":"main","op":"add","index":3932,"key":"EPlvd4h6u/","beforeEn":null,"afterEn":"tasks","afterJa":"タスク"}
+{"file":"main","op":"add","index":3988,"key":"EemewPnZp7","beforeEn":null,"afterEn":"Couldn't stop this remote task from this device — open its session from the sidebar to stop it.","afterJa":"このデバイスからリモートタスクを停止できませんでした。停止するには、サイドバーからセッションを開いてください。"}
+{"file":"main","op":"add","index":4037,"key":"Eos5DtFKCe","beforeEn":null,"afterEn":"Permission mode change failed. Try again.","afterJa":"権限モードの変更に失敗しました。もう一度お試しください。"}
+{"file":"main","op":"add","index":4072,"key":"Ewz8JERJ62","beforeEn":null,"afterEn":"{count, plural, one {# group added} other {# groups added}}","afterJa":"{count, plural, one {#グループが追加されました} other {#グループが追加されました}}"}
+{"file":"main","op":"add","index":4183,"key":"FOps+uD7nE","beforeEn":null,"afterEn":"Dynamic workflows are disabled by your organization's policy.","afterJa":"ダイナミックワークフローは、組織のポリシーにより無効になっています。"}
+{"file":"main","op":"add","index":4218,"key":"FXPVnZbMuE","beforeEn":null,"afterEn":"Couldn't update the {failedList} spend {count, plural, one {limit} other {limits}}. Try again.","afterJa":"{failedList}の利用{count, plural, one {上限} other {上限}}を更新できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":4302,"key":"FtuI0DrmqS","beforeEn":null,"afterEn":"Relaunch Claude Desktop","afterJa":"Claude Desktop を再起動する"}
+{"file":"main","op":"add","index":4352,"key":"G65XMEd2UY","beforeEn":null,"afterEn":"Select {name}","afterJa":"{name}さんを選択"}
+{"file":"main","op":"add","index":4419,"key":"GIsMNqpIOj","beforeEn":null,"afterEn":"Spend limit removed for \"{groupName}\".","afterJa":"「{groupName}」の利用上限を削除しました。"}
+{"file":"main","op":"add","index":4447,"key":"GQpLNSZoy5","beforeEn":null,"afterEn":"Everyone in {orgName} can view this session","afterJa":"{orgName}の全員がこのセッションを閲覧できます"}
+{"file":"main","op":"add","index":4453,"key":"GS7x43ANvk","beforeEn":null,"afterEn":"Find every customer thread I owe a response to and draft the follow-ups for me to review and send. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"返信が必要な顧客スレッドをすべて見つけ出し、私が確認して送信できるようにフォローアップの下書きを作成してください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":4494,"key":"GeC/eGucT3","beforeEn":null,"afterEn":"Message the Anthropic team","afterJa":"Anthropicチームにメッセージを送る"}
+{"file":"main","op":"add","index":4512,"key":"Gi7sf5ObGK","beforeEn":null,"afterEn":"Using {connectorName}…","afterJa":"{connectorName}を使用中…"}
+{"file":"main","op":"add","index":4598,"key":"H6k5CXsEU3","beforeEn":null,"afterEn":"Write a weekly stakeholder update","afterJa":"週次ステークホルダー向け更新レポートを作成する"}
+{"file":"main","op":"add","index":4700,"key":"HYi4dZlqqz","beforeEn":null,"afterEn":"Install the GitHub app on your repositories so that you can access them here.","afterJa":"リポジトリにGitHubアプリをインストールすると、ここからアクセスできるようになります。"}
+{"file":"main","op":"add","index":4717,"key":"HeT5uG3XWO","beforeEn":null,"afterEn":"For your work in {role}","afterJa":"{role}のお仕事に"}
+{"file":"main","op":"add","index":4727,"key":"HhTXQgmM3R","beforeEn":null,"afterEn":"{count, plural, one {Writing # file…} other {Writing # files…}}","afterJa":"{count, plural, one {#個のファイルを書き込み中…} other {#個のファイルを書き込み中…}}"}
+{"file":"main","op":"add","index":4760,"key":"HpttSPlhw9","beforeEn":null,"afterEn":"Set up a revenue dashboard — top-line trend, top customers, segment mix, and forecast vs actual. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"収益ダッシュボードを設定してください。売上トレンド、上位顧客、セグメント別構成、予測と実績の比較を含めてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":4768,"key":"Hri/ILFyKc","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Your plan usage resets {day} at {time}.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。プランの利用量は{day}の{time}にリセットされます。"}
+{"file":"main","op":"add","index":4778,"key":"HusXd1Jm7K","beforeEn":null,"afterEn":"Sign in another way","afterJa":"別の方法でサインインする"}
+{"file":"main","op":"add","index":4824,"key":"I6a8nLAaOv","beforeEn":null,"afterEn":"Update my CRM after a call","afterJa":"通話後にCRMを更新する"}
+{"file":"main","op":"add","index":4864,"key":"IJXGYyxFSQ","beforeEn":null,"afterEn":"Always start with the default model","afterJa":"常にデフォルトモデルで開始する"}
+{"file":"main","op":"add","index":4865,"key":"IJa2qvN9NV","beforeEn":null,"afterEn":"Put together a one-pager I can read before a client meeting — who's coming, recent emails, what's new at their company, what to bring up. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"クライアントミーティング前に読める1ページのサマリーを作成してください。参加者、最近のメール、先方企業の最新情報、話すべきトピックを含めてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":4928,"key":"IarVDo1D+f","beforeEn":null,"afterEn":"Make an on-brand deck","afterJa":"ブランドに沿ったデッキを作成する"}
+{"file":"main","op":"add","index":4957,"key":"IhP7OnjM14","beforeEn":null,"afterEn":"Support routing","afterJa":"サポートルーティング"}
+{"file":"main","op":"add","index":4983,"key":"IpWmHJ3bpY","beforeEn":null,"afterEn":"Daily briefing","afterJa":"デイリーブリーフィング"}
+{"file":"main","op":"add","index":4984,"key":"Ipb67Xuxud","beforeEn":null,"afterEn":"Couldn't stop the task — check your connection and try again.","afterJa":"タスクを停止できませんでした。接続を確認して、再試行してください。"}
+{"file":"main","op":"add","index":5019,"key":"IzQEmX8KYb","beforeEn":null,"afterEn":"{count, plural, one {Running # command…} other {Running # commands…}}","afterJa":"{count, plural, one {#個のコマンドを実行中…} other {#個のコマンドを実行中…}}"}
+{"file":"main","op":"add","index":5044,"key":"J2D0+ihfKQ","beforeEn":null,"afterEn":"Mark as completed","afterJa":"完了としてマークする"}
+{"file":"main","op":"add","index":5047,"key":"J2r8CEi0fx","beforeEn":null,"afterEn":"workflows","afterJa":"ワークフロー"}
+{"file":"main","op":"add","index":5133,"key":"JQCRTVSDaI","beforeEn":null,"afterEn":"Preview URL: {url}","afterJa":"プレビューURL: {url}"}
+{"file":"main","op":"add","index":5153,"key":"JUwphi2vcg","beforeEn":null,"afterEn":"Build a cashflow forecast","afterJa":"キャッシュフロー予測を作成する"}
+{"file":"main","op":"add","index":5176,"key":"Jab9736p5D","beforeEn":null,"afterEn":"Editing memory…","afterJa":"メモリを編集中…"}
+{"file":"main","op":"add","index":5211,"key":"JjAk5QHGza","beforeEn":null,"afterEn":"Agents you define in your project's `.claude/agents` show up in the `@`-mention picker — and new ones appear without a restart","afterJa":"プロジェクトの`.claude/agents`で定義したエージェントが`@`メンションピッカーに表示されます。新しいエージェントも再起動なしで反映されます"}
+{"file":"main","op":"add","index":5309,"key":"K5n/qqgZlZ","beforeEn":null,"afterEn":"After my meetings, post a summary to my team channel — decisions, action items with owners, open questions — and remind owners 2 days before the next meeting if their item is still open. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"ミーティング後、チームチャンネルにサマリーを投稿してください。決定事項、担当者付きのアクションアイテム、未解決の質問を含めてください。また、次回ミーティングの2日前に、アイテムがまだ未完了の場合は担当者にリマインドしてください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":5423,"key":"Kd68snacT9","beforeEn":null,"afterEn":"Writing…","afterJa":"書き込み中…"}
+{"file":"main","op":"add","index":5533,"key":"L1da6KXaMe","beforeEn":null,"afterEn":"Claude.ai import","afterJa":"Claude.ai インポート"}
+{"file":"main","op":"add","index":5556,"key":"L63dax6VpU","beforeEn":null,"afterEn":"Weekly exec revenue update","afterJa":"週次エグゼクティブ向け収益アップデート"}
+{"file":"main","op":"add","index":5597,"key":"LGqcGkNTHX","beforeEn":null,"afterEn":"{count} stopped","afterJa":"{count}件停止"}
+{"file":"main","op":"add","index":5656,"key":"LV/NY6rInQ","beforeEn":null,"afterEn":"5-field standard cron (no seconds).","afterJa":"5フィールド標準cron（秒なし）。"}
+{"file":"main","op":"add","index":5695,"key":"LfZUb1sDVr","beforeEn":null,"afterEn":"Your organization isn't eligible for this plan right now. Contact sales for help.","afterJa":"現在、お客様の組織はこのプランをご利用いただけません。詳細については営業チームにお問い合わせください。"}
+{"file":"main","op":"add","index":5708,"key":"LjUPsj12b4","beforeEn":null,"afterEn":"Choose a specific model","afterJa":"特定のモデルを選択する"}
+{"file":"main","op":"add","index":5713,"key":"LkWnw1Wj5a","beforeEn":null,"afterEn":"Build a competitor comparison deck","afterJa":"競合比較デッキを作成する"}
+{"file":"main","op":"add","index":5756,"key":"LvAEazKAPC","beforeEn":null,"afterEn":"Triage your inbox in one prompt, draft replies that wait for you to send, and find time across calendars.","afterJa":"ひとつのプロンプトで受信トレイを整理し、送信前に確認できる返信の下書きを作成し、カレンダー間で空き時間を見つけられます。"}
+{"file":"main","op":"add","index":5761,"key":"LvWE5ErB/S","beforeEn":null,"afterEn":"These keys have access to all Claude Security projects within the organization.","afterJa":"これらのキーは、組織内のすべてのClaude Securityプロジェクトにアクセスできます。"}
+{"file":"main","op":"add","index":5845,"key":"MFl08hiONA","beforeEn":null,"afterEn":"agents","afterJa":"エージェント"}
+{"file":"main","op":"add","index":5883,"key":"MPRjr95W0C","beforeEn":null,"afterEn":"Open in desktop app","afterJa":"デスクトップアプリで開く"}
+{"file":"main","op":"add","index":5961,"key":"Mk29PIBUYN","beforeEn":null,"afterEn":"Enter a valid 5-field cron expression.","afterJa":"有効な5フィールドのcron式を入力してください。"}
+{"file":"main","op":"add","index":5982,"key":"Mo6cBCSzDG","beforeEn":null,"afterEn":"Connection closed before a response. You can try again.","afterJa":"応答前に接続が切断されました。もう一度お試しください。"}
+{"file":"main","op":"add","index":5988,"key":"MovOrtMoy9","beforeEn":null,"afterEn":"To use {feature, select, voice {voice} other {dictation}}, open System Settings, go to Privacy and Security, select Microphone, and turn on Claude.","afterJa":"{feature, select, voice {音声入力} other {ディクテーション}}を使用するには、システム設定を開き、プライバシーとセキュリティに移動して、マイクを選択し、Claudeをオンにしてください。"}
+{"file":"main","op":"add","index":6107,"key":"NLBh1jFRC6","beforeEn":null,"afterEn":"This invite link is for a different account. Sign out and try again.","afterJa":"この招待リンクは別のアカウント用です。サインアウトしてから、もう一度お試しください。"}
+{"file":"main","op":"add","index":6111,"key":"NLiniZQVIR","beforeEn":null,"afterEn":"Connection was lost. You can try again.","afterJa":"接続が切断されました。もう一度お試しください。"}
+{"file":"main","op":"add","index":6145,"key":"NUA7ZTsJ06","beforeEn":null,"afterEn":"Run parallel coding sessions with a terminal, editor, and preview built in.","afterJa":"ターミナル、エディタ、プレビューを内蔵した環境で、並行してコーディングセッションを実行できます。"}
+{"file":"main","op":"add","index":6285,"key":"O2aQoA0WA6","beforeEn":null,"afterEn":"{count, plural, one {# group added} other {# groups added}} (maximum {max})","afterJa":"{count, plural, one {#グループが追加されました} other {#グループが追加されました}}（最大{max}）"}
+{"file":"main","op":"add","index":6335,"key":"OGLnXBWFlh","beforeEn":null,"afterEn":"Bypass","afterJa":"バイパス"}
+{"file":"main","op":"add","index":6342,"key":"OIJOcSxF7T","beforeEn":null,"afterEn":"Customize → {section}","afterJa":"カスタマイズ → {section}"}
+{"file":"main","op":"add","index":6353,"key":"OLJZO9J8Ee","beforeEn":null,"afterEn":"Build a quarter-end forecast from my open opportunities — best, likely, worst — and flag the deals most at risk with what to do this week. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"オープン商談をもとに四半期末の予測を作成してください。最良・標準・最悪のシナリオを含め、今週対応すべきリスクの高い案件にフラグを立ててください。接続済みのツールからデータを取得してください。ソースが不足している場合は、作成を始める前に確認してください。"}
+{"file":"main","op":"add","index":6531,"key":"P57YykZbIq","beforeEn":null,"afterEn":"API key revoked","afterJa":"APIキーを失効しました"}
+{"file":"main","op":"add","index":6698,"key":"PrslT8iRzt","beforeEn":null,"afterEn":"Group limit","afterJa":"グループの上限"}
+{"file":"main","op":"add","index":6752,"key":"Q3VQCtEfVI","beforeEn":null,"afterEn":"No sessions match the current filters","afterJa":"現在のフィルターに一致するセッションはありません"}
+{"file":"main","op":"add","index":6768,"key":"Q8j1olP7c8","beforeEn":null,"afterEn":"View the API scope these keys carry","afterJa":"これらのキーが持つAPIスコープを確認する"}
+{"file":"main","op":"add","index":6851,"key":"QWTP0t8UTt","beforeEn":null,"afterEn":"Speed","afterJa":"速度"}
+{"file":"main","op":"add","index":6992,"key":"R7ga24WzAc","beforeEn":null,"afterEn":"Your card was saved but could not be set as default. Please try again.","afterJa":"カードは保存されましたが、デフォルトとして設定できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":7188,"key":"RyA8yzgAlp","beforeEn":null,"afterEn":"SSO login domain","afterJa":"SSOログインドメイン"}
+{"file":"main","op":"add","index":7222,"key":"S6HSTUKK79","beforeEn":null,"afterEn":"Volume up","afterJa":"音量を上げる"}
+{"file":"main","op":"add","index":7236,"key":"SCIvrClHzB","beforeEn":null,"afterEn":"Let specific groups reach Anthropic's support team if an AI support agent can't help. Choose from your existing groups, including SCIM-synced ones.","afterJa":"AIサポートエージェントが対応できない場合に、特定のグループがAnthropicのサポートチームに連絡できるようにします。SCIM同期済みのグループを含む既存のグループから選択してください。"}
+{"file":"main","op":"add","index":7299,"key":"SZgI2LoEVd","beforeEn":null,"afterEn":"{count, plural, one {Reading # file…} other {Reading # files…}}","afterJa":"{count, plural, one {#個のファイルを読み込み中…} other {#個のファイルを読み込み中…}}"}
+{"file":"main","op":"add","index":7373,"key":"StvyQfdEqi","beforeEn":null,"afterEn":"Let Claude run multiple agents in parallel for complex tasks. Workflows can use a lot of your usage limit quickly.","afterJa":"複雑なタスクに対して、Claudeが複数のエージェントを並列で実行できます。ワークフローは使用量の上限をすぐに大量に消費することがあります。"}
+{"file":"main","op":"add","index":7409,"key":"T1mr5KlBFt","beforeEn":null,"afterEn":"Couldn't set up this task","afterJa":"このタスクを設定できませんでした"}
+{"file":"main","op":"add","index":7538,"key":"TUV3xGsSqw","beforeEn":null,"afterEn":"Writing file…","afterJa":"ファイルを書き込み中…"}
+{"file":"main","op":"add","index":7542,"key":"TVLQSOK0oC","beforeEn":null,"afterEn":"Approaching session usage limit","afterJa":"セッション使用量の上限に近づいています"}
+{"file":"main","op":"add","index":7543,"key":"TVdWaZSDJo","beforeEn":null,"afterEn":"Remote Control turned off.","afterJa":"リモートコントロールがオフになりました。"}
+{"file":"main","op":"add","index":7664,"key":"Tydhl828po","beforeEn":null,"afterEn":"May use excessive tokens resulting in long response times and may hit token limits. Use sparingly for the hardest tasks.","afterJa":"過剰なトークンを使用し、応答時間が長くなったり、トークンの上限に達したりする可能性があります。最も難しいタスクにのみ、控えめにご使用ください。"}
+{"file":"main","op":"add","index":7712,"key":"UAAInf775e","beforeEn":null,"afterEn":"Multitasking…","afterJa":"マルチタスク中…"}
+{"file":"main","op":"add","index":7723,"key":"UCevJHq7kc","beforeEn":null,"afterEn":"Now using usage credits","afterJa":"現在、使用クレジットを使用中です"}
+{"file":"main","op":"add","index":7789,"key":"UVNyp5kzsb","beforeEn":null,"afterEn":"Project (local)","afterJa":"プロジェクト（ローカル）"}
+{"file":"main","op":"add","index":7862,"key":"UqXY/z0pA6","beforeEn":null,"afterEn":"Set the default spend limits for each member in this group.","afterJa":"このグループの各メンバーのデフォルト利用上限を設定します。"}
+{"file":"main","op":"add","index":7911,"key":"V0eXqTFDC+","beforeEn":null,"afterEn":"Dynamic workflows","afterJa":"ダイナミックワークフロー"}
+{"file":"main","op":"add","index":7912,"key":"V0tzXQEbdT","beforeEn":null,"afterEn":"Limit increase requested; couldn't load this limit. Refresh the page to try again.","afterJa":"上限の引き上げがリクエストされています。この上限を読み込めませんでした。ページを更新してもう一度お試しください。"}
+{"file":"main","op":"add","index":7943,"key":"V9mRgl5YoH","beforeEn":null,"afterEn":"Per-week spend limit. Individual limits take precedence, otherwise the group limit applies.","afterJa":"週ごとの支出上限。個別の上限が優先され、設定がない場合はグループの上限が適用されます。"}
+{"file":"main","op":"add","index":7957,"key":"VD0xd1PORW","beforeEn":null,"afterEn":"At least one spend limit is required.","afterJa":"利用上限を少なくとも1つ設定する必要があります。"}
+{"file":"main","op":"add","index":8009,"key":"VRO5tuYsxj","beforeEn":null,"afterEn":"Build an earnings + comps brief","afterJa":"収益・比較分析レポートを作成する"}
+{"file":"main","op":"add","index":8045,"key":"VZeCi0uoZQ","beforeEn":null,"afterEn":"Starting a session on a branch works with macOS's built-in git","afterJa":"ブランチでのセッション開始がmacOS組み込みのgitでも動作します"}
+{"file":"main","op":"add","index":8313,"key":"WeL1huOh9/","beforeEn":null,"afterEn":"To use {feature, select, voice {voice} other {dictation}}, open Settings, go to Privacy and security, select Microphone, and allow Claude.","afterJa":"{feature, select, voice {音声入力} other {ディクテーション}}を使用するには、設定を開き、プライバシーとセキュリティに移動して、マイクを選択し、Claudeを許可してください。"}
+{"file":"main","op":"add","index":8319,"key":"WgwrN+g0Z3","beforeEn":null,"afterEn":"From \"{name}\"","afterJa":"「{name}さん」より"}
+{"file":"main","op":"add","index":8346,"key":"WmvWnaWOZv","beforeEn":null,"afterEn":"The script was cancelled before it produced a credential.","afterJa":"スクリプトは認証情報を生成する前にキャンセルされました。"}
+{"file":"main","op":"add","index":8354,"key":"WpzZxar8Uy","beforeEn":null,"afterEn":"{used} of {limit}","afterJa":"{limit}のうち{used}"}
+{"file":"main","op":"add","index":8360,"key":"WrH/7b3RS2","beforeEn":null,"afterEn":"{count, plural, one {# user will have no custom role assigned} other {# users will have no custom role assigned}}","afterJa":"{count, plural, one {#人のユーザーにカスタムロールが割り当てられなくなります} other {#人のユーザーにカスタムロールが割り当てられなくなります}}"}
+{"file":"main","op":"add","index":8395,"key":"X/dmPgx/Es","beforeEn":null,"afterEn":"WTD","afterJa":"WTD"}
+{"file":"main","op":"add","index":8397,"key":"X/yufVaTHJ","beforeEn":null,"afterEn":"Settings → {section}","afterJa":"設定 → {section}"}
+{"file":"main","op":"add","index":8422,"key":"X8jfcR/7Gb","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Manage spend limit to keep going now, or wait until {time} when your plan usage resets.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。今すぐ続けるには利用上限を管理するか、プランの利用量がリセットされる{time}までお待ちください。"}
+{"file":"main","op":"add","index":8442,"key":"XE3qsI1Ajh","beforeEn":null,"afterEn":"Settings → {group} → {section}","afterJa":"設定 → {group} → {section}"}
+{"file":"main","op":"add","index":8456,"key":"XIo/sQTuY7","beforeEn":null,"afterEn":"Everyone in your organization can get quick answers from an AI support agent.","afterJa":"組織の全メンバーがAIサポートエージェントから迅速な回答を得られます。"}
+{"file":"main","op":"add","index":8515,"key":"XXURrYQoby","beforeEn":null,"afterEn":"Searching files…","afterJa":"ファイルを検索中…"}
+{"file":"main","op":"add","index":8534,"key":"XbjPrpLIRl","beforeEn":null,"afterEn":"Keep {currentModeLabel}","afterJa":"{currentModeLabel}を維持する"}
+{"file":"main","op":"add","index":8546,"key":"XdszbK4r8P","beforeEn":null,"afterEn":"Connector enabled","afterJa":"コネクタが有効になりました"}
+{"file":"main","op":"add","index":8713,"key":"YKl6sxhgrC","beforeEn":null,"afterEn":"example.com","afterJa":"example.com"}
+{"file":"main","op":"add","index":8753,"key":"YXR9pA8OQJ","beforeEn":null,"afterEn":"Bring your conversations, projects, and files from Claude.ai into Cowork.","afterJa":"Claude.aiの会話、プロジェクト、ファイルをCoworkに取り込みましょう。"}
+{"file":"main","op":"add","index":8761,"key":"YZXACcXzTz","beforeEn":null,"afterEn":"{count, plural, one {Editing # file…} other {Editing # files…}}","afterJa":"{count, plural, one {#個のファイルを編集中…} other {#個のファイルを編集中…}}"}
+{"file":"main","op":"add","index":8811,"key":"YmslQPt7DE","beforeEn":null,"afterEn":"Cron expression","afterJa":"cron式"}
+{"file":"main","op":"add","index":8816,"key":"YobuobYqGl","beforeEn":null,"afterEn":"Forecast my quarter","afterJa":"四半期予測を作成する"}
+{"file":"main","op":"add","index":8902,"key":"Z7FwXCpI7r","beforeEn":null,"afterEn":"Claude Design didn't load. Try opening it in your browser instead.","afterJa":"Claude Design を読み込めませんでした。代わりにブラウザで開いてみてください。"}
+{"file":"main","op":"add","index":8932,"key":"ZELDj7hfVu","beforeEn":null,"afterEn":"Volume down","afterJa":"音量を下げる"}
+{"file":"main","op":"add","index":8935,"key":"ZFBp0wzw9c","beforeEn":null,"afterEn":"Timed out loading session. Check your connection and try again.","afterJa":"セッションの読み込みがタイムアウトしました。接続を確認して、もう一度お試しください。"}
+{"file":"main","op":"add","index":9150,"key":"a5VS4oqqOK","beforeEn":null,"afterEn":"Reconnection failed. Restart Claude Desktop, then try again.","afterJa":"再接続に失敗しました。Claude Desktop を再起動してから、もう一度お試しください。"}
+{"file":"main","op":"add","index":9287,"key":"aeBN6ZXchR","beforeEn":null,"afterEn":"This organization isn't eligible for this offer. Contact sales.","afterJa":"この組織はこのオファーの対象外です。営業チームにお問い合わせください。"}
+{"file":"main","op":"add","index":9322,"key":"alcVFq9VM9","beforeEn":null,"afterEn":"Project knowledge has grown past what Claude can read all at once, so Claude searches it and uses the most relevant parts in each chat. <link>Learn more</link>","afterJa":"プロジェクトの知識がClaudeが一度に読める量を超えたため、Claudeは検索して各チャットで最も関連性の高い部分を使用します。<link>詳細を見る</link>"}
+{"file":"main","op":"add","index":9368,"key":"ax4mRsNy0b","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Manage spend limit to keep going now, or wait until {day} at {time} when your plan usage resets.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。今すぐ続けるには利用上限を管理するか、プランの利用量がリセットされる{day}の{time}までお待ちください。"}
+{"file":"main","op":"add","index":9498,"key":"bUKd7ki8zW","beforeEn":null,"afterEn":"These users are not assigned to any other custom role through their groups. After removing these groups from this role, they will no longer have access to any features enabled by custom roles.","afterJa":"これらのユーザーは、グループを通じて他のカスタムロールに割り当てられていません。これらのグループをこのロールから削除すると、カスタムロールによって有効になっている機能にアクセスできなくなります。"}
+{"file":"main","op":"add","index":9554,"key":"bio1xd09zC","beforeEn":null,"afterEn":"Design (opens in your browser)","afterJa":"Design（ブラウザで開きます）"}
+{"file":"main","op":"add","index":9556,"key":"bjIMPZaby7","beforeEn":null,"afterEn":"Per-day spend limit. Individual limits take precedence, otherwise the group limit applies.","afterJa":"1日ごとの支出上限。個別の上限が優先され、設定がない場合はグループの上限が適用されます。"}
+{"file":"main","op":"add","index":9594,"key":"bvhdbswdqH","beforeEn":null,"afterEn":"Run tasks on a schedule or whenever you need them.","afterJa":"スケジュールに従って、または必要なときにいつでもタスクを実行できます。"}
+{"file":"main","op":"add","index":9668,"key":"cAZaoX2NSr","beforeEn":null,"afterEn":"Write my weekly marketing review","afterJa":"週次マーケティングレビューを作成する"}
+{"file":"main","op":"add","index":9752,"key":"cako1ZUBUi","beforeEn":null,"afterEn":"Add a group","afterJa":"グループを追加"}
+{"file":"main","op":"add","index":9784,"key":"ce4R0eLvX9","beforeEn":null,"afterEn":"The starting model for members with this role. When a member has multiple roles, the most capable default model applies.","afterJa":"このロールを持つメンバーの開始モデルです。メンバーが複数のロールを持つ場合、最も高性能なデフォルトモデルが適用されます。"}
+{"file":"main","op":"add","index":9802,"key":"cjYin/xChB","beforeEn":null,"afterEn":"{count} completed","afterJa":"{count}件完了"}
+{"file":"main","op":"add","index":9892,"key":"d7foBWnS/o","beforeEn":null,"afterEn":"Loading {slug}…","afterJa":"{slug}を読み込み中…"}
+{"file":"main","op":"add","index":9951,"key":"dN1nhuij65","beforeEn":null,"afterEn":"The PR bar finds your open PR even when your local branch name doesn't match the remote's","afterJa":"ローカルブランチ名がリモートと一致しない場合でも、PRバーはオープン中のPRを検出します"}
+{"file":"main","op":"add","index":10015,"key":"de6C2Wzbse","beforeEn":null,"afterEn":"Your `WorktreeCreate` and `WorktreeRemove` hooks run for local sessions too — jj and Sapling setups can use worktree isolation","afterJa":"`WorktreeCreate`と`WorktreeRemove`フックがローカルセッションでも実行されます。jjやSaplingの環境でもワークツリーの分離が利用できます"}
+{"file":"main","op":"add","index":10066,"key":"drqM35WBPt","beforeEn":null,"afterEn":"Couldn't start SSO. Try again, or sign in with your work email.","afterJa":"SSOを開始できませんでした。もう一度お試しいただくか、会社のメールアドレスでサインインしてください。"}
+{"file":"main","op":"add","index":10074,"key":"dvXLXXhO0o","beforeEn":null,"afterEn":"Read my emails about subscriptions and invoices, extract vendor / date / amount, and add a line to my expense spreadsheet for each one. Flag anything that doesn't match the budget. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"サブスクリプションや請求書に関するメールを読み取り、ベンダー・日付・金額を抽出して、それぞれを経費スプレッドシートに1行ずつ追加してください。予算と一致しない項目はフラグを立ててください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":10101,"key":"e0/8tjz/FZ","beforeEn":null,"afterEn":"Couldn't load this limit","afterJa":"この上限を読み込めませんでした"}
+{"file":"main","op":"add","index":10110,"key":"e2MksvaM4d","beforeEn":null,"afterEn":"Run me a variance analysis — actuals vs budget, the biggest deltas explained, and flag anything that doesn't reconcile. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"差異分析を実行してください。実績対予算の比較、主な差異の説明、照合できない項目へのフラグ付けをお願いします。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":10145,"key":"eCHBYR3o7a","beforeEn":null,"afterEn":"Approaching usage credit limit","afterJa":"使用クレジットの上限に近づいています"}
+{"file":"main","op":"add","index":10310,"key":"eox9+YBiQM","beforeEn":null,"afterEn":"Artifacts are interactive pages that open in a side panel. <b>Cancel</b> to have Claude include it in the reply instead.","afterJa":"Artifactsは、サイドパネルで開くインタラクティブなページです。代わりに返信に含めるようにするには、<b>キャンセル</b>してください。"}
+{"file":"main","op":"add","index":10438,"key":"fKYwe8CpJI","beforeEn":null,"afterEn":"Request couldn't be processed. You can try again.","afterJa":"リクエストを処理できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":10439,"key":"fKsrKggBu1","beforeEn":null,"afterEn":"{count} failed","afterJa":"{count}件失敗"}
+{"file":"main","op":"add","index":10535,"key":"fkB/zSNjus","beforeEn":null,"afterEn":"Continue with {short}","afterJa":"{short}で続ける"}
+{"file":"main","op":"add","index":10549,"key":"fnMCvoixrm","beforeEn":null,"afterEn":"API key created","afterJa":"APIキーを作成しました"}
+{"file":"main","op":"add","index":10557,"key":"fqAqWnF85q","beforeEn":null,"afterEn":"Task resumed","afterJa":"タスクを再開しました"}
+{"file":"main","op":"add","index":10612,"key":"g1zykniLaV","beforeEn":null,"afterEn":"Post meeting summaries with action items","afterJa":"アクションアイテム付きのミーティングサマリーを投稿する"}
+{"file":"main","op":"add","index":10614,"key":"g27cdpuzbp","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Your plan usage resets at {time}.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。プランの利用量は{time}にリセットされます。"}
+{"file":"main","op":"add","index":10642,"key":"g8zppRdmi+","beforeEn":null,"afterEn":"Read my call transcript and update the opportunity in my CRM — next steps, call notes, use case, competition. Show me before saving. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"通話トランスクリプトを読み取り、CRMの商談情報（ネクストステップ・通話メモ・ユースケース・競合情報）を更新してください。保存前に内容を確認させてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":10702,"key":"gPE3NfQ/gn","beforeEn":null,"afterEn":"Pull together a customer feedback digest — themes with counts, a few quotes, and what to prioritize. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"顧客フィードバックのダイジェストをまとめてください。テーマ別の件数、代表的な引用、優先すべき事項を含めてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":10771,"key":"gjhcMbSA41","beforeEn":null,"afterEn":"{count} running","afterJa":"{count}件実行中"}
+{"file":"main","op":"add","index":10860,"key":"h7+io07X+s","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Request more to keep going now.","afterJa":"{period, select, daily {日次の} weekly {週次の} monthly {月次の} other {}}利用上限に達しました。今すぐ続けるには上限の引き上げをリクエストしてください。"}
+{"file":"main","op":"add","index":10865,"key":"h80VjAcT3+","beforeEn":null,"afterEn":"Starting workflow","afterJa":"ワークフローを開始中"}
+{"file":"main","op":"add","index":10939,"key":"hOGpgEqJ/6","beforeEn":null,"afterEn":"monitors","afterJa":"モニター"}
+{"file":"main","op":"add","index":11035,"key":"hqDJB2IMdZ","beforeEn":null,"afterEn":"These keys carry the {scope} scope, which only permits Claude Security actions.","afterJa":"これらのキーは{scope}スコープを持ち、Claude Securityのアクションのみを許可します。"}
+{"file":"main","op":"add","index":11256,"key":"igjia97iEC","beforeEn":null,"afterEn":"Fetching page…","afterJa":"ページを取得中…"}
+{"file":"main","op":"add","index":11284,"key":"inyylxtDcN","beforeEn":null,"afterEn":"If you or someone you know is having a difficult time, free support is available. <link>Find resources</link>","afterJa":"あなたや身近な方がつらい思いをされている場合は、無料のサポートをご利用いただけます。<link>支援情報を探す</link>"}
+{"file":"main","op":"add","index":11289,"key":"ipQD5tGwZ5","beforeEn":null,"afterEn":"Sign in to view this invitation.","afterJa":"この招待を確認するにはサインインしてください。"}
+{"file":"main","op":"add","index":11416,"key":"jQsg4pHnKC","beforeEn":null,"afterEn":"Failed to revoke the API key. You can try again.","afterJa":"APIキーの失効に失敗しました。もう一度お試しください。"}
+{"file":"main","op":"add","index":11477,"key":"jh+9q7nNtX","beforeEn":null,"afterEn":"Everywhere","afterJa":"どこでも"}
+{"file":"main","op":"add","index":11505,"key":"joPtfT21oo","beforeEn":null,"afterEn":"This chat has {count} of {max} images (including PDF pages). Consider starting a new chat.","afterJa":"このチャットには{max}枚中{count}枚の画像（PDFページを含む）があります。新しいチャットの開始をご検討ください。"}
+{"file":"main","op":"add","index":11518,"key":"jr4+vD7Qo0","beforeEn":null,"afterEn":"Markdown","afterJa":"Markdown"}
+{"file":"main","op":"add","index":11545,"key":"jvQ4prePzH","beforeEn":null,"afterEn":"Running command…","afterJa":"コマンドを実行中…"}
+{"file":"main","op":"add","index":11598,"key":"k6h211zLcx","beforeEn":null,"afterEn":"Microphone access is blocked","afterJa":"マイクへのアクセスがブロックされています"}
+{"file":"main","op":"add","index":11618,"key":"kD5Nz+s3Pa","beforeEn":null,"afterEn":"Loading members","afterJa":"メンバーを読み込み中"}
+{"file":"main","op":"add","index":11724,"key":"kfgxaKhbCG","beforeEn":null,"afterEn":"Pull together a weekly read on what people are saying about us across surveys, social, press, and call transcripts. Cluster the themes, count the mentions, flag the sentiment, and tell me what to act on. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"サーベイ・SNS・プレス・通話トランスクリプトを横断して、私たちに関する声を週次でまとめてください。テーマのクラスタリング、言及数のカウント、センチメントのフラグ付け、対応すべき事項の提示をお願いします。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":11895,"key":"lNGYK8/n18","beforeEn":null,"afterEn":"Set up a campaign performance dashboard — spend, CPA, and conversions vs goal by channel and creative, plus a 'top performers' cut and a 'needs attention' cut. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"キャンペーンパフォーマンスダッシュボードを作成してください。チャネル・クリエイティブ別の広告費・CPA・目標対コンバージョン、“トップパフォーマー”と“要注意”のセクションを含めてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":11910,"key":"lRwLT4V394","beforeEn":null,"afterEn":"No one can reach the Anthropic team yet. Add a group or include admins and owners.","afterJa":"まだ誰もAnthropicチームに連絡できません。グループを追加するか、管理者またはオーナーを含めてください。"}
+{"file":"main","op":"add","index":11951,"key":"ldvKX1BAG1","beforeEn":null,"afterEn":"Create a new Admin API key","afterJa":"新しい管理者APIキーを作成する"}
+{"file":"main","op":"add","index":12022,"key":"luc2Ad6lea","beforeEn":null,"afterEn":"You can add at most {count, plural, one {# image} other {# images}} (including PDF pages) to a chat. {suggestion}","afterJa":"チャットに追加できる画像は最大{count, plural, one {#枚} other {#枚}}（PDFのページを含む）です。{suggestion}"}
+{"file":"main","op":"add","index":12110,"key":"mI6/kcnzPb","beforeEn":null,"afterEn":"Failed to load groups. Close and reopen this menu to retry.","afterJa":"グループの読み込みに失敗しました。再試行するには、このメニューを閉じて再度開いてください。"}
+{"file":"main","op":"add","index":12228,"key":"mr95hV6ErN","beforeEn":null,"afterEn":"Stays on this model when new models are released.","afterJa":"新しいモデルがリリースされても、このモデルを使用し続けます。"}
+{"file":"main","op":"add","index":12264,"key":"n0of0+kpod","beforeEn":null,"afterEn":"Finding matches…","afterJa":"一致箇所を検索中…"}
+{"file":"main","op":"add","index":12320,"key":"nJFFCU5ncZ","beforeEn":null,"afterEn":"You've reached your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit. Manage spend limit to keep going now.","afterJa":"{period, select, daily {日次} weekly {週次} monthly {月次} other {}}の利用上限に達しました。引き続きご利用いただくには、利用上限を管理してください。"}
+{"file":"main","op":"add","index":12332,"key":"nLh88WSaL+","beforeEn":null,"afterEn":"Failed to update workflows setting. Try again.","afterJa":"ワークフローの設定を更新できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":12442,"key":"njZwNcDCHM","beforeEn":null,"afterEn":"Pull the latest earnings transcript and 10-Q for a target, extract guidance and key KPIs, compare to last quarter, and build a comps table against peers. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"対象企業の最新の決算説明会トランスクリプトと10-Qを取得し、業績ガイダンスと主要KPIを抽出して前四半期と比較し、同業他社との比較表を作成してください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":12522,"key":"o45ANoEdsm","beforeEn":null,"afterEn":"Failed to create the API key. You can try again.","afterJa":"APIキーの作成に失敗しました。もう一度お試しください。"}
+{"file":"main","op":"add","index":12555,"key":"oDjail5Qj2","beforeEn":null,"afterEn":"The default daily spend limit applied to each member of this group. Seat tiers are monthly-only.","afterJa":"このグループの各メンバーに適用されるデフォルトの日次利用上限です。シートプランは月次のみとなります。"}
+{"file":"main","op":"add","index":12556,"key":"oDlZbF08hl","beforeEn":null,"afterEn":"Hand off tasks and Claude works in your folders, apps, and browser.","afterJa":"タスクを任せると、Claudeがフォルダ、アプリ、ブラウザで作業します。"}
+{"file":"main","op":"add","index":12608,"key":"oRmI/l9OFX","beforeEn":null,"afterEn":"{name} ({period})","afterJa":"{name} ({period})"}
+{"file":"main","op":"add","index":12645,"key":"obcOV35zKP","beforeEn":null,"afterEn":"Build a 6-month cashflow forecast — optimistic, base, and pessimistic scenarios — and flag the biggest risks. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"6ヶ月分のキャッシュフロー予測を作成してください。楽観・基本・悲観の3シナリオを含め、主なリスクにフラグを立ててください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":12719,"key":"otBc5yLom7","beforeEn":null,"afterEn":"Managed configuration has changed","afterJa":"管理設定が変更されました"}
+{"file":"main","op":"add","index":12806,"key":"pBe3uZPnMp","beforeEn":null,"afterEn":"Verify a domain above to turn this on.","afterJa":"この機能を有効にするには、上記でドメインを確認してください。"}
+{"file":"main","op":"add","index":12812,"key":"pCEGmnWQtV","beforeEn":null,"afterEn":"Give me a full 360 on an account — deal history, recent calls and emails, open issues, news, and a color-coded health score. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"アカウントの360度分析を提供してください。取引履歴・最近の通話とメール・未解決の問題・ニュース、色分けされたヘルススコアを含めてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":13000,"key":"q1rDhp8puN","beforeEn":null,"afterEn":"Run a customer 360","afterJa":"顧客360度分析を実行する"}
+{"file":"main","op":"add","index":13002,"key":"q24oJXcctR","beforeEn":null,"afterEn":"This chat has reached the {max}-image limit (including PDF pages). Start a new chat to add more.","afterJa":"このチャットは{max}枚の画像上限（PDFページを含む）に達しました。続けるには新しいチャットを開始してください。"}
+{"file":"main","op":"add","index":13206,"key":"qxViuZGlAj","beforeEn":null,"afterEn":"Some group spend limits couldn't be removed. Try again.","afterJa":"一部のグループ利用上限を削除できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":13214,"key":"qzbkMX4vIW","beforeEn":null,"afterEn":"This connector is disabled to comply with your organization's HIPAA settings.","afterJa":"このコネクタは、組織のHIPAA設定に準拠するため無効になっています。"}
+{"file":"main","op":"add","index":13232,"key":"r45bYPQCmm","beforeEn":null,"afterEn":"Reading file…","afterJa":"ファイルを読み込み中…"}
+{"file":"main","op":"add","index":13267,"key":"rE2z+wtHHy","beforeEn":null,"afterEn":"Couldn't load all spend limits. Refresh the page before removing so daily and weekly limits aren't left in place.","afterJa":"すべての利用上限を読み込めませんでした。日次および週次の上限が残らないよう、削除する前にページを更新してください。"}
+{"file":"main","op":"add","index":13389,"key":"rlHsLnmyiB","beforeEn":null,"afterEn":"Out of extra usage","afterJa":"追加使用量がなくなりました"}
+{"file":"main","op":"add","index":13468,"key":"s7H4TjW2PX","beforeEn":null,"afterEn":"Setting up your workspace…","afterJa":"ワークスペースを設定中…"}
+{"file":"main","op":"add","index":13507,"key":"sKU3L9lck/","beforeEn":null,"afterEn":"{used} spent","afterJa":"{used}使用済み"}
+{"file":"main","op":"add","index":13561,"key":"sax3sR1uez","beforeEn":null,"afterEn":"Approaching weekly usage limit","afterJa":"週間使用量の上限に近づいています"}
+{"file":"main","op":"add","index":13563,"key":"sbQRlzZKU0","beforeEn":null,"afterEn":"12 months","afterJa":"12ヶ月"}
+{"file":"main","op":"add","index":13763,"key":"tGPL3D8V7/","beforeEn":null,"afterEn":"Write my weekly stakeholder update — what shipped, what we learned, what's next, and what to watch — for me to review before I post it. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"週次ステークホルダー向け更新レポートを作成してください。リリース済みの内容・学んだこと・今後の予定・注目すべき点を含め、投稿前に私が確認できるようにしてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":13859,"key":"tc8YhXcfsS","beforeEn":null,"afterEn":"Reading {fileName}…","afterJa":"{fileName}を読み込み中…"}
+{"file":"main","op":"add","index":13907,"key":"tpHFrFhksh","beforeEn":null,"afterEn":"Ask","afterJa":"確認"}
+{"file":"main","op":"add","index":14059,"key":"uPKONviRDh","beforeEn":null,"afterEn":"Set up a Monday morning command center — a tiled dashboard with cards for my action items, emails I haven't replied to, and meetings that need prep. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"月曜朝のコマンドセンターを設定してください。アクションアイテム・未返信メール・準備が必要なミーティングをカード形式で表示するタイル型ダッシュボードをお願いします。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":14132,"key":"ujiWwvxHNX","beforeEn":null,"afterEn":"Editing file…","afterJa":"ファイルを編集中…"}
+{"file":"main","op":"add","index":14147,"key":"uo0twp9Eqw","beforeEn":null,"afterEn":"Chat with an AI support agent","afterJa":"AIサポートエージェントとチャットする"}
+{"file":"main","op":"add","index":14156,"key":"uqMVHy+i8V","beforeEn":null,"afterEn":"unlimited","afterJa":"無制限"}
+{"file":"main","op":"add","index":14527,"key":"wSi3DAGmDd","beforeEn":null,"afterEn":"Browse all","afterJa":"すべて見る"}
+{"file":"main","op":"add","index":14531,"key":"wTFgQ9n3HJ","beforeEn":null,"afterEn":"Turn a source doc into a customer-ready deck — match my colors, fonts, and logo, and make the copy sound like us. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"ソースドキュメントを顧客向けのデッキに変換してください。私たちのカラー・フォント・ロゴに合わせ、コピーも私たちらしい文体にしてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":14541,"key":"wWIjms76Mv","beforeEn":null,"afterEn":"Couldn't load all spend limits. Refresh the page before editing so daily and weekly limits aren't missed.","afterJa":"すべての利用上限を読み込めませんでした。日次および週次の上限が漏れないよう、編集する前にページを更新してください。"}
+{"file":"main","op":"add","index":14552,"key":"waAScP8QQ5","beforeEn":null,"afterEn":"A previous response is still running in this conversation. It will appear shortly — try again once it finishes.","afterJa":"この会話では前の回答がまだ処理中です。まもなく表示されますので、完了してから再度お試しください。"}
+{"file":"main","op":"add","index":14560,"key":"wbN+4o9yin","beforeEn":null,"afterEn":"Claude Code for desktop","afterJa":"Claude Code デスクトップ版"}
+{"file":"main","op":"add","index":14580,"key":"wgKY0QhluI","beforeEn":null,"afterEn":"Admin API keys","afterJa":"管理者APIキー"}
+{"file":"main","op":"add","index":14640,"key":"wuRF9EdeGr","beforeEn":null,"afterEn":"Got it","afterJa":"了解"}
+{"file":"main","op":"add","index":14649,"key":"wwLRC5JwCr","beforeEn":null,"afterEn":"Name is too long.","afterJa":"名前が長すぎます。"}
+{"file":"main","op":"add","index":14709,"key":"xBFnls3REC","beforeEn":null,"afterEn":"Make auto mode your default permission mode?","afterJa":"自動モードをデフォルトの権限モードに設定しますか？"}
+{"file":"main","op":"add","index":14749,"key":"xMOVxAM+CY","beforeEn":null,"afterEn":"Set default spend limits for each member in the selected group.","afterJa":"選択したグループの各メンバーにデフォルトの利用上限を設定します。"}
+{"file":"main","op":"add","index":14755,"key":"xNKI+ggLdK","beforeEn":null,"afterEn":"{period, select, daily {daily} weekly {weekly} other {monthly}}","afterJa":"{period, select, daily {日次} weekly {週次} other {月次}}"}
+{"file":"main","op":"add","index":14880,"key":"xwsjkhC5V3","beforeEn":null,"afterEn":"Writing {fileName}…","afterJa":"{fileName} を書き込み中…"}
+{"file":"main","op":"add","index":14889,"key":"xyTNikPd3V","beforeEn":null,"afterEn":"Write my weekly exec revenue update — top-line trend, key drivers, charts, and what to watch — for me to review before I send it. Pull the data from my connected tools. If you're missing a source, ask before building.","afterJa":"週次の経営幹部向け売上更新レポートを作成してください。トップラインのトレンド・主要ドライバー・グラフ・注目すべき点を含め、送信前に私が確認できるようにしてください。連携ツールからデータを取得してください。ソースが不足している場合は、作成前に確認してください。"}
+{"file":"main","op":"add","index":14912,"key":"y2YNTXYpUu","beforeEn":null,"afterEn":"5-field standard cron (no seconds). Cloud tasks need at least a 1-hour interval.","afterJa":"5フィールド標準cron（秒なし）。クラウドタスクには最低1時間の間隔が必要です。"}
+{"file":"main","op":"add","index":14999,"key":"yWD4LRLOTL","beforeEn":null,"afterEn":"Copy project ID","afterJa":"プロジェクトIDをコピー"}
+{"file":"main","op":"add","index":15012,"key":"yZZ8K2kE76","beforeEn":null,"afterEn":"No repositories visible on {hostname}. Install the GitHub App on your repositories from its settings page.","afterJa":"{hostname} に表示されているリポジトリがありません。GitHub App の設定ページから、リポジトリに GitHub App をインストールしてください。"}
+{"file":"main","op":"add","index":15013,"key":"yZfZvYxlXn","beforeEn":null,"afterEn":"Edit {period, select, daily {daily} weekly {weekly} other {monthly}} spend limit for {name}, currently {amount}","afterJa":"{name}さんの{period, select, daily {日次} weekly {週次} other {月次}}利用上限を編集（現在: {amount}）"}
+{"file":"main","op":"add","index":15028,"key":"yc7KYRoFnO","beforeEn":null,"afterEn":"Reconcile my subscription expenses","afterJa":"サブスクリプション経費を照合する"}
+{"file":"main","op":"add","index":15201,"key":"zKz/fyd38X","beforeEn":null,"afterEn":"Workspace ready","afterJa":"ワークスペース準備完了"}
+{"file":"main","op":"add","index":15247,"key":"zV6CaeOA6D","beforeEn":null,"afterEn":"Accept","afterJa":"承認"}
+{"file":"main","op":"add","index":15297,"key":"zjjMfxoZ/k","beforeEn":null,"afterEn":"Couldn't load this limit. Refresh the page to try again.","afterJa":"この上限を読み込めませんでした。ページを更新してもう一度お試しください。"}
+{"file":"main","op":"add","index":15324,"key":"zqdBcgGjTq","beforeEn":null,"afterEn":"<b>Messaging the Anthropic team is off.</b> Everyone in your organization — including admins and owners — uses an AI support agent. Selected groups are saved for when you turn it back on.","afterJa":"<b>Anthropicチームへのメッセージ送信はオフになっています。</b>管理者やオーナーを含む、組織内の全員がAIサポートエージェントを使用しています。選択したグループは、再度オンにしたときのために保存されます。"}
+{"file":"main","op":"add","index":15331,"key":"zse0jAfOdh","beforeEn":null,"afterEn":"Suggesting task","afterJa":"タスクを提案中"}
