@@ -1,0 +1,19 @@
+{"file":"statsig","op":"add","index":0,"key":"0gtp5o1nEE","beforeEn":null,"afterEn":"Complex, detailed work","afterJa":"複雑で詳細な作業"}
+{"file":"statsig","op":"add","index":6,"key":"4RgMF5iUDm","beforeEn":null,"afterEn":"Extended","afterJa":"拡張"}
+{"file":"statsig","op":"add","index":8,"key":"8iuHf335Ey","beforeEn":null,"afterEn":"Always uses deep reasoning","afterJa":"常に深い推論を使用"}
+{"file":"statsig","op":"add","index":13,"key":"DvRKnnUSOG","beforeEn":null,"afterEn":"Thinking","afterJa":"思考"}
+{"file":"statsig","op":"add","index":15,"key":"HoZQmASaw3","beforeEn":null,"afterEn":"Extra","afterJa":"エクストラ"}
+{"file":"statsig","op":"add","index":27,"key":"PLBs+fqKwX","beforeEn":null,"afterEn":"Off","afterJa":"オフ"}
+{"file":"statsig","op":"add","index":29,"key":"QQ2UzmdmNN","beforeEn":null,"afterEn":"Light, casual tasks","afterJa":"軽い日常的なタスク"}
+{"file":"statsig","op":"add","index":33,"key":"RaZ/cp/eey","beforeEn":null,"afterEn":"May use excessive tokens resulting in long response times and may hit token limits. Use sparingly for the hardest tasks.","afterJa":"過剰なトークンを使用する可能性があり、応答時間が長くなったり、トークン制限に達したりする場合があります。最も難しいタスクにのみ使用してください。"}
+{"file":"statsig","op":"add","index":34,"key":"U0mtsR78v2","beforeEn":null,"afterEn":"Medium","afterJa":"中程度"}
+{"file":"statsig","op":"add","index":37,"key":"Xads8RoR+/","beforeEn":null,"afterEn":"Default","afterJa":"デフォルト"}
+{"file":"statsig","op":"add","index":38,"key":"Xft0R8xbIB","beforeEn":null,"afterEn":"Low","afterJa":"低"}
+{"file":"statsig","op":"add","index":39,"key":"Zk4EtKw26K","beforeEn":null,"afterEn":"Max","afterJa":"最大"}
+{"file":"statsig","op":"add","index":40,"key":"Ztf14WwmNM","beforeEn":null,"afterEn":"Balanced for everyday work","afterJa":"日常業務に最適なバランス"}
+{"file":"statsig","op":"add","index":43,"key":"dapWFrcWv4","beforeEn":null,"afterEn":"Higher effort means more thorough responses, but takes longer and uses your limits faster.","afterJa":"努力レベルを上げると、より詳細な回答が得られますが、時間がかかり、使用制限の消費も速くなります。"}
+{"file":"statsig","op":"add","index":46,"key":"g8BKYKpvDv","beforeEn":null,"afterEn":"Can think for more complex tasks","afterJa":"より複雑なタスクで思考が可能"}
+{"file":"statsig","op":"add","index":49,"key":"mQRd+O9jEI","beforeEn":null,"afterEn":"Org default","afterJa":"組織のデフォルト"}
+{"file":"statsig","op":"add","index":52,"key":"oLD1YKsL8P","beforeEn":null,"afterEn":"The hardest problems. Takes longest.","afterJa":"最も難しい問題向け。最も時間がかかります。"}
+{"file":"statsig","op":"add","index":59,"key":"vv9L/MN3/H","beforeEn":null,"afterEn":"High","afterJa":"高"}
+{"file":"statsig","op":"add","index":63,"key":"zdSx1K4VL2","beforeEn":null,"afterEn":"Quick replies to simple questions","afterJa":"簡単な質問への素早い返答"}
