@@ -572,8 +572,17 @@ jobs:
             exit 0
           fi
 
-          git commit -m "chore: Update original locale files and build diff"
-          git push --set-upstream origin "$BRANCH_NAME"
+          commit_msg="chore: Update original locale files and build diff"
+          last_subject="$(git log -1 --format=%s)"
+          last_author="$(git log -1 --format=%an)"
+
+          if [ "$last_subject" = "$commit_msg" ] && [ "$last_author" = "github-actions[bot]" ]; then
+            git commit --amend --no-edit --date=now
+            git push --force-with-lease origin "$BRANCH_NAME"
+          else
+            git commit -m "$commit_msg"
+            git push --set-upstream origin "$BRANCH_NAME"
+          fi
 
           echo "committed=true" >> "$GITHUB_OUTPUT"
           echo "branch_name=$BRANCH_NAME" >> "$GITHUB_OUTPUT"
