@@ -155,15 +155,15 @@ function main() {
   const pendingManifest = readJson(path.join(args.pendingDir, 'manifest.json'));
   const workManifest = loadWorkManifest(args.pendingDir, args.locale);
   const mainDiffRows = readJsonl(path.join(args.pendingDir, 'main.diff.jsonl'));
-  const statsigDiffRows = readJsonl(path.join(args.pendingDir, 'statsig.diff.jsonl'));
+  const dynamicDiffRows = readJsonl(path.join(args.pendingDir, 'dynamic.diff.jsonl'));
 
   const baseMainData = readJson(resolveRepoPath(workManifest.source.main.en));
-  const baseStatsigData = readJson(resolveRepoPath(workManifest.source.statsig.en));
+  const baseDynamicData = readJson(resolveRepoPath(workManifest.source.dynamic.en));
   const currentMainData = readJson(resolveRepoPath(workManifest.output.main));
-  const currentStatsigData = readJson(resolveRepoPath(workManifest.output.statsig));
+  const currentDynamicData = readJson(resolveRepoPath(workManifest.output.dynamic));
 
   const mainTranslations = collectTranslations(workManifest.chunks.main, 'main');
-  const statsigTranslations = collectTranslations(workManifest.chunks.statsig, 'statsig');
+  const dynamicTranslations = collectTranslations(workManifest.chunks.dynamic, 'dynamic');
 
   const nextMainData = rebuildLocaleFile(
     'main',
@@ -172,20 +172,20 @@ function main() {
     mainDiffRows,
     mainTranslations
   );
-  const nextStatsigData = rebuildLocaleFile(
-    'statsig',
-    baseStatsigData,
-    currentStatsigData,
-    statsigDiffRows,
-    statsigTranslations
+  const nextDynamicData = rebuildLocaleFile(
+    'dynamic',
+    baseDynamicData,
+    currentDynamicData,
+    dynamicDiffRows,
+    dynamicTranslations
   );
 
   const outputMainPath = resolveRepoPath(workManifest.output.main);
-  const outputStatsigPath = resolveRepoPath(workManifest.output.statsig);
+  const outputDynamicPath = resolveRepoPath(workManifest.output.dynamic);
   ensureDir(path.dirname(outputMainPath));
-  ensureDir(path.dirname(outputStatsigPath));
+  ensureDir(path.dirname(outputDynamicPath));
   writeJson(outputMainPath, nextMainData);
-  writeJson(outputStatsigPath, nextStatsigData);
+  writeJson(outputDynamicPath, nextDynamicData);
 
   fs.rmSync(args.pendingDir, { recursive: true, force: true });
 
@@ -195,7 +195,7 @@ function main() {
         locale: args.locale,
         baseLocale: pendingManifest.baseLocale,
         main: Object.keys(nextMainData).length,
-        statsig: Object.keys(nextStatsigData).length,
+        dynamic: Object.keys(nextDynamicData).length,
         clearedPendingDir: args.pendingDir,
       },
       null,

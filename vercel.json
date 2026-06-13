@@ -12,8 +12,8 @@
       "destination": "/:locale/:locale.json"
     },
     {
-      "source": "/i18n/statsig/:locale.json",
-      "destination": "/:locale/:locale.statsig.json"
+      "source": "/i18n/dynamic/:locale.json",
+      "destination": "/:locale/:locale.dynamic.json"
     }
   ]
 }

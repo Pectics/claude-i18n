@@ -59,20 +59,20 @@ while IFS= read -r locale; do
   cp -R "$ROOT_DIR/$locale/." "$DIST_DIR/$locale/"
 
   MAIN_FILE="$DIST_DIR/$locale/$locale.json"
-  STATSIG_FILE="$DIST_DIR/$locale/$locale.statsig.json"
+  DYNAMIC_FILE="$DIST_DIR/$locale/$locale.dynamic.json"
 
   if [ ! -f "$MAIN_FILE" ]; then
     echo "Missing locale main file: $MAIN_FILE" >&2
     exit 1
   fi
 
-  if [ ! -f "$STATSIG_FILE" ]; then
-    echo "Missing locale statsig file: $STATSIG_FILE" >&2
+  if [ ! -f "$DYNAMIC_FILE" ]; then
+    echo "Missing locale dynamic file: $DYNAMIC_FILE" >&2
     exit 1
   fi
 
   MAIN_HASH="$(hash_file "$MAIN_FILE")"
-  STATSIG_HASH="$(hash_file "$STATSIG_FILE")"
+  DYNAMIC_HASH="$(hash_file "$DYNAMIC_FILE")"
 
   cat > "$DIST_DIR/$locale/version.json" <<EOF
 {
@@ -80,7 +80,7 @@ while IFS= read -r locale; do
   "builtAt": "$BUILT_AT",
   "hash": [
     "$MAIN_HASH",
-    "$STATSIG_HASH"
+    "$DYNAMIC_HASH"
   ]
 }
 EOF

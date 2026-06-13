@@ -58,31 +58,31 @@ function parseArgs(argv) {
 
 function discoverLocaleList(dirPath, baseLocale) {
   const mainLocales = new Set();
-  const statsigLocales = new Set();
+  const dynamicLocales = new Set();
   const localePattern = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/;
 
   for (const entry of fs.readdirSync(dirPath, { withFileTypes: true })) {
     if (!entry.isFile()) continue;
 
     const { name } = entry;
-    if (name.endsWith('.statsig.json')) {
-      const locale = name.slice(0, -'.statsig.json'.length);
-      if (localePattern.test(locale)) statsigLocales.add(locale);
+    if (name.endsWith('.dynamic.json')) {
+      const locale = name.slice(0, -'.dynamic.json'.length);
+      if (localePattern.test(locale)) dynamicLocales.add(locale);
     } else if (name.endsWith('.json')) {
       const locale = name.slice(0, -'.json'.length);
       if (localePattern.test(locale)) mainLocales.add(locale);
     }
   }
 
-  const missingStatsig = [...mainLocales].filter((locale) => !statsigLocales.has(locale)).sort();
-  const missingMain = [...statsigLocales].filter((locale) => !mainLocales.has(locale)).sort();
+  const missingDynamic = [...mainLocales].filter((locale) => !dynamicLocales.has(locale)).sort();
+  const missingMain = [...dynamicLocales].filter((locale) => !mainLocales.has(locale)).sort();
   const errors = [];
 
   if (!mainLocales.has(baseLocale)) {
     errors.push(`${dirPath}: missing base locale ${baseLocale}.json`);
   }
-  if (missingStatsig.length > 0) {
-    errors.push(`${dirPath}: missing statsig files for ${missingStatsig.join(', ')}`);
+  if (missingDynamic.length > 0) {
+    errors.push(`${dirPath}: missing dynamic files for ${missingDynamic.join(', ')}`);
   }
   if (missingMain.length > 0) {
     errors.push(`${dirPath}: missing main locale files for ${missingMain.join(', ')}`);
@@ -106,7 +106,7 @@ function readMetadata(metadataPath) {
 }
 
 function localeFilePath(dirPath, locale, kind) {
-  const suffix = kind === 'statsig' ? '.statsig.json' : '.json';
+  const suffix = kind === 'dynamic' ? '.dynamic.json' : '.json';
   return path.join(dirPath, `${locale}${suffix}`);
 }
 
@@ -200,28 +200,28 @@ function main() {
 
   const beforeMain = maybeReadLocaleObject(localeFilePath(args.beforeDir, baseLocale, 'main'));
   const afterMain = readLocaleObject(localeFilePath(args.afterDir, baseLocale, 'main'), `${baseLocale}:main`);
-  const beforeStatsig = maybeReadLocaleObject(localeFilePath(args.beforeDir, baseLocale, 'statsig'));
-  const afterStatsig = readLocaleObject(localeFilePath(args.afterDir, baseLocale, 'statsig'), `${baseLocale}:statsig`);
+  const beforeDynamic = maybeReadLocaleObject(localeFilePath(args.beforeDir, baseLocale, 'dynamic'));
+  const afterDynamic = readLocaleObject(localeFilePath(args.afterDir, baseLocale, 'dynamic'), `${baseLocale}:dynamic`);
 
   const afterReferenceMain = referenceLocale
     ? maybeReadLocaleObject(localeFilePath(args.afterDir, referenceLocale, 'main'))
     : {};
-  const afterReferenceStatsig = referenceLocale
-    ? maybeReadLocaleObject(localeFilePath(args.afterDir, referenceLocale, 'statsig'))
+  const afterReferenceDynamic = referenceLocale
+    ? maybeReadLocaleObject(localeFilePath(args.afterDir, referenceLocale, 'dynamic'))
     : {};
 
   const mainDiff = buildDiffRows('main', beforeMain, afterMain, afterReferenceMain);
-  const statsigDiff = buildDiffRows('statsig', beforeStatsig, afterStatsig, afterReferenceStatsig);
+  const dynamicDiff = buildDiffRows('dynamic', beforeDynamic, afterDynamic, afterReferenceDynamic);
   const needsTranslation =
-    mainDiff.summary.add + mainDiff.summary.update + statsigDiff.summary.add + statsigDiff.summary.update > 0;
+    mainDiff.summary.add + mainDiff.summary.update + dynamicDiff.summary.add + dynamicDiff.summary.update > 0;
 
   fs.rmSync(args.pendingDir, { recursive: true, force: true });
   ensureDir(args.pendingDir);
 
   const mainDiffPath = path.join(args.pendingDir, 'main.diff.jsonl');
-  const statsigDiffPath = path.join(args.pendingDir, 'statsig.diff.jsonl');
+  const dynamicDiffPath = path.join(args.pendingDir, 'dynamic.diff.jsonl');
   writeJsonl(mainDiffPath, mainDiff.rows);
-  writeJsonl(statsigDiffPath, statsigDiff.rows);
+  writeJsonl(dynamicDiffPath, dynamicDiff.rows);
 
   const manifestPath = path.join(args.pendingDir, 'manifest.json');
   const manifest = {
@@ -240,19 +240,19 @@ function main() {
         en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.json`)),
         ja: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.json`)) : null,
       },
-      statsig: {
-        en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.statsig.json`)),
-        ja: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.statsig.json`)) : null,
+      dynamic: {
+        en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.dynamic.json`)),
+        ja: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.dynamic.json`)) : null,
       },
     },
     pendingFiles: {
       manifest: toRepoRelative(manifestPath),
       mainDiff: toRepoRelative(mainDiffPath),
-      statsigDiff: toRepoRelative(statsigDiffPath),
+      dynamicDiff: toRepoRelative(dynamicDiffPath),
     },
     diffSummary: {
       main: mainDiff.summary,
-      statsig: statsigDiff.summary,
+      dynamic: dynamicDiff.summary,
     },
   };
 

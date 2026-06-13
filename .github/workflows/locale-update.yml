@@ -125,28 +125,28 @@ jobs:
           def discover_locales(original_dir, base_locale):
               original_path = Path(original_dir)
               main_locales = set()
-              statsig_locales = set()
+              dynamic_locales = set()
               locale_pattern = re.compile(r"^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
 
               for path in original_path.glob("*.json"):
                   name = path.name
-                  if name.endswith(".statsig.json"):
-                      locale = name[: -len(".statsig.json")]
+                  if name.endswith(".dynamic.json"):
+                      locale = name[: -len(".dynamic.json")]
                       if locale_pattern.match(locale):
-                          statsig_locales.add(locale)
+                          dynamic_locales.add(locale)
                   else:
                       locale = name[: -len(".json")]
                       if locale_pattern.match(locale):
                           main_locales.add(locale)
 
-              missing_statsig = sorted(main_locales - statsig_locales)
-              missing_main = sorted(statsig_locales - main_locales)
+              missing_dynamic = sorted(main_locales - dynamic_locales)
+              missing_main = sorted(dynamic_locales - main_locales)
               errors = []
 
               if base_locale not in main_locales:
                   errors.append(f"{original_dir}: missing base locale {base_locale}.json")
-              if missing_statsig:
-                  errors.append(f"{original_dir}: missing statsig files for {', '.join(missing_statsig)}")
+              if missing_dynamic:
+                  errors.append(f"{original_dir}: missing dynamic files for {', '.join(missing_dynamic)}")
               if missing_main:
                   errors.append(f"{original_dir}: missing main locale files for {', '.join(missing_main)}")
 
@@ -260,7 +260,7 @@ jobs:
               accept_language = f"{locale},{base_locale};q=0.9,en;q=0.8"
               outputs = [
                   ("main", f"https://claude.ai/i18n/{locale}.json", os.path.join(tmp_dir, f"{locale}.json")),
-                  ("statsig", f"https://claude.ai/i18n/statsig/{locale}.json", os.path.join(tmp_dir, f"{locale}.statsig.json")),
+                  ("dynamic", f"https://claude.ai/i18n/dynamic/{locale}.json", os.path.join(tmp_dir, f"{locale}.dynamic.json")),
               ]
               locale_failed = False
               written_paths = []
@@ -337,7 +337,7 @@ jobs:
           changed_files = []
 
           for locale in successful_locales:
-              for suffix in (".json", ".statsig.json"):
+              for suffix in (".json", ".dynamic.json"):
                   source_path = Path(tmp_dir) / f"{locale}{suffix}"
                   target_path = Path(".original") / f"{locale}{suffix}"
                   with open(source_path, "rb") as source_file:
@@ -361,12 +361,12 @@ jobs:
 
           summary["changedFiles"] = changed_files
           summary["baseLocaleChanged"] = any(
-              path in {f".original/{base_locale}.json", f".original/{base_locale}.statsig.json"}
+              path in {f".original/{base_locale}.json", f".original/{base_locale}.dynamic.json"}
               for path in changed_files
           )
           summary["baseLocaleEntryChanged"] = any(
               read_key_set(main_original_dir, base_locale, suffix) != read_key_set(tmp_dir, base_locale, suffix)
-              for suffix in (".json", ".statsig.json")
+              for suffix in (".json", ".dynamic.json")
           )
 
           with open(compare_summary_path, "w", encoding="utf-8") as file:
@@ -632,7 +632,7 @@ jobs:
               "",
               "Source patterns:",
               "- `https://claude.ai/i18n/{locale}.json`",
-              "- `https://claude.ai/i18n/statsig/{locale}.json`",
+              "- `https://claude.ai/i18n/dynamic/{locale}.json`",
               "",
               f"Tracked upstream locales: `{', '.join(cached_locales)}`",
               f"Base locale for entry diff generation: `{base_locale}`",
@@ -665,7 +665,7 @@ jobs:
               ]
           )
           if diff_summary:
-              for file_label in ("main", "statsig"):
+              for file_label in ("main", "dynamic"):
                   summary = diff_summary["diffSummary"][file_label]
                   lines.append(
                       f"- `{file_label}`: add {summary['add']}, update {summary['update']}, remove {summary['remove']}, total {summary['total']}"

@@ -21,7 +21,7 @@
 
 Claude 官方至今不支援簡體中文介面。**這個擴充功能解決了這個問題。**
 
-安裝後，Claude Web 的語言選單裡會出現 **中文（中国）** 選項。點一下，超過 15,000 條 UI 與 Statsig 文字瞬間切換為中文。不需要代理，不需要設定，不需要等 Anthropic 哪天心情好了才支援。
+安裝後，Claude Web 的語言選單裡會出現 **中文（中国）** 選項。點一下，超過 15,000 條 UI 文字瞬間切換為中文。不需要代理，不需要設定，不需要等 Anthropic 哪天心情好了才支援。
 
 <div align="center">
 
@@ -94,11 +94,11 @@ Claude Web 建立官方語言陣列時，擴充功能會把遠端 `locales.json`
         ↓
 `PUT` / `GET /api/account_profile`、`bootstrap`、`experience` 等請求會在需要時回退成 `en-US`
         ↓
-命中擴充語言的 `GET /i18n/*.json` 與 `/i18n/statsig/*.json` 會交給擴充功能後台處理
+命中擴充語言的 `GET /i18n/*.json` 與 `/i18n/dynamic/*.json` 會交給擴充功能後台處理
         ↓
 後台會先查本地快取，再用 `/version/{locale}.json` 的 hash 判斷是否需要更新
         ↓
-回傳 zh-CN 主語言包與 Statsig 語言包
+回傳 zh-CN 主語言包與 Dynamic 語言包
         ↓
 UI 依照 Claude 自己的語言流程切換為中文
 ```
@@ -113,7 +113,7 @@ UI 依照 Claude 自己的語言流程切換為中文
 
 - 擴充語言列表：先讀 `localStorage` 中快取的 `locales.json`，再 lazy load 遠端版本；只有版本或內容變化時才替換本地快取。
 - 語言檔版本資訊：存放在 `chrome.storage.local`，以 locale 為鍵記錄最近一次 `/version/{locale}.json` 的 hash。
-- 語言檔正文：存放在 `Cache Storage`，只有 hash 變化時才重新下載對應的 `*.json` / `*.statsig.json`。
+- 語言檔正文：存放在 `Cache Storage`，只有 hash 變化時才重新下載對應的 `*.json` / `*.dynamic.json`。
 - `/i18n/*.overrides.json`：目前直接由擴充功能回傳空物件 `{}`。
 
 ---
@@ -122,7 +122,7 @@ UI 依照 Claude 自己的語言流程切換為中文
 
 | 語言 | 條目數量 | 狀態 |
 |------|----------|------|
-| 簡體中文 (zh-CN) | 15,058 條（主語言包 15,012 + Statsig 46） | ✅ 可用 |
+| 簡體中文 (zh-CN) | 15,058 條 | ✅ 可用 |
 | 更多語言 | — | 歡迎貢獻 |
 
 ---
@@ -155,7 +155,7 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 
 ### 改進翻譯
 
-主介面翻譯檔位於 [`zh-CN/zh-CN.json`](zh-CN/zh-CN.json)。如果是 `gated_messages` / Statsig 相關文案，請編輯 [`zh-CN/zh-CN.statsig.json`](zh-CN/zh-CN.statsig.json)。
+主介面翻譯檔位於 [`zh-CN/zh-CN.json`](zh-CN/zh-CN.json)。如果是 `gated_messages` / Dynamic 相關文案，請編輯 [`zh-CN/zh-CN.dynamic.json`](zh-CN/zh-CN.dynamic.json)。
 
 原文主包對照在 [`.original/en-US.json`](.original/en-US.json)。
 
@@ -172,7 +172,7 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 1. 在 [`locales.json`](locales.json) 的 `locales` 陣列中追加 locale 字串（如 `"zh-TW"`）
 2. 建立對應目錄與兩個翻譯檔案：
    `zh-TW/zh-TW.json`
-   `zh-TW/zh-TW.statsig.json`
+   `zh-TW/zh-TW.dynamic.json`
 3. 執行 `./build.sh`，確認會產生：
    `dist/locales.json`
    `dist/zh-TW/version.json`

@@ -21,7 +21,7 @@
 
 Claude's official interface has never supported Simplified Chinese. **This extension fixes that.**
 
-After installation, a **中文（中国）** option appears in Claude Web's language menu. One click switches more than 15,000 UI and Statsig strings to Chinese — no proxy, no configuration, no waiting for Anthropic to get around to it.
+After installation, a **中文（中国）** option appears in Claude Web's language menu. One click switches more than 15,000 UI strings to Chinese — no proxy, no configuration, no waiting for Anthropic to get around to it.
 
 <div align="center">
 
@@ -94,11 +94,11 @@ When Claude Web builds the official locale array, the extension appends remote l
         ↓
 `PUT` / `GET /api/account_profile`, `bootstrap`, and `experience` requests fall back to `en-US` where needed
         ↓
-`GET /i18n/*.json` and `/i18n/statsig/*.json` for extension locales are handed off to the extension backend
+`GET /i18n/*.json` and `/i18n/dynamic/*.json` for extension locales are handed off to the extension backend
         ↓
 The backend checks local cache first, then uses `/version/{locale}.json` hashes to decide whether a refresh is needed
         ↓
-Returns the zh-CN main pack and Statsig pack
+Returns the zh-CN main pack and dynamic pack
         ↓
 UI switches using Claude's own locale flow
 ```
@@ -122,7 +122,7 @@ The current implementation has three layers:
 
 | Language | String Count | Status |
 |----------|---------|--------|
-| Simplified Chinese (zh-CN) | 15,058 (15,012 main + 46 Statsig) | ✅ Available |
+| Simplified Chinese (zh-CN) | 15,058 | ✅ Available |
 | More languages | — | Contributions welcome |
 
 ---
@@ -155,7 +155,7 @@ What each script does:
 
 ### Improving translations
 
-The main UI translation file is [`zh-CN/zh-CN.json`](zh-CN/zh-CN.json). For `gated_messages` / Statsig-related copy, edit [`zh-CN/zh-CN.statsig.json`](zh-CN/zh-CN.statsig.json).
+The main UI translation file is [`zh-CN/zh-CN.json`](zh-CN/zh-CN.json). For `gated_messages` / dynamic-related copy, edit [`zh-CN/zh-CN.dynamic.json`](zh-CN/zh-CN.dynamic.json).
 
 The original main English strings are in [`.original/en-US.json`](.original/en-US.json).
 
@@ -172,7 +172,7 @@ Edit the JSON file and open a PR. The structure is straightforward:
 1. Append a locale string to the `locales` array in [`locales.json`](locales.json) (for example, `"zh-TW"`)
 2. Create the locale directory and both translation files:
    `zh-TW/zh-TW.json`
-   `zh-TW/zh-TW.statsig.json`
+   `zh-TW/zh-TW.dynamic.json`
 3. Run `./build.sh` and confirm it generates:
    `dist/locales.json`
    `dist/zh-TW/version.json`

@@ -34,7 +34,7 @@
   const REMOTE_REQUEST_TIMEOUT_MS = 15 * 1000;
   const RESOURCE_HASH_INDEX = {
     base: 0,
-    statsig: 1,
+    dynamic: 1,
   };
   const MESSAGE_HANDLERS = {
     "fetch-locales-manifest": fetchLocalesManifest,
@@ -393,8 +393,8 @@
   }
 
   function buildRemoteI18nUrl(locale, kind) {
-    if (kind === "statsig") {
-      return `${REMOTE_I18N_BASE_URL}/i18n/statsig/${encodeURIComponent(locale)}.json`;
+    if (kind === "dynamic") {
+      return `${REMOTE_I18N_BASE_URL}/i18n/dynamic/${encodeURIComponent(locale)}.json`;
     }
 
     return `${REMOTE_I18N_BASE_URL}/i18n/${encodeURIComponent(locale)}.json`;
@@ -425,7 +425,7 @@
     const locale = payload?.locale;
     const kind = payload?.kind;
 
-    if (typeof locale !== "string" || (kind !== "base" && kind !== "statsig")) {
+    if (typeof locale !== "string" || (kind !== "base" && kind !== "dynamic")) {
       return null;
     }
 
@@ -697,7 +697,7 @@
 
     const PATH_PATTERNS = {
       baseI18nResource: /^\/i18n\/([^/]+)\.json$/,
-      statsigI18nResource: /^\/i18n\/statsig\/([^/]+)\.json$/,
+      dynamicI18nResource: /^\/i18n\/dynamic\/([^/]+)\.json$/,
       overridesI18n: /^\/i18n\/[^/]+\.overrides\.json$/,
     };
     const ORIGINAL = {
@@ -1462,10 +1462,10 @@
         };
       }
 
-      match = url.pathname.match(PATH_PATTERNS.statsigI18nResource);
+      match = url.pathname.match(PATH_PATTERNS.dynamicI18nResource);
       if (match) {
         return {
-          kind: "statsig",
+          kind: "dynamic",
           locale: match[1],
         };
       }

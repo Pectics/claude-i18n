@@ -74,7 +74,7 @@ function diffPathForFile(pendingDir, fileLabel) {
 }
 
 function targetPathFor(locale, fileLabel) {
-  const suffix = fileLabel === 'statsig' ? '.statsig.json' : '.json';
+  const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
   return path.join(ROOT_DIR, locale, `${locale}${suffix}`);
 }
 
@@ -85,12 +85,12 @@ function resolveSourcePath(pendingManifest, fileLabel, kind) {
   }
 
   if (kind === 'en') {
-    const suffix = fileLabel === 'statsig' ? '.statsig.json' : '.json';
+    const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
     return path.join(ROOT_DIR, '.original', `${pendingManifest.baseLocale}${suffix}`);
   }
 
   if (kind === 'ja' && pendingManifest.referenceLocale) {
-    const suffix = fileLabel === 'statsig' ? '.statsig.json' : '.json';
+    const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
     return path.join(ROOT_DIR, '.original', `${pendingManifest.referenceLocale}${suffix}`);
   }
 
@@ -200,21 +200,21 @@ function main() {
   const pendingManifest = loadPendingManifest(args.pendingDir);
   const workDir = path.join(args.pendingDir, 'translation', args.locale);
   const mainDiffRows = readJsonl(diffPathForFile(args.pendingDir, 'main'));
-  const statsigDiffRows = readJsonl(diffPathForFile(args.pendingDir, 'statsig'));
+  const dynamicDiffRows = readJsonl(diffPathForFile(args.pendingDir, 'dynamic'));
   const targetMainPath = targetPathFor(args.locale, 'main');
-  const targetStatsigPath = targetPathFor(args.locale, 'statsig');
+  const targetDynamicPath = targetPathFor(args.locale, 'dynamic');
   const targetMainData = readTargetData(targetMainPath);
-  const targetStatsigData = readTargetData(targetStatsigPath);
+  const targetDynamicData = readTargetData(targetDynamicPath);
 
   fs.rmSync(workDir, { recursive: true, force: true });
   ensureDir(workDir);
   maybeCopyPromptTemplate(workDir);
 
   const mainTasks = mainDiffRows.map((row) => toTranslationTask(row, targetMainData)).filter(Boolean);
-  const statsigTasks = statsigDiffRows.map((row) => toTranslationTask(row, targetStatsigData)).filter(Boolean);
+  const dynamicTasks = dynamicDiffRows.map((row) => toTranslationTask(row, targetDynamicData)).filter(Boolean);
 
   const mainChunks = buildChunks('main', mainTasks, workDir, args);
-  const statsigChunks = buildChunks('statsig', statsigTasks, workDir, args);
+  const dynamicChunks = buildChunks('dynamic', dynamicTasks, workDir, args);
 
   const manifestPath = path.join(workDir, 'manifest.json');
   const manifest = {
@@ -233,20 +233,20 @@ function main() {
           ? toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'ja'))
           : null,
       },
-      statsig: {
-        en: toRepoRelative(resolveSourcePath(pendingManifest, 'statsig', 'en')),
+      dynamic: {
+        en: toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'en')),
         ja: pendingManifest.referenceLocale
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'statsig', 'ja'))
+          ? toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'ja'))
           : null,
       },
     },
     diff: {
       main: toRepoRelative(diffPathForFile(args.pendingDir, 'main')),
-      statsig: toRepoRelative(diffPathForFile(args.pendingDir, 'statsig')),
+      dynamic: toRepoRelative(diffPathForFile(args.pendingDir, 'dynamic')),
     },
     output: {
       main: toRepoRelative(targetMainPath),
-      statsig: toRepoRelative(targetStatsigPath),
+      dynamic: toRepoRelative(targetDynamicPath),
     },
     chunkSizing: {
       targetChars: args.targetChars,
@@ -260,15 +260,15 @@ function main() {
         tasks: mainTasks.length,
         chunks: mainChunks.length,
       },
-      statsig: {
-        ...summarizeDiff(statsigDiffRows),
-        tasks: statsigTasks.length,
-        chunks: statsigChunks.length,
+      dynamic: {
+        ...summarizeDiff(dynamicDiffRows),
+        tasks: dynamicTasks.length,
+        chunks: dynamicChunks.length,
       },
     },
     chunks: {
       main: mainChunks,
-      statsig: statsigChunks,
+      dynamic: dynamicChunks,
     },
   };
 

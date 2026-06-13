@@ -21,7 +21,7 @@
 
 Claude 官方至今不支持简体中文界面。**这个扩展解决了这个问题。**
 
-安装后，Claude Web 的语言菜单里会出现 **中文（中国）** 选项。点一下，超过 15,000 条 UI 与 Statsig 文本瞬间切换为中文。不需要代理，不需要配置，不需要等 Anthropic 哪天心情好了才支持。
+安装后，Claude Web 的语言菜单里会出现 **中文（中国）** 选项。点一下，超过 15,000 条 UI 文本瞬间切换为中文。不需要代理，不需要配置，不需要等 Anthropic 哪天心情好了才支持。
 
 <div align="center">
 
@@ -94,11 +94,11 @@ Claude Web 构建官方语言数组时，扩展把远端 locales.json 里的扩�
         ↓
 PUT / GET /api/account_profile、bootstrap、experience 等接口按规则回退为 en-US
         ↓
-GET /i18n/*.json、/i18n/statsig/*.json 命中扩展语言后，交给扩展后台处理
+GET /i18n/*.json、/i18n/dynamic/*.json 命中扩展语言后，交给扩展后台处理
         ↓
 后台先查本地缓存，再按 /version/{locale}.json 的 hash 决定是否更新语言文件
         ↓
-返回 zh-CN 主语言包与 statsig 语言包
+返回 zh-CN 主语言包与 dynamic 语言包
         ↓
 UI 按 Claude 自己的语言流程切换为中文
 ```
@@ -113,7 +113,7 @@ UI 按 Claude 自己的语言流程切换为中文
 
 - 扩展语言列表：先读 `localStorage` 中缓存的 `locales.json`，再 lazy load 远端版本；只有版本或内容变化时才替换本地缓存。
 - 语言文件版本信息：存放在 `chrome.storage.local`，按 locale 记录最近一次 `/version/{locale}.json` 的 hash。
-- 语言文件正文：存放在 `Cache Storage`，只有 hash 变化时才重新下载对应的 `*.json` / `*.statsig.json` 文件。
+- 语言文件正文：存放在 `Cache Storage`，只有 hash 变化时才重新下载对应的 `*.json` / `*.dynamic.json` 文件。
 - `/i18n/*.overrides.json`：当前直接由扩展返回空对象 `{}`。
 
 ---
@@ -122,7 +122,7 @@ UI 按 Claude 自己的语言流程切换为中文
 
 | 语言 | 条目数量 | 状态 |
 |------|----------|------|
-| 中文（中国） (zh-CN) | 15,058 条（15,012+46） | ✅ 可用 |
+| 中文（中国） (zh-CN) | 15,058 条 | ✅ 可用 |
 | 更多语言 | — | 欢迎贡献 |
 
 ---
@@ -155,7 +155,7 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 
 ### 改进翻译
 
-主界面翻译位于 [`zh-CN/zh-CN.json`](zh-CN/zh-CN.json)。如果是 `gated_messages` / Statsig 相关文案，请编辑 [`zh-CN/zh-CN.statsig.json`](zh-CN/zh-CN.statsig.json)。
+主界面翻译位于 [`zh-CN/zh-CN.json`](zh-CN/zh-CN.json)。如果是 `gated_messages` / Dynamic 相关文案，请编辑 [`zh-CN/zh-CN.dynamic.json`](zh-CN/zh-CN.dynamic.json)。
 
 原文主包对照在 [`.original/en-US.json`](.original/en-US.json)。
 
@@ -172,7 +172,7 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 1. 在 [`locales.json`](locales.json) 的 `locales` 数组中追加 locale 字符串（如 `"zh-TW"`）
 2. 创建对应目录和两个翻译文件：
    `zh-TW/zh-TW.json`
-   `zh-TW/zh-TW.statsig.json`
+   `zh-TW/zh-TW.dynamic.json`
 3. 运行 `./build.sh`，确认会生成：
    `dist/locales.json`
    `dist/zh-TW/version.json`
