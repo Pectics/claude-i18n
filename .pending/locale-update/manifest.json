@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "createdAt": "2026-06-13T10:50:30.675Z",
+  "baseLocale": "en-US",
+  "referenceLocale": "ja-JP",
+  "cachedLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "successfulLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "failedLocales": [],
+  "warnings": [],
+  "changedFiles": [
+    ".original/en-US.json",
+    ".original/en-US.dynamic.json",
+    ".original/ja-JP.json",
+    ".original/ja-JP.dynamic.json"
+  ],
+  "needsTranslation": true,
+  "source": {
+    "main": {
+      "en": ".original/en-US.json",
+      "ja": ".original/ja-JP.json"
+    },
+    "dynamic": {
+      "en": ".original/en-US.dynamic.json",
+      "ja": ".original/ja-JP.dynamic.json"
+    }
+  },
+  "pendingFiles": {
+    "manifest": ".pending/locale-update/manifest.json",
+    "mainDiff": ".pending/locale-update/main.diff.jsonl",
+    "dynamicDiff": ".pending/locale-update/dynamic.diff.jsonl"
+  },
+  "diffSummary": {
+    "main": {
+      "add": 721,
+      "update": 0,
+      "remove": 193,
+      "total": 914
+    },
+    "dynamic": {
+      "add": 4,
+      "update": 0,
+      "remove": 0,
+      "total": 4
+    }
+  }
+}
