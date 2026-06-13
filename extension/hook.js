@@ -22,7 +22,7 @@
 
   const PATH_PATTERNS = {
     baseI18nResource: /^\/i18n\/([^/]+)\.json$/,
-    statsigI18nResource: /^\/i18n\/statsig\/([^/]+)\.json$/,
+    dynamicI18nResource: /^\/i18n\/dynamic\/([^/]+)\.json$/,
     overridesI18n: /^\/i18n\/[^/]+\.overrides\.json$/,
   };
 
@@ -844,10 +844,10 @@
       };
     }
 
-    match = url.pathname.match(PATH_PATTERNS.statsigI18nResource);
+    match = url.pathname.match(PATH_PATTERNS.dynamicI18nResource);
     if (match) {
       return {
-        kind: "statsig",
+        kind: "dynamic",
         locale: match[1],
       };
     }

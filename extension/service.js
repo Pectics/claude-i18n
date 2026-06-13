@@ -4,7 +4,7 @@ const RESOURCE_CACHE_NAME = "claude-i18n-cache-v1";
 const VERSION_REFRESH_INTERVAL_MS = 5 * 60 * 1000;
 const RESOURCE_HASH_INDEX = {
   base: 0,
-  statsig: 1,
+  dynamic: 1,
 };
 const MESSAGE_HANDLERS = {
   "fetch-locales-manifest": fetchLocalesManifest,
@@ -186,8 +186,8 @@ function isFreshVersionCache(value, now) {
 }
 
 function buildRemoteI18nUrl(locale, kind) {
-  if (kind === "statsig") {
-    return `${REMOTE_I18N_BASE_URL}/i18n/statsig/${encodeURIComponent(locale)}.json`;
+  if (kind === "dynamic") {
+    return `${REMOTE_I18N_BASE_URL}/i18n/dynamic/${encodeURIComponent(locale)}.json`;
   }
 
   return `${REMOTE_I18N_BASE_URL}/i18n/${encodeURIComponent(locale)}.json`;
@@ -257,7 +257,7 @@ function normalizeI18nResourceRequest(payload) {
   const locale = payload?.locale;
   const kind = payload?.kind;
 
-  if (typeof locale !== "string" || (kind !== "base" && kind !== "statsig")) {
+  if (typeof locale !== "string" || (kind !== "base" && kind !== "dynamic")) {
     return null;
   }
 
