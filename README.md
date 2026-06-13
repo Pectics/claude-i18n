@@ -8,7 +8,7 @@
 
 简体中文 | [繁體中文](README.tw.md) | [English](README.en.md)
 
-[![Version](https://img.shields.io/badge/版本-v1.1.1-orange?style=flat-square)](https://github.com/Pectics/claude-i18n/releases)
+[![Version](https://img.shields.io/badge/版本-v1.1.2-orange?style=flat-square)](https://github.com/Pectics/claude-i18n/releases)
 [![License](https://img.shields.io/badge/许可证-MIT-blue?style=flat-square)](LICENSE)
 [![Platform](https://img.shields.io/badge/平台-Chrome%20%7C%20Edge%20%7C%20Tampermonkey-brightgreen?style=flat-square)](#安装)
 [![Locale](https://img.shields.io/badge/已支持-简体中文-red?style=flat-square)](#支持的语言)
@@ -181,6 +181,10 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ---
 
 ## 更新日志
+
+### 1.1.2
+
+- 全局替换 `statsig` 关键字为 `dynamic` 以适配 Claude.ai 的最新重构
 
 ### 1.1.1
 
