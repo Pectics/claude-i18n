@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-06-13T10:50:30.675Z",
+  "createdAt": "2026-06-16T04:25:04.035Z",
   "baseLocale": "en-US",
   "referenceLocale": "ja-JP",
   "cachedLocales": [
@@ -37,16 +37,16 @@
   },
   "diffSummary": {
     "main": {
-      "add": 721,
-      "update": 0,
-      "remove": 193,
-      "total": 914
+      "add": 149,
+      "update": 1,
+      "remove": 117,
+      "total": 267
     },
     "dynamic": {
-      "add": 4,
+      "add": 3,
       "update": 0,
-      "remove": 0,
-      "total": 4
+      "remove": 21,
+      "total": 24
     }
   }
 }

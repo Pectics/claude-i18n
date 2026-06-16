@@ -1,4 +1,24 @@
-{"file":"dynamic","op":"add","index":20,"key":"Kr3twwoP21","beforeEn":null,"afterEn":"Included until June 22","afterJa":"6月22日まで含まれます"}
-{"file":"dynamic","op":"add","index":40,"key":"Yrtr74Rv+h","beforeEn":null,"afterEn":"For your toughest challenges","afterJa":"最も難しい課題に"}
-{"file":"dynamic","op":"add","index":43,"key":"Zyu/cxL2/B","beforeEn":null,"afterEn":"Uses usage credits","afterJa":"使用クレジットを利用"}
-{"file":"dynamic","op":"add","index":62,"key":"v8dqn914vW","beforeEn":null,"afterEn":"Fable is included in your plan limits until June 22. After that, switch to usage credits to continue using it.","afterJa":"Fable は6月22日までプランの利用枠に含まれています。それ以降も使い続けるには、使用クレジットに切り替えてください。"}
+{"file":"dynamic","op":"remove","index":null,"key":"97l2MOGDbw","beforeEn":"Customer Email","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"BW37pr8F8N","beforeEn":"Patient, educational responses that build understanding","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"IRViC/pZhJ","beforeEn":"Write the opening of a short story about a morning commute that takes an unexpected turn","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"IWHrtEg3M/","beforeEn":"Respond via email to a customer who received the wrong item in their order","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"IYTLKPzKDU","beforeEn":"Write a product review for wireless headphones","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"Kp6ozIIFmB","beforeEn":"Write a blog post about sustainable fashion trends","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"LLSO6+OcmG","beforeEn":"Short Story","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"MkVnEyMC/e","beforeEn":"Learning","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"Q1WBC/CzPM","beforeEn":"Product Review","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"QkNDqvZCYS","beforeEn":"Shorter responses & more messages","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"R/qzVgOwXK","beforeEn":"Explain why the sky changes color at sunset","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"UKPjvPbXLV","beforeEn":"Educational responses for learning","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"X0Gc8EBw2h","beforeEn":"Default responses from Claude","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"eO5C3Mq8nt","beforeEn":"Concise","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"h4X9VkqTuo","beforeEn":"Normal","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"mkLHEA8zIR","beforeEn":"Explanatory","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"oNKztuf6UK","beforeEn":"Educational Content","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"qYQv6y+IXg","beforeEn":"During high demand, Claude keeps replies short so you can chat longer.","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"ra4BrSRWkG","beforeEn":"Formal","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"xnZecNq4Ki","beforeEn":"Clear and well-structured responses","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"remove","index":null,"key":"zm8xzqayzP","beforeEn":"Marketing Blog Post","afterEn":null,"afterJa":null}
+{"file":"dynamic","op":"add","index":1,"key":"1kG39jWtT0","beforeEn":null,"afterEn":"Fastest for quick answers","afterJa":"素早い回答に最速"}
+{"file":"dynamic","op":"add","index":14,"key":"HSDjAUJ47F","beforeEn":null,"afterEn":"Most efficient for everyday tasks","afterJa":"日常的なタスクに最も効率的"}
+{"file":"dynamic","op":"add","index":16,"key":"K+V0LWT/z+","beforeEn":null,"afterEn":"Most capable for ambitious work","afterJa":"本格的な作業に最も高性能"}
