@@ -1,0 +1,912 @@
+{"file":"main","op":"remove","index":null,"key":"+MxL8DZZiQ","beforeEn":"Allow your team to run multi-agent workflows in Claude Code.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"/TeqCv0t66","beforeEn":"I'll pull the key points from your meetings","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"1fmSVanbip","beforeEn":"Decide which Claude models are available to your end users in every product.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2+mkmXuQGF","beforeEn":"Dismiss session","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2BR2/XPtGg","beforeEn":"This model is disabled for this role in Model access. Choose an enabled model, or re-enable it there.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2JA95sU/X+","beforeEn":"No skills from Anthropic or partners yet.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2O8BC/VNDy","beforeEn":"No connectors yet","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2mUitdB90O","beforeEn":"Answers","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"2nZ2kKTFsM","beforeEn":"GitHub Enterprise Server","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"34Up+lB19+","beforeEn":"View more","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"3G4QejLpCs","beforeEn":"It's a good day to get things done.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"41VRfQy78K","beforeEn":"It provides {serverCount, plural, one {# connector} other {# connectors}}.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"5gFwVwyn/g","beforeEn":"Switch model","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"6+OlxJHHQg","beforeEn":"It's late-night {name}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"6CN8kSzt7R","beforeEn":"This file can't be saved — its path is outside the session folder, or this is a remote session.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"6L+1rOokIA","beforeEn":"Connect to GitHub Enterprise Server ({hostname})","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"7U3T6tAxs6","beforeEn":"Add repositories","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"7ZOi6MF2LG","beforeEn":"Uses your organization's default environment","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"7zmwLrWWY0","beforeEn":"It provides {hookCount, plural, one {# hook} other {# hooks}} that run automatically during your session.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"8IJMxyaoG+","beforeEn":"{completed}/{total} {total, plural, one {task} other {tasks}} complete","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"8d0Z3jHOiv","beforeEn":"We'll redirect you to your GitHub Enterprise Server to create a pre-configured App with one click. You won't need to enter credentials manually.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"8pfbXAs4wp","beforeEn":"{count, plural, one {{modelNames} is disabled for the organization. Enable it in Settings → Models first, or deselect it here.} other {{modelNames} are disabled for the organization. Enable them in Settings → Models first, or deselect them here.}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"94C/pg9Qg/","beforeEn":"Claude in Slack version","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"9B9oxKzS23","beforeEn":"Let's tackle something together","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"9S2mkVLabA","beforeEn":"The role {roleName}'s default model resolves to Anthropic's recommended default{resolved}, which isn't enabled for that role. Enable the model in the role, or set a different default.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"9lF024VeCo","beforeEn":"Hand off entire tasks","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"9zwJhSHJNL","beforeEn":"Looking for a refund? <a>Cancel immediately and get a refund</a>","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"A+cZ6lHV2K","beforeEn":"Couldn't start that task. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"A2T4C1rkYn","beforeEn":"status.claude.com","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Ac7MSgaHeU","beforeEn":"Always use the model Anthropic recommends for enterprise use. Currently, in Chat it is {chatModel} and in Cowork it is {coworkModel}. This will update automatically as newer models are released.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"B0eUO9yGyu","beforeEn":"Each row's share of total Claude in Slack spend in the period, including direct messages and unattributed usage, so rows don't sum to 100%. Direct messages are never rows; unattributed usage is the No channel row.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"BgArDAf+tN","beforeEn":"File could not be read. It may have been deleted or moved, or it lives outside the session folder.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"CFgtAiWZCj","beforeEn":"This role's default model isn't in its Model access list. Add it below, or choose a different default.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"CJsWpnmYD4","beforeEn":"Let's knock something off your list","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"CXOoU/dnkc","beforeEn":"{count, plural, one {{roleNames} inherits this model as its default. Authorize it here, or set a different default for that role.} other {{roleNames} inherit this model as their default. Authorize them here, or set a different default for each role.}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"CwIjS5p2jR","beforeEn":"This request triggered restrictions on violative cyber content and was blocked under Anthropic's Usage Policy. To request an adjustment pursuant to our Cyber Verification Program based on how you use Claude, fill out <formLink>this form</formLink>. To learn more about the program or provide feedback, visit our <helpCenterLink>help center</helpCenterLink>. Please <newChatLink>start a new chat</newChatLink> or <retryLink>retry with {fallbackModelName}</retryLink>. If you think Claude's memory of past conversations may have contributed to this, you can clear it in Settings > Memory.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"DNX2LGVb0u","beforeEn":"No Claude in Slack activity yet","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"DaSoh5uRAp","beforeEn":"<v>{n}</v> Tokens","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"EFCVyInAEY","beforeEn":"Connect GitHub Enterprise Server ({hostname})","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FXsSYKsLTC","beforeEn":"Connect {label}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FYP9FLyEuX","beforeEn":"Scope settings","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FYjiyj920L","beforeEn":"Failed to dismiss session. You can try again.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"FbNHePmjrC","beforeEn":"Coffee's hot. Where do we start?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Fn4nXBeinT","beforeEn":"Conway runs in a sandboxed container with its own network allowlist, separate from your account-wide settings. Ask Conway in chat to add a domain.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Fn7RlAhEUS","beforeEn":"Chat with Claude or switch to Cowork to hand off a whole task, now in one place.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"HVzoqOpVZ4","beforeEn":"Anyone in your org can find and join. Runs on an agent identity.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"HjTHxomBY0","beforeEn":"Add instructions","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"I1fXO4A6LY","beforeEn":"Teach me your workflows and I'll follow them every time","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"I78iDoyyAL","beforeEn":"Halfway through. What's next?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"IBzScWlluQ","beforeEn":"No skills yet","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"IDy6spclW4","beforeEn":"The total spend limit for Claude in Slack across all channels in this organization for the current billing period. When reached, Claude stops responding in Slack until the period resets or the limit is raised.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"K1SJkY1ozI","beforeEn":"Unarchive session","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"KOFQwOVV3I","beforeEn":"It's midday. Let's get it done.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"L8mn/dFykI","beforeEn":"Turn on Remote Control","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"LVw999lMHO","beforeEn":"Connect your organization's GitHub Enterprise Server instances to enable code review and repository access.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Lcg2r4h08c","beforeEn":"No channels have used Claude in Slack yet.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Lo59zerr58","beforeEn":"{active} ({completed}/{total} {total, plural, one {task} other {tasks}} complete)","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"MBShBY3q81","beforeEn":"Side chat is local-only — not available for remote sessions.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Mo2n699RV2","beforeEn":"Projects keep related sessions, repositories, and teammates together in one place.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"OSEjEFgrsy","beforeEn":"Group sessions that share context — repos, instructions, and memory — so Claude can pick up where any thread left off.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"OWXKo1qg2p","beforeEn":"Open {filename}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"OY2NlFOMFP","beforeEn":"{modelName} is the default for one or more roles, but it's disabled for the organization. Turn it on below, or change those roles' defaults.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"POQICrFXxW","beforeEn":"I'll handle it while you step away","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"RFWqsIYHpG","beforeEn":"IAM role ARN","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"RMXYtLV5IJ","beforeEn":"Members with this role can use the selected models. Deselected models are hidden from their model picker.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Rk3//HnAKa","beforeEn":"Let's clear a few more to-dos.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"SH+4I4XTEI","beforeEn":"Retry with {fallbackModelName}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"TRVHXhinUX","beforeEn":"{label}, connected","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"TeyXN4tT5R","beforeEn":"Pauses the session and clears its stuck state. The owner keeps the session; it re-enters the queue if they send another message.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"UIUz5c0QjL","beforeEn":"{modelName} is Anthropic's recommended default, but it's disabled for the organization. Turn it on below.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Uj6n13hzEK","beforeEn":"Couldn't load Claude in Slack analytics","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"W3z2uxVSLn","beforeEn":"Get 2× more usage for Cowork until July 5","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"WMWGJt6GG3","beforeEn":"The model used in this conversation is no longer available. Switch to continue chatting.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"XXCVToLxHx","beforeEn":"This model is enabled for all roles.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"YGAA53tNVc","beforeEn":"Refresh usage limits","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"YLQc/yyMVp","beforeEn":"Evening. What's on your plate?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Ye6RKbYepZ","beforeEn":"GitHub Enterprise Server connected.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"Z8v85Tj3EG","beforeEn":"Afternoon stretch. What's left?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ZE2kVaK66D","beforeEn":"Claude in Slack spend in the selected period, after discounts. Exact value: {value}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ZUlff/05v0","beforeEn":"Organization default","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"a02/ib8OJ+","beforeEn":"Up and at 'em. What's on your list?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"a7UjKazgZ2","beforeEn":"Disabled for everyone in the organization","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"aUNFkw/sqH","beforeEn":"Remote Control is active","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ayra+Punuq","beforeEn":"Turn off Remote Control","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"bHiDaXE8ye","beforeEn":"{n, plural, one {<v>#</v> Tool use} other {<v>#</v> Tool uses}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"bw+L0wLpiO","beforeEn":"Set up a place for ongoing work, where context builds over time","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"c713I9RM0I","beforeEn":"I'll organize your expense reports","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"cXwY8tXXej","beforeEn":"to send and start another","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"d2BZvhE7ww","beforeEn":"Let org members run multi-agent workflows in Claude Code.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"e52zGhmt57","beforeEn":"Switch to Cowork and Claude will research, build, and keep going on its own.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"eOvCz3z+Zu","beforeEn":"Connect GitHub Enterprise Server","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"eVllSkHrxL","beforeEn":"No plugins yet","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"f3Pf3CsFFd","beforeEn":"It's late-night","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"fXlc3idTcy","beforeEn":"Choose a model","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"guTc2j+IY8","beforeEn":"<b>More granular usage reporting.</b> Code Review, security features, voice mode, and Claude in Slack now appear as their own line items instead of being grouped under Claude Code and chat.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"hAg2O41x2N","beforeEn":"This role's default model is disabled for the organization. Enable it in Settings → Models, or choose a different default below.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"hL8weXp7sY","beforeEn":"Always use the model Anthropic recommends for enterprise use. Currently, it is {modelName}. This will update automatically as newer models are released.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"haX8bKd6+i","beforeEn":"Add GitHub Enterprise Server","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"hwLE3qzYIN","beforeEn":"Give Claude context from your apps and services","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"i79K7ziObv","beforeEn":"Always use the model Anthropic recommends for enterprise use. Currently, in Chat it is {chatModel}. This will update automatically as newer models are released.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"igXgIgDZ5a","beforeEn":"Dismiss session?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"iwWQed+g0V","beforeEn":"Disabled for this role","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"jGc1BzoRWm","beforeEn":"Default Slack settings","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"jT4cPNoGfi","beforeEn":"Switching...","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"kIJ/9Yl/XS","beforeEn":"Save role","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"lGJP39BByy","beforeEn":"Disabled for everyone in the organization — enable it in Settings → Models for this to take effect.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"mi1doFuUAF","beforeEn":"Close an open task draft to spin off a new task.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"min+MWwU5V","beforeEn":"Always use the model Anthropic recommends for enterprise use. This will update automatically as newer models are released.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"nI0bDjrChH","beforeEn":"It's a late-night jam session.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ndSFt0iBoc","beforeEn":"Anthropic and partner skills","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"nj2f0hERT8","beforeEn":"Create plugin","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"nxETcJSEUD","beforeEn":"The role {roleName}'s default model isn't enabled for that role. Enable the model in the role, or set a different default.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"o/mLIqs70b","beforeEn":"Auto-loading paused — {filteredOut} of {loaded} loaded sessions are running (hidden from this tab).","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"oMHZ3bukjt","beforeEn":"Sending your logs helps us diagnose and fix this issue.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"oPuGlsdwZm","beforeEn":"Sign in again to access local files and folders on this computer.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"oYw03mKZu0","beforeEn":"{count, plural, one {# connected workspace} other {# connected workspaces}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"pEpXQ1muH6","beforeEn":"I'll crunch through your analysis","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"pTl3a4xzmv","beforeEn":"The default model is disabled. Choose an enabled model, or re-enable it.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"pzOq+gR8B7","beforeEn":"Custom cron: {cron}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"q2V1HUsnHd","beforeEn":"Hand me raw data and I'll build the model, formulas and all","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"s+zEoFPzvt","beforeEn":"{n, plural, one {<v>#</v> Agent} other {<v>#</v> Agents}}","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"t1oi5av6N2","beforeEn":"A reference I'll follow so the output matches your style","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"tO7KIDqgLQ","beforeEn":"What's on your plate today?","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"tSwEpl8XcL","beforeEn":"<b>{count, plural, one {# session stuck} other {# sessions stuck}}</b> — failed on 3 different runners each. Auto-recovery exhausted. Check runner logs, then retry or dismiss.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"tkKKAr63Bg","beforeEn":"No sessions","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"ueE0OPRyIL","beforeEn":"{currentModelName}'s safety filters flagged this chat. Due to its advanced capabilities, {currentModelName} has additional safety measures that occasionally pause normal, safe chats. We're working to improve this. Continue your chat with {fallbackModelName}, <feedback>send feedback</feedback>, or <learnMore>learn more</learnMore>.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"xTJyM3e9mt","beforeEn":"No GitHub Enterprise Server instances configured. Add one to get started.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"xZ4PoZUCzd","beforeEn":"Office agents","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"xj62DDsIcd","beforeEn":"No roles can use this model","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"yt7b1gGnC3","beforeEn":"Settings are applied to all new sessions in this project, and are stored locally.","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"yweT510hSb","beforeEn":"I'll pull context from your files and connectors","afterEn":null,"afterJa":null}
+{"file":"main","op":"remove","index":null,"key":"zYPf9OT15X","beforeEn":"Always use the model Anthropic recommends for enterprise use. Currently, in Cowork it is {coworkModel}. This will update automatically as newer models are released.","afterEn":null,"afterJa":null}
+{"file":"main","op":"add","index":16,"key":"+4pb9iAULI","beforeEn":null,"afterEn":"Brainstorm angles for a piece","afterJa":"記事の切り口をブレインストーミングする"}
+{"file":"main","op":"add","index":27,"key":"+6+JCVy2jg","beforeEn":null,"afterEn":"Explore and summarize a dataset","afterJa":"データセットを探索して要約する"}
+{"file":"main","op":"add","index":48,"key":"+CGmFJSh2d","beforeEn":null,"afterEn":"reviewed","afterJa":"レビュー済み"}
+{"file":"main","op":"add","index":54,"key":"+DTI2NLwtR","beforeEn":null,"afterEn":"Inline preview isn't available for this file.","afterJa":"このファイルはインラインプレビューに対応していません。"}
+{"file":"main","op":"add","index":80,"key":"+IrZUbacYA","beforeEn":null,"afterEn":"Get unstuck on a problem","afterJa":"問題の行き詰まりを解消する"}
+{"file":"main","op":"add","index":132,"key":"+XRaaEUY3o","beforeEn":null,"afterEn":"Role defaults take priority over the org default model.","afterJa":"ロールのデフォルトは、組織のデフォルトモデルより優先されます。"}
+{"file":"main","op":"add","index":199,"key":"+pygb/9S5W","beforeEn":null,"afterEn":"Tab {n}","afterJa":"タブ {n}"}
+{"file":"main","op":"add","index":201,"key":"+qlB75AyO6","beforeEn":null,"afterEn":"This file can't be saved. Its path is outside the working directory, or this is a remote session.","afterJa":"このファイルは保存できません。パスが作業ディレクトリの外にあるか、リモートセッションです。"}
+{"file":"main","op":"add","index":211,"key":"+searNO7Xt","beforeEn":null,"afterEn":"No color","afterJa":"カラーなし"}
+{"file":"main","op":"add","index":212,"key":"+sug9soxPB","beforeEn":null,"afterEn":"You've hit your {period, select, daily {daily } weekly {weekly } monthly {monthly } other {}}spend limit and you're out of credits.","afterJa":"{period, select, daily {日間の} weekly {週間の} monthly {月間の} other {}}利用上限に達し、クレジットが不足しています。"}
+{"file":"main","op":"add","index":224,"key":"+voVEqswbq","beforeEn":null,"afterEn":"Review the research design","afterJa":"研究デザインをレビューする"}
+{"file":"main","op":"add","index":264,"key":"/663dx3V8l","beforeEn":null,"afterEn":"Submitting…","afterJa":"送信中…"}
+{"file":"main","op":"add","index":286,"key":"/AFP3uY/mP","beforeEn":null,"afterEn":"Draft methods section from protocol","afterJa":"プロトコルから方法論セクションを下書きする"}
+{"file":"main","op":"add","index":292,"key":"/C9arVPxRC","beforeEn":null,"afterEn":"Recommend the next book","afterJa":"次に読む本を推薦する"}
+{"file":"main","op":"add","index":355,"key":"/QO9r9WaGl","beforeEn":null,"afterEn":"type text into","afterJa":"テキストを入力する"}
+{"file":"main","op":"add","index":386,"key":"/W3LMfdvdN","beforeEn":null,"afterEn":"Your session has expired for Claude Code access. Sign in again to reconnect.","afterJa":"Claude Codeへのアクセスセッションの有効期限が切れました。再接続するには、もう一度サインインしてください。"}
+{"file":"main","op":"add","index":387,"key":"/WA4pAFDjJ","beforeEn":null,"afterEn":"This session reached a runner, so it stays listed as idle — you can still revoke its token from there.","afterJa":"このセッションはランナーに到達したため、アイドルとして一覧に残ります。そこからトークンを失効させることができます。"}
+{"file":"main","op":"add","index":448,"key":"/io+T/fDAs","beforeEn":null,"afterEn":"Visualize this as a diagram: ","afterJa":"これを図として可視化してください："}
+{"file":"main","op":"add","index":518,"key":"01RgjjWo4K","beforeEn":null,"afterEn":"Submit feedback, report a bug, or share your conversation","afterJa":"フィードバックを送信する、バグを報告する、または会話を共有する"}
+{"file":"main","op":"add","index":523,"key":"021qyBW/hG","beforeEn":null,"afterEn":"Download and open {filename}","afterJa":"{filename}をダウンロードして開く"}
+{"file":"main","op":"add","index":528,"key":"03bQuK1jZT","beforeEn":null,"afterEn":"Review submitted.","afterJa":"レビューを送信しました。"}
+{"file":"main","op":"add","index":540,"key":"06i4ZwGxUR","beforeEn":null,"afterEn":"Virtualization isn't fully set up","afterJa":"仮想化が完全にセットアップされていません"}
+{"file":"main","op":"add","index":614,"key":"0NqPGMfepJ","beforeEn":null,"afterEn":"Show top {count, number}","afterJa":"上位{count, number}件を表示"}
+{"file":"main","op":"add","index":619,"key":"0PoF0ZQM9v","beforeEn":null,"afterEn":"Checks running — {passed} of {total} passed","afterJa":"チェック実行中 — {total}件中{passed}件合格"}
+{"file":"main","op":"add","index":624,"key":"0QbMYDa4JA","beforeEn":null,"afterEn":"If a member has multiple roles, they get every model any of their roles allows.","afterJa":"メンバーが複数のロールを持つ場合、いずれかのロールで許可されているすべてのモデルを使用できます。"}
+{"file":"main","op":"add","index":641,"key":"0UmKTNcZuo","beforeEn":null,"afterEn":"Summarize contract into key terms","afterJa":"契約書を主要条件に要約する"}
+{"file":"main","op":"add","index":671,"key":"0aK9NM2rUg","beforeEn":null,"afterEn":"Your card was saved but could not be set as default. Try again.","afterJa":"カードは保存されましたが、デフォルトとして設定できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":673,"key":"0aXdvB79Oh","beforeEn":null,"afterEn":"Couldn't read this file","afterJa":"このファイルを読み込めませんでした"}
+{"file":"main","op":"add","index":674,"key":"0ag3vClu8J","beforeEn":null,"afterEn":"Close {label}","afterJa":"{label}を閉じる"}
+{"file":"main","op":"add","index":709,"key":"0jPoCTWaT8","beforeEn":null,"afterEn":"Create a scheduled task that can be run on demand or automatically on an interval.","afterJa":"オンデマンドまたは一定間隔で自動的に実行できるスケジュールタスクを作成します。"}
+{"file":"main","op":"add","index":771,"key":"0zgaww9gbq","beforeEn":null,"afterEn":"tool approvals couldn't be copied — you may be asked to approve them again","afterJa":"ツール承認をコピーできませんでした。再度承認を求められる場合があります"}
+{"file":"main","op":"add","index":787,"key":"10p7SEaWI9","beforeEn":null,"afterEn":"Analyze this dataset","afterJa":"このデータセットを分析する"}
+{"file":"main","op":"add","index":798,"key":"13/ligRoek","beforeEn":null,"afterEn":"I’ll handle it while you step away","afterJa":"その間に対応しておきます"}
+{"file":"main","op":"add","index":799,"key":"131fz65nJb","beforeEn":null,"afterEn":"Clone the repository {slug} (from {gheHost}) into this session.","afterJa":"このセッションにリポジトリ {slug}（{gheHost} から）をクローンします。"}
+{"file":"main","op":"add","index":800,"key":"132Brv+w/S","beforeEn":null,"afterEn":"It’s late-night {name}","afterJa":"夜遅いですね、{name}さん。"}
+{"file":"main","op":"add","index":820,"key":"16rKGUHqVE","beforeEn":null,"afterEn":"{date} · in progress","afterJa":"{date} · 進行中"}
+{"file":"main","op":"add","index":833,"key":"1Aday2s3it","beforeEn":null,"afterEn":"Sun","afterJa":"日"}
+{"file":"main","op":"add","index":840,"key":"1CNE+bF890","beforeEn":null,"afterEn":"Closed without merging","afterJa":"マージせずにクローズ"}
+{"file":"main","op":"add","index":852,"key":"1FFzpU5rSH","beforeEn":null,"afterEn":"Code something","afterJa":"コードを書く"}
+{"file":"main","op":"add","index":865,"key":"1I51BfuqP9","beforeEn":null,"afterEn":"Could you turn this workflow into a skill? What other skills do you have?","afterJa":"このワークフローをスキルにできますか？他にどんなスキルがありますか？"}
+{"file":"main","op":"add","index":874,"key":"1K0LJ2o7rf","beforeEn":null,"afterEn":"Write a parent email","afterJa":"保護者へのメールを書く"}
+{"file":"main","op":"add","index":875,"key":"1K1EoKEeQU","beforeEn":null,"afterEn":"Claude Tag version","afterJa":"Claude Tagのバージョン"}
+{"file":"main","op":"add","index":895,"key":"1P4seVNqWO","beforeEn":null,"afterEn":"It’s a late-night jam session.","afterJa":"深夜の作業タイムです。"}
+{"file":"main","op":"add","index":897,"key":"1PSUfNcwv2","beforeEn":null,"afterEn":"A scheduled plan change is pending. Contact support to switch payment methods.","afterJa":"プランの変更が予定されています。お支払い方法を変更するには、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":901,"key":"1QB/N543B1","beforeEn":null,"afterEn":"Watch for news or mentions of a topic, competitor, or keyword.","afterJa":"トピック、競合他社、またはキーワードに関するニュースや言及を監視します。"}
+{"file":"main","op":"add","index":907,"key":"1R7mjn9mAY","beforeEn":null,"afterEn":"Set up a scheduled task that runs on its own. Ask me what I want it to do and how often, then propose the schedule and show me a sample run before it goes live.","afterJa":"自動で実行されるスケジュールタスクを設定してください。何をどのくらいの頻度で行うか聞いてから、スケジュールを提案し、稼働前にサンプル実行を見せてください。"}
+{"file":"main","op":"add","index":911,"key":"1SkhnkN1zT","beforeEn":null,"afterEn":"Categorize your inbox and draft replies to anything urgent.","afterJa":"受信トレイを整理し、緊急のメールへの返信を下書きします。"}
+{"file":"main","op":"add","index":919,"key":"1W4okOthcu","beforeEn":null,"afterEn":"Green","afterJa":"グリーン"}
+{"file":"main","op":"add","index":964,"key":"1gFauzEKGq","beforeEn":null,"afterEn":"The selected model is no longer available.","afterJa":"選択したモデルは現在利用できません。"}
+{"file":"main","op":"add","index":973,"key":"1i7d0Jh7Hy","beforeEn":null,"afterEn":"Already added for your organization","afterJa":"組織にすでに追加済みです"}
+{"file":"main","op":"add","index":1015,"key":"1s/7CMhZNM","beforeEn":null,"afterEn":"You added this connector. Anthropic hasn’t reviewed it.","afterJa":"このコネクタはあなたが追加しました。Anthropicによるレビューは行われていません。"}
+{"file":"main","op":"add","index":1049,"key":"2+kAwKz0k6","beforeEn":null,"afterEn":"Delayed","afterJa":"遅延"}
+{"file":"main","op":"add","index":1100,"key":"2AytZgJTCj","beforeEn":null,"afterEn":", max effort {cap}, press right arrow to change","afterJa":"、最大努力 {cap}、変更するには右矢印キーを押してください"}
+{"file":"main","op":"add","index":1101,"key":"2BCWLDNflj","beforeEn":null,"afterEn":"Configure channel","afterJa":"チャンネルを設定"}
+{"file":"main","op":"add","index":1160,"key":"2OinG2dN8C","beforeEn":null,"afterEn":"Draft replies for emails","afterJa":"メールの返信を下書きする"}
+{"file":"main","op":"add","index":1165,"key":"2Paa46SqNA","beforeEn":null,"afterEn":"Prioritize this backlog","afterJa":"このバックログを優先順位付けする"}
+{"file":"main","op":"add","index":1168,"key":"2QPNwCw/2b","beforeEn":null,"afterEn":"Cancel at renewal to stop recurring billing and keep access to {productName} until {nextChargeDate}. Cancel now to end access immediately and get a refund.","afterJa":"更新時にキャンセルすると、定期請求を停止し、{nextChargeDate}まで{productName}へのアクセスを維持できます。今すぐキャンセルすると、アクセスが即時終了し、返金を受けることができます。"}
+{"file":"main","op":"add","index":1193,"key":"2YmcfAIR6Y","beforeEn":null,"afterEn":"{action}: group members","afterJa":"{action}: グループメンバー"}
+{"file":"main","op":"add","index":1240,"key":"2h8EzK98Cz","beforeEn":null,"afterEn":"Explain a concept","afterJa":"概念を説明する"}
+{"file":"main","op":"add","index":1247,"key":"2jHyn77kNH","beforeEn":null,"afterEn":"Draft abstract from notes","afterJa":"メモからアブストラクトを下書きする"}
+{"file":"main","op":"add","index":1302,"key":"2ubZ7kJLkX","beforeEn":null,"afterEn":"Write a one-page product spec","afterJa":"1ページの製品仕様書を書く"}
+{"file":"main","op":"add","index":1305,"key":"2vdbWGg17x","beforeEn":null,"afterEn":"Synthesize this user research","afterJa":"このユーザーリサーチを統合する"}
+{"file":"main","op":"add","index":1336,"key":"30ngYoNm70","beforeEn":null,"afterEn":"This conversation was updated on another device. Refreshing. Your message was not sent.","afterJa":"この会話は別のデバイスで更新されました。再読み込み中です。メッセージは送信されませんでした。"}
+{"file":"main","op":"add","index":1345,"key":"32VPybZH2v","beforeEn":null,"afterEn":"Project icon","afterJa":"プロジェクトアイコン"}
+{"file":"main","op":"add","index":1350,"key":"33q2aaYk4m","beforeEn":null,"afterEn":"Research company and draft brief","afterJa":"企業を調査してブリーフを作成する"}
+{"file":"main","op":"add","index":1368,"key":"39Sd0YcmUc","beforeEn":null,"afterEn":"Reformat a messy doc","afterJa":"乱雑なドキュメントを整形する"}
+{"file":"main","op":"add","index":1386,"key":"3DXfAUJV31","beforeEn":null,"afterEn":"From the Claude connector directory","afterJa":"Claudeコネクタディレクトリから"}
+{"file":"main","op":"add","index":1453,"key":"3UVW0c7wtB","beforeEn":null,"afterEn":"I'll attach a few files. Read them all and pull out the key insights I need.","afterJa":"いくつかファイルを添付します。すべて読んで、必要な重要なインサイトを抽出してください。"}
+{"file":"main","op":"add","index":1492,"key":"3cxMQpLnmu","beforeEn":null,"afterEn":"Violet","afterJa":"バイオレット"}
+{"file":"main","op":"add","index":1519,"key":"3jWLm/Vcib","beforeEn":null,"afterEn":"Couldn't regenerate memory right now","afterJa":"現在、メモリを再生成できませんでした"}
+{"file":"main","op":"add","index":1537,"key":"3o2Bmli64u","beforeEn":null,"afterEn":"Write microcopy variations for screen","afterJa":"画面のマイクロコピーのバリエーションを書く"}
+{"file":"main","op":"add","index":1548,"key":"3ruNq9BmSl","beforeEn":null,"afterEn":"Connect Slack, Gmail, and Google Drive so you can work with my data.","afterJa":"Slack、Gmail、Google Driveを接続して、私のデータを扱えるようにしてください。"}
+{"file":"main","op":"add","index":1599,"key":"41x3l2Poin","beforeEn":null,"afterEn":"Your organization has used {percent}% of its monthly spend limit. Increase the limit to avoid pausing extra usage.","afterJa":"お客様の組織は月間支出上限の{percent}%を使用しました。追加利用の一時停止を避けるため、上限を引き上げてください。"}
+{"file":"main","op":"add","index":1612,"key":"45MjMME/uo","beforeEn":null,"afterEn":"Claude Code isn't available on your account","afterJa":"Claude Code はご利用のアカウントでは使用できません"}
+{"file":"main","op":"add","index":1628,"key":"493hm4mfgC","beforeEn":null,"afterEn":"I’ll pull context from your files and connectors","afterJa":"ファイルやコネクタから情報を取得します"}
+{"file":"main","op":"add","index":1638,"key":"4CcSxQK2HD","beforeEn":null,"afterEn":"Build reading schedule from syllabus","afterJa":"シラバスから読書スケジュールを作成する"}
+{"file":"main","op":"add","index":1683,"key":"4N/mAHV8en","beforeEn":null,"afterEn":"{n} merged","afterJa":"{n}件マージ済み"}
+{"file":"main","op":"add","index":1685,"key":"4NKKwB+2oH","beforeEn":null,"afterEn":"Remove this group from all projects?","afterJa":"このグループをすべてのプロジェクトから削除しますか？"}
+{"file":"main","op":"add","index":1703,"key":"4U8CMvZ+SO","beforeEn":null,"afterEn":"Open on GitHub","afterJa":"GitHubで開く"}
+{"file":"main","op":"add","index":1723,"key":"4X28n5Ona+","beforeEn":null,"afterEn":"Unable to load visibility settings.","afterJa":"公開設定を読み込めませんでした。"}
+{"file":"main","op":"add","index":1745,"key":"4ay8Sgl20W","beforeEn":null,"afterEn":"↓ Latest","afterJa":"↓ 最新"}
+{"file":"main","op":"add","index":1777,"key":"4i1W4AVSgu","beforeEn":null,"afterEn":"Can you create a scheduled task for this work?","afterJa":"この作業のスケジュールタスクを作成できますか？"}
+{"file":"main","op":"add","index":1813,"key":"4o3zAix6n4","beforeEn":null,"afterEn":"Afternoon stretch. What’s left?","afterJa":"午後も後半戦。残りのタスクは何ですか？"}
+{"file":"main","op":"add","index":1850,"key":"4wHxjBpB3E","beforeEn":null,"afterEn":"Add repository…","afterJa":"リポジトリを追加…"}
+{"file":"main","op":"add","index":1925,"key":"59a3HUHR8x","beforeEn":null,"afterEn":"When you attach one of these folders to a Cowork task, Claude won't ask you to confirm.","afterJa":"これらのフォルダーのいずれかをCoworkタスクに追加すると、Claudeは確認を求めません。"}
+{"file":"main","op":"add","index":1926,"key":"59iDR2YzIC","beforeEn":null,"afterEn":"{n, plural, one {<v>#</v> agent} other {<v>#</v> agents}}","afterJa":"{n, plural, one {<v>#</v> エージェント} other {<v>#</v> エージェント}}"}
+{"file":"main","op":"add","index":1935,"key":"5BkaTqhcyM","beforeEn":null,"afterEn":"Keep window on top","afterJa":"ウィンドウを常に手前に表示"}
+{"file":"main","op":"add","index":1941,"key":"5CZbKBbK5G","beforeEn":null,"afterEn":"All {total, plural, one {# check} other {# checks}} passed","afterJa":"すべての{total, plural, one {#件のチェック} other {#件のチェック}}が合格しました"}
+{"file":"main","op":"add","index":1949,"key":"5DbKY0+q/q","beforeEn":null,"afterEn":"GitHub sign-in expired. Run gh auth login in a terminal; this view retries automatically.","afterJa":"GitHubのサインインの有効期限が切れました。ターミナルで gh auth login を実行してください。このビューは自動的に再試行されます。"}
+{"file":"main","op":"add","index":1967,"key":"5ISa9xO+pK","beforeEn":null,"afterEn":"Halfway through. What’s next?","afterJa":"折り返し地点です。次は何をしますか？"}
+{"file":"main","op":"add","index":1972,"key":"5KE7Y/O6iv","beforeEn":null,"afterEn":"I'll attach a few files. Read them all and pull out the key insights: themes, decisions, action items, anything that needs my attention. Organize it as a short brief I can share.","afterJa":"いくつかファイルを添付します。すべて読んで、テーマ、決定事項、アクションアイテムなど、注目すべき重要なインサイトを抽出してください。共有できる短いブリーフにまとめてください。"}
+{"file":"main","op":"add","index":1997,"key":"5QvsSOj3GX","beforeEn":null,"afterEn":"Default ({name})","afterJa":"デフォルト（{name}）"}
+{"file":"main","op":"add","index":2001,"key":"5RLzU49/sW","beforeEn":null,"afterEn":"A Friday summary of what happened this week.","afterJa":"今週起きたことをまとめた、毎週金曜日のサマリーです。"}
+{"file":"main","op":"add","index":2007,"key":"5Tw3TaH5r+","beforeEn":null,"afterEn":"Yellow","afterJa":"イエロー"}
+{"file":"main","op":"add","index":2014,"key":"5VkNQ5hnjG","beforeEn":null,"afterEn":"This pull request is no longer open for review.","afterJa":"このプルリクエストはレビューの受付を終了しています。"}
+{"file":"main","op":"add","index":2027,"key":"5ZJWF+eLeA","beforeEn":null,"afterEn":"Break assignment prompt into checklist","afterJa":"課題のプロンプトをチェックリストに分解する"}
+{"file":"main","op":"add","index":2033,"key":"5aP8uLfEcA","beforeEn":null,"afterEn":"Put together scenario comparison table","afterJa":"シナリオ比較表を作成する"}
+{"file":"main","op":"add","index":2034,"key":"5ahTMuMSG+","beforeEn":null,"afterEn":"This project's coordinator was archived. Un-archiving isn't supported yet.","afterJa":"このプロジェクトのコーディネーターはアーカイブされました。アーカイブの解除はまだサポートされていません。"}
+{"file":"main","op":"add","index":2070,"key":"5jLKNYHDrw","beforeEn":null,"afterEn":"Couldn’t load this channel’s configuration. Try again.","afterJa":"このチャンネルの設定を読み込めませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":2126,"key":"5wTGLOV/VH","beforeEn":null,"afterEn":"Add in connector settings","afterJa":"コネクタ設定で追加"}
+{"file":"main","op":"add","index":2131,"key":"5xC2UEOPNn","beforeEn":null,"afterEn":"Sharpen this messaging","afterJa":"このメッセージングを洗練させる"}
+{"file":"main","op":"add","index":2149,"key":"6+tjaPdMCo","beforeEn":null,"afterEn":"Anyone in {orgName} can see who's in this group.","afterJa":"{orgName}の全員がこのグループのメンバーを確認できます。"}
+{"file":"main","op":"add","index":2151,"key":"6/21AL1o2t","beforeEn":null,"afterEn":"Share projects with this group","afterJa":"このグループとプロジェクトを共有"}
+{"file":"main","op":"add","index":2154,"key":"6/aEFZbs2i","beforeEn":null,"afterEn":"Upcoming","afterJa":"予定"}
+{"file":"main","op":"add","index":2167,"key":"62G8Sfrlvb","beforeEn":null,"afterEn":"Rewind the conversation to a previous turn","afterJa":"会話を前のターンに巻き戻す"}
+{"file":"main","op":"add","index":2193,"key":"69+GFqGMMp","beforeEn":null,"afterEn":"Sign-in for {name} timed out. Click Connect to try again.","afterJa":"{name}へのサインインがタイムアウトしました。「Connect」をクリックして再試行してください。"}
+{"file":"main","op":"add","index":2247,"key":"6M06VR19Hx","beforeEn":null,"afterEn":"Select a range of at least 14 days to view weekly data","afterJa":"週次データを表示するには、14日以上の範囲を選択してください"}
+{"file":"main","op":"add","index":2254,"key":"6NmxfDbfwN","beforeEn":null,"afterEn":"Could not load pull request details.","afterJa":"プルリクエストの詳細を読み込めませんでした。"}
+{"file":"main","op":"add","index":2426,"key":"6ynEWZ2GPd","beforeEn":null,"afterEn":"Resolve merge conflicts first.","afterJa":"先にマージの競合を解決してください。"}
+{"file":"main","op":"add","index":2429,"key":"6z56TriM4i","beforeEn":null,"afterEn":"Site-level permissions are disabled for this site. You'll be asked for each action.","afterJa":"このサイトではサイトレベルの権限が無効になっています。操作ごとに確認が求められます。"}
+{"file":"main","op":"add","index":2459,"key":"74N95hPFV6","beforeEn":null,"afterEn":"Unread response","afterJa":"未読の返答"}
+{"file":"main","op":"add","index":2469,"key":"76DDZYlpK7","beforeEn":null,"afterEn":"Can't move this task because it uses Projects.","afterJa":"Projectsを使用しているため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":2486,"key":"79Qjp1tn13","beforeEn":null,"afterEn":"Troubleshoot this issue","afterJa":"この問題をトラブルシューティングする"}
+{"file":"main","op":"add","index":2496,"key":"7CArH0c6pg","beforeEn":null,"afterEn":"The tax ID wasn't accepted. Check it and try again.","afterJa":"税務IDが受け付けられませんでした。確認してもう一度お試しください。"}
+{"file":"main","op":"add","index":2502,"key":"7E0XKPYZcj","beforeEn":null,"afterEn":"Tools and data sources this plugin connects to. Connect each one so Claude can use it.","afterJa":"このプラグインが接続するツールとデータソースです。Claudeが使用できるよう、それぞれを接続してください。"}
+{"file":"main","op":"add","index":2511,"key":"7FfoAmB5Sn","beforeEn":null,"afterEn":"Give feedback on student work","afterJa":"生徒の課題にフィードバックする"}
+{"file":"main","op":"add","index":2546,"key":"7Ln7kvoHSv","beforeEn":null,"afterEn":"Review the pitch narrative","afterJa":"ピッチのナラティブを見直す"}
+{"file":"main","op":"add","index":2562,"key":"7Ojff2hrTf","beforeEn":null,"afterEn":"Repurpose blog post for social","afterJa":"ブログ投稿をSNS用にリパーパスする"}
+{"file":"main","op":"add","index":2629,"key":"7eNbfUAXJp","beforeEn":null,"afterEn":"Draft cold outreach sequence","afterJa":"コールドアウトリーチシーケンスを下書きする"}
+{"file":"main","op":"add","index":2638,"key":"7ikRL+gbwc","beforeEn":null,"afterEn":"Avg cost / merged PR (30d)","afterJa":"平均コスト / マージ済みPR（30日）"}
+{"file":"main","op":"add","index":2709,"key":"7y78kXvxPu","beforeEn":null,"afterEn":"Converting…","afterJa":"変換中…"}
+{"file":"main","op":"add","index":2710,"key":"7yQ80dEPTe","beforeEn":null,"afterEn":"No installations match “{query}”.","afterJa":"「{query}」 に一致するインストールはありません。"}
+{"file":"main","op":"add","index":2783,"key":"8Cc6rQM/iW","beforeEn":null,"afterEn":"Existing access isn't affected.","afterJa":"既存のアクセス権は影響を受けません。"}
+{"file":"main","op":"add","index":2794,"key":"8EKXk3VWxh","beforeEn":null,"afterEn":"Coffee’s hot. Where do we start?","afterJa":"さあ、始めましょう。何からいきますか？"}
+{"file":"main","op":"add","index":2849,"key":"8RUKIaTN4d","beforeEn":null,"afterEn":"Queue for later","afterJa":"後でキューに追加する"}
+{"file":"main","op":"add","index":2895,"key":"8bKvomQAol","beforeEn":null,"afterEn":"Sessions Claude starts in this project will show here.","afterJa":"このプロジェクトでClaudeが開始したセッションがここに表示されます。"}
+{"file":"main","op":"add","index":2935,"key":"8lL3FLt3SE","beforeEn":null,"afterEn":"Updating memory…","afterJa":"メモリを更新中…"}
+{"file":"main","op":"add","index":2940,"key":"8mCQpPOfrc","beforeEn":null,"afterEn":"Claude wants to use your browser","afterJa":"Claudeがお使いのブラウザを使用しようとしています"}
+{"file":"main","op":"add","index":2948,"key":"8nh9JU9KE7","beforeEn":null,"afterEn":"Gear","afterJa":"歯車"}
+{"file":"main","op":"add","index":2978,"key":"8tjPXnfjfO","beforeEn":null,"afterEn":"Download as Markdown","afterJa":"Markdownとしてダウンロード"}
+{"file":"main","op":"add","index":3002,"key":"8xgWpcaO8Y","beforeEn":null,"afterEn":"Draft memo on legal question","afterJa":"法律的な質問に関するメモを下書きする"}
+{"file":"main","op":"add","index":3013,"key":"8zWPf3rmUS","beforeEn":null,"afterEn":"Draft a few post ideas each week from the latest news in your industry.","afterJa":"業界の最新ニュースから、毎週いくつかの投稿アイデアを作成します。"}
+{"file":"main","op":"add","index":3058,"key":"99tWcY/7Zf","beforeEn":null,"afterEn":"Resolving…","afterJa":"解決中…"}
+{"file":"main","op":"add","index":3097,"key":"9J7d85MdpC","beforeEn":null,"afterEn":"Interpret the model's results","afterJa":"モデルの結果を解釈する"}
+{"file":"main","op":"add","index":3099,"key":"9Ja2Opp2Rv","beforeEn":null,"afterEn":"Turn notes into negotiation summary","afterJa":"メモを交渉サマリーにまとめる"}
+{"file":"main","op":"add","index":3119,"key":"9OAxgFZpL6","beforeEn":null,"afterEn":"Walk through a finance concept","afterJa":"財務の概念をわかりやすく説明する"}
+{"file":"main","op":"add","index":3145,"key":"9Ruc/8RfhV","beforeEn":null,"afterEn":"Enabling…","afterJa":"有効化中…"}
+{"file":"main","op":"add","index":3180,"key":"9a2ShG0Qn9","beforeEn":null,"afterEn":"New tab","afterJa":"新しいタブ"}
+{"file":"main","op":"add","index":3239,"key":"9nQD5vs4RY","beforeEn":null,"afterEn":"This connector passed our automated checks but hasn’t been reviewed in depth by Anthropic.","afterJa":"このコネクタは自動チェックに合格していますが、Anthropicによる詳細なレビューは行われていません。"}
+{"file":"main","op":"add","index":3256,"key":"9rAt1uyG+4","beforeEn":null,"afterEn":"Build a design system starter","afterJa":"デザインシステムのスターターを作成する"}
+{"file":"main","op":"add","index":3299,"key":"A/hYQS7XyE","beforeEn":null,"afterEn":"Brainstorm features for a model","afterJa":"モデルの機能をブレインストーミングする"}
+{"file":"main","op":"add","index":3311,"key":"A3N+fIPOl9","beforeEn":null,"afterEn":"Couldn't add {names}. You can try again in connector settings.","afterJa":"{names}を追加できませんでした。コネクタ設定で再試行できます。"}
+{"file":"main","op":"add","index":3355,"key":"ADY0ydM/Fq","beforeEn":null,"afterEn":"Manage allowed sites…","afterJa":"許可済みサイトを管理…"}
+{"file":"main","op":"add","index":3362,"key":"AF2wJpFD8A","beforeEn":null,"afterEn":"Research account before call","afterJa":"通話前にアカウントを調査する"}
+{"file":"main","op":"add","index":3410,"key":"AQxF/3ihL+","beforeEn":null,"afterEn":"Mark ready for review before merging.","afterJa":"マージ前にレビュー準備完了としてマークしてください。"}
+{"file":"main","op":"add","index":3430,"key":"AUdd7Fskzn","beforeEn":null,"afterEn":"Drag or move sessions here","afterJa":"セッションをここにドラッグまたは移動"}
+{"file":"main","op":"add","index":3468,"key":"AbX1bKVUwW","beforeEn":null,"afterEn":"Turn thread into help article","afterJa":"スレッドをヘルプ記事に変換する"}
+{"file":"main","op":"add","index":3482,"key":"AdmJlqtqpP","beforeEn":null,"afterEn":"{count, plural, one {{roleNames} uses this as its default model. Enable it for that role here, or change the default in Edit role.} other {{roleNames} use this as their default model. Enable it for those roles here, or change the default in Edit role.}}","afterJa":"{count, plural, one {{roleNames}はこれをデフォルトモデルとして使用しています。ここでそのロールに対して有効にするか、「ロールを編集」でデフォルトを変更してください。} other {{roleNames}はこれをデフォルトモデルとして使用しています。ここでそれらのロールに対して有効にするか、「ロールを編集」でデフォルトを変更してください。}}"}
+{"file":"main","op":"add","index":3506,"key":"Aiirl9xQIx","beforeEn":null,"afterEn":"Match a specific tone","afterJa":"特定のトーンに合わせる"}
+{"file":"main","op":"add","index":3529,"key":"AmzBg2eNQN","beforeEn":null,"afterEn":"Cancel now","afterJa":"今すぐキャンセル"}
+{"file":"main","op":"add","index":3542,"key":"ApTgM/89UL","beforeEn":null,"afterEn":"All apps","afterJa":"すべてのアプリ"}
+{"file":"main","op":"add","index":3573,"key":"Aw6Et5mknp","beforeEn":null,"afterEn":"{n} closed","afterJa":"{n}件クローズ済み"}
+{"file":"main","op":"add","index":3623,"key":"B3hh8QZ0gi","beforeEn":null,"afterEn":"Remove this group from all {count, plural, one {# project} other {# projects}}?","afterJa":"このグループをすべての{count, plural, one {#個のプロジェクト} other {#個のプロジェクト}}から削除しますか？"}
+{"file":"main","op":"add","index":3641,"key":"B6peXDhgLV","beforeEn":null,"afterEn":"Customize project icon and color","afterJa":"プロジェクトのアイコンとカラーをカスタマイズ"}
+{"file":"main","op":"add","index":3643,"key":"B7SuK4Lkp1","beforeEn":null,"afterEn":"Inbox triage","afterJa":"受信トレイの整理"}
+{"file":"main","op":"add","index":3654,"key":"B9ZHj6hwmR","beforeEn":null,"afterEn":"Think through an architecture decision","afterJa":"アーキテクチャの決定を検討する"}
+{"file":"main","op":"add","index":3662,"key":"BBcw8gOPTr","beforeEn":null,"afterEn":"Design a rubric","afterJa":"ルーブリックを設計する"}
+{"file":"main","op":"add","index":3686,"key":"BErmRmVag4","beforeEn":null,"afterEn":"Couldn't load plugins from this marketplace.","afterJa":"このマーケットプレイスからプラグインを読み込めませんでした。"}
+{"file":"main","op":"add","index":3709,"key":"BJiga473hq","beforeEn":null,"afterEn":"Could not submit the review.","afterJa":"レビューを送信できませんでした。"}
+{"file":"main","op":"add","index":3736,"key":"BQ9NIpYVZL","beforeEn":null,"afterEn":"Let Claude navigate, click, and fill forms in your Chrome browser.","afterJa":"ClaudeがChromeブラウザでナビゲート、クリック、フォームへの入力を行えるようにします。"}
+{"file":"main","op":"add","index":3740,"key":"BR1hQiWywY","beforeEn":null,"afterEn":"Next: {preview}","afterJa":"次へ: {preview}"}
+{"file":"main","op":"add","index":3771,"key":"BWbFtQShJ3","beforeEn":null,"afterEn":"Make practice quiz from notes","afterJa":"ノートから練習クイズを作成する"}
+{"file":"main","op":"add","index":3799,"key":"Bb4pbYAV1l","beforeEn":null,"afterEn":"Community connectors have undergone automated reviews and safety checks. They may not yet meet the quality tier of verified connectors. <a>Learn more</a>.","afterJa":"コミュニティコネクタは自動レビューと安全性チェックを受けています。認証済みコネクタの品質基準をまだ満たしていない場合があります。<a>詳細はこちら</a>。"}
+{"file":"main","op":"add","index":3833,"key":"BixyJI+yq4","beforeEn":null,"afterEn":"Design a study","afterJa":"スタディを設計する"}
+{"file":"main","op":"update","index":3865,"key":"BpM+iSIqxC","beforeEn":"Something went wrong on our end — try again in a moment. If it persists, check status.claude.com.","afterEn":"Something went wrong. Try again in a moment. If it persists, check {statusUrl}.","afterJa":"こちら側で問題が発生しました。しばらくしてからもう一度お試しください。問題が続く場合は、status.claude.com をご確認ください。"}
+{"file":"main","op":"add","index":3872,"key":"BqIUAMuHHA","beforeEn":null,"afterEn":"Group members lose access to those projects. This can't be undone.","afterJa":"グループメンバーはそれらのプロジェクトへのアクセス権を失います。この操作は元に戻せません。"}
+{"file":"main","op":"add","index":4001,"key":"CJULOHQqvx","beforeEn":null,"afterEn":"Spend breakdown","afterJa":"支出内訳"}
+{"file":"main","op":"add","index":4044,"key":"CU36oS9zvY","beforeEn":null,"afterEn":"Turn analysis into stakeholder summary","afterJa":"分析結果をステークホルダー向けサマリーにまとめる"}
+{"file":"main","op":"add","index":4046,"key":"CU8HHZG6dx","beforeEn":null,"afterEn":"Talk through a bug","afterJa":"バグについて一緒に考える"}
+{"file":"main","op":"add","index":4057,"key":"CVtmM8knic","beforeEn":null,"afterEn":"Runs even when this computer is off","afterJa":"このコンピューターがオフのときでも実行されます"}
+{"file":"main","op":"add","index":4058,"key":"CVx0XJzbzI","beforeEn":null,"afterEn":"Outline an essay","afterJa":"エッセイのアウトラインを作成する"}
+{"file":"main","op":"add","index":4084,"key":"Cdy8ITyoSK","beforeEn":null,"afterEn":"No skills used in this period","afterJa":"この期間中に使用されたスキルはありません"}
+{"file":"main","op":"add","index":4098,"key":"ChdMcNa2Uj","beforeEn":null,"afterEn":"Couldn't load Claude Tag analytics","afterJa":"Claude Tagの分析データを読み込めませんでした"}
+{"file":"main","op":"add","index":4124,"key":"CltSpctXI+","beforeEn":null,"afterEn":"De-escalate an upset customer","afterJa":"怒っているお客様を落ち着かせる"}
+{"file":"main","op":"add","index":4143,"key":"Cpkdmx1r5L","beforeEn":null,"afterEn":"Converted to draft.","afterJa":"ドラフトに変換しました。"}
+{"file":"main","op":"add","index":4172,"key":"CxK8gP9ZRi","beforeEn":null,"afterEn":"+{count} more in the full log","afterJa":"フルログにさらに{count}件あります"}
+{"file":"main","op":"add","index":4173,"key":"CxMWN7HjHC","beforeEn":null,"afterEn":"Previous options","afterJa":"前のオプション"}
+{"file":"main","op":"add","index":4174,"key":"CxUh+WY9Q1","beforeEn":null,"afterEn":"Summarize paper into key points","afterJa":"論文を要点にまとめる"}
+{"file":"main","op":"add","index":4184,"key":"D+RejJrZDn","beforeEn":null,"afterEn":"Build problem set with answer key","afterJa":"解答付きの問題セットを作成する"}
+{"file":"main","op":"add","index":4185,"key":"D+ZFS/jiQh","beforeEn":null,"afterEn":"Red","afterJa":"レッド"}
+{"file":"main","op":"add","index":4196,"key":"D1S12O0SBS","beforeEn":null,"afterEn":"{n, plural, one {<v>#</v> tool use} other {<v>#</v> tool uses}}","afterJa":"{n, plural, one {<v>#</v> ツール使用} other {<v>#</v> ツール使用}}"}
+{"file":"main","op":"add","index":4247,"key":"DDucoRrbDD","beforeEn":null,"afterEn":"<b>More granular usage reporting.</b> Code Review, security features, voice mode, and Claude Tag now appear as their own line items instead of being grouped under Claude Code and chat.","afterJa":"<b>より詳細な使用状況レポート。</b> コードレビュー、セキュリティ機能、音声モード、Claude Tagが、Claude Codeとチャットにまとめられるのではなく、それぞれ独立した項目として表示されるようになりました。"}
+{"file":"main","op":"add","index":4254,"key":"DElvKknWWM","beforeEn":null,"afterEn":"Let’s clear a few more to-dos.","afterJa":"もう少しタスクを片付けましょう。"}
+{"file":"main","op":"add","index":4256,"key":"DF/fC1ZiQ9","beforeEn":null,"afterEn":"Organize the inbox","afterJa":"受信トレイを整理する"}
+{"file":"main","op":"add","index":4309,"key":"DSBEjdoxlP","beforeEn":null,"afterEn":"Can't move this task because its file couldn't be read.","afterJa":"ファイルを読み取れなかったため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":4355,"key":"DcX8QkWq8V","beforeEn":null,"afterEn":"Set up daily morning briefing","afterJa":"毎日の朝のブリーフィングを設定する"}
+{"file":"main","op":"add","index":4359,"key":"Dd2QGejip9","beforeEn":null,"afterEn":"Set the model for this session","afterJa":"このセッションのモデルを設定する"}
+{"file":"main","op":"add","index":4372,"key":"DhR52l7TJT","beforeEn":null,"afterEn":"Build checklist for project","afterJa":"プロジェクトのチェックリストを作成する"}
+{"file":"main","op":"add","index":4411,"key":"DpEpJZhWmS","beforeEn":null,"afterEn":"Walk through a client framework","afterJa":"クライアントフレームワークを説明する"}
+{"file":"main","op":"add","index":4479,"key":"E1nrWlcJOJ","beforeEn":null,"afterEn":"Write tests for this","afterJa":"テストを作成する"}
+{"file":"main","op":"add","index":4480,"key":"E2iV40Uf5G","beforeEn":null,"afterEn":"{n, plural, one {# draft} other {# drafts}}","afterJa":"{n, plural, one {#件の下書き} other {#件の下書き}}"}
+{"file":"main","op":"add","index":4482,"key":"E3l0vqPtFH","beforeEn":null,"afterEn":"Waiting for a runner — none online","afterJa":"ランナーを待っています — オンラインのランナーがいません"}
+{"file":"main","op":"add","index":4512,"key":"EACUtqBvI8","beforeEn":null,"afterEn":"Showing the first {count} files. Open on GitHub for the full list.","afterJa":"最初の{count}件のファイルを表示しています。全一覧はGitHubで確認してください。"}
+{"file":"main","op":"add","index":4531,"key":"EEDYq58zfP","beforeEn":null,"afterEn":"Content ideas","afterJa":"コンテンツアイデア"}
+{"file":"main","op":"add","index":4578,"key":"EQZTQdYSJR","beforeEn":null,"afterEn":"{n, plural, one {Edited a file} other {Edited # files}}","afterJa":"{n, plural, one {ファイルを1つ編集しました} other {ファイルを # 個編集しました}}"}
+{"file":"main","op":"add","index":4594,"key":"EV3VLFoNvB","beforeEn":null,"afterEn":"Brainstorm edge cases for feature","afterJa":"機能のエッジケースを洗い出す"}
+{"file":"main","op":"add","index":4615,"key":"EYNe7Eg0a0","beforeEn":null,"afterEn":"Globe","afterJa":"地球儀"}
+{"file":"main","op":"add","index":4620,"key":"EZHj/2HRyC","beforeEn":null,"afterEn":"Browse workflow history (running and completed)","afterJa":"ワークフローの履歴を閲覧する（実行中および完了済み）"}
+{"file":"main","op":"add","index":4638,"key":"EeC9Bj6Poe","beforeEn":null,"afterEn":"I want to run a few things at once. Ask me what's on my plate, then split it into separate tasks you can work on in parallel, one window each. For each, confirm the goal and what you need from me before you start.","afterJa":"複数のことを同時に進めたいです。今抱えているタスクを聞いてから、並行して取り組める別々のタスクに分割し、それぞれ別のウィンドウで進めてください。各タスクについて、開始前に目標と必要な情報を確認してください。"}
+{"file":"main","op":"add","index":4639,"key":"EeM7d96E1f","beforeEn":null,"afterEn":"No checks reported yet.","afterJa":"チェックはまだ報告されていません。"}
+{"file":"main","op":"add","index":4709,"key":"EtTRucBpjC","beforeEn":null,"afterEn":"read page content on","afterJa":"ページコンテンツを読み取る"}
+{"file":"main","op":"add","index":4716,"key":"EujYralgkK","beforeEn":null,"afterEn":"Prep a hard conversation","afterJa":"難しい会話の準備をする"}
+{"file":"main","op":"add","index":4717,"key":"Euqg1P5la6","beforeEn":null,"afterEn":"Claude will not purchase items, create accounts, or bypass captchas without input. Revoke in Settings.","afterJa":"Claudeは入力なしにアイテムの購入、アカウントの作成、キャプチャの回避を行いません。設定から取り消せます。"}
+{"file":"main","op":"add","index":4721,"key":"EvSVRspdrG","beforeEn":null,"afterEn":"Help me create a skill: a reusable set of instructions you'll follow the same way every time. Ask me what task I want to capture, draft the skill, then test it with me on one example.","afterJa":"スキルの作成を手伝ってください。スキルとは、毎回同じ方法で実行する再利用可能な指示セットです。どのタスクをまとめたいか聞いてから、スキルを下書きし、一つの例で一緒にテストしてください。"}
+{"file":"main","op":"add","index":4779,"key":"F6Wn2a07H2","beforeEn":null,"afterEn":"Select folder {name}","afterJa":"「{name}」フォルダを選択"}
+{"file":"main","op":"add","index":4785,"key":"F7CDzrk0uR","beforeEn":null,"afterEn":"Couldn't load organization settings. Refresh the page to try again.","afterJa":"組織の設定を読み込めませんでした。ページを更新して再試行してください。"}
+{"file":"main","op":"add","index":4816,"key":"FEmgAgxEy+","beforeEn":null,"afterEn":"Analyze ticket themes","afterJa":"チケットのテーマを分析する"}
+{"file":"main","op":"add","index":4841,"key":"FJf5yaYhy+","beforeEn":null,"afterEn":"Turn research into design decisions","afterJa":"リサーチをデザイン方針に変換する"}
+{"file":"main","op":"add","index":4865,"key":"FPKyCHGZ6H","beforeEn":null,"afterEn":"No Claude Tag activity yet","afterJa":"まだClaude Tagのアクティビティはありません"}
+{"file":"main","op":"add","index":4881,"key":"FSGsSoz7Et","beforeEn":null,"afterEn":"Discover this group","afterJa":"このグループを検索"}
+{"file":"main","op":"add","index":4883,"key":"FSoCx5qHMV","beforeEn":null,"afterEn":"Always use the model Anthropic recommends for enterprise use. Currently, in Chat it is {chatModel}. This will update automatically when new models are released.","afterJa":"Anthropicがエンタープライズ向けに推奨するモデルを常に使用します。現在、Chatでは{chatModel}です。新しいモデルがリリースされると、自動的に更新されます。"}
+{"file":"main","op":"add","index":4901,"key":"FX0tSA4AY5","beforeEn":null,"afterEn":"Checks","afterJa":"チェック"}
+{"file":"main","op":"add","index":4902,"key":"FXC2xoQdMT","beforeEn":null,"afterEn":"I’ll organize your expense reports","afterJa":"経費レポートを整理します"}
+{"file":"main","op":"add","index":4903,"key":"FXHsbASnyb","beforeEn":null,"afterEn":"Research a target account","afterJa":"ターゲットアカウントを調査する"}
+{"file":"main","op":"add","index":4910,"key":"FYQ4QGoMVV","beforeEn":null,"afterEn":"You've hit your monthly spend limit and you're out of credits. Increase your spend limit to keep using {model} or switch models to continue this chat.","afterJa":"月間の利用上限に達し、クレジットが不足しています。{model}を引き続きご利用いただくには利用上限を引き上げるか、モデルを切り替えてこのチャットを続けてください。"}
+{"file":"main","op":"add","index":4930,"key":"Fg4jahtuGI","beforeEn":null,"afterEn":"Unable to update payment method. Try again.","afterJa":"お支払い方法を更新できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":4975,"key":"Fo4ELLfG0m","beforeEn":null,"afterEn":"Write this campaign brief","afterJa":"キャンペーンブリーフを作成する"}
+{"file":"main","op":"add","index":4980,"key":"Fp2WZKMqap","beforeEn":null,"afterEn":"Pull request sections","afterJa":"プルリクエストのセクション"}
+{"file":"main","op":"add","index":4995,"key":"FrYWrD+ugo","beforeEn":null,"afterEn":"Start on {host} with worktree","afterJa":"{host} で worktree を使って開始"}
+{"file":"main","op":"add","index":5033,"key":"FzT2BJrcgD","beforeEn":null,"afterEn":"Build launch checklist for feature","afterJa":"機能のリリースチェックリストを作成する"}
+{"file":"main","op":"add","index":5065,"key":"G6WKbR76ah","beforeEn":null,"afterEn":"Collapse {name}","afterJa":"{name}を折りたたむ"}
+{"file":"main","op":"add","index":5161,"key":"GMzROedzzb","beforeEn":null,"afterEn":"This group keeps access to its <b>{count, plural, one {# current project} other {# current projects}}</b>. These settings apply to future sharing only.","afterJa":"このグループは<b>{count, plural, one {#個の現在のプロジェクト} other {#個の現在のプロジェクト}}</b>へのアクセス権を保持します。これらの設定は今後の共有にのみ適用されます。"}
+{"file":"main","op":"add","index":5162,"key":"GNhfI6A7Ae","beforeEn":null,"afterEn":"Handle this objection","afterJa":"この反論に対処する"}
+{"file":"main","op":"add","index":5181,"key":"GSCb+Oqi5n","beforeEn":null,"afterEn":"Build a usability test script","afterJa":"ユーザビリティテストのスクリプトを作成する"}
+{"file":"main","op":"add","index":5215,"key":"GbHtvCkeVk","beforeEn":null,"afterEn":"Organize the screenshots","afterJa":"スクリーンショットを整理する"}
+{"file":"main","op":"add","index":5225,"key":"Ge1jDAHYPS","beforeEn":null,"afterEn":"Allow members to see where their spend is going on their Usage page.","afterJa":"メンバーが利用状況ページで支出の内訳を確認できるようにします。"}
+{"file":"main","op":"add","index":5226,"key":"Ge5VOAAKcP","beforeEn":null,"afterEn":"The Code session used for {name} is no longer running. Open a Code session that loads this connector, then try Connect again.","afterJa":"{name}に使用されていたCodeセッションは実行されていません。このコネクターを読み込むCodeセッションを開いてから、再度「Connect」をお試しください。"}
+{"file":"main","op":"add","index":5282,"key":"GsGfeDIrsh","beforeEn":null,"afterEn":"Triage and route support tickets","afterJa":"サポートチケットのトリアージと振り分けを行う"}
+{"file":"main","op":"add","index":5285,"key":"GtAcLnipgA","beforeEn":null,"afterEn":"This group keeps access to its current projects. These settings apply to future sharing only.","afterJa":"このグループは現在のプロジェクトへのアクセス権を保持します。これらの設定は今後の共有にのみ適用されます。"}
+{"file":"main","op":"add","index":5290,"key":"GtkBUBqY+2","beforeEn":null,"afterEn":"Build onboarding guide for team","afterJa":"チーム向けオンボーディングガイドを作成する"}
+{"file":"main","op":"add","index":5366,"key":"HBM8cORuT0","beforeEn":null,"afterEn":"Beaker","afterJa":"ビーカー"}
+{"file":"main","op":"add","index":5374,"key":"HDBCx+9LA2","beforeEn":null,"afterEn":"Explain this codebase","afterJa":"このコードベースを説明する"}
+{"file":"main","op":"add","index":5418,"key":"HLYDf/ssVK","beforeEn":null,"afterEn":"Scroll pinned back","afterJa":"スクロールが固定に戻りました"}
+{"file":"main","op":"add","index":5427,"key":"HO1E60oXwJ","beforeEn":null,"afterEn":"Key can only access this organization's data.","afterJa":"このキーは、この組織のデータにのみアクセスできます。"}
+{"file":"main","op":"add","index":5448,"key":"HU7df83VaI","beforeEn":null,"afterEn":"Decide on a modeling approach","afterJa":"モデリングアプローチを決定する"}
+{"file":"main","op":"add","index":5475,"key":"Hc/klxTI1T","beforeEn":null,"afterEn":"Create README for project","afterJa":"プロジェクトのREADMEを作成する"}
+{"file":"main","op":"add","index":5504,"key":"Hi4SZcxpWO","beforeEn":null,"afterEn":"{count, plural, one {# group} other {# groups}} couldn't be updated.","afterJa":"{count, plural, one {#個のグループ} other {#個のグループ}}を更新できませんでした。"}
+{"file":"main","op":"add","index":5514,"key":"HkVkEDcOb/","beforeEn":null,"afterEn":"No connectors available.","afterJa":"利用可能なコネクタはありません。"}
+{"file":"main","op":"add","index":5545,"key":"HtEHx2ZlDB","beforeEn":null,"afterEn":"Pull request merged.","afterJa":"プルリクエストをマージしました。"}
+{"file":"main","op":"add","index":5575,"key":"I07xsbP2z8","beforeEn":null,"afterEn":"Stops trying runners and removes the session from this queue.","afterJa":"ランナーへの試行を停止し、このキューからセッションを削除します。"}
+{"file":"main","op":"add","index":5622,"key":"IEYy8tF4YP","beforeEn":null,"afterEn":"Couldn't move this task to the cloud. You can try again.","afterJa":"このタスクをクラウドに移動できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":5625,"key":"IEuiu0Le1A","beforeEn":null,"afterEn":"Draft grant paragraph from aims","afterJa":"目標からグラント申請文を作成する"}
+{"file":"main","op":"add","index":5629,"key":"IFeZWF1isa","beforeEn":null,"afterEn":"Verify statistics against raw data","afterJa":"生データと統計を照合する"}
+{"file":"main","op":"add","index":5640,"key":"IHoDRTLETT","beforeEn":null,"afterEn":"Your organization's encryption key is unavailable.","afterJa":"組織の暗号化キーが利用できません。"}
+{"file":"main","op":"add","index":5685,"key":"ITEqWAsWl4","beforeEn":null,"afterEn":"opened","afterJa":"オープン"}
+{"file":"main","op":"add","index":5696,"key":"IUeKIfGAz1","beforeEn":null,"afterEn":"Polish a policy draft","afterJa":"ポリシー草案を洗練させる"}
+{"file":"main","op":"add","index":5709,"key":"IXFqlCVQjM","beforeEn":null,"afterEn":"Build a data collection checklist","afterJa":"データ収集チェックリストを作成する"}
+{"file":"main","op":"add","index":5742,"key":"If0eKeGPcM","beforeEn":null,"afterEn":"Explain something","afterJa":"何かを説明する"}
+{"file":"main","op":"add","index":5750,"key":"IgQLf7l1Vv","beforeEn":null,"afterEn":"Draft this legal document","afterJa":"この法的文書の草案を作成する"}
+{"file":"main","op":"add","index":5761,"key":"IilZDLM33s","beforeEn":null,"afterEn":"Reload plugins and refresh available commands","afterJa":"プラグインを再読み込みして利用可能なコマンドを更新する"}
+{"file":"main","op":"add","index":5765,"key":"IjwdUnNvpH","beforeEn":null,"afterEn":"Review your own work and flag anything you'd fix before I ship this.","afterJa":"自分の作業を見直して、リリース前に修正すべき点があれば指摘してください。"}
+{"file":"main","op":"add","index":5784,"key":"IoQEfDybBf","beforeEn":null,"afterEn":"Draft clause for agreement","afterJa":"契約書の条項を下書きする"}
+{"file":"main","op":"add","index":5793,"key":"IqGnJ/0H6a","beforeEn":null,"afterEn":"Only this organization: {orgName}","afterJa":"この組織のみ：{orgName}"}
+{"file":"main","op":"add","index":5813,"key":"IuG5lP6aep","beforeEn":null,"afterEn":"This doesn't affect future sharing.","afterJa":"今後の共有には影響しません。"}
+{"file":"main","op":"add","index":5822,"key":"IwY5rMb9GM","beforeEn":null,"afterEn":"{granularity, select, weekly {Weekly} other {Daily}} spend by {groupBy, select, model_tier {model} other {product}}","afterJa":"{granularity, select, weekly {週次} other {日次}}{groupBy, select, model_tier {モデル} other {製品}}別の支出"}
+{"file":"main","op":"add","index":5852,"key":"J1Y/kwmQJi","beforeEn":null,"afterEn":"Let’s knock something off your list","afterJa":"リストのタスクを片付けましょう"}
+{"file":"main","op":"add","index":5860,"key":"J2RNjCfahB","beforeEn":null,"afterEn":"Applies to your whole Claude account, not just this Conway.","afterJa":"このConwayだけでなく、Claudeアカウント全体に適用されます。"}
+{"file":"main","op":"add","index":5865,"key":"J3bcagwxsM","beforeEn":null,"afterEn":"Apply to {count, plural, one {# group} other {# groups}}","afterJa":"{count, plural, one {#個のグループ} other {#個のグループ}}に適用"}
+{"file":"main","op":"add","index":5866,"key":"J3ca41Hqe7","beforeEn":null,"afterEn":"Play","afterJa":"再生"}
+{"file":"main","op":"add","index":5938,"key":"JL9KMdh73P","beforeEn":null,"afterEn":"Total: {value}","afterJa":"合計: {value}"}
+{"file":"main","op":"add","index":5946,"key":"JLz64kFc0G","beforeEn":null,"afterEn":"Key can access every organization under your parent organization.","afterJa":"このキーは、親組織配下のすべての組織にアクセスできます。"}
+{"file":"main","op":"add","index":5977,"key":"JRai3cSB9+","beforeEn":null,"afterEn":"Build a proposal","afterJa":"提案書を作成する"}
+{"file":"main","op":"add","index":5982,"key":"JT+8Wpd3Xi","beforeEn":null,"afterEn":"Build a contract review checklist","afterJa":"契約書レビューチェックリストを作成する"}
+{"file":"main","op":"add","index":5993,"key":"JUaAXCiVQy","beforeEn":null,"afterEn":"Visible from web and your other devices","afterJa":"ウェブおよびその他のデバイスから表示できます"}
+{"file":"main","op":"add","index":6022,"key":"JaapJ2mLtS","beforeEn":null,"afterEn":"Steer now","afterJa":"今すぐ誘導する"}
+{"file":"main","op":"add","index":6122,"key":"JvQbFIPQj2","beforeEn":null,"afterEn":"Office Agents","afterJa":"オフィスエージェント"}
+{"file":"main","op":"add","index":6149,"key":"K0NZC/dh60","beforeEn":null,"afterEn":"Loading failure details","afterJa":"失敗の詳細を読み込み中"}
+{"file":"main","op":"add","index":6176,"key":"K5ilWETV8J","beforeEn":null,"afterEn":"Build outline from research","afterJa":"リサーチからアウトラインを作成する"}
+{"file":"main","op":"add","index":6183,"key":"K7GG29OKwB","beforeEn":null,"afterEn":"Turn notes into key themes","afterJa":"ノートをキーテーマに変換する"}
+{"file":"main","op":"add","index":6229,"key":"KL07b/EeY+","beforeEn":null,"afterEn":"Write UX copy for flow","afterJa":"フロー用のUXコピーを書く"}
+{"file":"main","op":"add","index":6257,"key":"KRxtdpXm98","beforeEn":null,"afterEn":"No spend in this period","afterJa":"この期間中に支出はありません"}
+{"file":"main","op":"add","index":6294,"key":"KZLq5bztQk","beforeEn":null,"afterEn":"Be more productive","afterJa":"生産性を高める"}
+{"file":"main","op":"add","index":6295,"key":"KZVLRZPNPH","beforeEn":null,"afterEn":"Collapse queued messages","afterJa":"キューに入ったメッセージを折りたたむ"}
+{"file":"main","op":"add","index":6320,"key":"KfJgf74mrY","beforeEn":null,"afterEn":"Draft a landing page","afterJa":"ランディングページを下書きする"}
+{"file":"main","op":"add","index":6391,"key":"KuPs4BiVJJ","beforeEn":null,"afterEn":"Git branch","afterJa":"Gitブランチ"}
+{"file":"main","op":"add","index":6471,"key":"L8WEvsaZdM","beforeEn":null,"afterEn":"Merge conflicts with the base branch","afterJa":"ベースブランチとのマージコンフリクト"}
+{"file":"main","op":"add","index":6481,"key":"LBVopskdbE","beforeEn":null,"afterEn":"[Attachment]","afterJa":"[添付ファイル]"}
+{"file":"main","op":"add","index":6498,"key":"LGBVBg+osr","beforeEn":null,"afterEn":"Anthropic skills","afterJa":"Anthropicのスキル"}
+{"file":"main","op":"add","index":6502,"key":"LGqEp7vUY8","beforeEn":null,"afterEn":"Watcher script failed","afterJa":"ウォッチャースクリプトが失敗しました"}
+{"file":"main","op":"add","index":6530,"key":"LMZIn+YfEK","beforeEn":null,"afterEn":"Ask a quick side question without adding to the conversation","afterJa":"会話に追加せず、簡単な質問をする"}
+{"file":"main","op":"add","index":6537,"key":"LP36wWWUbv","beforeEn":null,"afterEn":"Summarize call for CRM","afterJa":"CRM用に通話内容を要約する"}
+{"file":"main","op":"add","index":6559,"key":"LTXDpDeCZH","beforeEn":null,"afterEn":"Summarize this case or ruling","afterJa":"この判例または判決を要約する"}
+{"file":"main","op":"add","index":6566,"key":"LUi2VlLRx8","beforeEn":null,"afterEn":"Sign in again to continue","afterJa":"続行するには、もう一度サインインしてください"}
+{"file":"main","op":"add","index":6586,"key":"LZQxvmyyxb","beforeEn":null,"afterEn":"Choose which Claude models members can use. This applies to Chat, Cowork, and Claude Code.","afterJa":"メンバーが使用できるClaudeモデルを選択してください。これはChat、Cowork、Claude Codeに適用されます。"}
+{"file":"main","op":"add","index":6591,"key":"LZoUTcWgKL","beforeEn":null,"afterEn":"Walk through a statistical choice","afterJa":"統計的な選択肢をわかりやすく説明する"}
+{"file":"main","op":"add","index":6598,"key":"LbG0JadKcM","beforeEn":null,"afterEn":"Build customer personas from research","afterJa":"リサーチからカスタマーペルソナを作成する"}
+{"file":"main","op":"add","index":6607,"key":"Lcl8GOddRD","beforeEn":null,"afterEn":"Heart in hand","afterJa":"手のひらのハート"}
+{"file":"main","op":"add","index":6629,"key":"Lif8mnYSW5","beforeEn":null,"afterEn":"Clone the repository {slug} into this session.","afterJa":"このセッションにリポジトリ {slug} をクローンします。"}
+{"file":"main","op":"add","index":6632,"key":"LjWVoK2Q58","beforeEn":null,"afterEn":"It can't be opened here, but it may still exist on disk.","afterJa":"ここでは開くことができませんが、ディスク上にまだ存在している可能性があります。"}
+{"file":"main","op":"add","index":6667,"key":"Lrr5Vpq8Qw","beforeEn":null,"afterEn":"No skills from partners yet.","afterJa":"パートナーからのスキルはまだありません。"}
+{"file":"main","op":"add","index":6732,"key":"M3SjQ1vrVs","beforeEn":null,"afterEn":"navigate to","afterJa":"移動する"}
+{"file":"main","op":"add","index":6737,"key":"M56d6aRPai","beforeEn":null,"afterEn":"Tabs","afterJa":"タブ"}
+{"file":"main","op":"add","index":6752,"key":"M7kI9A3RMf","beforeEn":null,"afterEn":"Chat with Claude or switch to Cowork and Claude will research, build, and keep going independently.","afterJa":"Claudeとチャットするか、Coworkに切り替えると、Claudeが自律的にリサーチ・構築を行い、作業を続けます。"}
+{"file":"main","op":"add","index":6766,"key":"M9p4JX8EtT","beforeEn":null,"afterEn":"Connect Google Drive, then show me what's there: list my most recently edited docs, tell me which ones look unfinished or have open comments, and suggest what to tackle first. If Drive isn't connected, help me connect it first.","afterJa":"Google Driveを接続してから、内容を確認してください。最近編集したドキュメントを一覧表示し、未完成のものや未解決のコメントがあるものを教えて、最初に取り組むべきものを提案してください。Driveが未接続の場合は、まず接続を手伝ってください。"}
+{"file":"main","op":"add","index":6772,"key":"MBDduoSHDZ","beforeEn":null,"afterEn":"It’s late-night","afterJa":"夜遅いですね。"}
+{"file":"main","op":"add","index":6868,"key":"MWfHk82f/K","beforeEn":null,"afterEn":"Analyze this campaign's performance","afterJa":"このキャンペーンのパフォーマンスを分析する"}
+{"file":"main","op":"add","index":6928,"key":"MgWucuHwm1","beforeEn":null,"afterEn":"Open a pull request for this session's branch","afterJa":"このセッションのブランチのプルリクエストを開く"}
+{"file":"main","op":"add","index":6983,"key":"MrtHXsLcpU","beforeEn":null,"afterEn":"{count, plural, one {# commit} other {# commits}}","afterJa":"{count, plural, one {# コミット} other {# コミット}}"}
+{"file":"main","op":"add","index":6985,"key":"Msi6cNuY7m","beforeEn":null,"afterEn":"Can you turn this into a formatted file? I'd like it as a doc, spreadsheet, slide deck, or PDF.","afterJa":"これをフォーマットされたファイルに変換できますか？ドキュメント、スプレッドシート、スライドデッキ、またはPDFでお願いします。"}
+{"file":"main","op":"add","index":6999,"key":"MvEG4QtQig","beforeEn":null,"afterEn":"Set up {name}","afterJa":"{name}をセットアップ"}
+{"file":"main","op":"add","index":7005,"key":"MwgTtpRpxP","beforeEn":null,"afterEn":"Open a Code session that loads this connector, then try again","afterJa":"このコネクターを読み込むCodeセッションを開いてから、再試行してください。"}
+{"file":"main","op":"add","index":7028,"key":"N0Xxd96Qs/","beforeEn":null,"afterEn":"A short brief before each meeting on your calendar, covering attendees, context, and agenda.","afterJa":"カレンダーの各会議の前に、参加者・背景・アジェンダをまとめた簡単な概要をお届けします。"}
+{"file":"main","op":"add","index":7029,"key":"N0cHZhsvyw","beforeEn":null,"afterEn":"Let org members run dynamic workflows in Claude Code.","afterJa":"組織のメンバーがClaude Codeで動的なワークフローを実行できるようにします。"}
+{"file":"main","op":"add","index":7055,"key":"N5jE8T3AyM","beforeEn":null,"afterEn":"Scroll pinned","afterJa":"スクロール固定"}
+{"file":"main","op":"add","index":7058,"key":"N6ofPFbNFr","beforeEn":null,"afterEn":"Organize the hiring docs folder","afterJa":"採用書類フォルダを整理する"}
+{"file":"main","op":"add","index":7060,"key":"N70rcMiQnt","beforeEn":null,"afterEn":"Claude Tag in Slack","afterJa":"SlackのClaudeタグ"}
+{"file":"main","op":"add","index":7061,"key":"N7BX+4/yxw","beforeEn":null,"afterEn":"Let’s tackle something together","afterJa":"一緒に取り組みましょう。"}
+{"file":"main","op":"add","index":7099,"key":"NHI5eIky7V","beforeEn":null,"afterEn":"Repository and pull request controls","afterJa":"リポジトリとプルリクエストのコントロール"}
+{"file":"main","op":"add","index":7119,"key":"NLSvjhxxpO","beforeEn":null,"afterEn":"Merge","afterJa":"マージ"}
+{"file":"main","op":"add","index":7167,"key":"NW10/2BE9S","beforeEn":null,"afterEn":"Lightbulb","afterJa":"電球"}
+{"file":"main","op":"add","index":7174,"key":"NXBpHj8EDC","beforeEn":null,"afterEn":"{base} ← {head}","afterJa":"{base} ← {head}"}
+{"file":"main","op":"add","index":7178,"key":"NYIUvyNMk9","beforeEn":null,"afterEn":"Connection to {name} was lost.","afterJa":"{name}との接続が切断されました。"}
+{"file":"main","op":"add","index":7225,"key":"NjnPLJXUWk","beforeEn":null,"afterEn":"No custom roles can use this model","afterJa":"このモデルを使用できるカスタムロールはありません"}
+{"file":"main","op":"add","index":7227,"key":"Njzrp0wznh","beforeEn":null,"afterEn":"Project color","afterJa":"プロジェクトカラー"}
+{"file":"main","op":"add","index":7236,"key":"Nl3KrbQLZ5","beforeEn":null,"afterEn":"Enabled for everyone.","afterJa":"全員に対して有効です。"}
+{"file":"main","op":"add","index":7265,"key":"Nr4XzpHpNX","beforeEn":null,"afterEn":"No file changes in this pull request.","afterJa":"このプルリクエストにファイルの変更はありません。"}
+{"file":"main","op":"add","index":7281,"key":"NvLOMcQLXz","beforeEn":null,"afterEn":"Teach me your workflows and I’ll follow them every time","afterJa":"ワークフローを教えていただければ、毎回その通りに実行します"}
+{"file":"main","op":"add","index":7301,"key":"Nyr5m/EuCd","beforeEn":null,"afterEn":"Couldn't load the full member list — showing a partial set.","afterJa":"メンバーリスト全体を読み込めませんでした。一部のみ表示しています。"}
+{"file":"main","op":"add","index":7307,"key":"NzslIeY3bu","beforeEn":null,"afterEn":"Critique this design","afterJa":"このデザインを批評する"}
+{"file":"main","op":"add","index":7321,"key":"O16cAwg3sC","beforeEn":null,"afterEn":"Turn ticket into PR plan","afterJa":"チケットをPR計画に変換する"}
+{"file":"main","op":"add","index":7375,"key":"OE1/580W56","beforeEn":null,"afterEn":"Draft — not ready for review","afterJa":"ドラフト — レビュー準備未完了"}
+{"file":"main","op":"add","index":7393,"key":"OK7pSgahvl","beforeEn":null,"afterEn":"No cloud environment is available for this project. Create one first.","afterJa":"このプロジェクトで利用可能なクラウド環境がありません。先に作成してください。"}
+{"file":"main","op":"add","index":7409,"key":"ONVOjGlkE7","beforeEn":null,"afterEn":"Draft SOP from notes","afterJa":"ノートからSOPの下書きを作成する"}
+{"file":"main","op":"add","index":7412,"key":"OO9qWO1CJg","beforeEn":null,"afterEn":"Explain this concept 3 ways","afterJa":"このコンセプトを3通りで説明する"}
+{"file":"main","op":"add","index":7482,"key":"Oghz/K33BQ","beforeEn":null,"afterEn":"Prep call doc from calendar","afterJa":"カレンダーから通話準備ドキュメントを作成する"}
+{"file":"main","op":"add","index":7530,"key":"OqkaD0yYDg","beforeEn":null,"afterEn":"No skills from Anthropic yet.","afterJa":"Anthropicからのスキルはまだありません。"}
+{"file":"main","op":"add","index":7544,"key":"OtJ/8Kh2vt","beforeEn":null,"afterEn":"This plugin provides {hookCount, plural, one {# hook} other {# hooks}} that run automatically during your session.","afterJa":"このプラグインは、セッション中に自動的に実行される{hookCount, plural, one {# 個のフック} other {# 個のフック}}を提供します。"}
+{"file":"main","op":"add","index":7546,"key":"OtTbo/szbo","beforeEn":null,"afterEn":"A project is a home for one stream of work. Sessions share memory and instructions so context carries forward, and Claude runs more autonomously.","afterJa":"プロジェクトは、一連の作業の拠点です。セッションはメモリと指示を共有するため、コンテキストが引き継がれ、Claudeがより自律的に動作します。"}
+{"file":"main","op":"add","index":7563,"key":"OvZLqew7VL","beforeEn":null,"afterEn":"Write macros for new issue","afterJa":"新しいイシュー用のマクロを作成する"}
+{"file":"main","op":"add","index":7610,"key":"P6MrmC7czR","beforeEn":null,"afterEn":"Turn incident into postmortem draft","afterJa":"インシデントをポストモーテムの下書きに変換する"}
+{"file":"main","op":"add","index":7699,"key":"PTsQGPciJY","beforeEn":null,"afterEn":"approved these changes","afterJa":"この変更を承認しました"}
+{"file":"main","op":"add","index":7710,"key":"PW7vP4L4rb","beforeEn":null,"afterEn":"Prep for this negotiation","afterJa":"この交渉に向けて準備する"}
+{"file":"main","op":"add","index":7720,"key":"Pa8zSkyOZl","beforeEn":null,"afterEn":"{failed, plural, one {# check} other {# checks}} failing","afterJa":"{failed, plural, one {# チェック} other {# チェック}}が失敗しています"}
+{"file":"main","op":"add","index":7738,"key":"PfvLoVP+Ix","beforeEn":null,"afterEn":"You can't approve or request changes on your own pull request.","afterJa":"自分のプルリクエストを承認したり変更をリクエストしたりすることはできません。"}
+{"file":"main","op":"add","index":7769,"key":"PnVrOGwcpH","beforeEn":null,"afterEn":"Close panel","afterJa":"パネルを閉じる"}
+{"file":"main","op":"add","index":7799,"key":"PuAmDdoBho","beforeEn":null,"afterEn":"Pressure-test the argument","afterJa":"論拠を徹底検証する"}
+{"file":"main","op":"add","index":7800,"key":"PuCZkTgGA9","beforeEn":null,"afterEn":"Open — no checks reported","afterJa":"オープン — チェックなし"}
+{"file":"main","op":"add","index":7834,"key":"Q/QcbOdANY","beforeEn":null,"afterEn":"Remove group","afterJa":"グループを削除"}
+{"file":"main","op":"add","index":7835,"key":"Q/fOCvyvgS","beforeEn":null,"afterEn":"Always allow saves this transition on this device. Revoke in Settings.","afterJa":"「常に許可」を選択すると、この操作がこのデバイスに保存されます。設定から取り消せます。"}
+{"file":"main","op":"add","index":7848,"key":"Q2TIls3I/b","beforeEn":null,"afterEn":"Activity","afterJa":"アクティビティ"}
+{"file":"main","op":"add","index":7854,"key":"Q4/nm9m/j6","beforeEn":null,"afterEn":"Watching","afterJa":"ウォッチ中"}
+{"file":"main","op":"add","index":7857,"key":"Q4Q++biSWW","beforeEn":null,"afterEn":"Create QA scorecard for replies","afterJa":"返信用のQAスコアカードを作成する"}
+{"file":"main","op":"add","index":7861,"key":"Q6/EH0Fb2o","beforeEn":null,"afterEn":"Your subscription can't switch payment method here. Contact support to change how you pay.","afterJa":"こちらではお支払い方法を変更できません。お支払い方法の変更については、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":7873,"key":"QAy5Te4vF/","beforeEn":null,"afterEn":"Pressure-test assumptions in the forecast","afterJa":"予測の前提を徹底検証する"}
+{"file":"main","op":"add","index":7878,"key":"QBomBfXu6v","beforeEn":null,"afterEn":"EAP","afterJa":"EAP"}
+{"file":"main","op":"add","index":7879,"key":"QDMVAE2vV1","beforeEn":null,"afterEn":"Build data dictionary from schema","afterJa":"スキーマからデータ辞書を作成する"}
+{"file":"main","op":"add","index":7906,"key":"QJ4pS82mfW","beforeEn":null,"afterEn":"Script updated","afterJa":"スクリプトを更新しました"}
+{"file":"main","op":"add","index":7917,"key":"QLQMDapb9z","beforeEn":null,"afterEn":"Draft board memo from numbers","afterJa":"数字から役員会メモを作成する"}
+{"file":"main","op":"add","index":7925,"key":"QMqvZ95GNT","beforeEn":null,"afterEn":"Plan unit backward from assessment","afterJa":"評価から単元を逆算して計画する"}
+{"file":"main","op":"add","index":7940,"key":"QREssrXerV","beforeEn":null,"afterEn":"Download and open","afterJa":"ダウンロードして開く"}
+{"file":"main","op":"add","index":7975,"key":"QZ9CM/kzh7","beforeEn":null,"afterEn":"You don't have permission to add connectors. An owner can add them in connector settings after enabling.","afterJa":"コネクタを追加する権限がありません。オーナーが有効化した後、コネクタ設定で追加できます。"}
+{"file":"main","op":"add","index":8029,"key":"Qnlg85UWK0","beforeEn":null,"afterEn":"What needs your attention today across calendar, email, and messages.","afterJa":"カレンダー、メール、メッセージの中で、今日対応が必要な内容をまとめます。"}
+{"file":"main","op":"add","index":8041,"key":"QqPOFvRYn1","beforeEn":null,"afterEn":"Side chat isn't available for remote sessions.","afterJa":"サイドチャットはリモートセッションでは利用できません。"}
+{"file":"main","op":"add","index":8077,"key":"QvEFmiZgvV","beforeEn":null,"afterEn":"Research the competitors' positioning","afterJa":"競合他社のポジショニングを調査する"}
+{"file":"main","op":"add","index":8105,"key":"R1TCw+JPrX","beforeEn":null,"afterEn":"Write a post-call follow-up","afterJa":"通話後のフォローアップを作成する"}
+{"file":"main","op":"add","index":8108,"key":"R26rZsfoB/","beforeEn":null,"afterEn":"Switched transcript view to Thinking","afterJa":"トランスクリプト表示を思考に切り替えました"}
+{"file":"main","op":"add","index":8159,"key":"RBcB9hrW2h","beforeEn":null,"afterEn":"press right arrow to close","afterJa":"右矢印キーを押して閉じる"}
+{"file":"main","op":"add","index":8218,"key":"RP2YaJ5c92","beforeEn":null,"afterEn":"Use 0 for Sunday (7 isn't supported here).","afterJa":"日曜日には0を使用してください（7はここではサポートされていません）。"}
+{"file":"main","op":"add","index":8224,"key":"RPwAah4Ocj","beforeEn":null,"afterEn":"Starting now…","afterJa":"開始中…"}
+{"file":"main","op":"add","index":8265,"key":"Ra3VaygI5C","beforeEn":null,"afterEn":"Loading checks","afterJa":"チェックを読み込み中"}
+{"file":"main","op":"add","index":8277,"key":"Rc2RmGjQRw","beforeEn":null,"afterEn":"This site is blocked by your organization's policy.","afterJa":"このサイトは組織のポリシーによりブロックされています。"}
+{"file":"main","op":"add","index":8309,"key":"RiKotEy70g","beforeEn":null,"afterEn":"Interpret the results","afterJa":"結果を解釈する"}
+{"file":"main","op":"add","index":8324,"key":"RnBi0km82O","beforeEn":null,"afterEn":"{modelName} is the default for one or more roles, but it's disabled for the organization. Turn it on above, or change those roles' defaults.","afterJa":"{modelName}は1つ以上のロールのデフォルトですが、組織に対して無効になっています。上記で有効にするか、それらのロールのデフォルトを変更してください。"}
+{"file":"main","op":"add","index":8330,"key":"RnyxTpkWYK","beforeEn":null,"afterEn":"Finish signing in to {name} in your browser, then click Done.","afterJa":"ブラウザで{name}へのサインインを完了してから、「Done」をクリックしてください。"}
+{"file":"main","op":"add","index":8337,"key":"RotLwWx9b7","beforeEn":null,"afterEn":"Coordinator view","afterJa":"コーディネータービュー"}
+{"file":"main","op":"add","index":8364,"key":"RvDcBKMCSt","beforeEn":null,"afterEn":"Off for this role","afterJa":"このロールに対してオフ"}
+{"file":"main","op":"add","index":8365,"key":"RvT52gYMaw","beforeEn":null,"afterEn":"Build a sales proposal deck","afterJa":"営業提案資料を作成する"}
+{"file":"main","op":"add","index":8395,"key":"S1CE7YkPC7","beforeEn":null,"afterEn":"Turn meeting notes into tasks","afterJa":"会議メモをタスクに変換する"}
+{"file":"main","op":"add","index":8407,"key":"S4w33uWyvp","beforeEn":null,"afterEn":"Write first draft from outline","afterJa":"アウトラインから初稿を書く"}
+{"file":"main","op":"add","index":8422,"key":"S9dMj3U1Fw","beforeEn":null,"afterEn":"Your organization has used {percent}% of its monthly spend limit. Increase the limit to avoid pausing usage.","afterJa":"お客様の組織は月間支出上限の{percent}%を使用しました。利用の一時停止を避けるため、上限を引き上げてください。"}
+{"file":"main","op":"add","index":8430,"key":"SBDIP4u29L","beforeEn":null,"afterEn":"Write a new-hire onboarding guide","afterJa":"新入社員向けオンボーディングガイドを書く"}
+{"file":"main","op":"add","index":8432,"key":"SC9CxoqEdN","beforeEn":null,"afterEn":"Get three angles on topic","afterJa":"トピックを3つの視点から分析する"}
+{"file":"main","op":"add","index":8442,"key":"SEf9Vrgu2i","beforeEn":null,"afterEn":"Add channel to {name}","afterJa":"{name}にチャンネルを追加"}
+{"file":"main","op":"add","index":8449,"key":"SFx3SoK5/d","beforeEn":null,"afterEn":"Build a monthly close checklist","afterJa":"月次締めチェックリストを作成する"}
+{"file":"main","op":"add","index":8488,"key":"SSEzzsW++3","beforeEn":null,"afterEn":"Write policy in plain English","afterJa":"ポリシーをわかりやすく書く"}
+{"file":"main","op":"add","index":8507,"key":"SXrjtSTV5r","beforeEn":null,"afterEn":"Failed to remove session from queue. You can try again.","afterJa":"キューからセッションを削除できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":8508,"key":"SYEyDpPjNk","beforeEn":null,"afterEn":"GitHub","afterJa":"GitHub"}
+{"file":"main","op":"add","index":8536,"key":"SfX9a0+yfZ","beforeEn":null,"afterEn":"Look at my connected calendar, inbox, and recent tasks and suggest 3–5 recurring tasks you could run for me on a schedule, like a morning brief, weekly review, or inbox triage. For each one, tell me what it would do and when it would run. I'll pick which to set up.","afterJa":"接続されているカレンダー、受信トレイ、最近のタスクを確認して、朝のブリーフ、週次レビュー、受信トレイの仕分けなど、スケジュールで定期実行できるタスクを3〜5件提案してください。それぞれの内容と実行タイミングを教えてください。設定するものを選びます。"}
+{"file":"main","op":"add","index":8541,"key":"Sg2bxJWmZx","beforeEn":null,"afterEn":"All organizations","afterJa":"すべての組織"}
+{"file":"main","op":"add","index":8568,"key":"Smw3nAwGjF","beforeEn":null,"afterEn":"Fork this conversation into a new session","afterJa":"この会話を新しいセッションにフォークする"}
+{"file":"main","op":"add","index":8576,"key":"Soub71UIFB","beforeEn":null,"afterEn":"Marked ready for review.","afterJa":"レビュー準備完了としてマークしました。"}
+{"file":"main","op":"add","index":8579,"key":"SpLmSWNv0+","beforeEn":null,"afterEn":"This pull request is on a GitHub Enterprise host. Open it on GitHub to review.","afterJa":"このプルリクエストはGitHub Enterpriseホスト上にあります。レビューするにはGitHubで開いてください。"}
+{"file":"main","op":"add","index":8597,"key":"Sshf3IQ68j","beforeEn":null,"afterEn":"Request changes","afterJa":"変更をリクエスト"}
+{"file":"main","op":"add","index":8600,"key":"StgvWMWSVY","beforeEn":null,"afterEn":"Can't move this task because cloud tasks run at most once per hour.","afterJa":"クラウドタスクは1時間に最大1回しか実行できないため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":8611,"key":"SuaQvWFxn1","beforeEn":null,"afterEn":"Individual connectors","afterJa":"個別のコネクタ"}
+{"file":"main","op":"add","index":8620,"key":"SwwfNyJEUI","beforeEn":null,"afterEn":"Up and at ’em. What’s on your list?","afterJa":"さあ、行きましょう！今日のリストは何ですか？"}
+{"file":"main","op":"add","index":8659,"key":"T4jcqWdAUR","beforeEn":null,"afterEn":"Close all tabs","afterJa":"すべてのタブを閉じる"}
+{"file":"main","op":"add","index":8663,"key":"T4xbYyL8zv","beforeEn":null,"afterEn":"Explain method to general audience","afterJa":"一般向けに手法を説明する"}
+{"file":"main","op":"add","index":8672,"key":"T6JjH90vqz","beforeEn":null,"afterEn":"Magenta","afterJa":"マゼンタ"}
+{"file":"main","op":"add","index":8726,"key":"TF6uvt0UOY","beforeEn":null,"afterEn":"the local copy couldn't be paused — pause it to avoid duplicate runs","afterJa":"ローカルコピーを一時停止できませんでした。重複実行を避けるために一時停止してください"}
+{"file":"main","op":"add","index":8728,"key":"TFNnDKoEaL","beforeEn":null,"afterEn":"This pull request's repository isn't part of the session anymore. Open it on GitHub instead.","afterJa":"このプルリクエストのリポジトリはセッションに含まれなくなりました。代わりにGitHubで開いてください。"}
+{"file":"main","op":"add","index":8776,"key":"TPrwFT+H+/","beforeEn":null,"afterEn":"Shell disconnected: {reason}","afterJa":"シェルが切断されました：{reason}"}
+{"file":"main","op":"add","index":8779,"key":"TQLphbXTXH","beforeEn":null,"afterEn":"Generate practice problems","afterJa":"練習問題を生成する"}
+{"file":"main","op":"add","index":8798,"key":"TTQQOrXies","beforeEn":null,"afterEn":"Edit text","afterJa":"テキストを編集"}
+{"file":"main","op":"add","index":8841,"key":"TamMwPQCpL","beforeEn":null,"afterEn":"It’s midday. Let’s get it done.","afterJa":"お昼です。片付けましょう。"}
+{"file":"main","op":"add","index":8906,"key":"TpLDdW3nvS","beforeEn":null,"afterEn":"Git URL","afterJa":"Git URL"}
+{"file":"main","op":"add","index":8921,"key":"TtDrZ3njdX","beforeEn":null,"afterEn":"Rename this session","afterJa":"このセッションの名前を変更する"}
+{"file":"main","op":"add","index":8934,"key":"TuwH67Jbi2","beforeEn":null,"afterEn":"Write acceptance criteria for feature","afterJa":"機能の受け入れ基準を書く"}
+{"file":"main","op":"add","index":9006,"key":"UB2Fgnd/wS","beforeEn":null,"afterEn":"Compare two contracts","afterJa":"2つの契約書を比較する"}
+{"file":"main","op":"add","index":9007,"key":"UBAKPlET3k","beforeEn":null,"afterEn":"Through yesterday","afterJa":"昨日まで"}
+{"file":"main","op":"add","index":9076,"key":"UQU1Zcvfga","beforeEn":null,"afterEn":"Plan the week","afterJa":"週の計画を立てる"}
+{"file":"main","op":"add","index":9114,"key":"UZlKN19fL+","beforeEn":null,"afterEn":"Remove this group's access to all {count, plural, one {# project} other {# projects}}","afterJa":"このグループのすべての{count, plural, one {#個のプロジェクト} other {#個のプロジェクト}}へのアクセス権を削除"}
+{"file":"main","op":"add","index":9118,"key":"UarRA0T0z6","beforeEn":null,"afterEn":"requested changes","afterJa":"変更をリクエストしました"}
+{"file":"main","op":"add","index":9124,"key":"UbpLeauxPF","beforeEn":null,"afterEn":"Organization monitoring notice","afterJa":"組織監視の通知"}
+{"file":"main","op":"add","index":9136,"key":"UfCOwm6zIl","beforeEn":null,"afterEn":"Build style guide from samples","afterJa":"サンプルからスタイルガイドを作成する"}
+{"file":"main","op":"add","index":9206,"key":"UvYTan55HZ","beforeEn":null,"afterEn":"Resolve","afterJa":"解決"}
+{"file":"main","op":"add","index":9287,"key":"VEf5ySRMbc","beforeEn":null,"afterEn":"Couldn't load spend data. Refresh to try again.","afterJa":"支出データを読み込めませんでした。更新して再試行してください。"}
+{"file":"main","op":"add","index":9370,"key":"VY4eKypwEh","beforeEn":null,"afterEn":"No allowed sites yet.","afterJa":"まだ許可済みサイトはありません。"}
+{"file":"main","op":"add","index":9423,"key":"ViEXjKwkyZ","beforeEn":null,"afterEn":"Reset to defaults","afterJa":"デフォルトにリセット"}
+{"file":"main","op":"add","index":9439,"key":"VkqFU/I4fu","beforeEn":null,"afterEn":"Draft something from the notes","afterJa":"メモをもとに下書きを作成する"}
+{"file":"main","op":"add","index":9451,"key":"VpWinXHZ5S","beforeEn":null,"afterEn":"Harden this for production","afterJa":"本番環境向けに強化する"}
+{"file":"main","op":"add","index":9461,"key":"Vrp52zSLCP","beforeEn":null,"afterEn":"Name this feature","afterJa":"この機能に名前をつける"}
+{"file":"main","op":"add","index":9498,"key":"Vyi4mf5XUR","beforeEn":null,"afterEn":"Open Claude Code settings","afterJa":"Claude Codeの設定を開く"}
+{"file":"main","op":"add","index":9551,"key":"W6nSYEpiPs","beforeEn":null,"afterEn":"Resolved","afterJa":"解決済み"}
+{"file":"main","op":"add","index":9559,"key":"W9UTUmqv+1","beforeEn":null,"afterEn":"About tool permissions","afterJa":"ツールの権限について"}
+{"file":"main","op":"add","index":9570,"key":"WC4CUCyGt1","beforeEn":null,"afterEn":"Claude Tag spend in the selected period, after discounts. Exact value: {value}","afterJa":"選択した期間のClaude Tag支出（割引後）。正確な値：{value}"}
+{"file":"main","op":"add","index":9576,"key":"WCRBe3impl","beforeEn":null,"afterEn":"{action}: everyone","afterJa":"{action}: 全員"}
+{"file":"main","op":"add","index":9585,"key":"WDCnAlgy2l","beforeEn":null,"afterEn":"Claude cannot assist with the content on this page.","afterJa":"Claudeはこのページのコンテンツに対応できません。"}
+{"file":"main","op":"add","index":9609,"key":"WJayUKRBzp","beforeEn":null,"afterEn":"Map the buying committee","afterJa":"購買委員会をマッピングする"}
+{"file":"main","op":"add","index":9626,"key":"WNc6oHHaUN","beforeEn":null,"afterEn":"It may have been deleted or moved, or it lives outside the working directory.","afterJa":"削除または移動されたか、作業ディレクトリの外にある可能性があります。"}
+{"file":"main","op":"add","index":9653,"key":"WWfQD5prTe","beforeEn":null,"afterEn":"Couldn't load your billing address. Close and reopen to try again.","afterJa":"請求先住所を読み込めませんでした。閉じて再度開いてお試しください。"}
+{"file":"main","op":"add","index":9661,"key":"WXVwHu9/Xh","beforeEn":null,"afterEn":"The GitHub App is no longer connected to this repository.","afterJa":"GitHub Appがこのリポジトリに接続されていません。"}
+{"file":"main","op":"add","index":9705,"key":"Wj3x5YFrdy","beforeEn":null,"afterEn":"Write the runbook for this","afterJa":"このランブックを書く"}
+{"file":"main","op":"add","index":9731,"key":"WnH8xiye4p","beforeEn":null,"afterEn":"Build a competitive teardown","afterJa":"競合製品の詳細分析を行う"}
+{"file":"main","op":"add","index":9764,"key":"WvNl61x5+8","beforeEn":null,"afterEn":"Marking ready…","afterJa":"準備完了としてマーク中…"}
+{"file":"main","op":"add","index":9840,"key":"XDAVq3Fofm","beforeEn":null,"afterEn":"Draft body","afterJa":"下書き本文"}
+{"file":"main","op":"add","index":9881,"key":"XMdwQguMqd","beforeEn":null,"afterEn":"Open the diff for {name}","afterJa":"{name} の diff を開く"}
+{"file":"main","op":"add","index":9892,"key":"XP3cWGqI/C","beforeEn":null,"afterEn":"Couldn't enable. You can try again.","afterJa":"有効化できませんでした。再試行できます。"}
+{"file":"main","op":"add","index":9924,"key":"XW2gz+6dK1","beforeEn":null,"afterEn":"{name} is connected. New sessions will pick this up automatically.","afterJa":"{name}が接続されました。新しいセッションは自動的にこの接続を使用します。"}
+{"file":"main","op":"add","index":9946,"key":"Xa5cW9Xu73","beforeEn":null,"afterEn":"Enable {serverName}","afterJa":"{serverName}を有効にする"}
+{"file":"main","op":"add","index":9968,"key":"XewoExLUFg","beforeEn":null,"afterEn":"Stops trying runners for this session.","afterJa":"このセッションのランナーへの試行を停止します。"}
+{"file":"main","op":"add","index":10003,"key":"XkyX4dFn+l","beforeEn":null,"afterEn":"More send options","afterJa":"その他の送信オプション"}
+{"file":"main","op":"add","index":10004,"key":"XlpL0antlq","beforeEn":null,"afterEn":"act on","afterJa":"操作する"}
+{"file":"main","op":"add","index":10010,"key":"XmWZ7G8nnE","beforeEn":null,"afterEn":"Can't move this task because it uses Claude in Chrome.","afterJa":"Claude in Chromeを使用しているため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":10082,"key":"Y/xjdk1hmR","beforeEn":null,"afterEn":"Group visibility","afterJa":"グループの公開設定"}
+{"file":"main","op":"add","index":10089,"key":"Y1LHVrwpfI","beforeEn":null,"afterEn":"dismissed a review","afterJa":"レビューを却下しました"}
+{"file":"main","op":"add","index":10118,"key":"YAYfqYeG/+","beforeEn":null,"afterEn":"Put together hiring plan spreadsheet","afterJa":"採用計画スプレッドシートを作成する"}
+{"file":"main","op":"add","index":10119,"key":"YAZ9EP6iIw","beforeEn":null,"afterEn":"You chose “Don't ask again” for this folder. Removing it here forgets that choice.","afterJa":"このフォルダーに対して「今後は確認しない」を選択しました。ここで削除すると、その選択がリセットされます。"}
+{"file":"main","op":"add","index":10128,"key":"YCnSYwcr5T","beforeEn":null,"afterEn":"No description provided.","afterJa":"説明がありません。"}
+{"file":"main","op":"add","index":10155,"key":"YIGmuHOBPg","beforeEn":null,"afterEn":"Something went wrong. Try again on GitHub.","afterJa":"エラーが発生しました。GitHubで再試行してください。"}
+{"file":"main","op":"add","index":10176,"key":"YNe6Mtijf/","beforeEn":null,"afterEn":"Quiz on a topic","afterJa":"トピックのクイズを作成する"}
+{"file":"main","op":"add","index":10203,"key":"YV/8+F/wcb","beforeEn":null,"afterEn":"Show message actions","afterJa":"メッセージのアクションを表示"}
+{"file":"main","op":"add","index":10222,"key":"YaKAI+Nm9c","beforeEn":null,"afterEn":"Review a draft","afterJa":"下書きをレビューする"}
+{"file":"main","op":"add","index":10304,"key":"YtMbZANxj/","beforeEn":null,"afterEn":"Condense long piece into summary","afterJa":"長文を要約にまとめる"}
+{"file":"main","op":"add","index":10326,"key":"Ywo1QPKyKJ","beforeEn":null,"afterEn":"Build a simple financial model","afterJa":"シンプルな財務モデルを構築する"}
+{"file":"main","op":"add","index":10341,"key":"YzhYxCgSzK","beforeEn":null,"afterEn":"Your organization has HIPAA compliance enabled. Add connectors in connector settings after enabling.","afterJa":"組織でHIPAAコンプライアンスが有効になっています。有効化した後、コネクタ設定でコネクタを追加してください。"}
+{"file":"main","op":"add","index":10354,"key":"Z1CiXt1q58","beforeEn":null,"afterEn":"Write a PRD review","afterJa":"PRDレビューを作成する"}
+{"file":"main","op":"add","index":10358,"key":"Z2xCOBUMre","beforeEn":null,"afterEn":"Show failure details","afterJa":"失敗の詳細を表示"}
+{"file":"main","op":"add","index":10369,"key":"Z5fLCiDMgZ","beforeEn":null,"afterEn":"Add custom instructions","afterJa":"カスタム指示を追加"}
+{"file":"main","op":"add","index":10371,"key":"Z66/YXN18y","beforeEn":null,"afterEn":"Confirm merge","afterJa":"マージを確認"}
+{"file":"main","op":"add","index":10397,"key":"ZCZ/Eg6EOz","beforeEn":null,"afterEn":"Pay your first invoice before switching payment methods.","afterJa":"お支払い方法を切り替える前に、最初の請求書をお支払いください。"}
+{"file":"main","op":"add","index":10405,"key":"ZDfgXdFF8C","beforeEn":null,"afterEn":"See group members","afterJa":"グループメンバーを表示"}
+{"file":"main","op":"add","index":10424,"key":"ZGLLc429mP","beforeEn":null,"afterEn":"A project is a home for one stream of work — sessions share memory and instructions so context carries forward, and Claude runs more autonomously.","afterJa":"プロジェクトは一連の作業の拠点です。セッションはメモリと指示を共有するためコンテキストが引き継がれ、Claudeはより自律的に動作します。"}
+{"file":"main","op":"add","index":10451,"key":"ZMNhNBK5ef","beforeEn":null,"afterEn":"Can't move this task because it uses local folders or files.","afterJa":"ローカルフォルダまたはファイルを使用しているため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":10462,"key":"ZOBu7xAca4","beforeEn":null,"afterEn":"Write your draft…","afterJa":"下書きを入力…"}
+{"file":"main","op":"add","index":10471,"key":"ZQb/XlIM6t","beforeEn":null,"afterEn":"Invoices with bank transfer instructions will be sent to the billing address on file.","afterJa":"振込案内付きの請求書は、登録済みの請求先住所に送付されます。"}
+{"file":"main","op":"add","index":10472,"key":"ZQbg514qOb","beforeEn":null,"afterEn":"Paste","afterJa":"貼り付け"}
+{"file":"main","op":"add","index":10483,"key":"ZSNry+HGnZ","beforeEn":null,"afterEn":"Review and comment on diff","afterJa":"差分をレビューしてコメントする"}
+{"file":"main","op":"add","index":10495,"key":"ZV09AJ4/Lr","beforeEn":null,"afterEn":"Leave a comment","afterJa":"コメントを残す"}
+{"file":"main","op":"add","index":10512,"key":"ZXkSV0POuA","beforeEn":null,"afterEn":"Pressure-test the business model","afterJa":"ビジネスモデルを徹底検証する"}
+{"file":"main","op":"add","index":10556,"key":"ZlR8k3uEpF","beforeEn":null,"afterEn":"No billing address on file.","afterJa":"請求先住所が登録されていません。"}
+{"file":"main","op":"add","index":10599,"key":"ZtofZCPwgh","beforeEn":null,"afterEn":"Charged automatically each billing period.","afterJa":"各請求期間に自動的に請求されます。"}
+{"file":"main","op":"add","index":10606,"key":"Zw6zmjcmj5","beforeEn":null,"afterEn":"Organize the brand assets folder","afterJa":"ブランドアセットフォルダを整理する"}
+{"file":"main","op":"add","index":10620,"key":"Zyazuhz1uu","beforeEn":null,"afterEn":"Remove the attachment to switch — you can add it again in Cowork","afterJa":"切り替えるには添付ファイルを削除してください。Coworkで再度追加できます。"}
+{"file":"main","op":"add","index":10631,"key":"a/HPQMMsGp","beforeEn":null,"afterEn":"Remove this group's access to all projects","afterJa":"このグループのすべてのプロジェクトへのアクセス権を削除"}
+{"file":"main","op":"add","index":10660,"key":"a3h/xRpxp6","beforeEn":null,"afterEn":"Brainstorm go-to-market approaches","afterJa":"市場投入アプローチをブレインストーミングする"}
+{"file":"main","op":"add","index":10695,"key":"aCFQ7DP0SI","beforeEn":null,"afterEn":"Machine","afterJa":"マシン"}
+{"file":"main","op":"add","index":10795,"key":"aYzTfmpOAc","beforeEn":null,"afterEn":"Build a campaign performance report","afterJa":"キャンペーンパフォーマンスレポートを作成する"}
+{"file":"main","op":"add","index":10927,"key":"b0SAMaFgiO","beforeEn":null,"afterEn":"Card payment is not available for enterprise organizations in your billing country.","afterJa":"ご利用の請求先の国では、エンタープライズ組織はカード払いをご利用いただけません。"}
+{"file":"main","op":"add","index":10931,"key":"b1k+VwVgRo","beforeEn":null,"afterEn":"The model that members start with in Chat, Cowork, and Claude Code.","afterJa":"Chat、Cowork、Claude Codeでメンバーが最初に使用するモデルです。"}
+{"file":"main","op":"add","index":10937,"key":"b2WfwmtX9G","beforeEn":null,"afterEn":"Open in new window","afterJa":"新しいウィンドウで開く"}
+{"file":"main","op":"add","index":10945,"key":"b4i/76q4TQ","beforeEn":null,"afterEn":"Signed in.","afterJa":"サインインしました。"}
+{"file":"main","op":"add","index":10948,"key":"b5CxH4+4Za","beforeEn":null,"afterEn":"Add docstrings to a file","afterJa":"ファイルにdocstringを追加する"}
+{"file":"main","op":"add","index":10977,"key":"bDYepUgmuB","beforeEn":null,"afterEn":"GitHub sign-in required. Run gh auth login in a terminal, then return here.","afterJa":"GitHubへのサインインが必要です。ターミナルでgh auth loginを実行してから、こちらに戻ってください。"}
+{"file":"main","op":"add","index":10988,"key":"bFS41/uY5r","beforeEn":null,"afterEn":"Allow your team to run dynamic workflows in Claude Code.","afterJa":"チームがClaude Codeで動的なワークフローを実行できるようにします。"}
+{"file":"main","op":"add","index":11009,"key":"bIQnlhycf3","beforeEn":null,"afterEn":"{n, plural, one {# artifact} other {# artifacts}}","afterJa":"{n, plural, one {# アーティファクト} other {# アーティファクト}}"}
+{"file":"main","op":"add","index":11035,"key":"bQLqdlDbt5","beforeEn":null,"afterEn":"Next options","afterJa":"次のオプション"}
+{"file":"main","op":"add","index":11049,"key":"bSCV9J56qh","beforeEn":null,"afterEn":"Flag","afterJa":"フラグ"}
+{"file":"main","op":"add","index":11090,"key":"bYF7+z54sP","beforeEn":null,"afterEn":"Build a research memo","afterJa":"リサーチメモを作成する"}
+{"file":"main","op":"add","index":11121,"key":"bgfiA58QzC","beforeEn":null,"afterEn":"Always use the model Anthropic recommends for enterprise use. This will update automatically when new models are released.","afterJa":"Anthropicがエンタープライズ向けに推奨するモデルを常に使用します。新しいモデルがリリースされると、自動的に更新されます。"}
+{"file":"main","op":"add","index":11175,"key":"buA876kbsW","beforeEn":null,"afterEn":"Move {count} to group","afterJa":"{count}件をグループに移動"}
+{"file":"main","op":"add","index":11177,"key":"bv2X6IaYdU","beforeEn":null,"afterEn":"Book","afterJa":"本"}
+{"file":"main","op":"add","index":11192,"key":"bytKZN0FAi","beforeEn":null,"afterEn":"You have a pending review on GitHub. Submit or discard it there before starting a new one here.","afterJa":"GitHubに保留中のレビューがあります。こちらで新しいレビューを開始する前に、そちらで送信または破棄してください。"}
+{"file":"main","op":"add","index":11209,"key":"c/sB2uEvm5","beforeEn":null,"afterEn":"Crack a client problem","afterJa":"クライアントの課題を解決する"}
+{"file":"main","op":"add","index":11227,"key":"c2oeHIvEQm","beforeEn":null,"afterEn":"Turn brief into 3 concepts","afterJa":"ブリーフから3つのコンセプトを作成する"}
+{"file":"main","op":"add","index":11301,"key":"cJbjg85NPL","beforeEn":null,"afterEn":"Make study plan for week","afterJa":"週間学習計画を作成する"}
+{"file":"main","op":"add","index":11304,"key":"cKHuguXeeV","beforeEn":null,"afterEn":"This connector is disabled under your organization's HIPAA settings. Use the Enable button above to re-enable it before configuring per-tool restrictions.","afterJa":"このコネクタは組織のHIPAA設定により無効になっています。ツールごとの制限を設定する前に、上部の「有効にする」ボタンで再度有効にしてください。"}
+{"file":"main","op":"add","index":11332,"key":"cTU6Q1Nj0r","beforeEn":null,"afterEn":"Couldn't preview this file","afterJa":"このファイルをプレビューできませんでした"}
+{"file":"main","op":"add","index":11365,"key":"caPQhH5Bqr","beforeEn":null,"afterEn":"Start a conversation first, then try /btw again.","afterJa":"まず会話を開始してから、/btwをもう一度お試しください。"}
+{"file":"main","op":"add","index":11380,"key":"cc9hc4+0K4","beforeEn":null,"afterEn":"Source","afterJa":"ソース"}
+{"file":"main","op":"add","index":11405,"key":"cfT5zhyRAv","beforeEn":null,"afterEn":"That repository name isn't valid.","afterJa":"リポジトリ名が無効です。"}
+{"file":"main","op":"add","index":11484,"key":"cxcpGaHgqI","beforeEn":null,"afterEn":"Build an interview scorecard template","afterJa":"面接スコアカードテンプレートを作成する"}
+{"file":"main","op":"add","index":11516,"key":"d4u+iLejts","beforeEn":null,"afterEn":"2× more usage until July 5","afterJa":"7月5日まで利用量が2倍"}
+{"file":"main","op":"add","index":11536,"key":"dA+AGv6utb","beforeEn":null,"afterEn":"Always use the model Anthropic recommends for enterprise use. Currently, it is {modelName}. This will update automatically when new models are released.","afterJa":"Anthropicがエンタープライズ向けに推奨するモデルを常に使用します。現在は{modelName}です。新しいモデルがリリースされると、自動的に更新されます。"}
+{"file":"main","op":"add","index":11551,"key":"dCa522ci/6","beforeEn":null,"afterEn":"Build a slide deck. Ask me for the source material and a one-line brief (audience, length, tone), then draft a slide-by-slide outline with speaker notes. Create it as a file once I've reviewed the outline.","afterJa":"スライドデッキを作成してください。素材と一行の概要（対象者、枚数、トーン）を聞いてから、スピーカーノート付きのスライドごとのアウトラインを下書きしてください。アウトラインを確認したらファイルとして作成してください。"}
+{"file":"main","op":"add","index":11555,"key":"dDohqb+buN","beforeEn":null,"afterEn":"Generate synthetic dataset for testing","afterJa":"テスト用の合成データセットを生成する"}
+{"file":"main","op":"add","index":11596,"key":"dNxUF0CEdT","beforeEn":null,"afterEn":"Can't move this task because it has pattern-scoped tool approvals.","afterJa":"パターンスコープのツール承認があるため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":11621,"key":"dRxkMRGEMv","beforeEn":null,"afterEn":"{modelName} is Anthropic's recommended default, but it's disabled for the organization. Turn it on above.","afterJa":"{modelName}はAnthropicが推奨するデフォルトですが、組織に対して無効になっています。上記で有効にしてください。"}
+{"file":"main","op":"add","index":11643,"key":"dW1SuiQQZ+","beforeEn":null,"afterEn":"Each row's share of total Claude Tag spend in the period, including direct messages and unattributed usage, so rows don't sum to 100%. Direct messages are never rows; unattributed usage is the No channel row.","afterJa":"各行は、ダイレクトメッセージや帰属不明の使用を含む、期間中のClaude Tag総支出に対する割合を示しています。そのため、各行の合計は100%になりません。ダイレクトメッセージは行として表示されず、帰属不明の使用は「チャンネルなし」行に含まれます。"}
+{"file":"main","op":"add","index":11644,"key":"dW43ro34gW","beforeEn":null,"afterEn":"Select {max} or fewer groups to edit at once","afterJa":"一度に編集できるグループは{max}個以下を選択してください"}
+{"file":"main","op":"add","index":11674,"key":"ddwllAxgDX","beforeEn":null,"afterEn":"Coordinator session","afterJa":"コーディネーターセッション"}
+{"file":"main","op":"add","index":11749,"key":"dvkFAzT9hX","beforeEn":null,"afterEn":"A project is a home for one stream of work. Sessions share memory and instructions so context carries forward, Claude runs more autonomously, and the project view shows what needs your attention.","afterJa":"プロジェクトは一連の作業の拠点です。セッションはメモリと指示を共有するためコンテキストが引き継がれ、Claudeはより自律的に動作します。また、プロジェクトビューには確認が必要な内容が表示されます。"}
+{"file":"main","op":"add","index":11773,"key":"dzgwMMQIZP","beforeEn":null,"afterEn":"Show plan usage and rate limits","afterJa":"プランの使用状況とレート制限を表示する"}
+{"file":"main","op":"add","index":11793,"key":"e2bEdT/f9z","beforeEn":null,"afterEn":"Connect Slack, then catch me up: summarize my unread threads and DMs from the last 24 hours, group them by channel, and flag anything that needs a reply from me today. If Slack isn't connected yet, walk me through it first.","afterJa":"Slackを接続して、最新情報をまとめてください。過去24時間の未読スレッドとDMをチャンネルごとにグループ化して要約し、今日返信が必要なものにフラグを立ててください。Slackが未接続の場合は、まず接続手順を案内してください。"}
+{"file":"main","op":"add","index":11813,"key":"e8cR8/f7WI","beforeEn":null,"afterEn":"Remote Code sessions aren't available under your organization's compliance settings.","afterJa":"リモートコードセッションは、組織のコンプライアンス設定では使用できません。"}
+{"file":"main","op":"add","index":11815,"key":"e8jm5SG4xn","beforeEn":null,"afterEn":"Disabled for everyone.","afterJa":"全員に対して無効です。"}
+{"file":"main","op":"add","index":11816,"key":"e8m8jVY98f","beforeEn":null,"afterEn":"This Slack channel may be connected to a different Claude organization than the one you’re signed in to, or you may not be a member of the channel.","afterJa":"このSlackチャンネルは、現在サインインしているClaudeの組織とは異なる組織に接続されているか、チャンネルのメンバーではない可能性があります。"}
+{"file":"main","op":"add","index":11825,"key":"eA7dRHYjzx","beforeEn":null,"afterEn":"Palette","afterJa":"パレット"}
+{"file":"main","op":"add","index":11908,"key":"eSYgK1R2Y1","beforeEn":null,"afterEn":"You'll receive an invoice with transfer instructions each billing period.","afterJa":"各請求期間に振込案内付きの請求書が送付されます。"}
+{"file":"main","op":"add","index":11976,"key":"ehyDXXOrOb","beforeEn":null,"afterEn":"Couldn't start the coordinator. Please try again.","afterJa":"コーディネーターを起動できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":11993,"key":"eknQC1RpFQ","beforeEn":null,"afterEn":"It may have been deleted or moved.","afterJa":"削除または移動された可能性があります。"}
+{"file":"main","op":"add","index":12056,"key":"ezsVmYezso","beforeEn":null,"afterEn":"{count, plural, one {# message queued} other {# messages queued}}","afterJa":"{count, plural, one {#件のメッセージがキューに入っています} other {#件のメッセージがキューに入っています}}"}
+{"file":"main","op":"add","index":12100,"key":"f8ltMpAd8I","beforeEn":null,"afterEn":"Research a decision","afterJa":"意思決定のリサーチをする"}
+{"file":"main","op":"add","index":12159,"key":"fMMP91J6PU","beforeEn":null,"afterEn":"Nothing yet — your tasks and chats will show up here.","afterJa":"まだ何もありません。タスクとチャットはここに表示されます。"}
+{"file":"main","op":"add","index":12181,"key":"fT7nDJEsmz","beforeEn":null,"afterEn":"Group members","afterJa":"グループメンバー"}
+{"file":"main","op":"add","index":12266,"key":"fkgikK3Mq6","beforeEn":null,"afterEn":"navigate from","afterJa":"から移動する"}
+{"file":"main","op":"add","index":12295,"key":"fqW2BwEhMZ","beforeEn":null,"afterEn":"This role's default model isn't in its Model access list. Add it above, or choose a different default.","afterJa":"このロールのデフォルトモデルは、モデルアクセスリストに含まれていません。上記で追加するか、別のデフォルトを選択してください。"}
+{"file":"main","op":"add","index":12306,"key":"fswbgtef4l","beforeEn":null,"afterEn":"Only enable if your IdP rejects the offline_access scope on this client. Without it the app cannot refresh silently and will prompt for sign-in each time the IdP token expires.","afterJa":"IdPがこのクライアントのoffline_accessスコープを拒否する場合にのみ有効にしてください。offline_accessスコープがない場合、アプリはサイレントリフレッシュができず、IdPトークンの有効期限が切れるたびにサインインを求めるプロンプトが表示されます。"}
+{"file":"main","op":"add","index":12328,"key":"fy9BG3dE9F","beforeEn":null,"afterEn":"{total, plural, one {# file} other {# files}}","afterJa":"{total, plural, one {#個のファイル} other {#個のファイル}}"}
+{"file":"main","op":"add","index":12333,"key":"fz7z2UllQM","beforeEn":null,"afterEn":"Maximize","afterJa":"最大化"}
+{"file":"main","op":"add","index":12342,"key":"g+QVRZhcgb","beforeEn":null,"afterEn":"Archive the current coordinator and start fresh on the next message.","afterJa":"現在のコーディネーターをアーカイブして、次のメッセージから新しく始めます。"}
+{"file":"main","op":"add","index":12357,"key":"g27PL1edjF","beforeEn":null,"afterEn":"Turn data into exec narrative","afterJa":"データを経営層向けストーリーにまとめる"}
+{"file":"main","op":"add","index":12375,"key":"g6Xvb0AsA6","beforeEn":null,"afterEn":"Title:","afterJa":"タイトル:"}
+{"file":"main","op":"add","index":12408,"key":"gCBTHfQwlg","beforeEn":null,"afterEn":"This project has no server grouping — the coordinator isn't available here.","afterJa":"このプロジェクトにはサーバーグループが設定されていないため、コーディネーターはここでは利用できません。"}
+{"file":"main","op":"add","index":12413,"key":"gD5LgyPzri","beforeEn":null,"afterEn":"Build notebook to analyze file","afterJa":"ファイル分析用ノートブックを作成する"}
+{"file":"main","op":"add","index":12424,"key":"gGYQ802CEO","beforeEn":null,"afterEn":"Already failed on {failures, plural, one {# runner} other {# runners}}. Auto-recovery is still retrying on untried runners. Removing stops that.","afterJa":"すでに{failures, plural, one {# ランナー} other {# ランナー}}で失敗しています。自動リカバリーは未試行のランナーで再試行中です。削除するとその処理が停止します。"}
+{"file":"main","op":"add","index":12451,"key":"gOiT/UeQVM","beforeEn":null,"afterEn":"Can't move this task because it notifies a local dispatch session.","afterJa":"ローカルディスパッチセッションに通知するため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":12568,"key":"gqupQTNMYN","beforeEn":null,"afterEn":"Expand {name}","afterJa":"{name}を展開する"}
+{"file":"main","op":"add","index":12581,"key":"guqYZS91l+","beforeEn":null,"afterEn":"Pin to sidebar for quick access","afterJa":"サイドバーにピン留めしてすばやくアクセス"}
+{"file":"main","op":"add","index":12583,"key":"gvV1P9kDii","beforeEn":null,"afterEn":"Pressure-test the hypothesis","afterJa":"仮説を徹底検証する"}
+{"file":"main","op":"add","index":12629,"key":"h5S+zVbpPD","beforeEn":null,"afterEn":"Here's my source material and a brief. Build a slide deck, then refine it with me: ","afterJa":"素材とブリーフを用意しました。スライドデッキを作成して、一緒に改善していきましょう："}
+{"file":"main","op":"add","index":12630,"key":"h5il2BAJwU","beforeEn":null,"afterEn":"A reference I’ll follow so the output matches your style","afterJa":"出力があなたのスタイルに合うよう参照するリファレンスです"}
+{"file":"main","op":"add","index":12728,"key":"hP6Es5VEGG","beforeEn":null,"afterEn":"Think through competitive positioning","afterJa":"競合ポジショニングを検討する"}
+{"file":"main","op":"add","index":12750,"key":"hUvm/DPTTV","beforeEn":null,"afterEn":"Scope name","afterJa":"スコープ名"}
+{"file":"main","op":"add","index":12754,"key":"hWyxI7jccj","beforeEn":null,"afterEn":"% of total","afterJa":"全体の%"}
+{"file":"main","op":"add","index":12774,"key":"hdv0Z4mkd4","beforeEn":null,"afterEn":"Always use the model Anthropic recommends for enterprise use. Currently, in Cowork it is {coworkModel}. This will update automatically when new models are released.","afterJa":"Anthropicがエンタープライズ向けに推奨するモデルを常に使用します。現在、Coworkでは{coworkModel}です。新しいモデルがリリースされると、自動的に更新されます。"}
+{"file":"main","op":"add","index":12863,"key":"hvgE/0No/j","beforeEn":null,"afterEn":"{passed} passed, {failed} failed, {pending} in progress","afterJa":"{passed}件成功、{failed}件失敗、{pending}件進行中"}
+{"file":"main","op":"add","index":12870,"key":"hxBCGaHxcM","beforeEn":null,"afterEn":"Steer with this message now","afterJa":"このメッセージで今すぐ誘導する"}
+{"file":"main","op":"add","index":12878,"key":"hyY60EBJ+b","beforeEn":null,"afterEn":"Members with this role can use these models in Chat, Cowork, and Claude Code.","afterJa":"このロールを持つメンバーは、Chat、Cowork、Claude Codeでこれらのモデルを使用できます。"}
+{"file":"main","op":"add","index":12894,"key":"i/rNItpPCW","beforeEn":null,"afterEn":"Start with worktree","afterJa":"worktree で開始"}
+{"file":"main","op":"add","index":12904,"key":"i1j0okYTaw","beforeEn":null,"afterEn":"Manage MCP connectors","afterJa":"MCPコネクタを管理する"}
+{"file":"main","op":"add","index":12933,"key":"iAJg2YAbHY","beforeEn":null,"afterEn":"Chat isn't available in local projects","afterJa":"ローカルプロジェクトではチャットを利用できません"}
+{"file":"main","op":"add","index":12969,"key":"iIltJOxNnc","beforeEn":null,"afterEn":"Leave a comment (optional when approving)","afterJa":"コメントを残す（承認時は任意）"}
+{"file":"main","op":"add","index":12980,"key":"iKSoHEhv/C","beforeEn":null,"afterEn":"To change your billing address, contact support.","afterJa":"請求先住所を変更するには、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":12996,"key":"iO5xbpEi/V","beforeEn":null,"afterEn":"Invalid cron expression. Check the format (for example: 0 9 * * *).","afterJa":"無効なcron式です。形式を確認してください（例：0 9 * * *）。"}
+{"file":"main","op":"add","index":13022,"key":"iTNFPY4brW","beforeEn":null,"afterEn":"Watcher triggered","afterJa":"ウォッチャーが起動しました"}
+{"file":"main","op":"add","index":13044,"key":"iYk+/Z80Uf","beforeEn":null,"afterEn":"Resolve your outstanding subscription invoice before switching to card.","afterJa":"カードに切り替える前に、サブスクリプションの未払い請求書を解決してください。"}
+{"file":"main","op":"add","index":13050,"key":"iaA9zpzp0N","beforeEn":null,"afterEn":"{name}. Choose a file in this skill","afterJa":"{name}。このスキルのファイルを選択してください"}
+{"file":"main","op":"add","index":13056,"key":"ibbSj0tqBK","beforeEn":null,"afterEn":"Wrench","afterJa":"レンチ"}
+{"file":"main","op":"add","index":13103,"key":"ikIcLpE/+L","beforeEn":null,"afterEn":"Turn material into slide outline","afterJa":"資料をスライドのアウトラインに変換する"}
+{"file":"main","op":"add","index":13107,"key":"im+fV1gXT4","beforeEn":null,"afterEn":"Launch a remote Ultrareview session for this repository","afterJa":"このリポジトリのリモートUltrareviewセッションを起動する"}
+{"file":"main","op":"add","index":13129,"key":"iqK2RxMFhG","beforeEn":null,"afterEn":"No inline annotations. Open the run for the full log.","afterJa":"インラインアノテーションはありません。フルログを確認するには実行を開いてください。"}
+{"file":"main","op":"add","index":13134,"key":"irVMYsPW1G","beforeEn":null,"afterEn":"Frame a business case","afterJa":"ビジネスケースを構築する"}
+{"file":"main","op":"add","index":13142,"key":"isuhapyMck","beforeEn":null,"afterEn":"<b>{count, plural, one {# session stuck} other {# sessions stuck}}</b> — failed on 3 different runners each. Auto-recovery exhausted. Check runner logs, then retry or remove.","afterJa":"<b>{count, plural, one {# セッションがスタック} other {# セッションがスタック}}</b> — それぞれ3つの異なるランナーで失敗しました。自動リカバリーが尽きました。ランナーのログを確認してから、再試行または削除してください。"}
+{"file":"main","op":"add","index":13143,"key":"itM2odl0PW","beforeEn":null,"afterEn":"Edit setting for {count, plural, one {# group} other {# groups}}","afterJa":"{count, plural, one {#個のグループ} other {#個のグループ}}の設定を編集"}
+{"file":"main","op":"add","index":13161,"key":"j+4XwFnRWK","beforeEn":null,"afterEn":"Draft PRD from notes","afterJa":"メモからPRDの下書きを作成する"}
+{"file":"main","op":"add","index":13174,"key":"j0M/K1UbT8","beforeEn":null,"afterEn":"Picture-in-Picture","afterJa":"ピクチャー・イン・ピクチャー"}
+{"file":"main","op":"add","index":13234,"key":"jIFe22IH1D","beforeEn":null,"afterEn":"Build a live dashboard from my connected services that stays up to date.","afterJa":"接続されているサービスから、常に最新の状態を保つライブダッシュボードを作成してください。"}
+{"file":"main","op":"add","index":13279,"key":"jRIK21N5nj","beforeEn":null,"afterEn":"by {source}","afterJa":"{source}による"}
+{"file":"main","op":"add","index":13293,"key":"jUScpBptNf","beforeEn":null,"afterEn":"Sites you've allowed Claude to open in the preview. Remove a site to be asked again next time.","afterJa":"Claudeがプレビューで開くことを許可したサイトの一覧です。サイトを削除すると、次回また確認が表示されます。"}
+{"file":"main","op":"add","index":13306,"key":"jYPyfRxOQT","beforeEn":null,"afterEn":"Connect Slack so you can work with my messages, then summarize my unread threads.","afterJa":"Slackを接続してメッセージを扱えるようにしてから、未読スレッドを要約してください。"}
+{"file":"main","op":"add","index":13313,"key":"jZyybKRr3M","beforeEn":null,"afterEn":"Clean up the Downloads folder","afterJa":"ダウンロードフォルダを整理する"}
+{"file":"main","op":"add","index":13334,"key":"jfbH84MWGN","beforeEn":null,"afterEn":"\"{taskName}\" now runs in the cloud. The local copy has been paused.","afterJa":"「{taskName}」はクラウドで実行されるようになりました。ローカルコピーは一時停止されました。"}
+{"file":"main","op":"add","index":13350,"key":"jjTzIriMcO","beforeEn":null,"afterEn":"Database","afterJa":"データベース"}
+{"file":"main","op":"add","index":13352,"key":"jkAbqgk1a5","beforeEn":null,"afterEn":"Switch to bank transfer","afterJa":"銀行振込に切り替える"}
+{"file":"main","op":"add","index":13369,"key":"jnhYC2ikyU","beforeEn":null,"afterEn":"Structure a long piece","afterJa":"長文の構成を整える"}
+{"file":"main","op":"add","index":13389,"key":"jqiw6R8Zr1","beforeEn":null,"afterEn":"Your seat in {orgName} doesn't include Claude Code. Ask an admin for access.","afterJa":"{orgName} のシートには Claude Code が含まれていません。アクセスについては管理者にお問い合わせください。"}
+{"file":"main","op":"add","index":13454,"key":"k/z1DWQL+3","beforeEn":null,"afterEn":"No pull request for this branch yet.","afterJa":"このブランチにはまだプルリクエストがありません。"}
+{"file":"main","op":"add","index":13461,"key":"k1HmMGoA6N","beforeEn":null,"afterEn":"Members can switch anytime, and their choice will stick going forward.","afterJa":"メンバーはいつでも切り替えることができ、選択した内容は以降も維持されます。"}
+{"file":"main","op":"add","index":13470,"key":"k2tJ9kFBBI","beforeEn":null,"afterEn":"Blue","afterJa":"ブルー"}
+{"file":"main","op":"add","index":13544,"key":"kOa3v5JzDb","beforeEn":null,"afterEn":"This organization only","afterJa":"この組織のみ"}
+{"file":"main","op":"add","index":13559,"key":"kRYWPLKg5X","beforeEn":null,"afterEn":"Build working app from idea","afterJa":"アイデアからアプリを作成する"}
+{"file":"main","op":"add","index":13590,"key":"kZ7oEZLp43","beforeEn":null,"afterEn":"The GitHub connector is not enabled for your organization. Enable it in <connectorsLink>Connectors settings</connectorsLink>, or configure a GitHub Enterprise Server instance in <claudeCodeLink>Claude Code settings</claudeCodeLink>.","afterJa":"GitHubコネクタはお客様の組織で有効になっていません。<connectorsLink>コネクタ設定</connectorsLink>で有効にするか、<claudeCodeLink>Claude Code設定</claudeCodeLink>でGitHub Enterprise Serverインスタンスを設定してください。"}
+{"file":"main","op":"add","index":13599,"key":"kbA+LaXVul","beforeEn":null,"afterEn":"Anyone in your org can find and join.","afterJa":"組織内の誰でも見つけて参加できます。"}
+{"file":"main","op":"add","index":13602,"key":"kbUEuNGhgf","beforeEn":null,"afterEn":"Summarize a long ticket thread","afterJa":"長いチケットスレッドを要約する"}
+{"file":"main","op":"add","index":13639,"key":"khPEsA8+33","beforeEn":null,"afterEn":"Couldn't load checks. This view retries automatically.","afterJa":"チェックを読み込めませんでした。このビューは自動的に再試行します。"}
+{"file":"main","op":"add","index":13679,"key":"kosBEv9ElG","beforeEn":null,"afterEn":"Can't move this task because it's linked to a Space.","afterJa":"Spaceにリンクされているため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":13680,"key":"kpCOjtwfPF","beforeEn":null,"afterEn":"Disable bundled skills and workflows","afterJa":"バンドルされたスキルとワークフローを無効にする"}
+{"file":"main","op":"add","index":13682,"key":"kpbRGDYwe+","beforeEn":null,"afterEn":"{count, plural, one {# tab} other {# tabs}}","afterJa":"{count, plural, other {#個のタブ}}"}
+{"file":"main","op":"add","index":13710,"key":"kvtBJXctuE","beforeEn":null,"afterEn":"Connect Gmail so you can help with my inbox, starting with my unread emails.","afterJa":"Gmailを接続して受信トレイのサポートをしてもらえますか。まず未読メールから始めてください。"}
+{"file":"main","op":"add","index":13711,"key":"kvxv1BxUnl","beforeEn":null,"afterEn":"Key access","afterJa":"キーのアクセス範囲"}
+{"file":"main","op":"add","index":13717,"key":"kxLSnM2D0P","beforeEn":null,"afterEn":"Write a weekly product update","afterJa":"週次プロダクトアップデートを作成する"}
+{"file":"main","op":"add","index":13736,"key":"l0FPT2uWFJ","beforeEn":null,"afterEn":"This connector is disabled under your organization's HIPAA settings. Contact support to re-enable it.","afterJa":"このコネクタは組織のHIPAA設定により無効になっています。再度有効にするには、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":13751,"key":"l5hJ1Ge03E","beforeEn":null,"afterEn":"This file is outside the working directory","afterJa":"このファイルは作業ディレクトリの外にあります"}
+{"file":"main","op":"add","index":13793,"key":"lF5YtSS6s2","beforeEn":null,"afterEn":"Walk through a metric tradeoff","afterJa":"指標のトレードオフを検討する"}
+{"file":"main","op":"add","index":13795,"key":"lFR7PPKMGW","beforeEn":null,"afterEn":"{featureName} runs in a secure local virtual machine.","afterJa":"{featureName}は、セキュアなローカル仮想マシン上で実行されます。"}
+{"file":"main","op":"add","index":13842,"key":"lP+1y2YWxm","beforeEn":null,"afterEn":"Can't move this task because its schedule isn't a supported preset.","afterJa":"スケジュールがサポートされているプリセットではないため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":13843,"key":"lPCpmPJX/H","beforeEn":null,"afterEn":"Debug this","afterJa":"デバッグする"}
+{"file":"main","op":"add","index":13856,"key":"lT3FeQQr+0","beforeEn":null,"afterEn":"Create data dictionary for dataset","afterJa":"データセットのデータ辞書を作成する"}
+{"file":"main","op":"add","index":13865,"key":"lWgYy5XIBQ","beforeEn":null,"afterEn":"Open pull request","afterJa":"プルリクエストを開く"}
+{"file":"main","op":"add","index":13866,"key":"lWsBnYHAB2","beforeEn":null,"afterEn":"What other recurring tasks could you run on a schedule for me?","afterJa":"他にどんな定期タスクをスケジュール実行できますか？"}
+{"file":"main","op":"add","index":13867,"key":"lWwW3BF7Wa","beforeEn":null,"afterEn":"Edit in composer","afterJa":"コンポーザーで編集"}
+{"file":"main","op":"add","index":13898,"key":"ldKNcXZyLw","beforeEn":null,"afterEn":"Set up project folder structure","afterJa":"プロジェクトのフォルダ構成を設定する"}
+{"file":"main","op":"add","index":13905,"key":"leqineqi2d","beforeEn":null,"afterEn":"Turn customer quotes into testimonials","afterJa":"顧客のコメントを推薦文にまとめる"}
+{"file":"main","op":"add","index":13931,"key":"llD9oRrhLb","beforeEn":null,"afterEn":"Generate sample data for testing","afterJa":"テスト用サンプルデータを生成する"}
+{"file":"main","op":"add","index":14012,"key":"lz8fF5RIeH","beforeEn":null,"afterEn":"{appName} isn't allowed for your role — contact your organization admin.","afterJa":"{appName}はあなたのロールでは使用できません。組織の管理者にお問い合わせください。"}
+{"file":"main","op":"add","index":14036,"key":"m2qQ6jA+U6","beforeEn":null,"afterEn":"Draft actions","afterJa":"下書きアクション"}
+{"file":"main","op":"add","index":14037,"key":"m3ifrcoUc8","beforeEn":null,"afterEn":"Your organization has used {percent}% of its monthly spend limit. Increase the limit to keep usage credits available.","afterJa":"お客様の組織は月間支出上限の{percent}%を使用しました。利用クレジットを維持するため、上限を引き上げてください。"}
+{"file":"main","op":"add","index":14048,"key":"m5dKoPautK","beforeEn":null,"afterEn":"Spot issues in this deal","afterJa":"この取引の問題点を見つける"}
+{"file":"main","op":"add","index":14064,"key":"m9bPk5lbE6","beforeEn":null,"afterEn":"{count, plural, one {# session} other {# sessions}} · {total} total","afterJa":"{count, plural, one {#セッション} other {#セッション}} · 合計{total}"}
+{"file":"main","op":"add","index":14096,"key":"mHpMWNjSJD","beforeEn":null,"afterEn":"Set up project tracking spreadsheet","afterJa":"プロジェクト管理スプレッドシートを設定する"}
+{"file":"main","op":"add","index":14117,"key":"mMAewP/LHf","beforeEn":null,"afterEn":"Waiting for a runner — {ahead, plural, =0 {next in queue} one {# ahead of you} other {# ahead of you}} ({alive, plural, one {# runner busy} other {all # runners busy}})","afterJa":"ランナーを待っています — {ahead, plural, =0 {キューの先頭} one {あなたの前に#件} other {あなたの前に#件}} ({alive, plural, one {#台のランナーが使用中} other {全#台のランナーが使用中}})"}
+{"file":"main","op":"add","index":14153,"key":"mUoKg0Iwry","beforeEn":null,"afterEn":"Sanity-check approach to valuation","afterJa":"バリュエーションのアプローチを検証する"}
+{"file":"main","op":"add","index":14197,"key":"mfZoDGT5gd","beforeEn":null,"afterEn":"Select an environment for this project first (Settings → Environment).","afterJa":"まず、このプロジェクトの環境を選択してください（設定 → 環境）。"}
+{"file":"main","op":"add","index":14211,"key":"mkT1DIP4e2","beforeEn":null,"afterEn":"Build a literature review matrix","afterJa":"文献レビューマトリクスを作成する"}
+{"file":"main","op":"add","index":14212,"key":"mkVt+xG0lM","beforeEn":null,"afterEn":"Write up design review summary","afterJa":"デザインレビューのサマリーを作成する"}
+{"file":"main","op":"add","index":14221,"key":"mmv5+zti07","beforeEn":null,"afterEn":"Granularity","afterJa":"粒度"}
+{"file":"main","op":"add","index":14260,"key":"myE9IiSqO3","beforeEn":null,"afterEn":"Replace the project page with a coordinator chat and a session rail.","afterJa":"プロジェクトページをコーディネーターチャットとセッションレールに置き換えます。"}
+{"file":"main","op":"add","index":14268,"key":"n+G/QqQCSJ","beforeEn":null,"afterEn":"Edit the file you just made instead of creating a new one. Here's what I'd change: ","afterJa":"新しいファイルを作成せず、今作ったファイルを編集してください。変更点はこちらです："}
+{"file":"main","op":"add","index":14270,"key":"n/MYOufgmS","beforeEn":null,"afterEn":"Off for everyone in the organization — enable it in Models for this to take effect.","afterJa":"組織内の全員に対してオフです。これを有効にするには、モデルで有効にしてください。"}
+{"file":"main","op":"add","index":14278,"key":"n1JfU+ocQD","beforeEn":null,"afterEn":"Couldn't refresh just now. The last loaded state had no checks.","afterJa":"現在更新できませんでした。最後に読み込んだ状態にはチェックがありませんでした。"}
+{"file":"main","op":"add","index":14286,"key":"n3m1xt4uyC","beforeEn":null,"afterEn":"Orange","afterJa":"オレンジ"}
+{"file":"main","op":"add","index":14370,"key":"nP3E1Hq4ll","beforeEn":null,"afterEn":"Can't move this task because it uses a local working directory.","afterJa":"ローカル作業ディレクトリを使用しているため、このタスクを移動できません。"}
+{"file":"main","op":"add","index":14425,"key":"nYz3uMPsuU","beforeEn":null,"afterEn":"I've got a few things going. Can you start these as parallel tasks?","afterJa":"いくつかやることがあります。これらを並行タスクとして開始できますか？"}
+{"file":"main","op":"add","index":14503,"key":"ntRjjBLRrZ","beforeEn":null,"afterEn":"Remembered","afterJa":"記憶済み"}
+{"file":"main","op":"add","index":14505,"key":"ntxHni0Oh5","beforeEn":null,"afterEn":"Couldn't update the spend breakdown setting. You can try again.","afterJa":"支出内訳の設定を更新できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":14511,"key":"nv/Xi9G0Xz","beforeEn":null,"afterEn":"Evening. What’s on your plate?","afterJa":"夕方になりました。今夜のタスクは何ですか？"}
+{"file":"main","op":"add","index":14529,"key":"o+Z9mM5KUz","beforeEn":null,"afterEn":"Updated visibility for {count, plural, one {# group} other {# groups}}","afterJa":"{count, plural, one {#個のグループ} other {#個のグループ}}の公開設定を更新しました"}
+{"file":"main","op":"add","index":14612,"key":"oHzZ46lvQL","beforeEn":null,"afterEn":"Turn notes into clean doc","afterJa":"メモを整理してドキュメントにまとめる"}
+{"file":"main","op":"add","index":14644,"key":"oPWOlciCdO","beforeEn":null,"afterEn":"Help me connect Slack, Gmail, and Google Drive so you can work across them. Once they're connected, give me a quick combined snapshot: unread messages that need a reply, urgent email, and docs I've touched this week.","afterJa":"Slack、Gmail、Google Driveを接続して、横断的に作業できるようにしてください。接続できたら、返信が必要な未読メッセージ、緊急のメール、今週触れたドキュメントをまとめたスナップショットを見せてください。"}
+{"file":"main","op":"add","index":14650,"key":"oRDpANdpHm","beforeEn":null,"afterEn":"Plan week from calendar","afterJa":"カレンダーから週の計画を立てる"}
+{"file":"main","op":"add","index":14677,"key":"oY8f4zHFcm","beforeEn":null,"afterEn":"Edit draft for clarity","afterJa":"下書きをわかりやすく編集する"}
+{"file":"main","op":"add","index":14678,"key":"oYC0hCwh5U","beforeEn":null,"afterEn":"Review the storyline","afterJa":"ストーリーラインを確認する"}
+{"file":"main","op":"add","index":14709,"key":"ofS3SrOtfH","beforeEn":null,"afterEn":"The total spend limit for Claude Tag across all channels in this organization for the current billing period. When reached, Claude stops responding in Slack until the period resets or the limit is raised.","afterJa":"現在の請求期間において、この組織内のすべてのチャンネルにわたるClaude Tagの総利用上限です。上限に達すると、期間がリセットされるか上限が引き上げられるまで、ClaudeはSlackでの応答を停止します。"}
+{"file":"main","op":"add","index":14723,"key":"oiDLUvGQE9","beforeEn":null,"afterEn":"{n} more checks — no trigger","afterJa":"さらに{n}回チェック — トリガーなし"}
+{"file":"main","op":"add","index":14735,"key":"omC8azhR+m","beforeEn":null,"afterEn":"Install Git from your distribution's package manager (for example, {command}), then restart the app.","afterJa":"ディストリビューションのパッケージマネージャー（例：{command}）からGitをインストールし、アプリを再起動してください。"}
+{"file":"main","op":"add","index":14737,"key":"omX7NOoqHJ","beforeEn":null,"afterEn":"Couldn't refresh just now. Showing the last loaded state.","afterJa":"現在更新できませんでした。最後に読み込んだ状態を表示しています。"}
+{"file":"main","op":"add","index":14781,"key":"otoy1VfrtB","beforeEn":null,"afterEn":"remote host","afterJa":"リモートホスト"}
+{"file":"main","op":"add","index":14791,"key":"ovSnw6avLK","beforeEn":null,"afterEn":"Turn pitch notes into deck","afterJa":"ピッチノートをスライド資料に変換する"}
+{"file":"main","op":"add","index":14795,"key":"ox0zJVSgur","beforeEn":null,"afterEn":"Draft budget narrative from plan","afterJa":"計画から予算説明文を作成する"}
+{"file":"main","op":"add","index":14805,"key":"ozrLbZLkEC","beforeEn":null,"afterEn":"It’s a good day to get things done.","afterJa":"今日は仕事がはかどりそうです。"}
+{"file":"main","op":"add","index":14807,"key":"p+OmjCUhSR","beforeEn":null,"afterEn":"upload an image to","afterJa":"画像をアップロードする"}
+{"file":"main","op":"add","index":14817,"key":"p0vUu2Tt8r","beforeEn":null,"afterEn":"Repurpose content into 5 pieces","afterJa":"コンテンツを5つの形式に転用する"}
+{"file":"main","op":"add","index":14831,"key":"p2jahDdxDB","beforeEn":null,"afterEn":"Verified — Anthropic has reviewed this connector for quality and security.","afterJa":"認証済み — Anthropicがこのコネクタの品質とセキュリティをレビュー済みです。"}
+{"file":"main","op":"add","index":14836,"key":"p4EbQIBbXg","beforeEn":null,"afterEn":"Can’t load this channel’s configuration","afterJa":"このチャンネルの設定を読み込めません"}
+{"file":"main","op":"add","index":14997,"key":"pfNNr3mBT9","beforeEn":null,"afterEn":"Set up simple tracking spreadsheet","afterJa":"シンプルな管理スプレッドシートを設定する"}
+{"file":"main","op":"add","index":15005,"key":"phtZ/F2LJq","beforeEn":null,"afterEn":"I’ll pull the key points from your meetings","afterJa":"会議の要点を抽出します"}
+{"file":"main","op":"add","index":15011,"key":"piocSPzx9W","beforeEn":null,"afterEn":"Runs when this computer is asleep or offline","afterJa":"このコンピューターがスリープ中またはオフラインのときに実行されます"}
+{"file":"main","op":"add","index":15038,"key":"pphr2Cc03P","beforeEn":null,"afterEn":"Edit queued message","afterJa":"キューに入ったメッセージを編集"}
+{"file":"main","op":"add","index":15054,"key":"pu9H1Nruwc","beforeEn":null,"afterEn":"Remove from queue","afterJa":"キューから削除"}
+{"file":"main","op":"add","index":15110,"key":"q3v6ND/PKL","beforeEn":null,"afterEn":"Turn meeting notes into decisions","afterJa":"会議メモを意思決定事項にまとめる"}
+{"file":"main","op":"add","index":15131,"key":"q8mQGA8/Dv","beforeEn":null,"afterEn":"via {repo}","afterJa":"{repo} 経由"}
+{"file":"main","op":"add","index":15132,"key":"q8yC2bH6mD","beforeEn":null,"afterEn":"<v>{n}</v> tokens","afterJa":"<v>{n}</v> トークン"}
+{"file":"main","op":"add","index":15152,"key":"qCyPKfisKN","beforeEn":null,"afterEn":"Clock","afterJa":"時計"}
+{"file":"main","op":"add","index":15179,"key":"qHr0hGhjax","beforeEn":null,"afterEn":"Turn design discussion into decision","afterJa":"デザインの議論を意思決定につなげる"}
+{"file":"main","op":"add","index":15207,"key":"qQtbfT1At6","beforeEn":null,"afterEn":"Turn customer calls into themes","afterJa":"顧客との通話をテーマに整理する"}
+{"file":"main","op":"add","index":15216,"key":"qTYozDLuYg","beforeEn":null,"afterEn":"Learn more about Cowork","afterJa":"Coworkについて詳しく見る"}
+{"file":"main","op":"add","index":15253,"key":"qdK6dfCIhE","beforeEn":null,"afterEn":"click on","afterJa":"クリックする"}
+{"file":"main","op":"add","index":15261,"key":"qfrrU8IHe0","beforeEn":null,"afterEn":"Explain a variance to leadership","afterJa":"経営陣に差異を説明する"}
+{"file":"main","op":"add","index":15292,"key":"qmNnfLjRf6","beforeEn":null,"afterEn":"/{commandName} doesn't take arguments here. Remove the text after the command and try again.","afterJa":"/{commandName} はここでは引数を受け付けません。コマンドの後のテキストを削除して、もう一度試してください。"}
+{"file":"main","op":"add","index":15345,"key":"r+vX03quWa","beforeEn":null,"afterEn":"Connector","afterJa":"コネクタ"}
+{"file":"main","op":"add","index":15353,"key":"r1V0CjS6dJ","beforeEn":null,"afterEn":"Sign-in is taking longer than expected. If the sign-in window isn't responding, close it and try again, or use Sign in another way.","afterJa":"サインインに予想以上の時間がかかっています。サインインウィンドウが応答しない場合は、閉じてもう一度お試しいただくか、“別の方法でサインイン”をご利用ください。"}
+{"file":"main","op":"add","index":15366,"key":"r4pLaa+YHw","beforeEn":null,"afterEn":"Tool permission changes are saved immediately. The Save button applies to the connector name and URL above.","afterJa":"ツールの権限変更は即座に保存されます。「保存」ボタンは上部のコネクタ名とURLに適用されます。"}
+{"file":"main","op":"add","index":15387,"key":"rA+bYQyoxW","beforeEn":null,"afterEn":"Loading pull request","afterJa":"プルリクエストを読み込み中"}
+{"file":"main","op":"add","index":15467,"key":"rVcj2+GSsy","beforeEn":null,"afterEn":"{count, plural, one {{modelNames} is off for the organization. Enable it in Models, or remove it here.} other {{modelNames} are off for the organization. Enable them in Models, or remove them here.}}","afterJa":"{count, plural, one {{modelNames}は組織に対してオフです。モデルで有効にするか、ここから削除してください。} other {{modelNames}は組織に対してオフです。モデルで有効にするか、ここから削除してください。}}"}
+{"file":"main","op":"add","index":15476,"key":"rXMEZQ7FqD","beforeEn":null,"afterEn":"Omit offline_access","afterJa":"offline_accessを省略する"}
+{"file":"main","op":"add","index":15493,"key":"raRXSt+7Q5","beforeEn":null,"afterEn":"Connect Google Drive so you can work with my files.","afterJa":"私のファイルを扱えるよう、Google Driveを連携してください。"}
+{"file":"main","op":"add","index":15507,"key":"re34TdNPwp","beforeEn":null,"afterEn":"Build me a live dashboard that stays up to date. First ask what I want to track: calendar, inbox, a project, or a topic. Then propose a layout and which connected services you'll pull from. Show me a working version before we set it to refresh on a schedule.","afterJa":"常に最新の状態を保つライブダッシュボードを作成してください。まず、追跡したい対象（カレンダー、受信トレイ、プロジェクト、またはトピック）を教えてください。次に、レイアウトと使用する連携サービスを提案します。定期更新のスケジュールを設定する前に、動作するバージョンをご確認いただけるようにします。"}
+{"file":"main","op":"add","index":15513,"key":"rfP8Ou78rC","beforeEn":null,"afterEn":"The owner keeps the session. Sending another message re-queues it.","afterJa":"オーナーはセッションを保持します。別のメッセージを送信すると、再度キューに追加されます。"}
+{"file":"main","op":"add","index":15527,"key":"ri15mcw9Nx","beforeEn":null,"afterEn":"Couldn't load skill data. Refresh to try again.","afterJa":"スキルデータを読み込めませんでした。更新して再試行してください。"}
+{"file":"main","op":"add","index":15535,"key":"rja1B4xaDB","beforeEn":null,"afterEn":"Turn interview transcript into quotes","afterJa":"インタビュー記録から引用文を抽出する"}
+{"file":"main","op":"add","index":15541,"key":"rl8+K1wLlC","beforeEn":null,"afterEn":"to start another in parallel","afterJa":"別のものを並行して開始する"}
+{"file":"main","op":"add","index":15546,"key":"rljatzLY9c","beforeEn":null,"afterEn":"Draft proposal from notes","afterJa":"メモから提案書の下書きを作成する"}
+{"file":"main","op":"add","index":15561,"key":"rqlu4wV43I","beforeEn":null,"afterEn":"Hide failure details","afterJa":"失敗の詳細を非表示"}
+{"file":"main","op":"add","index":15594,"key":"rxxOdOFVO6","beforeEn":null,"afterEn":"Turn notes into annotated bibliography","afterJa":"メモを注釈付き参考文献リストにまとめる"}
+{"file":"main","op":"add","index":15607,"key":"s0048E1+vN","beforeEn":null,"afterEn":"Max effort level","afterJa":"最大努力レベル"}
+{"file":"main","op":"add","index":15609,"key":"s0s9cExsUw","beforeEn":null,"afterEn":"Show all {count, number}","afterJa":"{count, number}件をすべて表示"}
+{"file":"main","op":"add","index":15615,"key":"s1rZbeQVYV","beforeEn":null,"afterEn":"Couldn't save scope name. Try again.","afterJa":"スコープ名を保存できませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":15623,"key":"s3HKaSqwvN","beforeEn":null,"afterEn":"{count, plural, one {# role has a default model that isn't enabled for it:} other {# roles have a default model that isn't enabled for them:}}","afterJa":"{count, plural, one {# 個のロールに、有効になっていないデフォルトモデルがあります：} other {# 個のロールに、有効になっていないデフォルトモデルがあります：}}"}
+{"file":"main","op":"add","index":15628,"key":"s4yZXgis1y","beforeEn":null,"afterEn":"Signing in…","afterJa":"サインイン中…"}
+{"file":"main","op":"add","index":15629,"key":"s5ZDGsaghj","beforeEn":null,"afterEn":"This role's default model is off for the organization. Enable it in Models, or choose a different default.","afterJa":"このロールのデフォルトモデルは、組織に対してオフです。モデルで有効にするか、別のデフォルトを選択してください。"}
+{"file":"main","op":"add","index":15637,"key":"s7jxHV2lhI","beforeEn":null,"afterEn":"Build a simple three-statement model","afterJa":"シンプルな財務三表モデルを作成する"}
+{"file":"main","op":"add","index":15643,"key":"s8djs5CFga","beforeEn":null,"afterEn":"Bank transfer is not yet available for your billing region.","afterJa":"ご利用の請求先地域では、銀行振込はまだご利用いただけません。"}
+{"file":"main","op":"add","index":15673,"key":"sFkohIe1vK","beforeEn":null,"afterEn":"Already failed on {failures, plural, one {# runner} other {# runners}}. The spawn-runner hook then failed too, so nothing is retrying.","afterJa":"すでに{failures, plural, one {# ランナー} other {# ランナー}}で失敗しています。その後、spawn-runner hookも失敗したため、再試行は行われていません。"}
+{"file":"main","op":"add","index":15676,"key":"sGVazMd6OV","beforeEn":null,"afterEn":"Build a competitive landscape doc","afterJa":"競合環境ドキュメントを作成する"}
+{"file":"main","op":"add","index":15678,"key":"sHBKdvktDU","beforeEn":null,"afterEn":"Who can...","afterJa":"対象者..."}
+{"file":"main","op":"add","index":15815,"key":"siKpOW5GBq","beforeEn":null,"afterEn":"Applies to {orgName} only. These settings don't affect admin access","afterJa":"{orgName}にのみ適用されます。これらの設定は管理者アクセスには影響しません。"}
+{"file":"main","op":"add","index":15855,"key":"sqcqKZZVcs","beforeEn":null,"afterEn":"Analyze this engagement survey","afterJa":"エンゲージメントサーベイを分析する"}
+{"file":"main","op":"add","index":15865,"key":"st0obAAYGy","beforeEn":null,"afterEn":"Monitor a topic","afterJa":"トピックを監視"}
+{"file":"main","op":"add","index":15880,"key":"svcuAi1SHw","beforeEn":null,"afterEn":"Write a launch announcement","afterJa":"ローンチアナウンスを作成する"}
+{"file":"main","op":"add","index":15893,"key":"sxuNV5caDJ","beforeEn":null,"afterEn":"Period to date","afterJa":"期間累計"}
+{"file":"main","op":"add","index":15900,"key":"sydsCFXZbt","beforeEn":null,"afterEn":"Review comment","afterJa":"レビューコメント"}
+{"file":"main","op":"add","index":15921,"key":"t0m6zn7Bji","beforeEn":null,"afterEn":"Approaching spend limit","afterJa":"支出上限に近づいています"}
+{"file":"main","op":"add","index":15929,"key":"t2i7UIAndO","beforeEn":null,"afterEn":"Set up a workplan spreadsheet","afterJa":"作業計画スプレッドシートを作成する"}
+{"file":"main","op":"add","index":15955,"key":"t8cxzm3n/C","beforeEn":null,"afterEn":"Break a project into milestones","afterJa":"プロジェクトをマイルストーンに分割する"}
+{"file":"main","op":"add","index":15973,"key":"tDPXEnsbRp","beforeEn":null,"afterEn":"— means each group keeps its current setting. Check or uncheck to apply one value to all selected groups.","afterJa":"— は、各グループが現在の設定を維持することを意味します。チェックを入れるか外すことで、選択したすべてのグループに同じ値を適用できます。"}
+{"file":"main","op":"add","index":15996,"key":"tKELc3s0vd","beforeEn":null,"afterEn":"Failing","afterJa":"失敗"}
+{"file":"main","op":"add","index":16008,"key":"tM5Jke8vtn","beforeEn":null,"afterEn":"Remove session from queue?","afterJa":"キューからセッションを削除しますか？"}
+{"file":"main","op":"add","index":16061,"key":"tWrfHJsFyk","beforeEn":null,"afterEn":"Shown in the header and sidebar.","afterJa":"ヘッダーとサイドバーに表示されます。"}
+{"file":"main","op":"add","index":16072,"key":"tYbcA9rUAL","beforeEn":null,"afterEn":"Build rollout checklist with owners","afterJa":"担当者付きロールアウトチェックリストを作成する"}
+{"file":"main","op":"add","index":16123,"key":"tlzu1xDUfy","beforeEn":null,"afterEn":"\"{taskName}\" was moved to the cloud, but {warning}.","afterJa":"「{taskName}」はクラウドに移動されましたが、{warning}。"}
+{"file":"main","op":"add","index":16131,"key":"tnEGmCK+fB","beforeEn":null,"afterEn":"Explain something, then quiz","afterJa":"説明してからクイズを出題する"}
+{"file":"main","op":"add","index":16182,"key":"tyZjjoqTa7","beforeEn":null,"afterEn":"Claude will not purchase items, create accounts, or bypass captchas without input. Always allow saves on this device. Revoke in Settings.","afterJa":"Claudeは入力なしにアイテムの購入、アカウントの作成、キャプチャの回避を行いません。「常に許可」を選択すると、この操作がこのデバイスに保存されます。設定から取り消せます。"}
+{"file":"main","op":"add","index":16199,"key":"u0omzBzv97","beforeEn":null,"afterEn":"Review this code","afterJa":"このコードをレビューする"}
+{"file":"main","op":"add","index":16219,"key":"u3OvDLPfsH","beforeEn":null,"afterEn":"Convert to draft","afterJa":"ドラフトに変換"}
+{"file":"main","op":"add","index":16226,"key":"u4fArga1Ve","beforeEn":null,"afterEn":"I’ll crunch through your analysis","afterJa":"分析データを処理します"}
+{"file":"main","op":"add","index":16272,"key":"uFBCXebiAB","beforeEn":null,"afterEn":"Use numeric fields only (for example 1 for Monday). Named days/months and the ? L W # symbols aren't supported here.","afterJa":"数値のみを使用してください（例：月曜日は1）。曜日名・月名および?、L、W、#の記号はここではサポートされていません。"}
+{"file":"main","op":"add","index":16285,"key":"uJ2abiqQUV","beforeEn":null,"afterEn":"For your security, sign in again to keep using Claude.","afterJa":"引き続きClaudeをご利用いただくには、セキュリティのため、再度サインインしてください。"}
+{"file":"main","op":"add","index":16294,"key":"uKUB2UZeYm","beforeEn":null,"afterEn":"This model is disabled. Choose an enabled model, or re-enable it in <modelsLink>Models</modelsLink>.","afterJa":"このモデルは無効です。有効なモデルを選択するか、<modelsLink>モデル</modelsLink>で再度有効にしてください。"}
+{"file":"main","op":"add","index":16298,"key":"uLBt7sJrRr","beforeEn":null,"afterEn":"Brainstorm ideas","afterJa":"アイデアをブレインストーミングする"}
+{"file":"main","op":"add","index":16299,"key":"uLCX8NNqDP","beforeEn":null,"afterEn":"Disables Claude Code's bundled skills and workflows (deep-research and similar). Use where they cannot function, for instance when WebFetch is egress-blocked and the gateway does not forward the WebSearch server tool.","afterJa":"Claude Codeのバンドルされたスキルとワークフロー（deep-researchなど）を無効にします。WebFetchのエグレスがブロックされており、ゲートウェイがWebSearchサーバーツールを転送しない場合など、これらの機能が動作できない環境でご使用ください。"}
+{"file":"main","op":"add","index":16301,"key":"uLj85dAVGU","beforeEn":null,"afterEn":"GitHub rate limit reached. This view refreshes automatically.","afterJa":"GitHubのレート制限に達しました。このビューは自動的に更新されます。"}
+{"file":"main","op":"add","index":16306,"key":"uN61zUfXcF","beforeEn":null,"afterEn":"0 9 * * *","afterJa":"0 9 * * *"}
+{"file":"main","op":"add","index":16311,"key":"uNlDMe145m","beforeEn":null,"afterEn":"Pressure-test the research question","afterJa":"研究課題を徹底的に検証する"}
+{"file":"main","op":"add","index":16314,"key":"uOEUMb+lbE","beforeEn":null,"afterEn":"Connect Gmail and triage my inbox: group unread mail by urgency, give me a one-line summary of each, and draft replies for anything that needs a response today. Check with me before sending anything. If Gmail isn't connected, help me connect it first.","afterJa":"Gmailを連携して受信トレイを整理してください。未読メールを緊急度別にグループ分けし、それぞれの1行要約を提示したうえで、今日中に返信が必要なメールの返信下書きを作成してください。送信前には必ず確認を取ります。Gmailがまだ連携されていない場合は、まず連携の設定をお手伝いください。"}
+{"file":"main","op":"add","index":16359,"key":"uX6DDzoinC","beforeEn":null,"afterEn":"Build a protocol checklist","afterJa":"プロトコルチェックリストを作成する"}
+{"file":"main","op":"add","index":16369,"key":"uZbgxXxd2x","beforeEn":null,"afterEn":"No matching repositories.","afterJa":"一致するリポジトリはありません。"}
+{"file":"main","op":"add","index":16384,"key":"udZRja1msR","beforeEn":null,"afterEn":"Reset local rate-limit counters","afterJa":"ローカルのレート制限カウンターをリセットする"}
+{"file":"main","op":"add","index":16389,"key":"ueRpqVl39d","beforeEn":null,"afterEn":"Your bank transfer balance must be used or refunded before switching to card payments. Contact support to resolve the remaining balance.","afterJa":"カード払いに切り替える前に、銀行振込の残高を使用するか返金する必要があります。残高の処理については、サポートにお問い合わせください。"}
+{"file":"main","op":"add","index":16399,"key":"uhdqnTcygY","beforeEn":null,"afterEn":"Upgrade to use Cowork for long-running tasks","afterJa":"長時間のタスクにCoworkを使用するにはアップグレードしてください"}
+{"file":"main","op":"add","index":16406,"key":"ujABpNvZuG","beforeEn":null,"afterEn":"Draft job description for role","afterJa":"職務記述書の下書きを作成する"}
+{"file":"main","op":"add","index":16420,"key":"ukuVmBMJVB","beforeEn":null,"afterEn":"View image {name}","afterJa":"{name} の画像を表示"}
+{"file":"main","op":"add","index":16428,"key":"ummPG1ipE7","beforeEn":null,"afterEn":"No channels have used Claude Tag yet.","afterJa":"まだClaude Tagを使用したチャンネルはありません。"}
+{"file":"main","op":"add","index":16447,"key":"usoerJl4T8","beforeEn":null,"afterEn":"−{count}","afterJa":"−{count}"}
+{"file":"main","op":"add","index":16450,"key":"utPlhb+36u","beforeEn":null,"afterEn":"Page {n}","afterJa":"{n}ページ"}
+{"file":"main","op":"add","index":16455,"key":"uutpXo9Mb7","beforeEn":null,"afterEn":"Reconnecting won't help until your organization admin updates your role.","afterJa":"組織の管理者がロールを更新するまで、再接続しても問題は解決しません。"}
+{"file":"main","op":"add","index":16457,"key":"uv0c0unMSm","beforeEn":null,"afterEn":"Stop keeping window on top","afterJa":"ウィンドウを常に手前に表示しない"}
+{"file":"main","op":"add","index":16488,"key":"v4a3SSJCRS","beforeEn":null,"afterEn":"Your seat in {orgName} doesn't include Claude Code. Ask an admin for access, or switch to another organization.","afterJa":"{orgName} のシートには Claude Code が含まれていません。アクセスについては管理者にお問い合わせいただくか、別の組織に切り替えてください。"}
+{"file":"main","op":"add","index":16523,"key":"vF4xjqwlPz","beforeEn":null,"afterEn":"{n} queued","afterJa":"{n}件キュー待ち"}
+{"file":"main","op":"add","index":16538,"key":"vHwGTZNhEd","beforeEn":null,"afterEn":"Draft rubric for assignment","afterJa":"課題のルーブリックを作成する"}
+{"file":"main","op":"add","index":16542,"key":"vIZS1fACWB","beforeEn":null,"afterEn":"Build deck outline from findings","afterJa":"調査結果からデッキのアウトラインを作成する"}
+{"file":"main","op":"add","index":16569,"key":"vOSQgzx0kx","beforeEn":null,"afterEn":"Review a design doc","afterJa":"デザインドキュメントをレビューする"}
+{"file":"main","op":"add","index":16587,"key":"vSzpjp870B","beforeEn":null,"afterEn":"Turn feedback into prioritized changes","afterJa":"フィードバックを優先順位付きの変更点にまとめる"}
+{"file":"main","op":"add","index":16620,"key":"vbLIP+ZhWO","beforeEn":null,"afterEn":"Partner skills","afterJa":"パートナーのスキル"}
+{"file":"main","op":"add","index":16647,"key":"vg40JZjMky","beforeEn":null,"afterEn":"Show {count, plural, one {# skipped check} other {# skipped checks}}","afterJa":"{count, plural, one {# 件のスキップされたチェックを表示} other {# 件のスキップされたチェックを表示}}"}
+{"file":"main","op":"add","index":16682,"key":"vm1bq3+TX8","beforeEn":null,"afterEn":"Get started with Claude","afterJa":"Claude を始める"}
+{"file":"main","op":"add","index":16692,"key":"vnp72J29Cl","beforeEn":null,"afterEn":"Git is required to run local sessions. Install it from your distribution's package manager (for example, {command}), or switch to a remote environment.","afterJa":"ローカルセッションを実行するにはGitが必要です。ディストリビューションのパッケージマネージャー（例：{command}）からインストールするか、リモート環境に切り替えてください。"}
+{"file":"main","op":"add","index":16730,"key":"vvm+ek/prl","beforeEn":null,"afterEn":"Find gaps in the literature","afterJa":"文献のギャップを見つける"}
+{"file":"main","op":"add","index":16731,"key":"vvmRpnQLh1","beforeEn":null,"afterEn":"Provisioned","afterJa":"プロビジョニング済み"}
+{"file":"main","op":"add","index":16754,"key":"vz3Mb9HqL1","beforeEn":null,"afterEn":"Models are still loading","afterJa":"モデルはまだ読み込み中です"}
+{"file":"main","op":"add","index":16762,"key":"w/DUWlNb+S","beforeEn":null,"afterEn":"Open folder {name}","afterJa":"フォルダー「{name}」を開く"}
+{"file":"main","op":"add","index":16782,"key":"w5w7SXuEOj","beforeEn":null,"afterEn":"Dismiss warning","afterJa":"警告を閉じる"}
+{"file":"main","op":"add","index":16795,"key":"wA5jPLskJe","beforeEn":null,"afterEn":"Before you start, share a plan of the steps you'll take so I can review it.","afterJa":"開始前に、実行する手順のプランを共有してください。確認してからお進めします。"}
+{"file":"main","op":"add","index":16801,"key":"wCouk3vUvp","beforeEn":null,"afterEn":"Could not load failure details.","afterJa":"失敗の詳細を読み込めませんでした。"}
+{"file":"main","op":"add","index":16848,"key":"wNX0AuN7pY","beforeEn":null,"afterEn":"Hand me raw data and I’ll build the model, formulas and all","afterJa":"生データを渡していただければ、数式も含めてモデルを構築します"}
+{"file":"main","op":"add","index":16855,"key":"wOUzMG4QN7","beforeEn":null,"afterEn":"Setup needs your input","afterJa":"セットアップへの入力が必要です"}
+{"file":"main","op":"add","index":16878,"key":"wV4FxWOadR","beforeEn":null,"afterEn":"Generate component variations","afterJa":"コンポーネントのバリエーションを生成する"}
+{"file":"main","op":"add","index":16883,"key":"wVlDP2ZMPD","beforeEn":null,"afterEn":"Build one-page battlecard for competitor","afterJa":"競合他社向け1ページバトルカードを作成する"}
+{"file":"main","op":"add","index":16884,"key":"wVmDzxsJC0","beforeEn":null,"afterEn":"Draft reply to ticket","afterJa":"チケットへの返信を下書きする"}
+{"file":"main","op":"add","index":16931,"key":"wfknmlyTlW","beforeEn":null,"afterEn":"{n} open","afterJa":"{n}件オープン"}
+{"file":"main","op":"add","index":16967,"key":"wmr+buAckL","beforeEn":null,"afterEn":"Design an A/B test","afterJa":"A/Bテストを設計する"}
+{"file":"main","op":"add","index":16981,"key":"wpnDkT7O6V","beforeEn":null,"afterEn":"Think through a decision","afterJa":"意思決定を整理する"}
+{"file":"main","op":"add","index":16987,"key":"wr7jwrGJO9","beforeEn":null,"afterEn":"Audit for accessibility","afterJa":"アクセシビリティの監査を行う"}
+{"file":"main","op":"add","index":17029,"key":"wytZxjTMDw","beforeEn":null,"afterEn":"Queued messages","afterJa":"キューに入ったメッセージ"}
+{"file":"main","op":"add","index":17032,"key":"wzLRFQovFu","beforeEn":null,"afterEn":"Create a stakeholder map","afterJa":"ステークホルダーマップを作成する"}
+{"file":"main","op":"add","index":17118,"key":"xL7cDBls/V","beforeEn":null,"afterEn":"Open Claude settings","afterJa":"Claudeの設定を開く"}
+{"file":"main","op":"add","index":17134,"key":"xOHKVT5Gpf","beforeEn":null,"afterEn":"Adapt one piece of content","afterJa":"コンテンツを別の形式に転用する"}
+{"file":"main","op":"add","index":17185,"key":"xbDx1X5jOI","beforeEn":null,"afterEn":"You've reached your monthly spend limit and you're out of credits. Raise your limit, then add credits to keep working.","afterJa":"月間の利用上限に達し、クレジットが不足しています。上限を引き上げてからクレジットを追加すると、作業を続けることができます。"}
+{"file":"main","op":"add","index":17194,"key":"xfj8wVU8Dq","beforeEn":null,"afterEn":"Build a vendor comparison spreadsheet","afterJa":"ベンダー比較スプレッドシートを作成する"}
+{"file":"main","op":"add","index":17248,"key":"xrHcSLTDKP","beforeEn":null,"afterEn":"execute JavaScript on","afterJa":"JavaScriptを実行する"}
+{"file":"main","op":"add","index":17257,"key":"xt++KPI/og","beforeEn":null,"afterEn":"Popular for {role}","afterJa":"{role}に人気"}
+{"file":"main","op":"add","index":17263,"key":"xttQOQAuMw","beforeEn":null,"afterEn":"Your subscription has an outstanding invoice. Pay or void it before switching payment methods.","afterJa":"サブスクリプションに未払いの請求書があります。お支払い方法を切り替える前に、支払いまたは無効化してください。"}
+{"file":"main","op":"add","index":17273,"key":"xwWw7+ht7D","beforeEn":null,"afterEn":"Reconnecting to {host}…","afterJa":"{host}に再接続しています…"}
+{"file":"main","op":"add","index":17301,"key":"y0T3pgDvO2","beforeEn":null,"afterEn":"What’s on your plate today?","afterJa":"今日は何をしますか？"}
+{"file":"main","op":"add","index":17310,"key":"y2T7IGblKb","beforeEn":null,"afterEn":"Build citation list from sources","afterJa":"出典から引用リストを作成する"}
+{"file":"main","op":"add","index":17311,"key":"y2Xr65X8Az","beforeEn":null,"afterEn":"Connected to {name}","afterJa":"{name}に接続済み"}
+{"file":"main","op":"add","index":17322,"key":"y5mXOnhVZH","beforeEn":null,"afterEn":"Aqua","afterJa":"アクア"}
+{"file":"main","op":"add","index":17410,"key":"yW+1yBMuBK","beforeEn":null,"afterEn":"Explain doc to business stakeholder","afterJa":"ビジネス関係者向けにドキュメントを説明する"}
+{"file":"main","op":"add","index":17443,"key":"yb9cU3mLCo","beforeEn":null,"afterEn":"Build a 30-60-90 onboarding plan","afterJa":"30-60-90日のオンボーディング計画を作成する"}
+{"file":"main","op":"add","index":17470,"key":"yfpr4i5NmO","beforeEn":null,"afterEn":"Draft follow-ups for cold deals","afterJa":"休眠案件のフォローアップを下書きする"}
+{"file":"main","op":"add","index":17476,"key":"yhC6IJoN5I","beforeEn":null,"afterEn":"Your card was saved, but the switch to card billing didn't complete. Try again.","afterJa":"カードは保存されましたが、カード払いへの切り替えが完了しませんでした。もう一度お試しください。"}
+{"file":"main","op":"add","index":17482,"key":"yij7rht1SW","beforeEn":null,"afterEn":"Default reasoning effort for new sessions in this project.","afterJa":"このプロジェクトの新しいセッションにおけるデフォルトの推論処理量。"}
+{"file":"main","op":"add","index":17500,"key":"ynpDXm52Z/","beforeEn":null,"afterEn":"Couldn't refresh just now. Showing the last loaded checks.","afterJa":"現在更新できませんでした。最後に読み込んだチェックを表示しています。"}
+{"file":"main","op":"add","index":17536,"key":"ywJO3GguFw","beforeEn":null,"afterEn":"Side chat is only available in the primary pane.","afterJa":"サイドチャットはプライマリペインでのみ利用できます。"}
+{"file":"main","op":"add","index":17547,"key":"yy+M+ceB2q","beforeEn":null,"afterEn":"Your organization doesn't allow this connection method for your role. Contact your organization admin.","afterJa":"お客様の組織では、このロールに対してこの接続方法は許可されていません。組織の管理者にお問い合わせください。"}
+{"file":"main","op":"add","index":17554,"key":"yzS3Udhhi4","beforeEn":null,"afterEn":"Maximum number of composers reached. Close one to spin off a new task.","afterJa":"コンポーザーの最大数に達しました。新しいタスクを開始するには、1つ閉じてください。"}
+{"file":"main","op":"add","index":17573,"key":"z2OZdWQnpv","beforeEn":null,"afterEn":"Always use the model Anthropic recommends for enterprise use. Currently, in Chat it is {chatModel} and in Cowork it is {coworkModel}. This will update automatically when new models are released.","afterJa":"Anthropicがエンタープライズ向けに推奨するモデルを常に使用します。現在、Chatでは{chatModel}、Coworkでは{coworkModel}が使用されています。新しいモデルがリリースされると、自動的に更新されます。"}
+{"file":"main","op":"add","index":17584,"key":"z4g0doCaDm","beforeEn":null,"afterEn":"Could not save changes.","afterJa":"変更を保存できませんでした。"}
+{"file":"main","op":"add","index":17587,"key":"z5yaoyNBLA","beforeEn":null,"afterEn":"{status}, show in transcript","afterJa":"{status}、トランスクリプトに表示"}
+{"file":"main","op":"add","index":17600,"key":"z7d55WjWN/","beforeEn":null,"afterEn":"{names} need additional consent. Finish setting them up in connector settings.","afterJa":"{names}には追加の同意が必要です。コネクタ設定で設定を完了してください。"}
+{"file":"main","op":"add","index":17605,"key":"z9FUhi4lzh","beforeEn":null,"afterEn":"Find flaw in reasoning","afterJa":"論理の欠陥を見つける"}
+{"file":"main","op":"add","index":17613,"key":"zBGTUU3OrW","beforeEn":null,"afterEn":"Build a literature summary table","afterJa":"文献要約表を作成する"}
+{"file":"main","op":"add","index":17616,"key":"zCAmgyJTUC","beforeEn":null,"afterEn":"Pick the right chart","afterJa":"適切なグラフを選ぶ"}
+{"file":"main","op":"add","index":17617,"key":"zCFR1xaPm8","beforeEn":null,"afterEn":"Screen these resumes","afterJa":"履歴書をスクリーニングする"}
+{"file":"main","op":"add","index":17639,"key":"zHsy5P98LV","beforeEn":null,"afterEn":"Auto-loading paused — {filteredOut} of {loaded} loaded sessions are hidden from this tab (running or removed).","afterJa":"自動読み込みが一時停止中 — 読み込まれた{loaded}件のセッションのうち{filteredOut}件がこのタブに表示されていません（実行中または削除済み）。"}
+{"file":"main","op":"add","index":17651,"key":"zJgTnkFmfK","beforeEn":null,"afterEn":"Model access & max effort level","afterJa":"モデルアクセスと最大努力レベル"}
+{"file":"main","op":"add","index":17680,"key":"zQ/i/Smuf+","beforeEn":null,"afterEn":"Build an app","afterJa":"アプリを作成する"}
+{"file":"main","op":"add","index":17691,"key":"zSPm3KDHP7","beforeEn":null,"afterEn":"Prep the QBR","afterJa":"QBRの準備をする"}
+{"file":"main","op":"add","index":17751,"key":"zgPWWEb6NS","beforeEn":null,"afterEn":"Lay out a unit calendar","afterJa":"単元カレンダーを作成する"}
+{"file":"main","op":"add","index":17785,"key":"zoneACdWVV","beforeEn":null,"afterEn":"Size a market","afterJa":"市場規模を算出する"}
