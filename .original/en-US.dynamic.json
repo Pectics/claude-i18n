@@ -1,4 +1,5 @@
 {
+  "0I9lkeYit3": "This artifact was made by someone else. It can contain hidden instructions that trick Claude into taking actions you didn't ask for, or sharing your information with third parties. If you don't know or trust the source, don't remix it.",
   "0gtp5o1nEE": "Complex, detailed work",
   "29OLd9bgWw": "Opus consumes usage limits faster than other models",
   "2EcGZn58SU": "Auto thinking",
@@ -7,6 +8,7 @@
   "4N8a6wReLf": "Best for math and coding challenges",
   "4RgMF5iUDm": "Extended",
   "6eNkKSj+Er": "Web search",
+  "6nOW1iWeo1": "You can use up to 50% of your plan limits on Fable 5 through July 7. After that, switch to usage credits to continue using it.",
   "8iuHf335Ey": "Always uses deep reasoning",
   "B4Nw7coGbc": "Adaptive",
   "BDqDM65MnU": "Adaptive thinking",
@@ -23,6 +25,7 @@
   "QimMWHgE5g": "Respond right away",
   "RaZ/cp/eey": "May use excessive tokens resulting in long response times and may hit token limits. Use sparingly for the hardest tasks.",
   "U0mtsR78v2": "Medium",
+  "XZcWS4Z/te": "Only remix artifacts from people you trust",
   "Xads8RoR+/": "Default",
   "Xft0R8xbIB": "Low",
   "Yrtr74Rv+h": "For your toughest challenges",
@@ -44,5 +47,6 @@
   "v8dqn914vW": "Fable is included in your plan limits until June 22. After that, switch to usage credits to continue using it.",
   "vv9L/MN3/H": "High",
   "w+qTzeepxX": "Best for most use cases",
+  "yLlZIEVonu": "Included until July 7",
   "zdSx1K4VL2": "Quick replies to simple questions"
 }
