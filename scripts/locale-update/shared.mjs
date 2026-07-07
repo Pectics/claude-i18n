@@ -43,6 +43,42 @@ export function hasKana(text) {
   return /[\u3040-\u309f\u30a0-\u30ff\u31f0-\u31ff]/.test(text);
 }
 
+const NON_LATIN_UNTRANSLATED_ENGLISH_CHECK_LANGUAGES = new Set([
+  'ar',
+  'bg',
+  'bn',
+  'el',
+  'fa',
+  'he',
+  'hi',
+  'ja',
+  'ko',
+  'ru',
+  'ta',
+  'te',
+  'th',
+  'uk',
+  'ur',
+  'zh',
+]);
+
+export function primaryLanguageForLocale(locale) {
+  if (typeof locale !== 'string') return null;
+  const [language] = locale.split('-');
+  return language ? language.toLowerCase() : null;
+}
+
+export function shouldRejectJapaneseKana(locale) {
+  return primaryLanguageForLocale(locale) !== 'ja';
+}
+
+export function shouldCheckObviousUntranslatedEnglish(locale) {
+  const language = primaryLanguageForLocale(locale);
+  if (!language || language === 'en') return false;
+
+  return NON_LATIN_UNTRANSLATED_ENGLISH_CHECK_LANGUAGES.has(language);
+}
+
 export function hasObviousUntranslatedEnglish(text) {
   const hasCjk = /[\u4e00-\u9fff]/.test(text);
   if (hasCjk) return false;

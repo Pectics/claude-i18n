@@ -7,7 +7,7 @@ description: End-to-end offline locale-update workflow for translating repositor
 
 ## Core Boundary
 
-This skill is for the repository's `locale-update` flow. Use it when the maintainer wants the pending locale diff translated and applied locally, without writing a custom prompt.
+This skill is for the repository's `locale-update` flow. Use it when the maintainer wants the pending locale diff translated and applied locally, without writing a custom prompt. The target locale is a community-supported optional locale such as `zh-CN`, `zh-TW`, or another future locale; do not assume the workflow is Simplified-Chinese-specific.
 
 Use the local workflow and scripts as the source of truth:
 
@@ -59,8 +59,9 @@ Use the default pending directory unless the user explicitly supplies another on
 - writes input chunks under `.pending/locale-update/translation/<TARGET_LOCALE>/chunks/...`
 - expects output chunks under `.pending/locale-update/translation/<TARGET_LOCALE>/out/...`
 - writes `.pending/locale-update/translation/<TARGET_LOCALE>/manifest.json`
+- writes the expected translated-value field as `outputField` in the work manifest
 
-Read the generated work manifest and use its `chunks` array as the only assignment list. Do not invent chunk paths. Capture the summary counts before apply, because the apply script clears the pending directory on success.
+Read the generated work manifest and use its `chunks` array as the only assignment list. Do not invent chunk paths. Read `outputField` from the same manifest and pass that exact field name to workers. New work manifests normally use `translation`; older pending work may use the legacy `zh` field. Capture the summary counts before apply, because the apply script clears the pending directory on success.
 
 If the manifest has no chunks because the diff only removes keys, skip translation and run the apply step directly.
 
@@ -69,11 +70,12 @@ If the manifest has no chunks because the diff only removes keys, skip translati
 Each input line is a JSON object with:
 
 - `file`, `index`, `key`, `en`
-- optional `ja`, `op`, `beforeEn`, `currentTarget`
+- optional `reference`, `ja`, `op`, `beforeEn`, `currentTarget`
 
 The source of truth is `en`. Reference fields are context only:
 
-- use `ja` only as a hint when present
+- use `reference` only as a hint when present
+- use `ja` only as a legacy alias when the reference locale is Japanese
 - use `currentTarget` only for terminology continuity
 - use `beforeEn` only to understand what changed
 - if any context conflicts with `en`, `en` wins
@@ -83,14 +85,14 @@ Each output line must:
 - be valid JSONL
 - preserve row count and order exactly
 - preserve `file`, `index`, and `key` exactly
-- write a non-empty translated string in the field expected by the local apply script
+- write a non-empty translated string in the `outputField` from the work manifest
 
-At the time of this workflow, `apply_translation.mjs` reads the output field `zh`. If that script changes, follow the script.
+Current generated work manifests use the output field `translation`. If the manifest has no `outputField`, inspect `apply_translation.mjs`; the compatibility fallback for older pending work is `zh`.
 
 Example shape:
 
 ```json
-{"file":"main","index":0,"key":"example.key","zh":"<translated text>"}
+{"file":"main","index":0,"key":"example.key","translation":"<translated text>"}
 ```
 
 Never print full translated chunks in chat. Write them to the output paths from the work manifest.
@@ -103,7 +105,7 @@ For routine chunk translation, do not let subagents inherit an expensive frontie
 
 Use a bounded pool. Assign exactly one chunk per subagent unless the user explicitly asks for larger batches. Keep the primary agent responsible for preparation, validation, apply, cleanup, staging, and commit decisions.
 
-Do not send vague delegation prompts. Every subagent prompt must include exact input path, exact output path, target locale, output field, source-of-truth rules, preservation rules, quote and punctuation rules, validation expectations, and final response format.
+Do not send vague delegation prompts. Every subagent prompt must include exact input path, exact output path, target locale, output field from the work manifest, source-of-truth rules, preservation rules, quote and punctuation rules, validation expectations, and final response format.
 
 ## Preset Subagent Prompt
 
@@ -129,11 +131,12 @@ Hard boundaries:
 5. Do not print translated chunk content in chat.
 
 Input rules:
-1. Each input line contains file, index, key, en, and may contain ja, op, beforeEn, currentTarget.
-2. Translate according to en. If ja exists, use it only as contextual help.
+1. Each input line contains file, index, key, en, and may contain reference, ja, op, beforeEn, currentTarget.
+2. Translate according to en. If reference exists, use it only as contextual help.
 3. If en and any context conflict, en wins.
 4. If currentTarget exists, use it only for terminology continuity; do not mechanically reuse it.
 5. If beforeEn exists, use it only to understand the source change.
+6. If ja exists, treat it only as a legacy Japanese-reference alias, not as the source of truth.
 
 Output rules:
 1. Output JSONL with one object per input row.
@@ -200,6 +203,7 @@ Validate every output chunk before apply:
 - no replacement character, TODO marker, or obvious untranslated prose
 - placeholders, brace structures, ICU branches, tags, URLs, emails, code spans, backtick spans, and Markdown structure are preserved
 - human-language quotes follow target-locale conventions while JSON remains valid
+- target-locale-specific checks are respected; for example, Chinese-family locales still reject obvious untranslated English, while Latin-script target locales are not rejected merely for using Latin letters
 
 The authoritative validation happens in:
 
@@ -277,6 +281,7 @@ Use the second command only to record deletion of tracked pending artifacts. Do 
 At the end, report:
 
 - target locale
+- output field used
 - prepare/apply commands run
 - number of chunks translated
 - whether `.pending/locale-update` was cleared

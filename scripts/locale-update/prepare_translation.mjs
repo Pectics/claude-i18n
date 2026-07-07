@@ -9,6 +9,18 @@ const DEFAULT_PENDING_DIR = path.join(ROOT_DIR, '.pending', 'locale-update');
 const DEFAULT_TARGET_CHARS = 12000;
 const DEFAULT_MAX_ENTRIES = 300;
 const DEFAULT_MIN_ENTRIES = 50;
+const DEFAULT_OUTPUT_FIELD = 'translation';
+const RESERVED_OUTPUT_FIELDS = new Set([
+  'beforeEn',
+  'currentTarget',
+  'en',
+  'file',
+  'index',
+  'ja',
+  'key',
+  'op',
+  'reference',
+]);
 
 function toRepoRelative(filePath) {
   return path.relative(ROOT_DIR, filePath).split(path.sep).join('/');
@@ -21,7 +33,7 @@ function resolveRepoPath(filePath) {
 
 function usage() {
   throw new Error(
-    'Usage: node prepare_translation.mjs --locale <locale> [--pending-dir <path>] [--target-chars <n>] [--max-entries <n>] [--min-entries <n>]'
+    'Usage: node prepare_translation.mjs --locale <locale> [--pending-dir <path>] [--output-field <field>] [--target-chars <n>] [--max-entries <n>] [--min-entries <n>]'
   );
 }
 
@@ -32,6 +44,7 @@ function parseArgs(argv) {
     targetChars: DEFAULT_TARGET_CHARS,
     maxEntries: DEFAULT_MAX_ENTRIES,
     minEntries: DEFAULT_MIN_ENTRIES,
+    outputField: DEFAULT_OUTPUT_FIELD,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -42,6 +55,9 @@ function parseArgs(argv) {
       index += 1;
     } else if (token === '--pending-dir' && next) {
       args.pendingDir = path.resolve(next);
+      index += 1;
+    } else if (token === '--output-field' && next) {
+      args.outputField = next;
       index += 1;
     } else if (token === '--target-chars' && next) {
       args.targetChars = Number.parseInt(next, 10);
@@ -58,7 +74,17 @@ function parseArgs(argv) {
   }
 
   if (!args.locale) usage();
+  validateOutputField(args.outputField);
   return args;
+}
+
+function validateOutputField(outputField) {
+  if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(outputField)) {
+    throw new Error(`Invalid output field: ${outputField}`);
+  }
+  if (RESERVED_OUTPUT_FIELDS.has(outputField)) {
+    throw new Error(`Output field conflicts with input metadata field: ${outputField}`);
+  }
 }
 
 function loadPendingManifest(pendingDir) {
@@ -78,18 +104,21 @@ function targetPathFor(locale, fileLabel) {
   return path.join(ROOT_DIR, locale, `${locale}${suffix}`);
 }
 
-function resolveSourcePath(pendingManifest, fileLabel, kind) {
-  const configuredPath = pendingManifest.source?.[fileLabel]?.[kind];
+function resolveSourcePath(pendingManifest, fileLabel, role) {
+  const sourceConfig = pendingManifest.source?.[fileLabel] ?? {};
+  const configuredPath = role === 'base'
+    ? sourceConfig.base ?? sourceConfig.en
+    : sourceConfig.reference ?? sourceConfig.ja;
   if (configuredPath) {
     return resolveRepoPath(configuredPath);
   }
 
-  if (kind === 'en') {
+  if (role === 'base') {
     const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
     return path.join(ROOT_DIR, '.original', `${pendingManifest.baseLocale}${suffix}`);
   }
 
-  if (kind === 'ja' && pendingManifest.referenceLocale) {
+  if (role === 'reference' && pendingManifest.referenceLocale) {
     const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
     return path.join(ROOT_DIR, '.original', `${pendingManifest.referenceLocale}${suffix}`);
   }
@@ -104,7 +133,11 @@ function readTargetData(filePath) {
   return readJson(filePath);
 }
 
-function toTranslationTask(row, targetData) {
+function isJapaneseLocale(locale) {
+  return typeof locale === 'string' && /^ja(?:-|$)/i.test(locale);
+}
+
+function toTranslationTask(row, targetData, referenceLocale) {
   if (row.op === 'remove') return null;
   if (typeof row.afterEn !== 'string') {
     throw new Error(`${row.file}:${row.key}: add/update row is missing afterEn`);
@@ -114,16 +147,25 @@ function toTranslationTask(row, targetData) {
   }
 
   const currentTarget = Object.prototype.hasOwnProperty.call(targetData, row.key) ? targetData[row.key] : null;
-  return {
+  const reference = typeof row.afterReference === 'string'
+    ? row.afterReference
+    : typeof row.afterJa === 'string'
+      ? row.afterJa
+      : null;
+  const task = {
     file: row.file,
     index: row.index,
     key: row.key,
     en: row.afterEn,
-    ja: typeof row.afterJa === 'string' ? row.afterJa : null,
+    reference,
     op: row.op,
     beforeEn: typeof row.beforeEn === 'string' ? row.beforeEn : null,
     currentTarget: typeof currentTarget === 'string' ? currentTarget : null,
   };
+  if (isJapaneseLocale(referenceLocale)) {
+    task.ja = reference;
+  }
+  return task;
 }
 
 function buildChunks(fileLabel, rows, workDir, options) {
@@ -160,6 +202,7 @@ function buildChunks(fileLabel, rows, workDir, options) {
   for (const row of rows) {
     const rowChars =
       row.en.length +
+      (typeof row.reference === 'string' ? row.reference.length : 0) +
       (typeof row.ja === 'string' ? row.ja.length : 0) +
       (typeof row.currentTarget === 'string' ? row.currentTarget.length : 0);
 
@@ -210,8 +253,12 @@ function main() {
   ensureDir(workDir);
   maybeCopyPromptTemplate(workDir);
 
-  const mainTasks = mainDiffRows.map((row) => toTranslationTask(row, targetMainData)).filter(Boolean);
-  const dynamicTasks = dynamicDiffRows.map((row) => toTranslationTask(row, targetDynamicData)).filter(Boolean);
+  const mainTasks = mainDiffRows
+    .map((row) => toTranslationTask(row, targetMainData, pendingManifest.referenceLocale))
+    .filter(Boolean);
+  const dynamicTasks = dynamicDiffRows
+    .map((row) => toTranslationTask(row, targetDynamicData, pendingManifest.referenceLocale))
+    .filter(Boolean);
 
   const mainChunks = buildChunks('main', mainTasks, workDir, args);
   const dynamicChunks = buildChunks('dynamic', dynamicTasks, workDir, args);
@@ -224,19 +271,28 @@ function main() {
     pendingDir: toRepoRelative(args.pendingDir),
     workDir: toRepoRelative(workDir),
     locale: args.locale,
+    outputField: args.outputField,
     baseLocale: pendingManifest.baseLocale,
     referenceLocale: pendingManifest.referenceLocale,
     source: {
       main: {
-        en: toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'en')),
-        ja: pendingManifest.referenceLocale
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'ja'))
+        base: toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'base')),
+        reference: pendingManifest.referenceLocale
+          ? toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'reference'))
+          : null,
+        en: toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'base')),
+        ja: isJapaneseLocale(pendingManifest.referenceLocale)
+          ? toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'reference'))
           : null,
       },
       dynamic: {
-        en: toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'en')),
-        ja: pendingManifest.referenceLocale
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'ja'))
+        base: toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'base')),
+        reference: pendingManifest.referenceLocale
+          ? toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'reference'))
+          : null,
+        en: toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'base')),
+        ja: isJapaneseLocale(pendingManifest.referenceLocale)
+          ? toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'reference'))
           : null,
       },
     },
@@ -280,6 +336,7 @@ function main() {
         locale: args.locale,
         workDir: toRepoRelative(workDir),
         manifest: toRepoRelative(manifestPath),
+        outputField: args.outputField,
         summary: manifest.summary,
       },
       null,
