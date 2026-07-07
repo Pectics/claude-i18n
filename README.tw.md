@@ -139,10 +139,10 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 
 # 2. 翻譯 .pending/locale-update/translation/zh-CN/chunks/ 下的分塊檔案
 #    推薦使用專案內建的翻譯工作流程 Skill：
-#      Claude Code:  /offline-chunk-translation
-#      Codex:        /offline-chunk-translation
+#      Claude Code:  /apply-locale-update
+#      Codex:        /apply-locale-update
 #    Skill 會自動讀取 chunk、翻譯、寫入 out/ 目錄，並校驗佔位符/ICU/標籤完整性
-#    手動翻譯也可：每個 chunk 是 JSONL，每行 { key, en, ja, op }，輸出加 "zh" 欄位
+#    手動翻譯也可：每個 chunk 是 JSONL，每行 { key, en, reference, op }，輸出欄位以 manifest 的 outputField 為準
 
 # 3. 校驗並套用翻譯結果
 node scripts/locale-update/apply_translation.mjs --locale zh-CN

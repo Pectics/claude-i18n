@@ -1,9 +1,9 @@
 ---
-name: offline-chunk-translation
-description: End-to-end offline locale-update workflow for translating repository-generated JSONL chunks, applying them with local scripts, cleaning pending artifacts, and committing only the expected locale update changes while preserving placeholders, ICU MessageFormat, tags, and chunk order.
+name: apply-locale-update
+description: "Use when applying the claude-i18n pending locale-update branch work: translate repository-generated JSONL chunks, run local apply validation, clean pending artifacts, and prepare the expected locale-update commit."
 ---
 
-# Offline Chunk Translation
+# Apply Locale Update
 
 ## Core Boundary
 
