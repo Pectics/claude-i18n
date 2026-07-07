@@ -1,0 +1,4 @@
+interface:
+  display_name: "Apply Locale Update"
+  short_description: "Apply pending locale-update work"
+  default_prompt: "Use $apply-locale-update to run the pending locale-update translation workflow end to end."

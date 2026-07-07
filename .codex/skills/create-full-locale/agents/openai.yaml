@@ -1,0 +1,4 @@
+interface:
+  display_name: "Create Full Locale"
+  short_description: "Create a full new locale offline"
+  default_prompt: "Use $create-full-locale to create a full new target locale from .original and existing locale files."

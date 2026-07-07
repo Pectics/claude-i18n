@@ -31,8 +31,22 @@ export function readJsonl(filePath) {
 
 export function writeJsonl(filePath, rows) {
   ensureDir(path.dirname(filePath));
-  const lines = rows.map((row) => JSON.stringify(row));
-  fs.writeFileSync(filePath, `${lines.join('\n')}\n`, 'utf8');
+  fs.writeFileSync(filePath, `${rows.map((row) => JSON.stringify(row)).join('\n')}\n`, 'utf8');
+}
+
+export function readLocaleObject(filePath, label) {
+  const data = readJson(filePath);
+  if (!data || typeof data !== 'object' || Array.isArray(data)) {
+    throw new Error(`${label}: expected a flat JSON object`);
+  }
+
+  for (const [key, value] of Object.entries(data)) {
+    if (typeof value !== 'string') {
+      throw new Error(`${label}: value for ${key} is not a string`);
+    }
+  }
+
+  return data;
 }
 
 export function normalizeWhitespace(text) {
@@ -75,7 +89,6 @@ export function shouldRejectJapaneseKana(locale) {
 export function shouldCheckObviousUntranslatedEnglish(locale) {
   const language = primaryLanguageForLocale(locale);
   if (!language || language === 'en') return false;
-
   return NON_LATIN_UNTRANSLATED_ENGLISH_CHECK_LANGUAGES.has(language);
 }
 
@@ -99,14 +112,6 @@ export function hasObviousUntranslatedEnglish(text) {
     return false;
   }
 
-  if (text === 'Alex Johnson') {
-    return false;
-  }
-
-  if (text === 'Research Labs Premium') {
-    return false;
-  }
-
   if (/^(?:[A-Za-z0-9]+|[⌘⌥⌃⇧]+)(?:\s*\+\s*(?:[A-Za-z0-9]+|[⌘⌥⌃⇧]+))+$/u.test(text)) {
     return false;
   }
@@ -115,21 +120,16 @@ export function hasObviousUntranslatedEnglish(text) {
   const words = wordMatches.filter((word) => word.length >= 2);
   const whitelistedBrandPattern =
     /\bClaude\b|\bAnthropic\b|\bClaude Code\b|\bClaude Code Desktop\b|\bClaude for Chrome\b|\bCowork\b|\bDispatch\b|\bCanvas\b|\bArtifact\b|\bMCP\b|\bAPI\b|\bOAuth\b|\bSAML\b|\bSCIM\b|\bSSO\b|\bAWS\b|\bAmazon\b|\bAmazon Bedrock\b|\bGoogle\b|\bGitHub\b|\bSlack\b|\bMicrosoft 365\b|\bMicrosoft Office\b|\bMicrosoft Foundry\b|\bVS Code\b|\bCursor\b|\bWindsurf\b|\bOpus\b|\bSonnet\b|\bHaiku\b/;
-
-  const titleCaseLike = words.length > 0 && words.every((word) => /^[A-Z][a-z]+(?:['’-][A-Z][a-z]+)?$/.test(word) || /^[A-Z0-9]+$/.test(word));
+  const titleCaseLike =
+    words.length > 0 &&
+    words.every((word) => /^[A-Z][a-z]+(?:['’-][A-Z][a-z]+)?$/.test(word) || /^[A-Z0-9]+$/.test(word));
 
   if (words.length >= 2 && words.length <= 5 && titleCaseLike) {
-    if (whitelistedBrandPattern.test(text)) {
-      return false;
-    }
-    return true;
+    return !whitelistedBrandPattern.test(text);
   }
 
   if (words.length >= 3 && text.length >= 24) {
-    if (whitelistedBrandPattern.test(text) && words.length <= 5) {
-      return false;
-    }
-    return true;
+    return !(whitelistedBrandPattern.test(text) && words.length <= 5);
   }
 
   return false;
@@ -293,7 +293,10 @@ function signatureList(nodes) {
 export function compareMessageStructure(sourceText, targetText, contextLabel) {
   const sourceBackticks = extractBacktickSegments(sourceText);
   const targetBackticks = extractBacktickSegments(targetText);
-  if (sourceBackticks.length !== targetBackticks.length || sourceBackticks.some((token, index) => token !== targetBackticks[index])) {
+  if (
+    sourceBackticks.length !== targetBackticks.length ||
+    sourceBackticks.some((token, index) => token !== targetBackticks[index])
+  ) {
     throw new Error(`${contextLabel}: backtick segments changed`);
   }
 
@@ -305,7 +308,10 @@ export function compareMessageStructure(sourceText, targetText, contextLabel) {
 
   const sourceEmails = extractEmails(sourceText);
   const targetEmails = extractEmails(targetText);
-  if (sourceEmails.length !== targetEmails.length || sourceEmails.some((token, index) => token !== targetEmails[index])) {
+  if (
+    sourceEmails.length !== targetEmails.length ||
+    sourceEmails.some((token, index) => token !== targetEmails[index])
+  ) {
     throw new Error(`${contextLabel}: email addresses changed`);
   }
 
@@ -315,10 +321,8 @@ export function compareMessageStructure(sourceText, targetText, contextLabel) {
     throw new Error(`${contextLabel}: HTML tags changed`);
   }
 
-  const sourceNodes = parseMessageStructure(sourceText);
-  const targetNodes = parseMessageStructure(targetText);
-  const sourceSignatures = signatureList(sourceNodes);
-  const targetSignatures = signatureList(targetNodes);
+  const sourceSignatures = signatureList(parseMessageStructure(sourceText));
+  const targetSignatures = signatureList(parseMessageStructure(targetText));
 
   if (
     sourceSignatures.length !== targetSignatures.length ||

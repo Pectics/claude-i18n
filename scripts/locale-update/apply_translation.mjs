@@ -8,12 +8,15 @@ import {
   hasObviousUntranslatedEnglish,
   readJson,
   readJsonl,
+  shouldCheckObviousUntranslatedEnglish,
+  shouldRejectJapaneseKana,
   writeJson,
 } from './shared.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
 const DEFAULT_PENDING_DIR = path.join(ROOT_DIR, '.pending', 'locale-update');
+const LEGACY_OUTPUT_FIELD = 'zh';
 
 function resolveRepoPath(filePath) {
   if (!filePath) return null;
@@ -48,7 +51,14 @@ function parseArgs(argv) {
   return args;
 }
 
-function validateChunk(inputRows, outputRows, label) {
+function outputFieldFor(workManifest) {
+  if (typeof workManifest.outputField === 'string' && workManifest.outputField.trim() !== '') {
+    return workManifest.outputField;
+  }
+  return LEGACY_OUTPUT_FIELD;
+}
+
+function validateChunk(inputRows, outputRows, label, options) {
   if (inputRows.length !== outputRows.length) {
     throw new Error(`${label}: row count mismatch (${outputRows.length} vs ${inputRows.length})`);
   }
@@ -61,23 +71,24 @@ function validateChunk(inputRows, outputRows, label) {
     if (inputRow.file !== outputRow.file || inputRow.index !== outputRow.index || inputRow.key !== outputRow.key) {
       throw new Error(`${rowLabel}: file/index/key mismatch`);
     }
-    if (typeof outputRow.zh !== 'string' || outputRow.zh.trim() === '') {
-      throw new Error(`${rowLabel}: zh is empty or not a string`);
+    const translated = outputRow[options.outputField];
+    if (typeof translated !== 'string' || translated.trim() === '') {
+      throw new Error(`${rowLabel}: ${options.outputField} is empty or not a string`);
     }
-    if (outputRow.zh.includes('�')) {
+    if (translated.includes('�')) {
       throw new Error(`${rowLabel}: contains replacement character`);
     }
-    if (/TODO/i.test(outputRow.zh)) {
+    if (/\bTODO\b/i.test(translated)) {
       throw new Error(`${rowLabel}: contains TODO`);
     }
-    if (hasKana(outputRow.zh)) {
+    if (shouldRejectJapaneseKana(options.targetLocale) && hasKana(translated)) {
       throw new Error(`${rowLabel}: contains Japanese kana`);
     }
-    if (hasObviousUntranslatedEnglish(outputRow.zh)) {
+    if (shouldCheckObviousUntranslatedEnglish(options.targetLocale) && hasObviousUntranslatedEnglish(translated)) {
       throw new Error(`${rowLabel}: looks like untranslated English`);
     }
 
-    compareMessageStructure(inputRow.en, outputRow.zh, rowLabel);
+    compareMessageStructure(inputRow.en, translated, rowLabel);
   }
 }
 
@@ -89,7 +100,7 @@ function loadWorkManifest(pendingDir, locale) {
   return readJson(manifestPath);
 }
 
-function collectTranslations(chunkInfos, fileLabel) {
+function collectTranslations(chunkInfos, fileLabel, options) {
   const translations = new Map();
 
   for (const chunkInfo of chunkInfos) {
@@ -98,13 +109,13 @@ function collectTranslations(chunkInfos, fileLabel) {
       throw new Error(`Missing translated chunk: ${chunkInfo.outputPath}`);
     }
     const outputRows = readJsonl(chunkInfo.outputPath);
-    validateChunk(inputRows, outputRows, path.basename(chunkInfo.outputPath));
+    validateChunk(inputRows, outputRows, path.basename(chunkInfo.outputPath), options);
 
     for (const row of outputRows) {
       if (translations.has(row.key)) {
         throw new Error(`${fileLabel}: duplicate translated key ${row.key}`);
       }
-      translations.set(row.key, row.zh);
+      translations.set(row.key, row[options.outputField]);
     }
   }
 
@@ -150,20 +161,30 @@ function rebuildLocaleFile(fileLabel, baseData, currentTargetData, diffRows, tra
   return result;
 }
 
+function baseSourcePathFor(workManifest, fileLabel) {
+  const sourceConfig = workManifest.source?.[fileLabel] ?? {};
+  return sourceConfig.base ?? sourceConfig.en;
+}
+
 function main() {
   const args = parseArgs(process.argv.slice(2));
   const pendingManifest = readJson(path.join(args.pendingDir, 'manifest.json'));
   const workManifest = loadWorkManifest(args.pendingDir, args.locale);
+  const outputField = outputFieldFor(workManifest);
   const mainDiffRows = readJsonl(path.join(args.pendingDir, 'main.diff.jsonl'));
   const dynamicDiffRows = readJsonl(path.join(args.pendingDir, 'dynamic.diff.jsonl'));
 
-  const baseMainData = readJson(resolveRepoPath(workManifest.source.main.en));
-  const baseDynamicData = readJson(resolveRepoPath(workManifest.source.dynamic.en));
+  const baseMainData = readJson(resolveRepoPath(baseSourcePathFor(workManifest, 'main')));
+  const baseDynamicData = readJson(resolveRepoPath(baseSourcePathFor(workManifest, 'dynamic')));
   const currentMainData = readJson(resolveRepoPath(workManifest.output.main));
   const currentDynamicData = readJson(resolveRepoPath(workManifest.output.dynamic));
 
-  const mainTranslations = collectTranslations(workManifest.chunks.main, 'main');
-  const dynamicTranslations = collectTranslations(workManifest.chunks.dynamic, 'dynamic');
+  const validationOptions = {
+    outputField,
+    targetLocale: workManifest.locale ?? args.locale,
+  };
+  const mainTranslations = collectTranslations(workManifest.chunks.main, 'main', validationOptions);
+  const dynamicTranslations = collectTranslations(workManifest.chunks.dynamic, 'dynamic', validationOptions);
 
   const nextMainData = rebuildLocaleFile(
     'main',
@@ -194,6 +215,7 @@ function main() {
       {
         locale: args.locale,
         baseLocale: pendingManifest.baseLocale,
+        outputField,
         main: Object.keys(nextMainData).length,
         dynamic: Object.keys(nextDynamicData).length,
         clearedPendingDir: args.pendingDir,

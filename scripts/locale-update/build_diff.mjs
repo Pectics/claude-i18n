@@ -128,7 +128,19 @@ function maybeReferenceValue(data, key) {
   return typeof value === "string" ? value : null;
 }
 
-function buildDiffRows(fileLabel, beforeData, afterData, referenceData) {
+function isJapaneseLocale(locale) {
+  return typeof locale === 'string' && /^ja(?:-|$)/i.test(locale);
+}
+
+function referenceFields(referenceData, key, referenceLocale) {
+  const afterReference = maybeReferenceValue(referenceData, key);
+  return {
+    afterReference,
+    afterJa: isJapaneseLocale(referenceLocale) ? afterReference : null,
+  };
+}
+
+function buildDiffRows(fileLabel, beforeData, afterData, referenceData, referenceLocale) {
   const beforeKeys = Object.keys(beforeData);
   const afterKeys = Object.keys(afterData);
   const afterKeySet = new Set(afterKeys);
@@ -145,6 +157,7 @@ function buildDiffRows(fileLabel, beforeData, afterData, referenceData) {
         key,
         beforeEn: beforeData[key],
         afterEn: null,
+        afterReference: null,
         afterJa: null,
       });
       summary.remove += 1;
@@ -166,7 +179,7 @@ function buildDiffRows(fileLabel, beforeData, afterData, referenceData) {
         key,
         beforeEn: null,
         afterEn,
-        afterJa: maybeReferenceValue(referenceData, key),
+        ...referenceFields(referenceData, key, referenceLocale),
       });
       summary.add += 1;
       summary.total += 1;
@@ -181,7 +194,7 @@ function buildDiffRows(fileLabel, beforeData, afterData, referenceData) {
         key,
         beforeEn: beforeData[key],
         afterEn,
-        afterJa: maybeReferenceValue(referenceData, key),
+        ...referenceFields(referenceData, key, referenceLocale),
       });
       summary.update += 1;
       summary.total += 1;
@@ -210,8 +223,8 @@ function main() {
     ? maybeReadLocaleObject(localeFilePath(args.afterDir, referenceLocale, 'dynamic'))
     : {};
 
-  const mainDiff = buildDiffRows('main', beforeMain, afterMain, afterReferenceMain);
-  const dynamicDiff = buildDiffRows('dynamic', beforeDynamic, afterDynamic, afterReferenceDynamic);
+  const mainDiff = buildDiffRows('main', beforeMain, afterMain, afterReferenceMain, referenceLocale);
+  const dynamicDiff = buildDiffRows('dynamic', beforeDynamic, afterDynamic, afterReferenceDynamic, referenceLocale);
   const needsTranslation =
     mainDiff.summary.add + mainDiff.summary.update + dynamicDiff.summary.add + dynamicDiff.summary.update > 0;
 
@@ -237,12 +250,20 @@ function main() {
     needsTranslation,
     source: {
       main: {
+        base: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.json`)),
+        reference: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.json`)) : null,
         en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.json`)),
-        ja: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.json`)) : null,
+        ja: isJapaneseLocale(referenceLocale)
+          ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.json`))
+          : null,
       },
       dynamic: {
+        base: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.dynamic.json`)),
+        reference: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.dynamic.json`)) : null,
         en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.dynamic.json`)),
-        ja: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.dynamic.json`)) : null,
+        ja: isJapaneseLocale(referenceLocale)
+          ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.dynamic.json`))
+          : null,
       },
     },
     pendingFiles: {

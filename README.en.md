@@ -139,10 +139,10 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 
 # 2. Translate the chunk files under .pending/locale-update/translation/zh-CN/chunks/
 #    The recommended way is to use the built-in translation workflow skill:
-#      Claude Code:  /offline-chunk-translation
-#      Codex:        /offline-chunk-translation
+#      Claude Code:  /apply-locale-update
+#      Codex:        /apply-locale-update
 #    The skill reads chunks, translates, writes to out/, and validates placeholders/ICU/tags
-#    Manual translation: each chunk is JSONL, lines have { key, en, ja, op }, output adds "zh"
+#    Manual translation: each chunk is JSONL, lines have { key, en, reference, op }; use the manifest outputField
 
 # 3. Validate and apply the translations
 node scripts/locale-update/apply_translation.mjs --locale zh-CN

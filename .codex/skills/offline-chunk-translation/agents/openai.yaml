@@ -1,4 +1,0 @@
-interface:
-  display_name: "Offline Chunk Translation"
-  short_description: "End-to-end offline locale-update workflow"
-  default_prompt: "Use $offline-chunk-translation to run the pending locale-update translation workflow end to end."
