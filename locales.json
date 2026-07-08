@@ -1,4 +1,11 @@
 {
   "version": "0000000",
-  "locales": ["zh-CN"]
+  "locales": [
+    "zh-CN",
+    "zh-TW"
+  ],
+  "coverage": {
+    "zh-CN": 0.9919,
+    "zh-TW": -1
+  }
 }
