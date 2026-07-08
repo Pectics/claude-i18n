@@ -61,6 +61,12 @@ The prepare script refuses existing target locales, reads `.original/<base>*.jso
 
 Read the generated manifest. Use only `manifest.chunks.main` and `manifest.chunks.dynamic` as the assignment list. Pass the exact `outputField` from the manifest to workers.
 
+Safety notes:
+
+- Never rerun prepare over a work directory that may contain translated output. If `.pending/create-full-locale/<TARGET_LOCALE>` exists and is non-empty, preserve it first or stop; prepare must not delete translated `out/...` files.
+- If you need a different split after workers have started, move the existing work directory to a timestamped backup path first. Do not delete the backup until the locale has been successfully applied and the final files have been validated.
+- Treat any prepare-time recursive removal of a translation work directory as a bug. Removal belongs only to successful apply/explicit final cleanup.
+
 ## Translation Contract
 
 Each input line is a JSON object with:
@@ -90,6 +96,12 @@ Output example:
 Use subagents only when their file edits are available in the primary workspace. Use a bounded pool and assign exactly one chunk per subagent. Prefer the lowest-cost model that can reliably preserve JSON, placeholders, tags, and ICU MessageFormat; `gpt-5.4-mini` with low or medium reasoning is appropriate when available. Escalate only after concrete validation failures or semantic ambiguity.
 
 If subagents are unavailable or unsuitable, translate chunks sequentially with the same contract and validate each chunk before moving on.
+
+Worker pitfalls:
+
+- Keep chunks small enough for the chosen model to finish safely. For `gpt-5.4-mini`, do not assume 300+ row chunks are safe; if workers block or produce weak output, preserve the current work directory and re-prepare with smaller `--target-chars` / `--max-entries`.
+- Do not validate a worker output file while that worker is still running. A mid-write read can look like row-order corruption. Wait for the worker final response, then validate row count, order, `file`/`index`/`key`, and non-empty output fields.
+- If a completed chunk fails validation, discard only that chunk output and re-run that exact chunk. Do not rerun prepare to fix one bad output file.
 
 ## Preset Subagent Prompt
 

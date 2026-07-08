@@ -5,6 +5,19 @@ export function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
 }
 
+export function ensureFreshWorkDir(dirPath, label = 'work directory') {
+  if (fs.existsSync(dirPath)) {
+    const entries = fs.readdirSync(dirPath);
+    if (entries.length > 0) {
+      throw new Error(
+        `${label} already exists and is not empty: ${dirPath}. Refusing to delete existing translation work. Apply the translations first, or move/remove the directory explicitly after preserving the output files.`,
+      );
+    }
+  }
+
+  ensureDir(dirPath);
+}
+
 export function readJson(filePath) {
   return JSON.parse(fs.readFileSync(filePath, 'utf8'));
 }

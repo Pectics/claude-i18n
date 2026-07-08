@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { ensureDir, readJson, readLocaleObject, writeJson, writeJsonl } from './shared.mjs';
+import { ensureDir, ensureFreshWorkDir, readJson, readLocaleObject, writeJson, writeJsonl } from './shared.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
@@ -267,8 +267,7 @@ function main() {
   const contextDynamic = readSourceData(args.contextLocale, 'dynamic', 'context');
 
   const workDir = path.join(args.pendingDir, args.locale);
-  fs.rmSync(workDir, { recursive: true, force: true });
-  ensureDir(workDir);
+  ensureFreshWorkDir(workDir, 'create-full-locale work directory');
 
   const mainTasks = buildTasks('main', baseMain.data, referenceMain.data, contextMain.data, args.referenceLocale);
   const dynamicTasks = buildTasks(
