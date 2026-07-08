@@ -4,7 +4,7 @@
 
 # Claude i18n
 
-**为 Claude.ai 提供社区驱动的国际化多语言支持。**
+**为 [Claude.ai](https://claude.ai) 提供社区驱动的国际化多语言支持。**
 
 [English](README.en.md) | 简体中文 | [繁體中文](README.tw.md)
 

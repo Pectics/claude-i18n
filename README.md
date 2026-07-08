@@ -4,7 +4,7 @@
 
 # Claude i18n
 
-**Provide community-driven internationalization and multi-language support for Claude.ai.**
+**Provide community-driven internationalization and multi-language support for [Claude.ai](https://claude.ai).**
 
 English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
