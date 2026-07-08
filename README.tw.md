@@ -6,7 +6,7 @@
 
 **為 [Claude.ai](https://claude.ai) 提供社區驅動的國際化多語言支持。**
 
-[English](README.en.md) | [简体中文](README.zh.md) | 繁體中文
+[English](README.md) | [简体中文](README.zh.md) | 繁體中文
 
 [![Release](https://img.shields.io/github/v/release/Pectics/claude-i18n?label=發行版)](https://github.com/Pectics/claude-i18n/releases/latest)
 [![License](https://img.shields.io/github/license/Pectics/claude-i18n?label=授權)](LICENSE)
