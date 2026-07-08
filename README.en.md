@@ -12,8 +12,8 @@
 [![License](https://img.shields.io/github/license/Pectics/claude-i18n?label=License)](LICENSE)
 [![Downloads](https://img.shields.io/github/downloads/Pectics/claude-i18n/total?label=Downloads)](https://github.com/Pectics/claude-i18n/releases/latest)
 
-[![Pull Requests](https://img.shields.io/github/issues-pr/Pectics/claude-i18n?label=Pull%20Requests)](https://github.com/Pectics/claude-i18n/pulls)
 [![Issues](https://img.shields.io/github/issues/Pectics/claude-i18n?label=Issues)](https://github.com/Pectics/claude-i18n/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Pectics/claude-i18n?label=Pull%20Requests)](https://github.com/Pectics/claude-i18n/pulls)
 [![Locale Update](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-update.yml?label=Locale%20Update)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-update.yml)
 ![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20Build)
 
