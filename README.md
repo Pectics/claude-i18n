@@ -19,7 +19,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 | Supported platforms | Supported languages |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4)](#installation) [![Edge](https://img.shields.io/badge/Edge-1677ff)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1)](#installation) | [![zh-CN](https://img.shields.io/badge/zh--CN-e5534b)](#supported-languages) [![zh-TW](https://img.shields.io/badge/zh--TW-e5534b)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://img.shields.io/badge/zh--CN-e5534b)](#supported-languages) [![zh-TW](https://img.shields.io/badge/zh--TW-e5534b)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
 
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
@@ -52,7 +52,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 | Firefox Desktop or macOS Safari | Experimental userscript | [userscript/README.md](userscript/README.md) |
 | Manual install or archival package | `.crx` from Releases | [Releases](https://github.com/Pectics/claude-i18n/releases) |
 
-After installation, open [claude.ai](https://claude.ai), go to the language setting from the bottom-left account menu, and select the Chinese option for `zh-CN` or `zh-TW`.
+After installation, open [Claude.ai](https://claude.ai), go to the language setting from the bottom-left account menu, and select the Chinese option for `zh-CN` or `zh-TW`.
 
 ### Store Build
 

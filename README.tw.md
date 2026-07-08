@@ -19,7 +19,7 @@
 
 | 支援平台 | 支援語言 |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4)](#安裝) [![Edge](https://img.shields.io/badge/Edge-1677ff)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1)](#安裝) | [![zh-CN](https://img.shields.io/badge/zh--CN-e5534b)](#支援的語言) [![zh-TW](https://img.shields.io/badge/zh--TW-e5534b)](#支援的語言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支援的語言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://img.shields.io/badge/zh--CN-e5534b)](#支援的語言) [![zh-TW](https://img.shields.io/badge/zh--TW-e5534b)](#支援的語言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支援的語言) |
 
 | 目前語言包 | 主語言包 | Dynamic 語言包 | 合計 |
 | --- | ---: | ---: | ---: |
@@ -52,7 +52,7 @@
 | Firefox Desktop 或 macOS Safari | 使用者腳本實驗版 | [userscript/README.md](userscript/README.md) |
 | 手動安裝或留檔 | Releases 裡的 `.crx` | [Releases](https://github.com/Pectics/claude-i18n/releases) |
 
-安裝後開啟 [claude.ai](https://claude.ai)，在左下角帳號選單進入語言設定，選擇 `zh-CN` 或 `zh-TW` 對應的中文選項即可。
+安裝後開啟 [Claude.ai](https://claude.ai)，在左下角帳號選單進入語言設定，選擇 `zh-CN` 或 `zh-TW` 對應的中文選項即可。
 
 ### 應用程式商店版本
 
