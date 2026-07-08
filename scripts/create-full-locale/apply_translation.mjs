@@ -163,9 +163,8 @@ function readLocalesJson() {
 }
 
 function writeLocalesJson(localesPath, data) {
-  const locales = data.locales.map((locale) => JSON.stringify(locale)).join(', ');
   const version = typeof data.version === 'string' ? data.version : '0000000';
-  fs.writeFileSync(localesPath, `{\n  "version": ${JSON.stringify(version)},\n  "locales": [${locales}]\n}\n`, 'utf8');
+  writeJson(localesPath, { ...data, version });
 }
 
 function assertTargetCanBeWritten(locale, manifest) {

@@ -152,6 +152,10 @@ test('prepare and apply create a full new locale and register it', () => {
       writeJsonl(chunkInfo.outputPath, outputRows);
     }
 
+    const localesBeforeApply = readJson(LOCALES_PATH);
+    localesBeforeApply.coverage = { 'zh-CN': 1, 'zh-TW': 1 };
+    fs.writeFileSync(LOCALES_PATH, `${JSON.stringify(localesBeforeApply, null, 2)}\n`, 'utf8');
+
     const applyOutput = JSON.parse(runNode(APPLY_SCRIPT, ['--locale', locale, '--pending-dir', pendingDir]));
     assert.equal(applyOutput.locale, locale);
     assert.equal(applyOutput.outputField, 'translation');
@@ -168,6 +172,7 @@ test('prepare and apply create a full new locale and register it', () => {
 
     const locales = readJson(LOCALES_PATH);
     assert.ok(locales.locales.includes(locale));
+    assert.deepEqual(locales.coverage, { 'zh-CN': 1, 'zh-TW': 1 });
   } finally {
     restoreLocales(originalLocales);
     fs.rmSync(targetDir, { recursive: true, force: true });
