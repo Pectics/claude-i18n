@@ -1,7 +1,7 @@
 import fs from 'fs';
 import path from 'path';
 import { fileURLToPath } from 'url';
-import { ensureDir, readJson, readJsonl, writeJson, writeJsonl } from './shared.mjs';
+import { ensureDir, ensureFreshWorkDir, readJson, readJsonl, writeJson, writeJsonl } from './shared.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
@@ -249,8 +249,7 @@ function main() {
   const targetMainData = readTargetData(targetMainPath);
   const targetDynamicData = readTargetData(targetDynamicPath);
 
-  fs.rmSync(workDir, { recursive: true, force: true });
-  ensureDir(workDir);
+  ensureFreshWorkDir(workDir, 'locale-update translation work directory');
   maybeCopyPromptTemplate(workDir);
 
   const mainTasks = mainDiffRows

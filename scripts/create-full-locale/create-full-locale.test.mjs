@@ -124,6 +124,23 @@ test('prepare and apply create a full new locale and register it', () => {
     assert.ok(manifest.chunks.main.length > 0);
     assert.ok(manifest.chunks.dynamic.length > 0);
 
+    assertFails(
+      PREPARE_SCRIPT,
+      [
+        '--locale',
+        locale,
+        '--pending-dir',
+        pendingDir,
+        '--target-chars',
+        '2000000',
+        '--max-entries',
+        '20000',
+        '--min-entries',
+        '1',
+      ],
+      /Refusing to delete existing translation work/,
+    );
+
     for (const chunkInfo of [...manifest.chunks.main, ...manifest.chunks.dynamic]) {
       const inputRows = readJsonl(chunkInfo.inputPath);
       const outputRows = inputRows.map((row) => ({
