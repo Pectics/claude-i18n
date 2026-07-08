@@ -4,7 +4,7 @@
 
 # Claude i18n
 
-**讓 Claude Web 使用尚未官方上線的中文介面。**
+**為 Claude.ai 提供社區驅動的國際化多語言支持。**
 
 [简体中文](README.md) | 繁體中文 | [English](README.en.md)
 

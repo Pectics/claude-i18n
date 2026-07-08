@@ -4,7 +4,7 @@
 
 # Claude i18n
 
-**Use Claude Web in Chinese before the interface officially supports it.**
+**Provide community-driven internationalization and multi-language support for Claude.ai.**
 
 [简体中文](README.md) | [繁體中文](README.tw.md) | English
 
