@@ -37,8 +37,22 @@ test('vercel config exposes /coverage through the coverage function', () => {
     includeFiles: 'locales.json',
   });
   assert.ok(
-    config.rewrites.some((rewrite) => rewrite.source === '/coverage' && rewrite.destination === '/api/coverage'),
+    config.routes.some((route) => route.src === '/coverage/?$' && route.dest === '/api/coverage'),
   );
+});
+
+test('vercel config blocks direct coverage function access', () => {
+  const config = readJson(path.join(ROOT_DIR, 'vercel.json'));
+  const coverageAllowIndex = config.routes.findIndex(
+    (route) => route.src === '/coverage/?$' && route.dest === '/api/coverage',
+  );
+  const coverageBlockIndex = config.routes.findIndex(
+    (route) => route.src === '/api/coverage(?:\\.js)?/?$' && route.status === 404,
+  );
+
+  assert.notEqual(coverageAllowIndex, -1);
+  assert.notEqual(coverageBlockIndex, -1);
+  assert.ok(coverageAllowIndex < coverageBlockIndex);
 });
 
 test('ignore script deploys preview branches with earlier deploy-relevant changes', () => {
@@ -74,6 +88,41 @@ test('ignore script deploys preview branches with earlier deploy-relevant change
 
     assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
     assert.match(result.stdout, /locales\.json/);
+  } finally {
+    fs.rmSync(repoRoot, { recursive: true, force: true });
+  }
+});
+
+test('ignore script deploys preview builds when Vercel previous SHA matches the current commit', () => {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'vercel-ignore-preview-'));
+
+  try {
+    git(['init', '-b', 'main'], repoRoot);
+    git(['config', 'user.email', 'test@example.com'], repoRoot);
+    git(['config', 'user.name', 'Test User'], repoRoot);
+    copyIgnoreScript(repoRoot);
+    writeFile(path.join(repoRoot, 'README.md'), 'base\n');
+    git(['add', '.'], repoRoot);
+    git(['commit', '-m', 'base'], repoRoot);
+
+    writeFile(path.join(repoRoot, 'vercel.json'), '{"buildCommand":"bash ./build.sh"}\n');
+    git(['add', 'vercel.json'], repoRoot);
+    git(['commit', '-m', 'change vercel config'], repoRoot);
+
+    const headSha = git(['rev-parse', 'HEAD'], repoRoot).trim();
+    const result = spawnSync('bash', ['./ignore.sh'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        VERCEL_ENV: 'preview',
+        VERCEL_GIT_COMMIT_SHA: headSha,
+        VERCEL_GIT_PREVIOUS_SHA: headSha,
+      },
+    });
+
+    assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
+    assert.match(result.stdout, /Preview deployment requested/);
   } finally {
     fs.rmSync(repoRoot, { recursive: true, force: true });
   }

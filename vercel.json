@@ -9,10 +9,6 @@
   },
   "rewrites": [
     {
-      "source": "/coverage",
-      "destination": "/api/coverage"
-    },
-    {
       "source": "/version/:locale.json",
       "destination": "/:locale/version.json"
     },

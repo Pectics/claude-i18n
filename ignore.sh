@@ -29,6 +29,11 @@ if printf '%s\n' "$commit_message" | grep -Eiq '\[deploy\]'; then
   exit 1
 fi
 
+if [ "${VERCEL_ENV:-}" = "preview" ]; then
+  echo "Preview deployment requested; deploy."
+  exit 1
+fi
+
 commit_ref="${VERCEL_GIT_COMMIT_REF:-}"
 pull_request_id="${VERCEL_GIT_PULL_REQUEST_ID:-}"
 base_ref=""
