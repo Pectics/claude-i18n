@@ -124,6 +124,23 @@ test('prepare and apply create a full new locale and register it', () => {
     assert.ok(manifest.chunks.main.length > 0);
     assert.ok(manifest.chunks.dynamic.length > 0);
 
+    assertFails(
+      PREPARE_SCRIPT,
+      [
+        '--locale',
+        locale,
+        '--pending-dir',
+        pendingDir,
+        '--target-chars',
+        '2000000',
+        '--max-entries',
+        '20000',
+        '--min-entries',
+        '1',
+      ],
+      /Refusing to delete existing translation work/,
+    );
+
     for (const chunkInfo of [...manifest.chunks.main, ...manifest.chunks.dynamic]) {
       const inputRows = readJsonl(chunkInfo.inputPath);
       const outputRows = inputRows.map((row) => ({
@@ -134,6 +151,10 @@ test('prepare and apply create a full new locale and register it', () => {
       }));
       writeJsonl(chunkInfo.outputPath, outputRows);
     }
+
+    const localesBeforeApply = readJson(LOCALES_PATH);
+    localesBeforeApply.coverage = { 'zh-CN': 1, 'zh-TW': 1 };
+    fs.writeFileSync(LOCALES_PATH, `${JSON.stringify(localesBeforeApply, null, 2)}\n`, 'utf8');
 
     const applyOutput = JSON.parse(runNode(APPLY_SCRIPT, ['--locale', locale, '--pending-dir', pendingDir]));
     assert.equal(applyOutput.locale, locale);
@@ -151,6 +172,7 @@ test('prepare and apply create a full new locale and register it', () => {
 
     const locales = readJson(LOCALES_PATH);
     assert.ok(locales.locales.includes(locale));
+    assert.deepEqual(locales.coverage, { 'zh-CN': 1, 'zh-TW': 1 });
   } finally {
     restoreLocales(originalLocales);
     fs.rmSync(targetDir, { recursive: true, force: true });

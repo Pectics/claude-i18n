@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { execFileSync } from 'node:child_process';
+import { execFileSync, spawnSync } from 'node:child_process';
 import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -34,6 +34,16 @@ function runNode(scriptPath, args) {
     cwd: ROOT_DIR,
     encoding: 'utf8',
   });
+}
+
+function assertFails(scriptPath, args, pattern) {
+  const result = spawnSync(process.execPath, [scriptPath, ...args], {
+    cwd: ROOT_DIR,
+    encoding: 'utf8',
+    stdio: ['ignore', 'pipe', 'pipe'],
+  });
+  assert.notEqual(result.status, 0);
+  assert.match(`${result.stdout}\n${result.stderr}`, pattern);
 }
 
 test('prepare and apply support a generic translation output field for non-Chinese target locales', () => {
@@ -112,6 +122,12 @@ test('prepare and apply support a generic translation output field for non-Chine
     const workManifestPath = path.join(pendingDir, 'translation', locale, 'manifest.json');
     const workManifest = JSON.parse(fs.readFileSync(workManifestPath, 'utf8'));
     assert.equal(workManifest.outputField, 'translation');
+
+    assertFails(
+      PREPARE_SCRIPT,
+      ['--locale', locale, '--pending-dir', pendingDir],
+      /Refusing to delete existing translation work/,
+    );
 
     for (const chunkInfo of [...workManifest.chunks.main, ...workManifest.chunks.dynamic]) {
       const inputRows = fs

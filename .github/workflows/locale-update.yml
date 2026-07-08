@@ -98,10 +98,18 @@ jobs:
           fetch_summary="$tmp_dir/fetch-summary.json"
           compare_summary="$tmp_dir/compare-summary.json"
           diff_summary="$tmp_dir/diff-summary.json"
+          coverage_summary="$tmp_dir/coverage-summary.json"
           main_snapshot_dir="$tmp_dir/main-snapshot"
           mkdir -p "$main_snapshot_dir"
-          git archive "origin/$BASE_REF" .original | tar -x -C "$main_snapshot_dir"
+          git archive "origin/$BASE_REF" \
+            .original \
+            locales.json \
+            scripts/locale-update/shared.mjs \
+            scripts/locale-update/update_coverage.mjs \
+            | tar -x -C "$main_snapshot_dir"
           main_original_dir="$main_snapshot_dir/.original"
+          main_locales_file="$main_snapshot_dir/locales.json"
+          coverage_script="$main_snapshot_dir/scripts/locale-update/update_coverage.mjs"
 
           if python3 - "$BASE_LOCALE" ".original" "$tmp_dir" "$fetch_summary" <<'PY'
           import sys
@@ -431,7 +439,72 @@ jobs:
           PY
           )"
 
-          if [ "$changed_count" -eq 0 ]; then
+          pending_created="false"
+          needs_translation="false"
+          diff_summary_json="null"
+
+          if [ "$changed_count" -gt 0 ]; then
+            if [ "$base_locale_entry_changed" = "true" ]; then
+              node scripts/locale-update/build_diff.mjs \
+                --base-locale "$base_locale" \
+                --before-dir "$main_original_dir" \
+                --after-dir "$tmp_dir" \
+                --pending-dir "$PENDING_DIR" \
+                --metadata "$compare_summary" > "$diff_summary"
+
+              pending_created="true"
+            else
+              rm -rf "$PENDING_DIR"
+            fi
+
+            if [ "$pending_created" = "true" ]; then
+              needs_translation="$(python3 - "$diff_summary" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], "r", encoding="utf-8") as file:
+              summary = json.load(file)
+          print("true" if summary["needsTranslation"] else "false")
+          PY
+          )"
+              diff_summary_json="$(python3 - "$diff_summary" <<'PY'
+          import json
+          import sys
+          with open(sys.argv[1], "r", encoding="utf-8") as file:
+              summary = json.load(file)
+          print(json.dumps(summary, ensure_ascii=False))
+          PY
+          )"
+            fi
+
+            python3 - "$tmp_dir" "$compare_summary" <<'PY'
+          import json
+          import shutil
+          import sys
+          from pathlib import Path
+
+          tmp_dir, compare_summary_path = sys.argv[1:3]
+          with open(compare_summary_path, "r", encoding="utf-8") as file:
+              summary = json.load(file)
+
+          for target_path in summary["changedFiles"]:
+              name = Path(target_path).name
+              source_path = Path(tmp_dir) / name
+              shutil.copyfile(source_path, target_path)
+          PY
+          fi
+
+          node "$coverage_script" \
+            --repo-root "$GITHUB_WORKSPACE" \
+            --source-locales "$main_locales_file" \
+            --output-locales locales.json \
+            --pending-manifest "$PENDING_DIR/manifest.json" > "$coverage_summary"
+
+          coverage_changed="false"
+          if ! git diff --quiet -- locales.json; then
+            coverage_changed="true"
+          fi
+
+          if [ "$changed_count" -eq 0 ] && [ "$coverage_changed" = "false" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "pending_created=false" >> "$GITHUB_OUTPUT"
             echo "needs_translation=false" >> "$GITHUB_OUTPUT"
@@ -458,58 +531,6 @@ jobs:
             exit 0
           fi
 
-          pending_created="false"
-          needs_translation="false"
-          diff_summary_json="null"
-
-          if [ "$base_locale_entry_changed" = "true" ]; then
-            node scripts/locale-update/build_diff.mjs \
-              --base-locale "$base_locale" \
-              --before-dir "$main_original_dir" \
-              --after-dir "$tmp_dir" \
-              --pending-dir "$PENDING_DIR" \
-              --metadata "$compare_summary" > "$diff_summary"
-
-            pending_created="true"
-          else
-            rm -rf "$PENDING_DIR"
-          fi
-
-          if [ "$pending_created" = "true" ]; then
-            needs_translation="$(python3 - "$diff_summary" <<'PY'
-          import json
-          import sys
-          with open(sys.argv[1], "r", encoding="utf-8") as file:
-              summary = json.load(file)
-          print("true" if summary["needsTranslation"] else "false")
-          PY
-          )"
-            diff_summary_json="$(python3 - "$diff_summary" <<'PY'
-          import json
-          import sys
-          with open(sys.argv[1], "r", encoding="utf-8") as file:
-              summary = json.load(file)
-          print(json.dumps(summary, ensure_ascii=False))
-          PY
-          )"
-          fi
-
-          python3 - "$tmp_dir" "$compare_summary" <<'PY'
-          import json
-          import shutil
-          import sys
-          from pathlib import Path
-
-          tmp_dir, compare_summary_path = sys.argv[1:3]
-          with open(compare_summary_path, "r", encoding="utf-8") as file:
-              summary = json.load(file)
-
-          for target_path in summary["changedFiles"]:
-              name = Path(target_path).name
-              source_path = Path(tmp_dir) / name
-              shutil.copyfile(source_path, target_path)
-          PY
-
           echo "changed=true" >> "$GITHUB_OUTPUT"
           echo "pending_created=$pending_created" >> "$GITHUB_OUTPUT"
           echo "needs_translation=$needs_translation" >> "$GITHUB_OUTPUT"
@@ -528,6 +549,9 @@ jobs:
               print(path)
           PY
             )
+            if [ "$coverage_changed" = "true" ]; then
+              echo "locales.json"
+            fi
             echo "EOF"
             echo "cached_locales_json<<EOF"
             echo "$cached_locales_json"
@@ -559,6 +583,7 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add -A .original
+          git add -A locales.json
           if [ -d "$PENDING_DIR" ]; then
             git add -A "$PENDING_DIR"
           else
