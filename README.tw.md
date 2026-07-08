@@ -6,7 +6,7 @@
 
 **為 Claude.ai 提供社區驅動的國際化多語言支持。**
 
-[简体中文](README.md) | 繁體中文 | [English](README.en.md)
+[English](README.en.md) | [简体中文](README.zh.md) | 繁體中文
 
 [![Release](https://img.shields.io/github/v/release/Pectics/claude-i18n?label=發行版)](https://github.com/Pectics/claude-i18n/releases/latest)
 [![License](https://img.shields.io/github/license/Pectics/claude-i18n?label=授權)](LICENSE)
@@ -33,12 +33,12 @@
 
 <div align="center">
 
-<img src="assets/showcase-1.jpg" width="720" alt="Claude Web 中文介面預覽" />
+<img src="assets/showcase-1.jpg" width="720" alt="Claude.ai 中文介面預覽" />
 
 <details>
 <summary>查看更多截圖</summary>
-<img src="assets/showcase-2.jpg" width="720" alt="Claude Web 擴充功能頁面中文介面" />
-<img src="assets/showcase-3.jpg" width="720" alt="Claude Web 付費方案頁面中文介面" />
+<img src="assets/showcase-2.jpg" width="720" alt="Claude.ai 擴充功能頁面中文介面" />
+<img src="assets/showcase-3.jpg" width="720" alt="Claude.ai 付費方案頁面中文介面" />
 </details>
 
 </div>
@@ -94,12 +94,12 @@ cd claude-i18n
 
 ## 運作方式
 
-Claude Web 原本就有多語言載入管線，問題在於它只接受官方 locale。Claude i18n 做的是一層很薄的協調：讓頁面看見額外 locale，讓後端繼續收到它認識的 `en-US`，再把缺少的語言檔交給擴充功能補上。
+Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 locale。Claude i18n 做的是一層很薄的協調：讓頁面看見額外 locale，讓後端繼續收到它認識的 `en-US`，再把缺少的語言檔交給擴充功能補上。
 
 ### 執行鏈路
 
 1. `hook.js` 在 `document_start` 注入頁面主世界，盡早接管語言列表與 `fetch`。
-2. 當 Claude Web 建立官方語言陣列時，擴充功能會把遠端 `locales.json` 中的額外 locale 追加進去。
+2. 當 Claude.ai 建立官方語言陣列時，擴充功能會把遠端 `locales.json` 中的額外 locale 追加進去。
 3. 當同源應用請求攜帶 `locale=zh-CN` 或 `locale=zh-TW` 時，請求裡的 locale 會回退成 `en-US`，瀏覽器本地記住使用者實際選擇的擴充 locale。
 4. 當頁面請求 `/i18n/*.json` 或 `/i18n/dynamic/*.json` 時，擴充功能後台會依 locale 回傳對應語言包。
 5. 同源 JSON 回應裡的頂層 `locale` 和 `gated_messages.locale` 會在瀏覽器端恢復成使用者選擇的擴充 locale。
@@ -120,7 +120,7 @@ Claude Web 原本就有多語言載入管線，問題在於它只接受官方 lo
 - 語言列表快取在 `localStorage`，並依遠端 manifest 版本定期刷新。
 - 語言包版本資訊快取在 `chrome.storage.local`，以 `/version/{locale}.json` 的 hash 為準。
 - 語言包正文快取在 Cache Storage；hash 變化時才重新下載，舊 hash 對應的快取會被清理。
-- `/i18n/*.overrides.json` 目前由擴充功能回傳空物件 `{}`，避免 Claude Web 對擴充 locale 請求不存在的 overrides 檔案。
+- `/i18n/*.overrides.json` 目前由擴充功能回傳空物件 `{}`，避免 Claude.ai 對擴充 locale 請求不存在的 overrides 檔案。
 
 
 ## 支援的語言
@@ -149,7 +149,7 @@ Claude Web 原本就有多語言載入管線，問題在於它只接受官方 lo
 
 ### 同步 Claude 上游更新
 
-倉庫的 GitHub Actions 每 6 小時檢查一次 Claude Web 上游語言檔。發現 key 新增、更新或刪除時，會更新 `bot/locale-update` 分支，並產生 `.pending/locale-update` 下的差異檔。
+倉庫的 GitHub Actions 每 6 小時檢查一次 Claude.ai 上游語言檔。發現 key 新增、更新或刪除時，會更新 `bot/locale-update` 分支，並產生 `.pending/locale-update` 下的差異檔。
 
 維護者通常按這個流程處理：
 
@@ -195,7 +195,7 @@ node scripts/create-full-locale/apply_translation.mjs --locale fr-FR
 
 ### 1.1.2
 
-- 將 `statsig` 相關命名遷移為 `dynamic`，適配 Claude Web 近期語言包結構調整。
+- 將 `statsig` 相關命名遷移為 `dynamic`，適配 Claude.ai 近期語言包結構調整。
 
 ### 1.1.1
 
@@ -214,11 +214,11 @@ node scripts/create-full-locale/apply_translation.mjs --locale fr-FR
 
 **它會翻譯我和 Claude 的對話嗎？**
 
-Claude i18n 只負責介面文案；prompt、回覆和檔案內容都交給 Claude Web 原本的流程處理。
+Claude i18n 只負責介面文案；prompt、回覆和檔案內容都交給 Claude.ai 原本的流程處理。
 
 **會影響我的 Claude 帳號嗎？**
 
-擴充功能在瀏覽器端協調 locale 處理；帳號設定保持 Claude Web 原有狀態。對 Claude 後端來說，請求仍會回退到它支援的官方 locale。
+擴充功能在瀏覽器端協調 locale 處理；帳號設定保持 Claude.ai 原有狀態。對 Claude 後端來說，請求仍會回退到它支援的官方 locale。
 
 **為什麼後端請求要回退到 `en-US`？**
 

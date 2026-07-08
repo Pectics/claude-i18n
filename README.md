@@ -4,249 +4,249 @@
 
 # Claude i18n
 
-**为 Claude.ai 提供社区驱动的国际化多语言支持。**
+**Provide community-driven internationalization and multi-language support for Claude.ai.**
 
-简体中文 | [繁體中文](README.tw.md) | [English](README.en.md)
+English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
-[![Release](https://img.shields.io/github/v/release/Pectics/claude-i18n?label=发行版)](https://github.com/Pectics/claude-i18n/releases/latest)
-[![License](https://img.shields.io/github/license/Pectics/claude-i18n?label=许可证)](LICENSE)
-[![Downloads](https://img.shields.io/github/downloads/Pectics/claude-i18n/total?label=下载量)](https://github.com/Pectics/claude-i18n/releases/latest)
+[![Release](https://img.shields.io/github/v/release/Pectics/claude-i18n?label=Release)](https://github.com/Pectics/claude-i18n/releases/latest)
+[![License](https://img.shields.io/github/license/Pectics/claude-i18n?label=License)](LICENSE)
+[![Downloads](https://img.shields.io/github/downloads/Pectics/claude-i18n/total?label=Downloads)](https://github.com/Pectics/claude-i18n/releases/latest)
 
-[![Issues](https://img.shields.io/github/issues/Pectics/claude-i18n?label=议题)](https://github.com/Pectics/claude-i18n/issues)
-[![Pull Requests](https://img.shields.io/github/issues-pr/Pectics/claude-i18n?label=拉取请求)](https://github.com/Pectics/claude-i18n/pulls)
-[![Locale Update](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-update.yml?label=语言包更新)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-update.yml)
-![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20构建)
+[![Issues](https://img.shields.io/github/issues/Pectics/claude-i18n?label=Issues)](https://github.com/Pectics/claude-i18n/issues)
+[![Pull Requests](https://img.shields.io/github/issues-pr/Pectics/claude-i18n?label=Pull%20Requests)](https://github.com/Pectics/claude-i18n/pulls)
+[![Locale Update](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-update.yml?label=Locale%20Update)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-update.yml)
+![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20Build)
 
-| 支持平台 | 支持语言 |
+| Supported platforms | Supported languages |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4)](#安装) [![Edge](https://img.shields.io/badge/Edge-1677ff)](#安装) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1)](#安装) | [![zh-CN](https://img.shields.io/badge/zh--CN-e5534b)](#支持的语言) [![zh-TW](https://img.shields.io/badge/zh--TW-e5534b)](#支持的语言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支持的语言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4)](#installation) [![Edge](https://img.shields.io/badge/Edge-1677ff)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1)](#installation) | [![zh-CN](https://img.shields.io/badge/zh--CN-e5534b)](#supported-languages) [![zh-TW](https://img.shields.io/badge/zh--TW-e5534b)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
 
-| 当前语言包 | 主语言包 | Dynamic 语言包 | 合计 |
+| Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
-| 简体中文 `zh-CN` | 18,564 | 50 | 18,614 |
-| 繁體中文 `zh-TW` | 18,564 | 50 | 18,614 |
+| Simplified Chinese `zh-CN` | 18,564 | 50 | 18,614 |
+| Traditional Chinese `zh-TW` | 18,564 | 50 | 18,614 |
 
 </div>
 
 
-## 预览
+## Preview
 
 <div align="center">
 
-<img src="assets/showcase-1.jpg" width="720" alt="Claude Web 中文界面预览" />
+<img src="assets/showcase-1.jpg" width="720" alt="Claude.ai Chinese interface preview" />
 
 <details>
-<summary>查看更多截图</summary>
-<img src="assets/showcase-2.jpg" width="720" alt="Claude Web 扩展页面中文界面" />
-<img src="assets/showcase-3.jpg" width="720" alt="Claude Web 付费计划页面中文界面" />
+<summary>View more screenshots</summary>
+<img src="assets/showcase-2.jpg" width="720" alt="Claude.ai extension page in Chinese" />
+<img src="assets/showcase-3.jpg" width="720" alt="Claude.ai plan page in Chinese" />
 </details>
 
 </div>
 
 
-## 安装
+## Installation
 
-| 你想怎么用 | 推荐方式 | 入口 |
+| Use case | Recommended route | Link |
 | --- | --- | --- |
-| Chrome / Edge 日常使用 | 应用商店版本 | [Chrome Web Store](https://chromewebstore.google.com/detail/claude-i18n/fkfmbjccelbeolkoekeaegajhhdndajj) / [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/claude-i18n/meogggfdmdeigjpkcpkdhngaegpncgjc) |
-| Firefox Desktop 或 macOS Safari | 用户脚本实验版 | [userscript/README.md](userscript/README.md) |
-| 手动安装或留档 | Releases 里的 `.crx` | [Releases](https://github.com/Pectics/claude-i18n/releases) |
+| Daily Chrome / Edge use | Store build | [Chrome Web Store](https://chromewebstore.google.com/detail/claude-i18n/fkfmbjccelbeolkoekeaegajhhdndajj) / [Microsoft Edge Add-ons](https://microsoftedge.microsoft.com/addons/detail/claude-i18n/meogggfdmdeigjpkcpkdhngaegpncgjc) |
+| Firefox Desktop or macOS Safari | Experimental userscript | [userscript/README.md](userscript/README.md) |
+| Manual install or archival package | `.crx` from Releases | [Releases](https://github.com/Pectics/claude-i18n/releases) |
 
-安装后打开 [claude.ai](https://claude.ai)，在左下角账号菜单进入语言设置，选择 `zh-CN` 或 `zh-TW` 对应的中文选项即可。
+After installation, open [claude.ai](https://claude.ai), go to the language setting from the bottom-left account menu, and select the Chinese option for `zh-CN` or `zh-TW`.
 
-### 应用商店版本
+### Store Build
 
-这是最稳妥的分发方式，适合 Chrome 和 Edge 用户。通过商店安装后，浏览器会负责后续更新。
+This is the most reliable distribution path for Chrome and Edge. Once installed from the store, browser updates are handled for you.
 
 - [Chrome Web Store: Claude i18n](https://chromewebstore.google.com/detail/claude-i18n/fkfmbjccelbeolkoekeaegajhhdndajj)
 - [Microsoft Edge Add-ons: Claude i18n](https://microsoftedge.microsoft.com/addons/detail/claude-i18n/meogggfdmdeigjpkcpkdhngaegpncgjc)
 
-### 用户脚本实验版
+### Experimental Userscript
 
-用户脚本面向非 Chromium 浏览器，目前主要用于 Firefox Desktop 与 macOS Safari。
+The userscript build is for non-Chromium browsers, mainly Firefox Desktop and macOS Safari.
 
-- Firefox Desktop：推荐 Tampermonkey 或 Violentmonkey；Greasemonkey 为 best-effort 支持。
-- macOS Safari：目前只验证过 Safari + Userscripts App。
-- 详细安装、调试与限制见 [userscript/README.md](userscript/README.md)。
+- Firefox Desktop: Tampermonkey or Violentmonkey is recommended; Greasemonkey is best-effort.
+- macOS Safari: currently verified only with Safari + Userscripts App.
+- Installation, debugging notes, and limitations are in [userscript/README.md](userscript/README.md).
 
-### 手动安装 `.crx`
+### Manual `.crx` Install
 
-1. 在 [Releases](https://github.com/Pectics/claude-i18n/releases) 下载最新 `.crx` 文件。
-2. 打开 Chrome / Edge 的 `chrome://extensions/`。
-3. 开启右上角的开发者模式。
-4. 将 `.crx` 文件拖入扩展页面并确认安装。
+1. Download the latest `.crx` from [Releases](https://github.com/Pectics/claude-i18n/releases).
+2. Open `chrome://extensions/` in Chrome or Edge.
+3. Enable Developer mode.
+4. Drag the `.crx` into the extensions page and confirm installation.
 
-### 本地开发
+### Local Development
 
 ```bash
 git clone https://github.com/Pectics/claude-i18n.git
 cd claude-i18n
 ```
 
-在 `chrome://extensions/` 开启开发者模式，选择加载已解压的扩展程序，然后选择 `extension/` 目录。
+In `chrome://extensions/`, enable Developer mode, choose "Load unpacked", and select the `extension/` directory.
 
-如果要重新生成托管语言包产物，运行：
+To rebuild hosted locale artifacts:
 
 ```bash
 ./build.sh
 ```
 
 
-## 工作方式
+## How It Works
 
-Claude Web 本来就有多语言加载管线，问题在于它只接受官方 locale。Claude i18n 做的是一层很薄的协调：让页面看见额外 locale，让后端继续收到它认识的 `en-US`，再把缺失的语言文件交给扩展补上。
+Claude.ai already has a locale-loading pipeline; it just only accepts official locales. Claude i18n adds a thin coordination layer: the page can see extra locales, the backend still receives `en-US` where it needs an official locale, and the missing locale files are served by the extension.
 
-### 运行链路
+### Runtime Flow
 
-1. `hook.js` 在 `document_start` 注入页面主世界，尽早接管语言列表和 `fetch`。
-2. 当 Claude Web 构建官方语言数组时，扩展把远端 `locales.json` 中的额外 locale 追加进去。
-3. 当同源应用请求携带 `locale=zh-CN` 或 `locale=zh-TW` 时，请求里的 locale 会回退为 `en-US`，浏览器本地记住用户实际选择的扩展 locale。
-4. 当页面请求 `/i18n/*.json` 或 `/i18n/dynamic/*.json` 时，扩展后台按 locale 返回对应语言包。
-5. 同源 JSON 响应里的顶层 `locale` 和 `gated_messages.locale` 会在浏览器端恢复成用户选择的扩展 locale。
+1. `hook.js` is injected into the page's main world at `document_start`, before Claude.ai finishes wiring its locale state.
+2. When Claude.ai builds the official locale array, the extension appends extra locales from the remote `locales.json`.
+3. When same-origin app requests carry `locale=zh-CN` or `locale=zh-TW`, the transport locale falls back to `en-US`, while the browser remembers the user's selected extension locale.
+4. When the page requests `/i18n/*.json` or `/i18n/dynamic/*.json`, the extension backend returns the matching locale pack.
+5. Same-origin JSON responses with top-level `locale` or `gated_messages.locale` are restored in the browser to the user's selected extension locale.
 
-### 组件分工
+### Components
 
-| 文件 | 作用 |
+| File | Role |
 | --- | --- |
-| `extension/hook.js` | 页面主世界 hook；负责语言列表注入、请求改写、响应恢复和 i18n 请求接管。 |
-| `extension/script.js` | 页面与扩展后台之间的消息桥。 |
-| `extension/service.js` | 扩展后台；读取远端 manifest、下载语言包、维护缓存。 |
-| `locales.json` | 托管端语言列表，当前包含 `zh-CN` 和 `zh-TW`。 |
-| `<locale>/<locale>.json` | 主界面语言包。 |
-| `<locale>/<locale>.dynamic.json` | Dynamic / `gated_messages` 相关语言包。 |
+| `extension/hook.js` | Main-world page hook for locale-list injection, request rewriting, response restoration, and i18n interception. |
+| `extension/script.js` | Message bridge between the page and the extension background worker. |
+| `extension/service.js` | Background worker that reads the remote manifest, downloads locale packs, and maintains cache state. |
+| `locales.json` | Hosted locale manifest, currently listing `zh-CN` and `zh-TW`. |
+| `<locale>/<locale>.json` | Main UI locale pack. |
+| `<locale>/<locale>.dynamic.json` | Dynamic / `gated_messages` locale pack. |
 
-### 缓存策略
+### Cache Strategy
 
-- 语言列表缓存在 `localStorage`，并按远端 manifest 版本定期刷新。
-- 语言包版本信息缓存在 `chrome.storage.local`，以 `/version/{locale}.json` 的 hash 为准。
-- 语言包正文缓存在 Cache Storage；hash 变化时才重新下载，旧 hash 对应的缓存会被清理。
-- `/i18n/*.overrides.json` 当前由扩展返回空对象 `{}`，避免 Claude Web 对扩展 locale 请求不存在的 overrides 文件。
+- The locale manifest is cached in `localStorage` and refreshed against the remote manifest version.
+- Locale pack version metadata is cached in `chrome.storage.local`, keyed by hashes from `/version/{locale}.json`.
+- Locale pack bodies are cached in Cache Storage; they are re-downloaded only when the hash changes, and old hash entries are pruned.
+- `/i18n/*.overrides.json` currently returns an empty `{}` for extension locales so Claude.ai does not fail on missing override files.
 
 
-## 支持的语言
+## Supported Languages
 
-统计来自当前仓库中的语言包文件。
+Counts come from the locale files currently in this repository.
 
-| 语言 | Locale | 主语言包 | Dynamic 语言包 | 状态 |
+| Language | Locale | Main pack | Dynamic pack | Status |
 | --- | --- | ---: | ---: | --- |
-| 简体中文 | `zh-CN` | 18,564 | 50 | 可用 |
-| 繁體中文 | `zh-TW` | 18,564 | 50 | 可用 |
+| Simplified Chinese | `zh-CN` | 18,564 | 50 | Available |
+| Traditional Chinese | `zh-TW` | 18,564 | 50 | Available |
 
-欢迎继续补充其他真正有使用场景的 locale。新增语言建议走下方的完整语言创建流程，而不是手工复制目录。
+Additional locales are welcome when they have a real product audience. Use the full-locale creation flow below instead of copying directories by hand.
 
 
-## 参与贡献
+## Contributing
 
-### 改进现有翻译
+### Improve Existing Translations
 
-直接编辑对应 locale 文件即可：
+Edit the locale files directly:
 
-- 主界面文案：`zh-CN/zh-CN.json`、`zh-TW/zh-TW.json`
-- Dynamic 文案：`zh-CN/zh-CN.dynamic.json`、`zh-TW/zh-TW.dynamic.json`
-- 英文原文：`.original/en-US.json`、`.original/en-US.dynamic.json`
+- Main UI copy: `zh-CN/zh-CN.json`, `zh-TW/zh-TW.json`
+- Dynamic copy: `zh-CN/zh-CN.dynamic.json`, `zh-TW/zh-TW.dynamic.json`
+- English source: `.original/en-US.json`, `.original/en-US.dynamic.json`
 
-请保留占位符、HTML 标签、ICU MessageFormat、URL、命令、代码片段和反引号内容。翻译可以更自然，但结构不能变。
+Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans, and backticks. The wording can be more natural; the structure must remain compatible.
 
-### 同步 Claude 上游更新
+### Sync Claude Upstream Changes
 
-仓库的 GitHub Actions 每 6 小时检查一次 Claude Web 上游语言文件。发现 key 新增、更新或删除时，会更新 `bot/locale-update` 分支，并生成 `.pending/locale-update` 下的差异文件。
+GitHub Actions checks Claude.ai's upstream locale files every 6 hours. When keys are added, updated, or removed, it updates the `bot/locale-update` branch and writes diffs under `.pending/locale-update`.
 
-维护者通常按这个流程处理：
+Maintainers usually apply the update like this:
 
 ```bash
-# 1. 为目标 locale 生成翻译分块
+# 1. Generate translation chunks for the target locale
 node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 
-# 2. 翻译 .pending/locale-update/translation/<locale>/chunks/ 下的 JSONL
-#    输出写到 manifest 指定的 out/ 路径
-#    推荐使用项目内置工作流：
+# 2. Translate JSONL chunks under .pending/locale-update/translation/<locale>/chunks/
+#    Write outputs to the manifest-provided out/ paths
+#    Recommended built-in workflow:
 #      Claude Code: /apply-locale-update
 #      Codex:       /apply-locale-update
 
-# 3. 校验并应用翻译
+# 3. Validate and apply translations
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` 会校验行数、key 顺序、占位符、HTML 标签、ICU 结构和明显未翻译内容；成功后会重建目标语言包并清理 `.pending/locale-update`。
+`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, and obvious untranslated content. On success it rebuilds the target locale packs and clears `.pending/locale-update`.
 
-### 添加全新语言
+### Add a New Locale
 
-全新 locale 不再建议手工创建目录。请先生成完整翻译任务：
+For a brand-new locale, generate a full translation task first:
 
 ```bash
 node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
 ```
 
-脚本会读取 `.original/en-US*.json`，可参考 `.original/ja-JP*.json` 和现有 `zh-CN` 语境，生成 `.pending/create-full-locale/<locale>/` 下的分块任务。
+The script reads `.original/en-US*.json`, can use `.original/ja-JP*.json` and existing `zh-CN` as context, and writes chunked work under `.pending/create-full-locale/<locale>/`.
 
-翻译完成后运行：
+After translating the chunks, run:
 
 ```bash
 node scripts/create-full-locale/apply_translation.mjs --locale fr-FR
 ./build.sh
 ```
 
-成功后会写入 `<locale>/<locale>.json`、`<locale>/<locale>.dynamic.json`，并把 locale 追加到 `locales.json`。
+On success it writes `<locale>/<locale>.json`, `<locale>/<locale>.dynamic.json`, and appends the locale to `locales.json`.
 
 
-## 近期更新
+## Recent Changes
 
-完整历史见 [Releases](https://github.com/Pectics/claude-i18n/releases)。
+Full history is available in [Releases](https://github.com/Pectics/claude-i18n/releases).
 
 ### 1.1.2
 
-- 将 `statsig` 相关命名迁移为 `dynamic`，适配 Claude Web 近期语言包结构调整。
+- Renamed `statsig`-related language-pack handling to `dynamic` to match Claude.ai's current locale structure.
 
 ### 1.1.1
 
-- 请求改写从固定接口名迁移为通用 locale transport：统一处理 query、JSON、表单、`URLSearchParams` 和 `FormData`。
-- 同源 JSON 响应会通用恢复 `locale` 与 `gated_messages.locale`。
-- 远端 `locales.json` 简化为字符串数组结构。
+- Moved request rewriting from fixed endpoint names to a generic locale transport layer covering query strings, JSON, forms, `URLSearchParams`, and `FormData`.
+- Same-origin JSON responses now restore `locale` and `gated_messages.locale` generically.
+- Simplified the remote `locales.json` shape to a string array.
 
 ### 1.1.0
 
-- 将扩展运行链路拆为 `hook.js`、`script.js`、`service.js` 三层。
-- 语言列表改为远端 lazy load，语言包改为 hash 校验与浏览器缓存。
-- 补齐 `/i18n/*.overrides.json`、Dynamic 语言包和相关请求链路。
+- Split the runtime into `hook.js`, `script.js`, and `service.js`.
+- Switched locale discovery to lazy-loaded remote metadata, and language-pack updates to hash validation plus browser cache.
+- Added handling for `/i18n/*.overrides.json`, Dynamic locale packs, and related request paths.
 
 
-## 常见问题
+## FAQ
 
-**它会翻译我和 Claude 的对话吗？**
+**Does it translate my conversations with Claude?**
 
-Claude i18n 只负责界面文案；prompt、回复和文件内容都交给 Claude Web 原本的流程处理。
+Claude i18n only handles Claude.ai interface text; prompts, replies, and file content stay in Claude.ai's normal flow.
 
-**会影响我的 Claude 账号吗？**
+**Will this affect my Claude account?**
 
-扩展在浏览器端协调 locale 处理；账号设置保持 Claude Web 原有状态。对 Claude 后端来说，请求仍会回退到它支持的官方 locale。
+The extension coordinates locale handling in the browser. Account settings remain in Claude.ai's normal state, and backend-facing requests still fall back to an official locale.
 
-**为什么后端请求要回退到 `en-US`？**
+**Why do backend requests fall back to `en-US`?**
 
-因为 Claude 后端目前不接受扩展 locale。回退可以避免账号资料、启动信息和体验配置请求失败；浏览器端再把界面语言恢复为用户实际选择的 locale。
+Claude's backend does not currently accept extension locales. The fallback prevents profile, bootstrap, and experience requests from failing; the browser then restores the interface locale the user selected.
 
-**语言包会自动更新吗？**
+**Are locale packs updated automatically?**
 
-会。扩展会通过远端版本 hash 检查更新，hash 变化时重新下载语言包。
+Yes. The extension checks remote version hashes and downloads fresh packs when hashes change.
 
-**用户脚本版本稳定吗？**
+**Is the userscript build stable?**
 
-它是实验性分发路径。Chrome / Edge 用户优先使用扩展商店版本；Firefox 和 Safari 用户可以试用用户脚本，并参考 [userscript/README.md](userscript/README.md) 排查注入时序或缓存问题。
+It is experimental. Chrome and Edge users should prefer the store build; Firefox and Safari users can try the userscript and use [userscript/README.md](userscript/README.md) for injection or cache troubleshooting.
 
 
-## 许可证
+## License
 
 [MIT](LICENSE) © 2026 [Pectics](https://github.com/Pectics)
 
 
 <div align="center">
 
-如果你想支持这个项目，Star、反馈翻译问题、补充新 locale 都很有帮助。也可以通过下面的方式赞助维护。
+If you want to support the project, stars, translation fixes, and new-locale contributions all help. Sponsorship is also welcome through the links below.
 
-[![爱发电](https://img.shields.io/badge/爱发电-946ce6?logo=afdian&logoColor=white)](https://afdian.com/a/Pectics)
+[![afdian](https://img.shields.io/badge/afdian-946ce6?logo=afdian&logoColor=white)](https://afdian.com/a/Pectics)
 [![PayPal](https://img.shields.io/badge/PayPal-142c8e?logo=paypal&logoColor=white)](https://paypal.me/Pectics)
 
-| 微信赞赏 | 支付宝 |
+| WeChat Pay | Alipay |
 |:---:|:---:|
-| <img src="assets/wechat.png" width="160" alt="微信赞赏码" /> | <img src="assets/alipay.png" width="160" alt="支付宝收款码" /> |
+| <img src="assets/wechat.png" width="160" alt="WeChat Pay QR Code" /> | <img src="assets/alipay.png" width="160" alt="Alipay QR Code" /> |
 
 </div>
