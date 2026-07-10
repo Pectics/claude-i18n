@@ -21,10 +21,12 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 | ---: | :--- |
 | [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#supported-languages) |
 
+<!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
 | Simplified Chinese `zh-CN` | 18,564 | 50 | 18,614 |
 | Traditional Chinese `zh-TW` | 18,564 | 50 | 18,614 |
+<!-- locale-stats:summary:end -->
 
 </div>
 
@@ -127,10 +129,12 @@ Claude.ai already has a locale-loading pipeline; it just only accepts official l
 
 Counts come from the locale files currently in this repository.
 
+<!-- locale-stats:supported:start -->
 | Language | Locale | Main pack | Dynamic pack | Status |
 | --- | --- | ---: | ---: | --- |
 | Simplified Chinese | `zh-CN` | 18,564 | 50 | Available |
 | Traditional Chinese | `zh-TW` | 18,564 | 50 | Available |
+<!-- locale-stats:supported:end -->
 
 Additional locales are welcome when they have a real product audience. Use the full-locale creation flow below instead of copying directories by hand.
 

@@ -1,0 +1,70 @@
+name: "locale-update: Sync README statistics"
+
+on:
+  push:
+    branches:
+      - bot/locale-update
+    paths:
+      - locales.json
+      - "*/*.json"
+  pull_request:
+    branches:
+      - main
+    paths:
+      - locales.json
+      - "*/*.json"
+      - README.md
+      - README.zh.md
+      - README.tw.md
+
+permissions:
+  contents: read
+
+concurrency:
+  group: locale-update-readme-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sync:
+    name: Update locale pack statistics
+    if: github.event_name == 'push'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout locale-update branch
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - name: Update README statistics
+        run: node scripts/locale-update/update_readme_stats.mjs
+
+      - name: Commit updated README statistics
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          if git diff --quiet -- README.md README.zh.md README.tw.md; then
+            echo "README locale statistics are already current."
+            exit 0
+          fi
+
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add README.md README.zh.md README.tw.md
+          git commit -m "docs: Update locale pack statistics"
+          git push origin "HEAD:$GITHUB_REF_NAME"
+
+  check:
+    name: Check locale pack statistics
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout pull request
+        uses: actions/checkout@v6
+
+      - name: Check README statistics
+        run: node scripts/locale-update/update_readme_stats.mjs --check

@@ -21,10 +21,12 @@
 | ---: | :--- |
 | [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#支援的語言) |
 
+<!-- locale-stats:summary:start -->
 | 目前語言包 | 主語言包 | Dynamic 語言包 | 合計 |
 | --- | ---: | ---: | ---: |
 | 簡體中文 `zh-CN` | 18,564 | 50 | 18,614 |
 | 繁體中文 `zh-TW` | 18,564 | 50 | 18,614 |
+<!-- locale-stats:summary:end -->
 
 </div>
 
@@ -127,10 +129,12 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 統計來自目前倉庫中的語言包檔案。
 
+<!-- locale-stats:supported:start -->
 | 語言 | Locale | 主語言包 | Dynamic 語言包 | 狀態 |
 | --- | --- | ---: | ---: | --- |
 | 簡體中文 | `zh-CN` | 18,564 | 50 | 可用 |
 | 繁體中文 | `zh-TW` | 18,564 | 50 | 可用 |
+<!-- locale-stats:supported:end -->
 
 歡迎繼續補充其他真正有使用場景的 locale。新增語言建議走下方的完整語言建立流程，而不是手工複製目錄。
 
