@@ -3,9 +3,5 @@
   "locales": [
     "zh-CN",
     "zh-TW"
-  ],
-  "coverage": {
-    "zh-CN": 0.9672,
-    "zh-TW": 0.9672
-  }
+  ]
 }
