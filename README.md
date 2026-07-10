@@ -19,7 +19,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 | Supported platforms | Supported languages |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#supported-languages) |
 
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |

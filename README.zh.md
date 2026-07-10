@@ -19,7 +19,7 @@
 
 | 支持平台 | 支持语言 |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安装) [![Edge](.github/badges/edge.svg)](#安装) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安装) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#支持的语言) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#支持的语言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支持的语言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安装) [![Edge](.github/badges/edge.svg)](#安装) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安装) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#支持的语言) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#支持的语言) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#支持的语言) |
 
 | 当前语言包 | 主语言包 | Dynamic 语言包 | 合计 |
 | --- | ---: | ---: | ---: |
