@@ -9,10 +9,6 @@ import test from 'node:test';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..');
 
-function readJson(filePath) {
-  return JSON.parse(fs.readFileSync(filePath, 'utf8'));
-}
-
 function git(args, cwd, options = {}) {
   return execFileSync('git', args, {
     cwd,
@@ -29,31 +25,6 @@ function writeFile(filePath, content) {
 function copyIgnoreScript(repoRoot) {
   fs.copyFileSync(path.join(ROOT_DIR, 'ignore.sh'), path.join(repoRoot, 'ignore.sh'));
 }
-
-test('vercel config exposes /coverage through the coverage function', () => {
-  const config = readJson(path.join(ROOT_DIR, 'vercel.json'));
-
-  assert.deepEqual(config.functions?.['api/coverage.js'], {
-    includeFiles: 'locales.json',
-  });
-  assert.ok(
-    config.routes.some((route) => route.src === '/coverage/?$' && route.dest === '/api/coverage'),
-  );
-});
-
-test('vercel config blocks direct coverage function access', () => {
-  const config = readJson(path.join(ROOT_DIR, 'vercel.json'));
-  const coverageAllowIndex = config.routes.findIndex(
-    (route) => route.src === '/coverage/?$' && route.dest === '/api/coverage',
-  );
-  const coverageBlockIndex = config.routes.findIndex(
-    (route) => route.src === '/api/coverage(?:\\.js)?/?$' && route.status === 404,
-  );
-
-  assert.notEqual(coverageAllowIndex, -1);
-  assert.notEqual(coverageBlockIndex, -1);
-  assert.ok(coverageAllowIndex < coverageBlockIndex);
-});
 
 test('ignore script deploys preview branches with earlier deploy-relevant changes', () => {
   const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'vercel-ignore-'));

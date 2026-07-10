@@ -2,11 +2,6 @@
   "buildCommand": "bash ./build.sh",
   "ignoreCommand": "bash ./ignore.sh",
   "outputDirectory": "dist",
-  "functions": {
-    "api/coverage.js": {
-      "includeFiles": "locales.json"
-    }
-  },
   "rewrites": [
     {
       "source": "/version/:locale.json",
