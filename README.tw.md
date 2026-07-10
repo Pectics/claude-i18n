@@ -19,12 +19,14 @@
 
 | 支援平台 | 支援語言 |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-CN.json&cacheSeconds=3600)](#支援的語言) [![zh-TW](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-TW.json&cacheSeconds=3600)](#支援的語言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支援的語言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#支援的語言) |
 
+<!-- locale-stats:summary:start -->
 | 目前語言包 | 主語言包 | Dynamic 語言包 | 合計 |
 | --- | ---: | ---: | ---: |
 | 簡體中文 `zh-CN` | 18,564 | 50 | 18,614 |
 | 繁體中文 `zh-TW` | 18,564 | 50 | 18,614 |
+<!-- locale-stats:summary:end -->
 
 </div>
 
@@ -127,10 +129,12 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 統計來自目前倉庫中的語言包檔案。
 
+<!-- locale-stats:supported:start -->
 | 語言 | Locale | 主語言包 | Dynamic 語言包 | 狀態 |
 | --- | --- | ---: | ---: | --- |
 | 簡體中文 | `zh-CN` | 18,564 | 50 | 可用 |
 | 繁體中文 | `zh-TW` | 18,564 | 50 | 可用 |
+<!-- locale-stats:supported:end -->
 
 歡迎繼續補充其他真正有使用場景的 locale。新增語言建議走下方的完整語言建立流程，而不是手工複製目錄。
 
@@ -151,7 +155,9 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 倉庫的 GitHub Actions 每 6 小時檢查一次 Claude.ai 上游語言檔。發現 key 新增、更新或刪除時，會更新 `bot/locale-update` 分支，並產生 `.pending/locale-update` 下的差異檔。
 
-同一次成功抓取還會把 `main` 中語言包的 key 覆蓋率發布到長期存在的 `coverage-data` 分支。`coverage.json` 提供彙總資料，`badges/<locale>.json` 則供 README badge 使用。
+每次成功抓取後，GitHub Actions 都會用最新 upstream 快照比對 `main` 中的語言包，並把 `coverage.json` 和預先渲染的 `badges/<locale>.svg` 發布到 GitHub Pages。`bot/locale-update` 中的翻譯在合併進 `main` 前不會計入覆蓋率。
+
+覆蓋率達到 90% 時 badge 顯示為綠色，達到 75% 時顯示為黃色，低於 75% 時顯示為紅色；語言包無法讀取時則顯示灰色 `invalid`。
 
 維護者通常按這個流程處理：
 
@@ -169,7 +175,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` 會校驗行數、key 順序、佔位符、HTML 標籤、ICU 結構和明顯未翻譯內容；成功後會重建目標語言包並清理 `.pending/locale-update`。
+`apply_translation.mjs` 會校驗行數、key 順序、佔位符、HTML 標籤、ICU 結構和明顯未翻譯內容；成功後會重建目標語言包、同步三份 README 的語言包統計，並清理 `.pending/locale-update`。
 
 ### 新增全新語言
 

@@ -19,12 +19,14 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 | Supported platforms | Supported languages |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-CN.json&cacheSeconds=3600)](#supported-languages) [![zh-TW](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-TW.json&cacheSeconds=3600)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#supported-languages) |
 
+<!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
 | Simplified Chinese `zh-CN` | 18,564 | 50 | 18,614 |
 | Traditional Chinese `zh-TW` | 18,564 | 50 | 18,614 |
+<!-- locale-stats:summary:end -->
 
 </div>
 
@@ -127,10 +129,12 @@ Claude.ai already has a locale-loading pipeline; it just only accepts official l
 
 Counts come from the locale files currently in this repository.
 
+<!-- locale-stats:supported:start -->
 | Language | Locale | Main pack | Dynamic pack | Status |
 | --- | --- | ---: | ---: | --- |
 | Simplified Chinese | `zh-CN` | 18,564 | 50 | Available |
 | Traditional Chinese | `zh-TW` | 18,564 | 50 | Available |
+<!-- locale-stats:supported:end -->
 
 Additional locales are welcome when they have a real product audience. Use the full-locale creation flow below instead of copying directories by hand.
 
@@ -151,7 +155,9 @@ Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans,
 
 GitHub Actions checks Claude.ai's upstream locale files every 6 hours. When keys are added, updated, or removed, it updates the `bot/locale-update` branch and writes diffs under `.pending/locale-update`.
 
-The same successful fetch publishes key coverage for the locale packs on `main` to the persistent `coverage-data` branch. `coverage.json` provides the aggregate data, while `badges/<locale>.json` feeds the README badges.
+After each successful fetch, GitHub Actions compares the locale packs on `main` with the latest upstream snapshot and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages. Translation work on `bot/locale-update` is not counted until it is merged into `main`.
+
+Coverage badges are green at 90% or higher, yellow at 75% or higher, red below 75%, and gray with `invalid` when a locale pack cannot be read.
 
 Maintainers usually apply the update like this:
 
@@ -169,7 +175,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, and obvious untranslated content. On success it rebuilds the target locale packs and clears `.pending/locale-update`.
+`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, and obvious untranslated content. On success it rebuilds the target locale packs, updates the locale statistics in all three READMEs, and clears `.pending/locale-update`.
 
 ### Add a New Locale
 
