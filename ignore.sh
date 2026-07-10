@@ -9,7 +9,6 @@ deploy_paths=(
   "index.html"
   "404.html"
   "locales.json"
-  "api"
   "assets"
   "zh-CN"
 )
