@@ -16,6 +16,7 @@ concurrency:
 
 env:
   UPDATE_BRANCH: bot/locale-update
+  COVERAGE_BRANCH: coverage-data
   BASE_LOCALE: en-US
   PENDING_DIR: .pending/locale-update
   FETCH_MAX_ATTEMPTS: "5"
@@ -99,17 +100,14 @@ jobs:
           compare_summary="$tmp_dir/compare-summary.json"
           diff_summary="$tmp_dir/diff-summary.json"
           coverage_summary="$tmp_dir/coverage-summary.json"
+          coverage_artifacts_dir="$RUNNER_TEMP/coverage-data-artifacts"
+          coverage_publisher_path="$RUNNER_TEMP/publish_coverage.sh"
           main_snapshot_dir="$tmp_dir/main-snapshot"
+          rm -rf "$coverage_artifacts_dir"
           mkdir -p "$main_snapshot_dir"
-          git archive "origin/$BASE_REF" \
-            .original \
-            locales.json \
-            scripts/locale-update/shared.mjs \
-            scripts/locale-update/update_coverage.mjs \
-            | tar -x -C "$main_snapshot_dir"
+          git archive "origin/$BASE_REF" | tar -x -C "$main_snapshot_dir"
           main_original_dir="$main_snapshot_dir/.original"
-          main_locales_file="$main_snapshot_dir/locales.json"
-          coverage_script="$main_snapshot_dir/scripts/locale-update/update_coverage.mjs"
+          coverage_script="$main_snapshot_dir/scripts/locale-update/generate_coverage.mjs"
 
           if python3 - "$BASE_LOCALE" ".original" "$tmp_dir" "$fetch_summary" <<'PY'
           import sys
@@ -439,6 +437,18 @@ jobs:
           PY
           )"
 
+          node "$coverage_script" \
+            --base-locale "$base_locale" \
+            --upstream-dir "$tmp_dir" \
+            --target-root "$main_snapshot_dir" \
+            --output-dir "$coverage_artifacts_dir" > "$coverage_summary"
+          cp "$main_snapshot_dir/scripts/locale-update/publish_coverage.sh" "$coverage_publisher_path"
+          {
+            echo "coverage_ready=true"
+            echo "coverage_artifacts_dir=$coverage_artifacts_dir"
+            echo "coverage_publisher_path=$coverage_publisher_path"
+          } >> "$GITHUB_OUTPUT"
+
           pending_created="false"
           needs_translation="false"
           diff_summary_json="null"
@@ -493,18 +503,7 @@ jobs:
           PY
           fi
 
-          node "$coverage_script" \
-            --repo-root "$GITHUB_WORKSPACE" \
-            --source-locales "$main_locales_file" \
-            --output-locales locales.json \
-            --pending-manifest "$PENDING_DIR/manifest.json" > "$coverage_summary"
-
-          coverage_changed="false"
-          if ! git diff --quiet -- locales.json; then
-            coverage_changed="true"
-          fi
-
-          if [ "$changed_count" -eq 0 ] && [ "$coverage_changed" = "false" ]; then
+          if [ "$changed_count" -eq 0 ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
             echo "pending_created=false" >> "$GITHUB_OUTPUT"
             echo "needs_translation=false" >> "$GITHUB_OUTPUT"
@@ -549,9 +548,6 @@ jobs:
               print(path)
           PY
             )
-            if [ "$coverage_changed" = "true" ]; then
-              echo "locales.json"
-            fi
             echo "EOF"
             echo "cached_locales_json<<EOF"
             echo "$cached_locales_json"
@@ -570,6 +566,21 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
+      - name: Publish locale coverage data
+        if: steps.fetch.outputs.coverage_ready == 'true'
+        env:
+          COVERAGE_ARTIFACTS_DIR: ${{ steps.fetch.outputs.coverage_artifacts_dir }}
+          COVERAGE_PUBLISHER_PATH: ${{ steps.fetch.outputs.coverage_publisher_path }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          bash "$COVERAGE_PUBLISHER_PATH" \
+            --artifacts-dir "$COVERAGE_ARTIFACTS_DIR" \
+            --worktree-dir "$RUNNER_TEMP/coverage-data-worktree" \
+            --branch "$COVERAGE_BRANCH" \
+            --remote origin
+
       - name: Commit and push update branch
         if: steps.fetch.outputs.changed == 'true'
         id: commit
@@ -583,7 +594,6 @@ jobs:
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
 
           git add -A .original
-          git add -A locales.json
           if [ -d "$PENDING_DIR" ]; then
             git add -A "$PENDING_DIR"
           else
