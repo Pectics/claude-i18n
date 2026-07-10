@@ -24,7 +24,7 @@
 <!-- locale-stats:summary:start -->
 | 当前语言包 | 主语言包 | Dynamic 语言包 | 合计 |
 | --- | ---: | ---: | ---: |
-| 简体中文 `zh-CN` | 18,564 | 50 | 18,614 |
+| 简体中文 `zh-CN` | 18,999 | 47 | 19,046 |
 | 繁體中文 `zh-TW` | 18,564 | 50 | 18,614 |
 <!-- locale-stats:summary:end -->
 
@@ -132,7 +132,7 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 <!-- locale-stats:supported:start -->
 | 语言 | Locale | 主语言包 | Dynamic 语言包 | 状态 |
 | --- | --- | ---: | ---: | --- |
-| 简体中文 | `zh-CN` | 18,564 | 50 | 可用 |
+| 简体中文 | `zh-CN` | 18,999 | 47 | 可用 |
 | 繁體中文 | `zh-TW` | 18,564 | 50 | 可用 |
 <!-- locale-stats:supported:end -->
 
