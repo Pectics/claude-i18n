@@ -4,7 +4,7 @@ set -euo pipefail
 
 artifacts_dir=""
 worktree_dir=""
-branch="coverage-data"
+branch="bot/coverage-data"
 remote="origin"
 
 usage() {
@@ -44,8 +44,8 @@ done
 [ -n "$worktree_dir" ] || usage
 [ -f "$artifacts_dir/coverage.json" ] || { echo "Missing $artifacts_dir/coverage.json" >&2; exit 1; }
 [ -d "$artifacts_dir/badges" ] || { echo "Missing $artifacts_dir/badges" >&2; exit 1; }
-find "$artifacts_dir/badges" -maxdepth 1 -type f -name '*.json' -print -quit | grep -q . \
-  || { echo "No badge JSON files found in $artifacts_dir/badges" >&2; exit 1; }
+find "$artifacts_dir/badges" -maxdepth 1 -type f -name '*.svg' -print -quit | grep -q . \
+  || { echo "No badge SVG files found in $artifacts_dir/badges" >&2; exit 1; }
 [[ "$branch" =~ ^[A-Za-z0-9][A-Za-z0-9._/-]*$ ]] || { echo "Invalid branch name: $branch" >&2; exit 1; }
 
 repo_root="$(git rev-parse --show-toplevel)"

@@ -18,6 +18,11 @@ function writeJson(filePath, data) {
   fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
 }
 
+function writeSvg(filePath, message) {
+  fs.mkdirSync(path.dirname(filePath), { recursive: true });
+  fs.writeFileSync(filePath, `<svg>${message}</svg>\n`, 'utf8');
+}
+
 function publish(repo, artifacts, worktree) {
   return execFileSync(
     'bash',
@@ -28,7 +33,7 @@ function publish(repo, artifacts, worktree) {
       '--worktree-dir',
       worktree,
       '--branch',
-      'coverage-data',
+      'bot/coverage-data',
       '--remote',
       'origin',
     ],
@@ -56,20 +61,20 @@ test('creates the data branch, skips unchanged data, and removes stale badges on
     git(['push', '-u', 'origin', 'main'], repo);
 
     writeJson(path.join(artifacts, 'coverage.json'), { schemaVersion: 1, coverage: { 'zh-CN': { ratio: 1 } } });
-    writeJson(path.join(artifacts, 'badges', 'zh-CN.json'), { schemaVersion: 1, message: '100.00%' });
-    writeJson(path.join(artifacts, 'badges', 'removed.json'), { schemaVersion: 1, message: '50.00%' });
+    writeSvg(path.join(artifacts, 'badges', 'zh-CN.svg'), '100.00%');
+    writeSvg(path.join(artifacts, 'badges', 'removed.svg'), '50.00%');
 
     assert.match(publish(repo, artifacts, worktree), /published=true/);
-    assert.equal(git(['rev-list', '--count', 'refs/heads/coverage-data'], remote).trim(), '1');
+    assert.equal(git(['rev-list', '--count', 'refs/heads/bot/coverage-data'], remote).trim(), '1');
     assert.match(publish(repo, artifacts, worktree), /published=false/);
-    assert.equal(git(['rev-list', '--count', 'refs/heads/coverage-data'], remote).trim(), '1');
+    assert.equal(git(['rev-list', '--count', 'refs/heads/bot/coverage-data'], remote).trim(), '1');
 
     writeJson(path.join(artifacts, 'coverage.json'), { schemaVersion: 1, coverage: { 'zh-CN': { ratio: 0.5 } } });
-    fs.rmSync(path.join(artifacts, 'badges', 'removed.json'));
+    fs.rmSync(path.join(artifacts, 'badges', 'removed.svg'));
     assert.match(publish(repo, artifacts, worktree), /published=true/);
-    assert.equal(git(['rev-list', '--count', 'refs/heads/coverage-data'], remote).trim(), '2');
+    assert.equal(git(['rev-list', '--count', 'refs/heads/bot/coverage-data'], remote).trim(), '2');
     assert.throws(
-      () => git(['show', 'refs/heads/coverage-data:badges/removed.json'], remote),
+      () => git(['show', 'refs/heads/bot/coverage-data:badges/removed.svg'], remote),
       /does not exist|exists on disk, but not in/,
     );
   } finally {

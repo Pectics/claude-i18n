@@ -1,4 +1,5 @@
 import fs from 'node:fs';
+import { spawnSync } from 'node:child_process';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { readJson, writeJson } from './shared.mjs';
@@ -6,10 +7,16 @@ import { readJson, writeJson } from './shared.mjs';
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_ROOT_DIR = path.resolve(__dirname, '..', '..');
 const LOCALE_PATTERN = /^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$/;
+const BADGE_COLORS = {
+  green: '4c1',
+  yellow: 'dfb317',
+  red: 'e5534b',
+  invalid: '9f9f9f',
+};
 
 function usage() {
   throw new Error(
-    'Usage: node generate_coverage.mjs --output-dir <path> [--base-locale <locale>] [--upstream-dir <path>] [--target-root <path>] [--badge-color <color>]',
+    'Usage: node generate_coverage.mjs --output-dir <path> [--base-locale <locale>] [--upstream-dir <path>] [--target-root <path>] [--curl-bin <path>] [--shields-base-url <url>]',
   );
 }
 
@@ -19,7 +26,8 @@ function parseArgs(argv) {
     upstreamDir: path.join(DEFAULT_ROOT_DIR, '.original'),
     targetRoot: DEFAULT_ROOT_DIR,
     outputDir: null,
-    badgeColor: 'e5534b',
+    curlBin: 'curl',
+    shieldsBaseUrl: 'https://img.shields.io',
   };
 
   for (let index = 0; index < argv.length; index += 1) {
@@ -37,8 +45,11 @@ function parseArgs(argv) {
     } else if (token === '--output-dir' && next) {
       args.outputDir = path.resolve(next);
       index += 1;
-    } else if (token === '--badge-color' && next) {
-      args.badgeColor = next;
+    } else if (token === '--curl-bin' && next) {
+      args.curlBin = next;
+      index += 1;
+    } else if (token === '--shields-base-url' && next) {
+      args.shieldsBaseUrl = next.replace(/\/+$/, '');
       index += 1;
     } else {
       usage();
@@ -107,11 +118,15 @@ function calculateCoverage(args) {
   const locales = readLocales(args.targetRoot);
   const coverage = Object.fromEntries(
     locales.map((locale) => {
-      const localeDir = path.join(args.targetRoot, locale);
-      const targetMain = readFlatObject(path.join(localeDir, `${locale}.json`));
-      const targetDynamic = readFlatObject(path.join(localeDir, `${locale}.dynamic.json`));
-      const covered = coveredKeyCount(upstreamMain, targetMain) + coveredKeyCount(upstreamDynamic, targetDynamic);
-      return [locale, { covered, total, ratio: roundRatio(covered / total) }];
+      try {
+        const localeDir = path.join(args.targetRoot, locale);
+        const targetMain = readFlatObject(path.join(localeDir, `${locale}.json`));
+        const targetDynamic = readFlatObject(path.join(localeDir, `${locale}.dynamic.json`));
+        const covered = coveredKeyCount(upstreamMain, targetMain) + coveredKeyCount(upstreamDynamic, targetDynamic);
+        return [locale, { covered, total, ratio: roundRatio(covered / total) }];
+      } catch {
+        return [locale, { covered: null, total, ratio: null }];
+      }
     }),
   );
 
@@ -122,20 +137,78 @@ function calculateCoverage(args) {
   };
 }
 
+function badgePresentation(coverage) {
+  if (!Number.isInteger(coverage.covered) || coverage.covered < 0 || coverage.total <= 0) {
+    return { message: 'invalid', color: BADGE_COLORS.invalid };
+  }
+
+  const ratio = coverage.covered / coverage.total;
+  const message = `${(ratio * 100).toFixed(2)}%`;
+  if (ratio >= 0.9) return { message, color: BADGE_COLORS.green };
+  if (ratio >= 0.75) return { message, color: BADGE_COLORS.yellow };
+  return { message, color: BADGE_COLORS.red };
+}
+
+function badgeUrl(args, locale, coverage) {
+  const escapedLocale = locale.replaceAll('_', '__').replaceAll('-', '--');
+  const { message, color } = badgePresentation(coverage);
+  return `${args.shieldsBaseUrl}/badge/${escapedLocale}-${encodeURIComponent(message)}-${color}`;
+}
+
+function downloadBadge(args, locale, coverage, outputPath) {
+  const url = badgeUrl(args, locale, coverage);
+  const result = spawnSync(
+    args.curlBin,
+    [
+      '--fail',
+      '--silent',
+      '--show-error',
+      '--location',
+      '--retry',
+      '3',
+      '--retry-delay',
+      '1',
+      '--connect-timeout',
+      '10',
+      '--max-time',
+      '30',
+      '--output',
+      outputPath,
+      url,
+    ],
+    { encoding: 'utf8' },
+  );
+
+  if (result.error || result.status !== 0) {
+    fs.rmSync(outputPath, { force: true });
+    const detail = result.error?.message || result.stderr?.trim() || `exit ${result.status}`;
+    throw new Error(`Failed to download ${locale} badge: ${detail}`);
+  }
+
+  const svg = fs.readFileSync(outputPath, 'utf8');
+  if (!/<svg(?:\s|>)/i.test(svg)) {
+    fs.rmSync(outputPath, { force: true });
+    throw new Error(`Downloaded ${locale} badge is not an SVG`);
+  }
+}
+
 function writeArtifacts(args, payload) {
   const badgesDir = path.join(args.outputDir, 'badges');
-  fs.rmSync(path.join(args.outputDir, 'coverage.json'), { force: true });
-  fs.rmSync(badgesDir, { recursive: true, force: true });
-  fs.mkdirSync(badgesDir, { recursive: true });
-  writeJson(path.join(args.outputDir, 'coverage.json'), payload);
+  const stagingBadgesDir = path.join(args.outputDir, `.badges-${process.pid}`);
+  fs.rmSync(stagingBadgesDir, { recursive: true, force: true });
+  fs.mkdirSync(stagingBadgesDir, { recursive: true });
 
-  for (const [locale, coverage] of Object.entries(payload.coverage)) {
-    writeJson(path.join(badgesDir, `${locale}.json`), {
-      schemaVersion: 1,
-      label: locale,
-      message: `${((coverage.covered / coverage.total) * 100).toFixed(2)}%`,
-      color: args.badgeColor,
-    });
+  try {
+    for (const [locale, coverage] of Object.entries(payload.coverage)) {
+      downloadBadge(args, locale, coverage, path.join(stagingBadgesDir, `${locale}.svg`));
+    }
+
+    fs.rmSync(badgesDir, { recursive: true, force: true });
+    fs.renameSync(stagingBadgesDir, badgesDir);
+    writeJson(path.join(args.outputDir, 'coverage.json'), payload);
+  } catch (error) {
+    fs.rmSync(stagingBadgesDir, { recursive: true, force: true });
+    throw error;
   }
 }
 

@@ -19,7 +19,7 @@
 
 | 支援平台 | 支援語言 |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-CN.json&cacheSeconds=3600)](#支援的語言) [![zh-TW](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-TW.json&cacheSeconds=3600)](#支援的語言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支援的語言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#支援的語言) |
 
 | 目前語言包 | 主語言包 | Dynamic 語言包 | 合計 |
 | --- | ---: | ---: | ---: |
@@ -151,7 +151,9 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 倉庫的 GitHub Actions 每 6 小時檢查一次 Claude.ai 上游語言檔。發現 key 新增、更新或刪除時，會更新 `bot/locale-update` 分支，並產生 `.pending/locale-update` 下的差異檔。
 
-同一次成功抓取還會把 `main` 中語言包的 key 覆蓋率發布到長期存在的 `coverage-data` 分支。`coverage.json` 提供彙總資料，`badges/<locale>.json` 則供 README badge 使用。
+同一次成功抓取還會把 `main` 中語言包的 key 覆蓋率發布到長期存在的 `bot/coverage-data` 分支。`coverage.json` 提供彙總資料，`badges/<locale>.svg` 則保存預先渲染好的 README badge。
+
+覆蓋率達到 90% 時 badge 顯示為綠色，達到 75% 時顯示為黃色，低於 75% 時顯示為紅色；語言包無法讀取時則顯示灰色 `invalid`。
 
 維護者通常按這個流程處理：
 

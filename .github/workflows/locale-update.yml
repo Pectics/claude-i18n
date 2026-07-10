@@ -1,4 +1,4 @@
-name: Update original locale files and build diff
+name: "locale-update: Sync upstream and publish coverage"
 
 on:
   schedule:
@@ -26,7 +26,7 @@ env:
 
 jobs:
   update:
-    name: Check upstream locale files
+    name: Run locale-update and publish coverage
     runs-on: ubuntu-latest
 
     steps:
@@ -85,7 +85,7 @@ jobs:
         shell: bash
         run: python3 -m pip install --quiet curl_cffi
 
-      - name: Fetch upstream files
+      - name: Fetch upstream locales and generate coverage
         if: steps.branch.outputs.branch_name != ''
         id: fetch
         env:

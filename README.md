@@ -19,7 +19,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 | Supported platforms | Supported languages |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-CN.json&cacheSeconds=3600)](#supported-languages) [![zh-TW](https://img.shields.io/endpoint?url=https%3A%2F%2Fraw.githubusercontent.com%2FPectics%2Fclaude-i18n%2Fcoverage-data%2Fbadges%2Fzh-TW.json&cacheSeconds=3600)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/[WIP]%20zh--HK-e5534b)](#supported-languages) |
 
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
@@ -151,7 +151,9 @@ Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans,
 
 GitHub Actions checks Claude.ai's upstream locale files every 6 hours. When keys are added, updated, or removed, it updates the `bot/locale-update` branch and writes diffs under `.pending/locale-update`.
 
-The same successful fetch publishes key coverage for the locale packs on `main` to the persistent `coverage-data` branch. `coverage.json` provides the aggregate data, while `badges/<locale>.json` feeds the README badges.
+The same successful fetch publishes key coverage for the locale packs on `main` to the persistent `bot/coverage-data` branch. `coverage.json` provides the aggregate data, while `badges/<locale>.svg` contains the pre-rendered README badges.
+
+Coverage badges are green at 90% or higher, yellow at 75% or higher, red below 75%, and gray with `invalid` when a locale pack cannot be read.
 
 Maintainers usually apply the update like this:
 

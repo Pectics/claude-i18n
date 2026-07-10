@@ -15,7 +15,10 @@ test('locale update publishes deterministic coverage artifacts from the main sna
   const publishIndex = workflow.indexOf('- name: Publish locale coverage data');
   const updateCommitIndex = workflow.indexOf('- name: Commit and push update branch');
 
-  assert.match(workflow, /COVERAGE_BRANCH: coverage-data/);
+  assert.match(workflow, /name: "locale-update: Sync upstream and publish coverage"/);
+  assert.match(workflow, /name: Run locale-update and publish coverage/);
+  assert.match(workflow, /name: Fetch upstream locales and generate coverage/);
+  assert.match(workflow, /COVERAGE_BRANCH: bot\/coverage-data/);
   assert.match(workflow, /git archive "origin\/\$BASE_REF" \| tar -x -C "\$main_snapshot_dir"/);
   assert.match(workflow, /generate_coverage\.mjs/);
   assert.match(workflow, /--upstream-dir "\$tmp_dir"/);
