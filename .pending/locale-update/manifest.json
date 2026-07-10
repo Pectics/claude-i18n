@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "createdAt": "2026-07-08T02:50:47.061Z",
+  "createdAt": "2026-07-10T03:30:56.429Z",
   "baseLocale": "en-US",
   "referenceLocale": "ja-JP",
   "cachedLocales": [
@@ -15,9 +15,7 @@
   "warnings": [],
   "changedFiles": [
     ".original/en-US.json",
-    ".original/en-US.dynamic.json",
-    ".original/ja-JP.json",
-    ".original/ja-JP.dynamic.json"
+    ".original/ja-JP.json"
   ],
   "needsTranslation": true,
   "source": {
@@ -41,16 +39,16 @@
   },
   "diffSummary": {
     "main": {
-      "add": 150,
-      "update": 0,
-      "remove": 40,
-      "total": 190
+      "add": 623,
+      "update": 4,
+      "remove": 188,
+      "total": 815
     },
     "dynamic": {
       "add": 1,
       "update": 0,
-      "remove": 1,
-      "total": 2
+      "remove": 4,
+      "total": 5
     }
   }
 }
