@@ -1,4 +1,4 @@
-name: "locale-update: Sync upstream and publish coverage"
+name: "locale-update: Sync upstream locales"
 
 on:
   schedule:
@@ -16,7 +16,6 @@ concurrency:
 
 env:
   UPDATE_BRANCH: bot/locale-update
-  COVERAGE_BRANCH: bot/coverage-data
   BASE_LOCALE: en-US
   PENDING_DIR: .pending/locale-update
   FETCH_MAX_ATTEMPTS: "5"
@@ -26,8 +25,11 @@ env:
 
 jobs:
   update:
-    name: Run locale-update and publish coverage
+    name: Sync upstream locale files
     runs-on: ubuntu-latest
+    outputs:
+      coverage_ready: ${{ steps.coverage.outputs.ready }}
+      coverage_upstream_ref: ${{ steps.coverage.outputs.upstream_ref }}
 
     steps:
       - name: Checkout repository
@@ -45,6 +47,7 @@ jobs:
 
           base_ref="${GITHUB_REF_NAME:-main}"
           git fetch origin "+refs/heads/$base_ref:refs/remotes/origin/$base_ref"
+          remote_sha="$(git ls-remote --heads origin "$UPDATE_BRANCH" | awk '{print $1}' | head -n 1)"
 
           pr_json="$(gh pr list --state open --limit 100 --json number,headRefName,baseRefName,url)"
           pr_number="$(
@@ -60,10 +63,6 @@ jobs:
             git fetch origin "+refs/heads/$UPDATE_BRANCH:refs/remotes/origin/$UPDATE_BRANCH"
             git checkout -B "$UPDATE_BRANCH" "origin/$UPDATE_BRANCH"
             branch_source="open-pr"
-          elif git ls-remote --exit-code --heads origin "$UPDATE_BRANCH" >/dev/null 2>&1; then
-            git fetch origin "+refs/heads/$UPDATE_BRANCH:refs/remotes/origin/$UPDATE_BRANCH"
-            git checkout -B "$UPDATE_BRANCH" "origin/$UPDATE_BRANCH"
-            branch_source="remote-branch"
           else
             git checkout -B "$UPDATE_BRANCH" "origin/$base_ref"
             branch_source="base"
@@ -73,6 +72,7 @@ jobs:
             echo "base_ref=$base_ref"
             echo "branch_name=$UPDATE_BRANCH"
             echo "branch_source=$branch_source"
+            echo "remote_sha=$remote_sha"
             echo "pr_number=$pr_number"
           } >> "$GITHUB_OUTPUT"
 
@@ -85,7 +85,7 @@ jobs:
         shell: bash
         run: python3 -m pip install --quiet curl_cffi
 
-      - name: Fetch upstream locales and generate coverage
+      - name: Fetch upstream locales and build diff
         if: steps.branch.outputs.branch_name != ''
         id: fetch
         env:
@@ -99,15 +99,10 @@ jobs:
           fetch_summary="$tmp_dir/fetch-summary.json"
           compare_summary="$tmp_dir/compare-summary.json"
           diff_summary="$tmp_dir/diff-summary.json"
-          coverage_summary="$tmp_dir/coverage-summary.json"
-          coverage_artifacts_dir="$RUNNER_TEMP/coverage-data-artifacts"
-          coverage_publisher_path="$RUNNER_TEMP/publish_coverage.sh"
           main_snapshot_dir="$tmp_dir/main-snapshot"
-          rm -rf "$coverage_artifacts_dir"
           mkdir -p "$main_snapshot_dir"
           git archive "origin/$BASE_REF" | tar -x -C "$main_snapshot_dir"
           main_original_dir="$main_snapshot_dir/.original"
-          coverage_script="$main_snapshot_dir/scripts/locale-update/generate_coverage.mjs"
 
           if python3 - "$BASE_LOCALE" ".original" "$tmp_dir" "$fetch_summary" <<'PY'
           import sys
@@ -437,17 +432,7 @@ jobs:
           PY
           )"
 
-          node "$coverage_script" \
-            --base-locale "$base_locale" \
-            --upstream-dir "$tmp_dir" \
-            --target-root "$main_snapshot_dir" \
-            --output-dir "$coverage_artifacts_dir" > "$coverage_summary"
-          cp "$main_snapshot_dir/scripts/locale-update/publish_coverage.sh" "$coverage_publisher_path"
-          {
-            echo "coverage_ready=true"
-            echo "coverage_artifacts_dir=$coverage_artifacts_dir"
-            echo "coverage_publisher_path=$coverage_publisher_path"
-          } >> "$GITHUB_OUTPUT"
+          echo "upstream_ready=true" >> "$GITHUB_OUTPUT"
 
           pending_created="false"
           needs_translation="false"
@@ -566,26 +551,13 @@ jobs:
             echo "EOF"
           } >> "$GITHUB_OUTPUT"
 
-      - name: Publish locale coverage data
-        if: steps.fetch.outputs.coverage_ready == 'true'
-        env:
-          COVERAGE_ARTIFACTS_DIR: ${{ steps.fetch.outputs.coverage_artifacts_dir }}
-          COVERAGE_PUBLISHER_PATH: ${{ steps.fetch.outputs.coverage_publisher_path }}
-        shell: bash
-        run: |
-          set -euo pipefail
-
-          bash "$COVERAGE_PUBLISHER_PATH" \
-            --artifacts-dir "$COVERAGE_ARTIFACTS_DIR" \
-            --worktree-dir "$RUNNER_TEMP/coverage-data-worktree" \
-            --branch "$COVERAGE_BRANCH" \
-            --remote origin
-
       - name: Commit and push update branch
         if: steps.fetch.outputs.changed == 'true'
         id: commit
         env:
           BRANCH_NAME: ${{ steps.branch.outputs.branch_name }}
+          BRANCH_SOURCE: ${{ steps.branch.outputs.branch_source }}
+          REMOTE_SHA: ${{ steps.branch.outputs.remote_sha }}
         shell: bash
         run: |
           set -euo pipefail
@@ -611,12 +583,23 @@ jobs:
           last_subject="$(git log -1 --format=%s)"
           last_author="$(git log -1 --format=%an)"
 
-          if [ "$last_subject" = "$commit_msg" ] && [ "$last_author" = "github-actions[bot]" ]; then
+          if [ "$BRANCH_SOURCE" = "open-pr" ] \
+            && [ "$last_subject" = "$commit_msg" ] \
+            && [ "$last_author" = "github-actions[bot]" ]
+          then
             git commit --amend --no-edit --date=now
             git push --force-with-lease origin "$BRANCH_NAME"
           else
             git commit -m "$commit_msg"
-            git push --set-upstream origin "$BRANCH_NAME"
+            if [ "$BRANCH_SOURCE" = "base" ] && [ -n "$REMOTE_SHA" ]; then
+              git push \
+                --force-with-lease="refs/heads/$BRANCH_NAME:$REMOTE_SHA" \
+                --set-upstream \
+                origin \
+                "$BRANCH_NAME"
+            else
+              git push --set-upstream origin "$BRANCH_NAME"
+            fi
           fi
 
           echo "committed=true" >> "$GITHUB_OUTPUT"
@@ -748,3 +731,43 @@ jobs:
           fi
 
           echo "pr_url=$pr_url" >> "$GITHUB_OUTPUT"
+
+      - name: Select coverage upstream snapshot
+        if: steps.fetch.outputs.upstream_ready == 'true'
+        id: coverage
+        env:
+          BASE_REF: ${{ steps.branch.outputs.base_ref }}
+          BRANCH_NAME: ${{ steps.branch.outputs.branch_name }}
+          BRANCH_SOURCE: ${{ steps.branch.outputs.branch_source }}
+          FETCH_CHANGED: ${{ steps.fetch.outputs.changed }}
+          COMMITTED: ${{ steps.commit.outputs.committed }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          upstream_ref="$BASE_REF"
+          if [ "$FETCH_CHANGED" = "true" ]; then
+            if [ "$COMMITTED" != "true" ]; then
+              echo "Upstream changed but the update branch was not committed." >&2
+              exit 1
+            fi
+            upstream_ref="$BRANCH_NAME"
+          elif [ "$BRANCH_SOURCE" = "open-pr" ]; then
+            upstream_ref="$BRANCH_NAME"
+          fi
+
+          echo "ready=true" >> "$GITHUB_OUTPUT"
+          echo "upstream_ref=$upstream_ref" >> "$GITHUB_OUTPUT"
+
+  coverage:
+    name: Publish main coverage from latest upstream
+    needs: update
+    if: needs.update.outputs.coverage_ready == 'true'
+    permissions:
+      contents: read
+      pages: write
+      id-token: write
+      pull-requests: read
+    uses: ./.github/workflows/locale-update-pages.yml
+    with:
+      upstream_ref: ${{ needs.update.outputs.coverage_upstream_ref }}

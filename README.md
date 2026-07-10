@@ -19,7 +19,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 | Supported platforms | Supported languages |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#supported-languages) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#supported-languages) |
 
 <!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
@@ -155,7 +155,7 @@ Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans,
 
 GitHub Actions checks Claude.ai's upstream locale files every 6 hours. When keys are added, updated, or removed, it updates the `bot/locale-update` branch and writes diffs under `.pending/locale-update`.
 
-The same successful fetch publishes key coverage for the locale packs on `main` to the persistent `bot/coverage-data` branch. `coverage.json` provides the aggregate data, while `badges/<locale>.svg` contains the pre-rendered README badges.
+After each successful fetch, GitHub Actions compares the locale packs on `main` with the latest upstream snapshot and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages. Translation work on `bot/locale-update` is not counted until it is merged into `main`.
 
 Coverage badges are green at 90% or higher, yellow at 75% or higher, red below 75%, and gray with `invalid` when a locale pack cannot be read.
 
@@ -175,7 +175,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, and obvious untranslated content. On success it rebuilds the target locale packs and clears `.pending/locale-update`.
+`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, and obvious untranslated content. On success it rebuilds the target locale packs, updates the locale statistics in all three READMEs, and clears `.pending/locale-update`.
 
 ### Add a New Locale
 

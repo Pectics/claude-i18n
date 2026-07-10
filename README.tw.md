@@ -19,7 +19,7 @@
 
 | 支援平台 | 支援語言 |
 | ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://raw.githubusercontent.com/Pectics/claude-i18n/bot/coverage-data/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#支援的語言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#支援的語言) |
 
 <!-- locale-stats:summary:start -->
 | 目前語言包 | 主語言包 | Dynamic 語言包 | 合計 |
@@ -155,7 +155,7 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 倉庫的 GitHub Actions 每 6 小時檢查一次 Claude.ai 上游語言檔。發現 key 新增、更新或刪除時，會更新 `bot/locale-update` 分支，並產生 `.pending/locale-update` 下的差異檔。
 
-同一次成功抓取還會把 `main` 中語言包的 key 覆蓋率發布到長期存在的 `bot/coverage-data` 分支。`coverage.json` 提供彙總資料，`badges/<locale>.svg` 則保存預先渲染好的 README badge。
+每次成功抓取後，GitHub Actions 都會用最新 upstream 快照比對 `main` 中的語言包，並把 `coverage.json` 和預先渲染的 `badges/<locale>.svg` 發布到 GitHub Pages。`bot/locale-update` 中的翻譯在合併進 `main` 前不會計入覆蓋率。
 
 覆蓋率達到 90% 時 badge 顯示為綠色，達到 75% 時顯示為黃色，低於 75% 時顯示為紅色；語言包無法讀取時則顯示灰色 `invalid`。
 
@@ -175,7 +175,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` 會校驗行數、key 順序、佔位符、HTML 標籤、ICU 結構和明顯未翻譯內容；成功後會重建目標語言包並清理 `.pending/locale-update`。
+`apply_translation.mjs` 會校驗行數、key 順序、佔位符、HTML 標籤、ICU 結構和明顯未翻譯內容；成功後會重建目標語言包、同步三份 README 的語言包統計，並清理 `.pending/locale-update`。
 
 ### 新增全新語言
 
