@@ -23,10 +23,39 @@ function createFixture() {
   const upstreamDir = path.join(root, 'upstream');
   const targetRoot = path.join(root, 'target');
   const outputDir = path.join(root, 'output');
-  return { root, upstreamDir, targetRoot, outputDir };
+  const curlBin = path.join(root, 'fake-curl.sh');
+  fs.writeFileSync(
+    curlBin,
+    `#!/usr/bin/env bash
+set -euo pipefail
+output=""
+url=""
+while [ "$#" -gt 0 ]; do
+  if [ "$1" = "--output" ]; then
+    output="$2"
+    shift 2
+  else
+    url="$1"
+    shift
+  fi
+done
+if [ "\${FAKE_CURL_FAIL:-}" = "1" ]; then
+  echo "simulated curl failure" >&2
+  exit 22
+fi
+if [ "\${FAKE_CURL_HTML:-}" = "1" ]; then
+  printf '<html>not svg</html>\\n' > "$output"
+else
+  printf '<svg data-url="%s"></svg>\\n' "$url" > "$output"
+fi
+`,
+    'utf8',
+  );
+  fs.chmodSync(curlBin, 0o755);
+  return { root, upstreamDir, targetRoot, outputDir, curlBin };
 }
 
-function runGenerate(fixture, extraArgs = []) {
+function runGenerate(fixture, extraArgs = [], extraEnv = {}) {
   return JSON.parse(
     execFileSync(
       process.execPath,
@@ -40,9 +69,11 @@ function runGenerate(fixture, extraArgs = []) {
         fixture.targetRoot,
         '--output-dir',
         fixture.outputDir,
+        '--curl-bin',
+        fixture.curlBin,
         ...extraArgs,
       ],
-      { encoding: 'utf8' },
+      { encoding: 'utf8', env: { ...process.env, ...extraEnv } },
     ),
   );
 }
@@ -72,12 +103,10 @@ test('calculates each locale from upstream key intersections and ignores extra t
     assert.deepEqual(Object.keys(payload.coverage), ['zh-TW', 'zh-CN']);
     assert.deepEqual(payload.coverage['zh-TW'], { covered: 6, total: 6, ratio: 1 });
     assert.deepEqual(payload.coverage['zh-CN'], { covered: 4, total: 6, ratio: 0.6667 });
-    assert.deepEqual(readJson(path.join(fixture.outputDir, 'badges', 'zh-CN.json')), {
-      schemaVersion: 1,
-      label: 'zh-CN',
-      message: '66.67%',
-      color: 'e5534b',
-    });
+    assert.match(
+      fs.readFileSync(path.join(fixture.outputDir, 'badges', 'zh-CN.svg'), 'utf8'),
+      /\/badge\/zh--CN-66\.67%25-e5534b/,
+    );
   } finally {
     fs.rmSync(fixture.root, { recursive: true, force: true });
   }
@@ -99,6 +128,37 @@ test('keeps main and dynamic namespaces separate when a key exists in both', () 
   }
 });
 
+test('uses green, yellow, red, and invalid badge states at the configured thresholds', () => {
+  const fixture = createFixture();
+  try {
+    const upstream = Object.fromEntries(Array.from({ length: 20 }, (_, index) => [`key${index}`, index]));
+    const targetWith = (count) => Object.fromEntries(Object.keys(upstream).slice(0, count).map((key) => [key, key]));
+    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), upstream);
+    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), {});
+    writeJson(path.join(fixture.targetRoot, 'locales.json'), {
+      locales: ['ga-AA', 'ya-AA', 'ra-AA', 'ia-AA'],
+    });
+    for (const [locale, count] of [
+      ['ga-AA', 18],
+      ['ya-AA', 15],
+      ['ra-AA', 14],
+    ]) {
+      writeJson(path.join(fixture.targetRoot, locale, `${locale}.json`), targetWith(count));
+      writeJson(path.join(fixture.targetRoot, locale, `${locale}.dynamic.json`), {});
+    }
+
+    const payload = runGenerate(fixture);
+
+    assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ga-AA.svg'), 'utf8'), /90\.00%25-4c1/);
+    assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ya-AA.svg'), 'utf8'), /75\.00%25-dfb317/);
+    assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ra-AA.svg'), 'utf8'), /70\.00%25-e5534b/);
+    assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ia-AA.svg'), 'utf8'), /invalid-9f9f9f/);
+    assert.deepEqual(payload.coverage['ia-AA'], { covered: null, total: 20, ratio: null });
+  } finally {
+    fs.rmSync(fixture.root, { recursive: true, force: true });
+  }
+});
+
 test('replaces generated badges while preserving unrelated output files', () => {
   const fixture = createFixture();
   try {
@@ -107,12 +167,13 @@ test('replaces generated badges while preserving unrelated output files', () => 
     writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-CN'] });
     writeJson(path.join(fixture.targetRoot, 'zh-CN', 'zh-CN.json'), { a: 'A' });
     writeJson(path.join(fixture.targetRoot, 'zh-CN', 'zh-CN.dynamic.json'), {});
-    writeJson(path.join(fixture.outputDir, 'badges', 'removed-locale.json'), { stale: true });
+    fs.mkdirSync(path.join(fixture.outputDir, 'badges'), { recursive: true });
+    fs.writeFileSync(path.join(fixture.outputDir, 'badges', 'removed-locale.json'), '{"stale":true}\n', 'utf8');
     fs.writeFileSync(path.join(fixture.outputDir, 'keep.txt'), 'keep\n', 'utf8');
 
     runGenerate(fixture);
 
-    assert.equal(fs.existsSync(path.join(fixture.outputDir, 'badges', 'removed-locale.json')), false);
+    assert.deepEqual(fs.readdirSync(path.join(fixture.outputDir, 'badges')), ['zh-CN.svg']);
     assert.equal(fs.readFileSync(path.join(fixture.outputDir, 'keep.txt'), 'utf8'), 'keep\n');
   } finally {
     fs.rmSync(fixture.root, { recursive: true, force: true });
@@ -135,7 +196,7 @@ test('fails instead of publishing when upstream has no keys', () => {
   }
 });
 
-test('fails on invalid JSON or a missing target locale file', () => {
+test('fails on invalid upstream JSON but renders missing target data as invalid', () => {
   const invalidFixture = createFixture();
   const missingFixture = createFixture();
   try {
@@ -149,10 +210,39 @@ test('fails on invalid JSON or a missing target locale file', () => {
     writeJson(path.join(missingFixture.upstreamDir, 'en-US.dynamic.json'), {});
     writeJson(path.join(missingFixture.targetRoot, 'locales.json'), { locales: ['zh-CN'] });
     writeJson(path.join(missingFixture.targetRoot, 'zh-CN', 'zh-CN.json'), { a: 'A' });
-    assert.throws(() => runGenerate(missingFixture), /ENOENT/);
-    assert.equal(fs.existsSync(path.join(missingFixture.outputDir, 'coverage.json')), false);
+    const payload = runGenerate(missingFixture);
+    assert.deepEqual(payload.coverage['zh-CN'], { covered: null, total: 1, ratio: null });
+    assert.match(
+      fs.readFileSync(path.join(missingFixture.outputDir, 'badges', 'zh-CN.svg'), 'utf8'),
+      /invalid-9f9f9f/,
+    );
   } finally {
     fs.rmSync(invalidFixture.root, { recursive: true, force: true });
     fs.rmSync(missingFixture.root, { recursive: true, force: true });
+  }
+});
+
+test('preserves existing artifacts when Shields download fails or returns non-SVG content', () => {
+  for (const extraEnv of [{ FAKE_CURL_FAIL: '1' }, { FAKE_CURL_HTML: '1' }]) {
+    const fixture = createFixture();
+    try {
+      writeJson(path.join(fixture.upstreamDir, 'en-US.json'), { a: 1 });
+      writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), {});
+      writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-CN'] });
+      writeJson(path.join(fixture.targetRoot, 'zh-CN', 'zh-CN.json'), { a: 'A' });
+      writeJson(path.join(fixture.targetRoot, 'zh-CN', 'zh-CN.dynamic.json'), {});
+      writeJson(path.join(fixture.outputDir, 'coverage.json'), { previous: true });
+      fs.mkdirSync(path.join(fixture.outputDir, 'badges'), { recursive: true });
+      fs.writeFileSync(path.join(fixture.outputDir, 'badges', 'zh-CN.svg'), '<svg>previous</svg>\n', 'utf8');
+
+      assert.throws(() => runGenerate(fixture, [], extraEnv), /Failed to download|not an SVG/);
+      assert.deepEqual(readJson(path.join(fixture.outputDir, 'coverage.json')), { previous: true });
+      assert.equal(
+        fs.readFileSync(path.join(fixture.outputDir, 'badges', 'zh-CN.svg'), 'utf8'),
+        '<svg>previous</svg>\n',
+      );
+    } finally {
+      fs.rmSync(fixture.root, { recursive: true, force: true });
+    }
   }
 });
