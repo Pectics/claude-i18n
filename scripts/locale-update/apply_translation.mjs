@@ -12,6 +12,7 @@ import {
   shouldRejectJapaneseKana,
   writeJson,
 } from './shared.mjs';
+import { updateReadmeStats } from './update_readme_stats.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
@@ -208,6 +209,8 @@ function main() {
   writeJson(outputMainPath, nextMainData);
   writeJson(outputDynamicPath, nextDynamicData);
 
+  const readmeStats = updateReadmeStats(ROOT_DIR);
+
   fs.rmSync(args.pendingDir, { recursive: true, force: true });
 
   console.log(
@@ -218,6 +221,7 @@ function main() {
         outputField,
         main: Object.keys(nextMainData).length,
         dynamic: Object.keys(nextDynamicData).length,
+        updatedReadmes: readmeStats.changedFiles,
         clearedPendingDir: args.pendingDir,
       },
       null,

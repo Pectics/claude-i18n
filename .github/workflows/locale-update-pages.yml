@@ -1,0 +1,157 @@
+name: "locale-update: Publish coverage to Pages"
+
+on:
+  workflow_call:
+    inputs:
+      upstream_ref:
+        description: Git ref containing the latest upstream .original files
+        required: true
+        type: string
+  workflow_dispatch:
+    inputs:
+      upstream_ref:
+        description: Upstream ref, or auto to use an open locale-update PR when present
+        required: false
+        default: auto
+        type: string
+  push:
+    branches:
+      - main
+    paths:
+      - locales.json
+      - .original/en-US.json
+      - .original/en-US.dynamic.json
+      - "*/*.json"
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+  pull-requests: read
+
+concurrency:
+  group: locale-update-pages
+  cancel-in-progress: true
+
+env:
+  UPDATE_BRANCH: bot/locale-update
+  BASE_LOCALE: en-US
+  PAGES_BASE_URL: https://pectics.github.io/claude-i18n
+
+jobs:
+  build:
+    name: Build locale coverage Pages artifact
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.compare.outputs.changed }}
+      upstream_ref: ${{ steps.source.outputs.upstream_ref }}
+
+    steps:
+      - name: Checkout main locale packs
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Resolve latest upstream ref
+        id: source
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REQUESTED_REF: ${{ inputs.upstream_ref || 'auto' }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          upstream_ref="$REQUESTED_REF"
+          if [ "$upstream_ref" = "auto" ]; then
+            pr_number="$(
+              gh pr list \
+                --state open \
+                --base main \
+                --head "$UPDATE_BRANCH" \
+                --json number \
+                --jq '.[0].number // empty'
+            )"
+            if [ -n "$pr_number" ]; then
+              upstream_ref="$UPDATE_BRANCH"
+            else
+              upstream_ref="main"
+            fi
+          fi
+
+          if ! git check-ref-format --branch "$upstream_ref" >/dev/null 2>&1; then
+            echo "Invalid upstream ref: $upstream_ref" >&2
+            exit 1
+          fi
+          git fetch --no-tags origin "+refs/heads/$upstream_ref:refs/remotes/origin/$upstream_ref"
+          echo "upstream_ref=$upstream_ref" >> "$GITHUB_OUTPUT"
+
+      - name: Materialize upstream locale files
+        env:
+          UPSTREAM_REF: ${{ steps.source.outputs.upstream_ref }}
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          upstream_root="$RUNNER_TEMP/latest-upstream"
+          rm -rf "$upstream_root"
+          mkdir -p "$upstream_root"
+          git archive "origin/$UPSTREAM_REF" .original | tar -x -C "$upstream_root"
+          test -f "$upstream_root/.original/$BASE_LOCALE.json"
+          test -f "$upstream_root/.original/$BASE_LOCALE.dynamic.json"
+          echo "UPSTREAM_DIR=$upstream_root/.original" >> "$GITHUB_ENV"
+
+      - name: Generate coverage data and static badges
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          output_dir="$RUNNER_TEMP/locale-coverage-pages"
+          rm -rf "$output_dir"
+          node scripts/locale-update/generate_coverage.mjs \
+            --base-locale "$BASE_LOCALE" \
+            --upstream-dir "$UPSTREAM_DIR" \
+            --target-root "$GITHUB_WORKSPACE" \
+            --output-dir "$output_dir"
+          touch "$output_dir/.nojekyll"
+          echo "PAGES_ARTIFACT_DIR=$output_dir" >> "$GITHUB_ENV"
+
+      - name: Compare with current Pages deployment
+        id: compare
+        shell: bash
+        run: |
+          set -euo pipefail
+
+          comparison="$(
+            node scripts/locale-update/compare_pages_coverage.mjs \
+              --artifact-dir "$PAGES_ARTIFACT_DIR" \
+              --base-url "$PAGES_BASE_URL" \
+              --cache-bust "$GITHUB_RUN_ID"
+          )"
+          changed="$(jq --raw-output '.changed' <<< "$comparison")"
+
+          echo "changed=$changed" >> "$GITHUB_OUTPUT"
+          echo "$comparison" | jq .
+
+      - name: Upload GitHub Pages artifact
+        if: steps.compare.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ env.PAGES_ARTIFACT_DIR }}
+
+  deploy:
+    name: Deploy locale coverage to Pages
+    if: needs.build.outputs.changed == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    permissions:
+      pages: write
+      id-token: write
+
+    steps:
+      - name: Deploy GitHub Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
