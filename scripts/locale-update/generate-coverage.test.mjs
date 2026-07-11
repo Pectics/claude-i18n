@@ -100,9 +100,10 @@ test('calculates each locale from upstream key intersections and ignores extra t
 
     const payload = runGenerate(fixture);
 
-    assert.deepEqual(Object.keys(payload.coverage), ['zh-TW', 'zh-CN']);
-    assert.deepEqual(payload.coverage['zh-TW'], { covered: 6, total: 6, ratio: 1 });
-    assert.deepEqual(payload.coverage['zh-CN'], { covered: 4, total: 6, ratio: 0.6667 });
+    assert.deepEqual(Object.keys(payload), ['zh-TW', 'zh-CN']);
+    assert.deepEqual(payload['zh-TW'], { covered: 6, total: 6, ratio: 1 });
+    assert.deepEqual(payload['zh-CN'], { covered: 4, total: 6, ratio: 0.6667 });
+    assert.deepEqual(readJson(path.join(fixture.outputDir, 'coverage.json')), payload);
     assert.match(
       fs.readFileSync(path.join(fixture.outputDir, 'badges', 'zh-CN.svg'), 'utf8'),
       /\/badge\/zh--CN-66\.67%25-e5534b/,
@@ -122,7 +123,7 @@ test('keeps main and dynamic namespaces separate when a key exists in both', () 
     writeJson(path.join(fixture.targetRoot, 'zh-CN', 'zh-CN.dynamic.json'), {});
 
     const payload = runGenerate(fixture);
-    assert.deepEqual(payload.coverage['zh-CN'], { covered: 1, total: 2, ratio: 0.5 });
+    assert.deepEqual(payload['zh-CN'], { covered: 1, total: 2, ratio: 0.5 });
   } finally {
     fs.rmSync(fixture.root, { recursive: true, force: true });
   }
@@ -153,7 +154,7 @@ test('uses green, yellow, red, and invalid badge states at the configured thresh
     assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ya-AA.svg'), 'utf8'), /75\.00%25-dfb317/);
     assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ra-AA.svg'), 'utf8'), /70\.00%25-e5534b/);
     assert.match(fs.readFileSync(path.join(fixture.outputDir, 'badges', 'ia-AA.svg'), 'utf8'), /invalid-9f9f9f/);
-    assert.deepEqual(payload.coverage['ia-AA'], { covered: null, total: 20, ratio: null });
+    assert.deepEqual(payload['ia-AA'], { covered: null, total: 20, ratio: null });
   } finally {
     fs.rmSync(fixture.root, { recursive: true, force: true });
   }
@@ -211,7 +212,7 @@ test('fails on invalid upstream JSON but renders missing target data as invalid'
     writeJson(path.join(missingFixture.targetRoot, 'locales.json'), { locales: ['zh-CN'] });
     writeJson(path.join(missingFixture.targetRoot, 'zh-CN', 'zh-CN.json'), { a: 'A' });
     const payload = runGenerate(missingFixture);
-    assert.deepEqual(payload.coverage['zh-CN'], { covered: null, total: 1, ratio: null });
+    assert.deepEqual(payload['zh-CN'], { covered: null, total: 1, ratio: null });
     assert.match(
       fs.readFileSync(path.join(missingFixture.outputDir, 'badges', 'zh-CN.svg'), 'utf8'),
       /invalid-9f9f9f/,

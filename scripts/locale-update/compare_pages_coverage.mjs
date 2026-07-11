@@ -43,8 +43,14 @@ function result(changed, reason) {
 export async function comparePagesCoverage({ artifactDir, baseUrl, cacheBust = Date.now().toString() }) {
   const localPath = path.join(artifactDir, 'coverage.json');
   const local = JSON.parse(fs.readFileSync(localPath, 'utf8'));
-  if (!local || typeof local !== 'object' || !local.coverage || typeof local.coverage !== 'object') {
-    throw new Error(`${localPath}: expected an object with coverage data`);
+  if (
+    !local ||
+    typeof local !== 'object' ||
+    Array.isArray(local) ||
+    Object.keys(local).length === 0 ||
+    Object.values(local).some((entry) => !entry || typeof entry !== 'object' || Array.isArray(entry))
+  ) {
+    throw new Error(`${localPath}: expected a non-empty locale coverage object`);
   }
 
   const request = async (relativePath) => {
@@ -64,7 +70,7 @@ export async function comparePagesCoverage({ artifactDir, baseUrl, cacheBust = D
       return result(true, 'coverage.json differs');
     }
 
-    for (const locale of Object.keys(local.coverage)) {
+    for (const locale of Object.keys(local)) {
       const badgeResponse = await request(`badges/${encodeURIComponent(locale)}.svg`);
       if (!badgeResponse.ok) return result(true, `${locale} badge returned HTTP ${badgeResponse.status}`);
       const badge = await badgeResponse.text();

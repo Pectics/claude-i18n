@@ -33,12 +33,8 @@ async function withServer(routes, callback) {
 function createArtifact() {
   const artifactDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pages-coverage-'));
   const coverage = {
-    schemaVersion: 1,
-    baseLocale: 'en-US',
-    coverage: {
-      'zh-CN': { covered: 9, total: 10, ratio: 0.9 },
-      'zh-TW': { covered: 8, total: 10, ratio: 0.8 },
-    },
+    'zh-CN': { covered: 9, total: 10, ratio: 0.9 },
+    'zh-TW': { covered: 8, total: 10, ratio: 0.8 },
   };
   writeJson(path.join(artifactDir, 'coverage.json'), coverage);
   return { artifactDir, coverage };
@@ -72,7 +68,7 @@ test('requests deployment for changed coverage, missing badges, and invalid SVG'
       {
         '/coverage.json': {
           type: 'application/json',
-          body: JSON.stringify({ ...coverage, coverage: { ...coverage.coverage, 'zh-CN': { covered: 10, total: 10, ratio: 1 } } }),
+          body: JSON.stringify({ ...coverage, 'zh-CN': { covered: 10, total: 10, ratio: 1 } }),
         },
       },
       {

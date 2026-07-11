@@ -116,7 +116,7 @@ function calculateCoverage(args) {
   }
 
   const locales = readLocales(args.targetRoot);
-  const coverage = Object.fromEntries(
+  return Object.fromEntries(
     locales.map((locale) => {
       try {
         const localeDir = path.join(args.targetRoot, locale);
@@ -129,12 +129,6 @@ function calculateCoverage(args) {
       }
     }),
   );
-
-  return {
-    schemaVersion: 1,
-    baseLocale: args.baseLocale,
-    coverage,
-  };
 }
 
 function badgePresentation(coverage) {
@@ -192,20 +186,20 @@ function downloadBadge(args, locale, coverage, outputPath) {
   }
 }
 
-function writeArtifacts(args, payload) {
+function writeArtifacts(args, coverageByLocale) {
   const badgesDir = path.join(args.outputDir, 'badges');
   const stagingBadgesDir = path.join(args.outputDir, `.badges-${process.pid}`);
   fs.rmSync(stagingBadgesDir, { recursive: true, force: true });
   fs.mkdirSync(stagingBadgesDir, { recursive: true });
 
   try {
-    for (const [locale, coverage] of Object.entries(payload.coverage)) {
+    for (const [locale, coverage] of Object.entries(coverageByLocale)) {
       downloadBadge(args, locale, coverage, path.join(stagingBadgesDir, `${locale}.svg`));
     }
 
     fs.rmSync(badgesDir, { recursive: true, force: true });
     fs.renameSync(stagingBadgesDir, badgesDir);
-    writeJson(path.join(args.outputDir, 'coverage.json'), payload);
+    writeJson(path.join(args.outputDir, 'coverage.json'), coverageByLocale);
   } catch (error) {
     fs.rmSync(stagingBadgesDir, { recursive: true, force: true });
     throw error;
@@ -214,9 +208,9 @@ function writeArtifacts(args, payload) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const payload = calculateCoverage(args);
-  writeArtifacts(args, payload);
-  process.stdout.write(`${JSON.stringify(payload, null, 2)}\n`);
+  const coverageByLocale = calculateCoverage(args);
+  writeArtifacts(args, coverageByLocale);
+  process.stdout.write(`${JSON.stringify(coverageByLocale, null, 2)}\n`);
 }
 
 main();
