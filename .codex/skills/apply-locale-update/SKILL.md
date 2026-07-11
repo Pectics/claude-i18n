@@ -107,6 +107,13 @@ Use a bounded pool. Assign exactly one chunk per subagent unless the user explic
 
 Do not send vague delegation prompts. Every subagent prompt must include exact input path, exact output path, target locale, output field from the work manifest, source-of-truth rules, preservation rules, quote and punctuation rules, validation expectations, and final response format.
 
+## Execution Pitfalls
+
+1. “Worker” means the in-product SubAgent/Worker facility. Do not invoke an external `codex` CLI process as a substitute for a Worker. When the user specifies a Worker model, select or request that model in the Worker facility; do not silently substitute another model.
+2. A temporary Worker capacity failure is not a reason to downgrade the requested model. Retry the same chunk with the same Worker model, using the bounded pool, before considering a fallback. Ask the maintainer before changing models.
+3. Do not inspect or validate an output path until its Worker has returned `status: done`. Reading a chunk while it is still being written can produce false structural failures.
+4. Keep the configured `origin` transport unchanged. If an SSH `fetch`, `pull`, `push`, or verification command stalls or fails transiently, first retry the exact same SSH command once. Do not switch to HTTPS, rewrite URLs, change SSH host or port, or infer missing credentials unless the maintainer explicitly asks. After a successful push, verify the same branch with `git ls-remote` over the configured transport.
+
 ## Preset Subagent Prompt
 
 Use this prompt structure when spawning subagents. Fill every placeholder before sending. Keep the hard boundaries intact.
