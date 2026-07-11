@@ -4,6 +4,14 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
+      "source": "/badges/:locale.svg",
+      "destination": "https://pectics.github.io/claude-i18n/badges/:locale.svg"
+    },
+    {
+      "source": "/coverage.json",
+      "destination": "https://pectics.github.io/claude-i18n/coverage.json"
+    },
+    {
       "source": "/version/:locale.json",
       "destination": "/:locale/version.json"
     },
