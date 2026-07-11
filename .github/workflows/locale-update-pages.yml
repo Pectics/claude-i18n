@@ -37,6 +37,7 @@ env:
   UPDATE_BRANCH: bot/locale-update
   BASE_LOCALE: en-US
   PAGES_BASE_URL: https://pectics.github.io/claude-i18n
+  PAGES_ARTIFACT_DIR: coverage-pages-artifact
 
 jobs:
   build:
@@ -106,15 +107,13 @@ jobs:
         run: |
           set -euo pipefail
 
-          output_dir="$RUNNER_TEMP/locale-coverage-pages"
-          rm -rf "$output_dir"
+          rm -rf "$PAGES_ARTIFACT_DIR"
           node scripts/locale-update/generate_coverage.mjs \
             --base-locale "$BASE_LOCALE" \
             --upstream-dir "$UPSTREAM_DIR" \
             --target-root "$GITHUB_WORKSPACE" \
-            --output-dir "$output_dir"
-          touch "$output_dir/.nojekyll"
-          echo "PAGES_ARTIFACT_DIR=$output_dir" >> "$GITHUB_ENV"
+            --output-dir "$PAGES_ARTIFACT_DIR"
+          touch "$PAGES_ARTIFACT_DIR/.nojekyll"
 
       - name: Compare with current Pages deployment
         id: compare

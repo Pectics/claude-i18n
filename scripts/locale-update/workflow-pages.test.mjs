@@ -25,10 +25,12 @@ test('Pages workflow always compares main locale packs with an explicit latest-u
 test('Pages workflow uses artifact deployment permissions and skips healthy unchanged data', () => {
   assert.match(PAGES_WORKFLOW, /pages: write/);
   assert.match(PAGES_WORKFLOW, /id-token: write/);
+  assert.match(PAGES_WORKFLOW, /PAGES_ARTIFACT_DIR: coverage-pages-artifact/);
   assert.match(PAGES_WORKFLOW, /actions\/upload-pages-artifact@v4/);
   assert.match(PAGES_WORKFLOW, /actions\/deploy-pages@v4/);
   assert.match(PAGES_WORKFLOW, /needs\.build\.outputs\.changed == 'true'/);
   assert.match(PAGES_WORKFLOW, /compare_pages_coverage\.mjs/);
+  assert.doesNotMatch(PAGES_WORKFLOW, /echo "PAGES_ARTIFACT_DIR=.*GITHUB_ENV/);
   assert.doesNotMatch(PAGES_WORKFLOW, /bot\/coverage-data|publish_coverage/);
 });
 
