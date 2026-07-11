@@ -98,3 +98,41 @@ test('ignore script deploys preview builds when Vercel previous SHA matches the 
     fs.rmSync(repoRoot, { recursive: true, force: true });
   }
 });
+
+test('ignore script deploys production builds for every configured locale directory', () => {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'vercel-ignore-locales-'));
+
+  try {
+    git(['init', '-b', 'main'], repoRoot);
+    git(['config', 'user.email', 'test@example.com'], repoRoot);
+    git(['config', 'user.name', 'Test User'], repoRoot);
+    copyIgnoreScript(repoRoot);
+    writeFile(path.join(repoRoot, 'locales.json'), '{"locales":["zh-CN","zh-TW"]}\n');
+    writeFile(path.join(repoRoot, 'zh-CN', 'zh-CN.json'), '{"hello":"\u4f60\u597d"}\n');
+    writeFile(path.join(repoRoot, 'zh-TW', 'zh-TW.json'), '{"hello":"\u4f60\u597d"}\n');
+    git(['add', '.'], repoRoot);
+    git(['commit', '-m', 'base'], repoRoot);
+
+    const baseSha = git(['rev-parse', 'HEAD'], repoRoot).trim();
+    writeFile(path.join(repoRoot, 'zh-TW', 'zh-TW.json'), '{"hello":"\u60a8\u597d"}\n');
+    git(['add', 'zh-TW/zh-TW.json'], repoRoot);
+    git(['commit', '-m', 'update zh-TW only'], repoRoot);
+
+    const result = spawnSync('bash', ['./ignore.sh'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        VERCEL_ENV: 'production',
+        VERCEL_GIT_COMMIT_SHA: git(['rev-parse', 'HEAD'], repoRoot).trim(),
+        VERCEL_GIT_COMMIT_REF: 'main',
+        VERCEL_GIT_PREVIOUS_SHA: baseSha,
+      },
+    });
+
+    assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
+    assert.match(result.stdout, /zh-TW\/zh-TW\.json/);
+  } finally {
+    fs.rmSync(repoRoot, { recursive: true, force: true });
+  }
+});

@@ -10,7 +10,6 @@ deploy_paths=(
   "404.html"
   "locales.json"
   "assets"
-  "zh-CN"
 )
 
 head_ref="${VERCEL_GIT_COMMIT_SHA:-HEAD}"
@@ -72,6 +71,37 @@ else
     fi
   fi
 fi
+
+if [ ! -f "locales.json" ]; then
+  echo "locales.json is unavailable; deploy."
+  exit 1
+fi
+
+if ! locale_paths="$(python3 - "locales.json" <<'PYEOF'
+import json
+import re
+import sys
+
+with open(sys.argv[1], encoding="utf-8") as file:
+    data = json.load(file)
+
+locales = data.get("locales")
+pattern = re.compile(r"^[A-Za-z]{2,3}(?:-[A-Za-z0-9]{2,8})*$")
+if not isinstance(locales, list) or not locales:
+    raise ValueError("locales.json must contain a non-empty locales array")
+if any(not isinstance(locale, str) or not pattern.fullmatch(locale) for locale in locales):
+    raise ValueError("locales.json contains an invalid locale")
+
+print("\n".join(locales))
+PYEOF
+)"; then
+  echo "Could not read locale deployment paths; deploy."
+  exit 1
+fi
+
+while IFS= read -r locale_path; do
+  [ -n "$locale_path" ] && deploy_paths+=("$locale_path")
+done <<< "$locale_paths"
 
 if ! changed_files="$(git diff --name-only "$base_ref" "$head_ref" -- "${deploy_paths[@]}")"; then
   echo "Could not inspect changed deployment paths; deploy."
