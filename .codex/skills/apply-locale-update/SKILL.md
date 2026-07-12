@@ -107,6 +107,31 @@ Use a bounded pool. Assign exactly one chunk per subagent unless the user explic
 
 Do not send vague delegation prompts. Every subagent prompt must include exact input path, exact output path, target locale, output field from the work manifest, source-of-truth rules, preservation rules, quote and punctuation rules, validation expectations, and final response format.
 
+### Runtime Worker Selection
+
+Use the in-product invisible SubAgent/Worker facility, not a background-thread or create-thread tool that adds ordinary user-visible conversations to the task list. Do not use an external `codex` CLI process as a substitute.
+
+When the maintainer specifies a model or reasoning effort, pass the runtime's actual Worker override fields explicitly. In runtimes where full-history forks inherit the parent configuration, use an isolated/no-history fork so the requested Worker model and reasoning effort can take effect. A concrete known shape is `model: gpt-5.6-luna`, `reasoning_effort: medium`, and `fork_turns: none`; use the maintainer's requested values rather than silently substituting these defaults.
+
+If a Worker call rejects a model-setting field, inspect the returned accepted-field list. For example, the runtime may accept `reasoning_effort` rather than `thinking`. Do not claim that overrides are unavailable until the real Worker call has been tested. Do not use a visible background thread merely because it exposes easier model controls.
+
+Follow-up assignments may reuse an already-created Worker because it retains its configured model and reasoning effort. Still assign exactly one chunk per Worker turn and keep the pool bounded.
+
+### Low-Noise Output Generation
+
+Do not make the model generate a complete output JSONL file through an add-file patch. That repeats `file`, `index`, and `key` for every row and spends model output on deterministic metadata. Copying the input chunk and then editing it with a line-based unified diff is also inefficient: each JSONL object occupies one line, so changing only the translation still emits the whole line, and often an old line plus diff context.
+
+Prefer this low-noise pattern:
+
+1. The Worker translates the rows into an ordered in-memory array containing only translated strings.
+2. The Worker uses a small inline, deterministic JSON-safe writer such as Node.js to parse the input chunk and pair each row with `translations[index]`.
+3. The writer writes the manifest-provided output path directly, with the minimal shape `{ file, index, key, [outputField]: translations[index] }` and one JSON object per line.
+4. The Worker verifies array length before writing and validates the completed output afterward.
+
+The inline writer is mechanical serialization, not a translation service or repository translation script. It must not infer, rewrite, or translate text. Do not create extra temporary files when the output can be assembled directly. Do not retain `en`, `reference`, `ja`, `op`, `beforeEn`, or `currentTarget` in output rows even though the current apply validator may tolerate extra fields.
+
+Never use generic filler, reference-field fallback, source copying, or a repeated placeholder merely to complete a chunk. Missing `currentTarget` is normal and is not a reason to weaken translation quality. If a Worker reports fallback, incomplete work, or insufficient time, reject the chunk and reassign it to another Worker using the same requested model before validation.
+
 ## Execution Pitfalls
 
 1. “Worker” means the in-product SubAgent/Worker facility. Do not invoke an external `codex` CLI process as a substitute for a Worker. When the user specifies a Worker model, select or request that model in the Worker facility; do not silently substitute another model.
@@ -152,6 +177,9 @@ Output rules:
 4. Write only the translated value in the {OUTPUT_FIELD} field.
 5. Every translated value must be a non-empty string.
 6. The output file must be valid JSONL. Prefer JSON.stringify or an equivalent JSON-safe writer if you generate rows programmatically.
+7. Generate an ordered array of translated strings first, then use a deterministic inline writer to combine it with file/index/key from the input rows.
+8. Write minimal output objects only. Do not copy source or context fields into the output.
+9. Do not create the complete JSONL through an add-file patch or a line-by-line unified diff.
 
 Style rules:
 1. Use natural, modern target-locale UI wording.
@@ -186,6 +214,8 @@ Self-check before finishing:
 4. No translated value contains the replacement character, TODO, or obvious untranslated prose.
 5. Placeholder, tag, URL, email, code, backtick, and ICU structures are preserved.
 6. The file parses as JSONL.
+7. The output file actually exists at the exact requested path; a final `status: done` without a valid file is a failure.
+8. Every row was genuinely translated from en; no row uses generic filler, repeated placeholder text, source copying, or reference-only fallback.
 
 Final response only:
 output: {OUTPUT_CHUNK_PATH}
@@ -211,6 +241,11 @@ Validate every output chunk before apply:
 - placeholders, brace structures, ICU branches, tags, URLs, emails, code spans, backtick spans, and Markdown structure are preserved
 - human-language quotes follow target-locale conventions while JSON remains valid
 - target-locale-specific checks are respected; for example, Chinese-family locales still reject obvious untranslated English, while Latin-script target locales are not rejected merely for using Latin letters
+- the output file exists even if the Worker returned `status: done`; never trust the final response without checking the artifact
+- output rows use the minimal expected keys rather than retaining source/context fields
+- translations are not generic filler, repeated fallback text, source copies, or reference-only translations
+
+Treat a Worker final response and a valid output artifact as separate conditions. Do not inspect an output while its Worker is still running, but after `status: done`, confirm existence and parse it immediately. If the file is missing, structurally invalid, or the Worker admits using fallback, reject and retry that same chunk. After repeated quality failures, replace the Worker while keeping the requested model and reasoning effort.
 
 The authoritative validation happens in:
 
@@ -238,6 +273,21 @@ Expected successful behavior:
 - deletes `.pending/locale-update`
 
 After apply, confirm `.pending/locale-update` no longer exists. Never commit a still-present `.pending` translation work directory. If pending artifacts remain, stop and investigate before staging.
+
+### Applying Multiple Existing Locales
+
+When the maintainer asks to update every existing target locale, derive the locale list from the repository's locale manifest such as `locales.json`; do not assume there is only one target.
+
+`apply_translation.mjs` clears the entire pending directory after each successful locale apply. Therefore process locales sequentially:
+
+1. Prepare, translate, validate, and apply the first locale.
+2. Confirm its production files were updated and pending was cleared.
+3. Restore only the tracked pending source artifacts from the current branch commit, for example with `git restore --source=HEAD -- .pending/locale-update` when those artifacts are tracked.
+4. Prepare the next locale from that restored source and repeat.
+5. Never restore or overwrite already-applied production locale files.
+6. After the final locale apply, leave `.pending/locale-update` deleted.
+
+Record the shared diff summary before the first apply. Restoring tracked pending source artifacts between locales is an intentional intermediate step, not the final cleanup state. Do not use a copied alternate pending directory unless the maintainer explicitly requests one.
 
 ## Post-Apply Checks
 
