@@ -24,8 +24,8 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 <!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
-| Simplified Chinese `zh-CN` | 18,999 | 47 | 19,046 |
-| Traditional Chinese `zh-TW` | 18,564 | 50 | 18,614 |
+| Simplified Chinese `zh-CN` | 19,064 | 47 | 19,111 |
+| Traditional Chinese `zh-TW` | 19,064 | 47 | 19,111 |
 <!-- locale-stats:summary:end -->
 
 </div>
@@ -132,8 +132,8 @@ Counts come from the locale files currently in this repository.
 <!-- locale-stats:supported:start -->
 | Language | Locale | Main pack | Dynamic pack | Status |
 | --- | --- | ---: | ---: | --- |
-| Simplified Chinese | `zh-CN` | 18,999 | 47 | Available |
-| Traditional Chinese | `zh-TW` | 18,564 | 50 | Available |
+| Simplified Chinese | `zh-CN` | 19,064 | 47 | Available |
+| Traditional Chinese | `zh-TW` | 19,064 | 47 | Available |
 <!-- locale-stats:supported:end -->
 
 Additional locales are welcome when they have a real product audience. Use the full-locale creation flow below instead of copying directories by hand.
