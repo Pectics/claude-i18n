@@ -21,9 +21,9 @@ Do not use web search, online translators, translation APIs, remote repositories
 
 ## CI/CD Model
 
-The GitHub Actions workflow runs on a schedule and by manual dispatch. It works on `bot/locale-update`, fetches upstream locale JSON, overwrites `.original`, and creates `.pending/locale-update` only when base-locale entries changed.
+The GitHub Actions workflow runs on a schedule and by manual dispatch. It works on `bot/locale-update`, stores the latest fetched snapshots under `.original/upstream`, compares each target locale with its verified English baseline under `.original/baselines/<TARGET_LOCALE>`, and creates isolated pending work under `.pending/locale-update/<TARGET_LOCALE>`.
 
-The pending directory contains:
+Each locale pending directory contains:
 
 - `manifest.json`
 - `main.diff.jsonl`
@@ -39,7 +39,7 @@ Before preparing or translating anything:
 2. Confirm `origin` canonicalizes to `github.com/Pectics/claude-i18n.git`. SSH and HTTPS forms are acceptable only if they resolve to that host and path.
 3. Confirm the current branch is `bot/locale-update`. If not, switch only when the worktree is clean or the current changes are unrelated and safe to leave untouched.
 4. Run `git fetch origin bot/locale-update` and `git pull --rebase origin bot/locale-update`. If sandboxing blocks network access, request approval for the same command instead of skipping this step.
-5. Confirm `.pending/locale-update/manifest.json`, `.pending/locale-update/main.diff.jsonl`, and `.pending/locale-update/dynamic.diff.jsonl` exist. If not, stop and report that there is no pending locale-update work to apply.
+5. Confirm `.pending/locale-update/<TARGET_LOCALE>/manifest.json`, `main.diff.jsonl`, and `dynamic.diff.jsonl` exist. Also confirm `.original/baselines/<TARGET_LOCALE>/metadata.json` has `status: verified`. If not, stop and report that there is no verified pending locale-update work to apply.
 6. Inspect `git status --short`. Do not proceed if unrelated local changes would be mixed into the translation commit.
 
 ## Prepare
@@ -52,16 +52,16 @@ node scripts/locale-update/prepare_translation.mjs --locale <TARGET_LOCALE>
 
 Use the default pending directory unless the user explicitly supplies another one. This script:
 
-- reads `.pending/locale-update/manifest.json`
+- reads `.pending/locale-update/<TARGET_LOCALE>/manifest.json`
 - reads `main.diff.jsonl` and `dynamic.diff.jsonl`
 - reads the current target locale files
-- removes any previous `.pending/locale-update/translation/<TARGET_LOCALE>` work directory
-- writes input chunks under `.pending/locale-update/translation/<TARGET_LOCALE>/chunks/...`
-- expects output chunks under `.pending/locale-update/translation/<TARGET_LOCALE>/out/...`
-- writes `.pending/locale-update/translation/<TARGET_LOCALE>/manifest.json`
+- refuses to replace an existing non-empty `.pending/locale-update/<TARGET_LOCALE>/translation` work directory
+- writes input chunks under `.pending/locale-update/<TARGET_LOCALE>/translation/chunks/...`
+- expects output chunks under `.pending/locale-update/<TARGET_LOCALE>/translation/out/...`
+- writes `.pending/locale-update/<TARGET_LOCALE>/translation/manifest.json`
 - writes the expected translated-value field as `outputField` in the work manifest
 
-Read the generated work manifest and use its `chunks` array as the only assignment list. Do not invent chunk paths. Read `outputField` from the same manifest and pass that exact field name to workers. New work manifests normally use `translation`; older pending work may use the legacy `zh` field. Capture the summary counts before apply, because the apply script clears the pending directory on success.
+Read the generated work manifest and use its `chunks` array as the only assignment list. Do not invent chunk paths. Read `outputField` from the same manifest and pass that exact field name to workers. New work manifests use `translation`. Capture the summary counts before apply, because the apply script clears that locale's pending directory on success.
 
 If the manifest has no chunks because the diff only removes keys, skip translation and run the apply step directly.
 
@@ -253,7 +253,7 @@ The authoritative validation happens in:
 node scripts/locale-update/apply_translation.mjs --locale <TARGET_LOCALE>
 ```
 
-Run it only after all chunk outputs exist. If it fails, fix the specific chunk/key it reports and rerun. If it succeeds, it writes the production target files and removes `.pending/locale-update`.
+Run it only after all chunk outputs exist. If it fails, fix the specific chunk/key it reports and rerun. If it succeeds, it writes the production target files, advances only that locale's verified English baseline, and removes `.pending/locale-update/<TARGET_LOCALE>`.
 
 ## Apply And Cleanup
 
@@ -270,24 +270,16 @@ Expected successful behavior:
 - removes keys marked `remove`
 - applies translated values for `add` and `update`
 - preserves existing target values for unchanged keys
-- deletes `.pending/locale-update`
+- atomically advances `.original/baselines/<TARGET_LOCALE>` to the manifest's upstream hashes
+- deletes only `.pending/locale-update/<TARGET_LOCALE>`
 
-After apply, confirm `.pending/locale-update` no longer exists. Never commit a still-present `.pending` translation work directory. If pending artifacts remain, stop and investigate before staging.
+After apply, confirm the applied locale directory no longer exists and other locales' pending directories remain untouched. Never commit a still-present translation work directory for the applied locale. Pending artifacts for other locales are expected.
 
 ### Applying Multiple Existing Locales
 
 When the maintainer asks to update every existing target locale, derive the locale list from the repository's locale manifest such as `locales.json`; do not assume there is only one target.
 
-`apply_translation.mjs` clears the entire pending directory after each successful locale apply. Therefore process locales sequentially:
-
-1. Prepare, translate, validate, and apply the first locale.
-2. Confirm its production files were updated and pending was cleared.
-3. Restore only the tracked pending source artifacts from the current branch commit, for example with `git restore --source=HEAD -- .pending/locale-update` when those artifacts are tracked.
-4. Prepare the next locale from that restored source and repeat.
-5. Never restore or overwrite already-applied production locale files.
-6. After the final locale apply, leave `.pending/locale-update` deleted.
-
-Record the shared diff summary before the first apply. Restoring tracked pending source artifacts between locales is an intentional intermediate step, not the final cleanup state. Do not use a copied alternate pending directory unless the maintainer explicitly requests one.
+Each locale owns an independent pending directory and baseline. Prepare, translate, validate, and apply locales in any order. Never restore another locale's pending source artifacts after apply; a successful apply must leave sibling locale directories unchanged.
 
 ## Post-Apply Checks
 
@@ -296,9 +288,10 @@ Run `git status --short` and `git diff --name-status`.
 Expected changes are:
 
 - modified production locale files for `<TARGET_LOCALE>`
-- deleted `.pending/locale-update/...` files only if those pending artifacts were tracked on the current branch
+- updated `.original/baselines/<TARGET_LOCALE>` to the applied upstream hashes
+- deleted `.pending/locale-update/<TARGET_LOCALE>/...` files only for the applied locale
 
-There must be no added or modified `.pending` files, no `.original` changes from the local run, and no unrelated files. If unexpected files changed, do not stage them.
+There must be no added or modified pending files for the applied locale, no `.original/upstream` changes from the local run, and no unrelated files. Sibling pending directories and baselines must remain unchanged.
 
 Perform a lightweight count sanity check before committing:
 
@@ -327,8 +320,11 @@ chore: Apply <TARGET_LOCALE> translations and build diff
 Stage narrowly. Prefer explicit paths, for example:
 
 ```bash
-git add <TARGET_LOCALE>/<TARGET_LOCALE>.json <TARGET_LOCALE>/<TARGET_LOCALE>.dynamic.json
-git add -u .pending/locale-update
+git add <TARGET_LOCALE>/<TARGET_LOCALE>.json \
+  <TARGET_LOCALE>/<TARGET_LOCALE>.dynamic.json \
+  .original/baselines/<TARGET_LOCALE> \
+  README.md README.zh.md README.tw.md
+git add -u .pending/locale-update/<TARGET_LOCALE>
 ```
 
 Use the second command only to record deletion of tracked pending artifacts. Do not use `git add -A` for the translation commit. Before committing, re-run `git status --short` and confirm the staged set matches the expected changes.
@@ -341,7 +337,7 @@ At the end, report:
 - output field used
 - prepare/apply commands run
 - number of chunks translated
-- whether `.pending/locale-update` was cleared
+- whether `.pending/locale-update/<TARGET_LOCALE>` was cleared
 - files staged or committed
 - validation result
 
