@@ -1,0 +1,3 @@
+{"file":"main","op":"remove","index":null,"key":"codexIssue50RemoveProbe","beforeEn":"Remove this Issue 50 release-candidate probe","afterEn":null,"afterReference":null,"afterJa":null}
+{"file":"main","op":"add","index":1,"key":"++Dgwho30W","beforeEn":null,"afterEn":"Collect what people sent me","afterReference":"送られてきたものをまとめる","afterJa":"送られてきたものをまとめる"}
+{"file":"main","op":"update","index":2,"key":"++FFdxb8fU","beforeEn":"Close another tab?","afterEn":"Close other tabs?","afterReference":"他のタブを閉じますか？","afterJa":"他のタブを閉じますか？"}
