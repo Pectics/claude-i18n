@@ -118,7 +118,7 @@ function toRepoRelative(filePath) {
 function localeFilePath(locale, fileLabel, location) {
   const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
   if (location === 'original') {
-    return path.join(ROOT_DIR, '.original', `${locale}${suffix}`);
+    return path.join(ROOT_DIR, '.original', 'upstream', `${locale}${suffix}`);
   }
   return path.join(ROOT_DIR, locale, `${locale}${suffix}`);
 }

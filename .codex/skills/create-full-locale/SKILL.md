@@ -22,7 +22,7 @@ Stop before preparing chunks when any guard fails:
 - If the user did not specify a target locale, ask for the exact BCP-47 language-region tag and the intended audience/use case.
 - If the target locale directory exists, or the target appears in `locales.json`, refuse because this workflow is only for new full locales.
 - If the requested language is a joke, dead, constructed, private-use, or extremely niche language without a clear product audience, refuse or ask for a concrete application case first.
-- If `.original/<base>.json`, `.original/<base>.dynamic.json`, the reference files, or `<context>/<context>.json` and `<context>/<context>.dynamic.json` are missing, stop.
+- If `.original/upstream/<base>.json`, `.original/upstream/<base>.dynamic.json`, the reference files, or `<context>/<context>.json` and `<context>/<context>.dynamic.json` are missing, stop.
 - If `git status --short` shows unrelated local changes that could be mixed into the new-locale commit, stop and report them.
 - Do not commit unless the user explicitly asks. Never push unless the user explicitly asks.
 
@@ -53,7 +53,7 @@ Optional flags:
 --min-entries 50
 ```
 
-The prepare script refuses existing target locales, reads `.original/<base>*.json`, optional `.original/<reference>*.json`, and root `<context>/<context>*.json`, then writes:
+The prepare script refuses existing target locales, reads `.original/upstream/<base>*.json`, optional `.original/upstream/<reference>*.json`, and root `<context>/<context>*.json`, then writes:
 
 - `.pending/create-full-locale/<TARGET_LOCALE>/manifest.json`
 - chunk inputs under `.pending/create-full-locale/<TARGET_LOCALE>/chunks/...`
