@@ -23,7 +23,7 @@ function usage() {
 function parseArgs(argv) {
   const args = {
     baseLocale: 'en-US',
-    upstreamDir: path.join(DEFAULT_ROOT_DIR, '.original'),
+    upstreamDir: path.join(DEFAULT_ROOT_DIR, '.original', 'upstream'),
     targetRoot: DEFAULT_ROOT_DIR,
     outputDir: null,
     curlBin: 'curl',
