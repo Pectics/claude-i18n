@@ -4,12 +4,12 @@
   "baseLocale": "en-US",
   "status": "verified",
   "initializedAt": "2026-07-28T08:28:46.610Z",
-  "updatedAt": "2026-07-28T08:28:46.610Z",
+  "updatedAt": "2026-07-28T09:05:16Z",
   "files": {
     "main": {
       "path": "en-US.json",
       "keyCount": 20570,
-      "sha256": "1c0c32669861f950632a9456a5b5074971e1d9e9dd05022a42c65b3ce967fc19"
+      "sha256": "2cf15789b1e80bc3f44a9df70fe24ded412126d8cc2e36c0af21af2383faeafb"
     },
     "dynamic": {
       "path": "en-US.dynamic.json",
