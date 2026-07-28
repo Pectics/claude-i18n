@@ -104,6 +104,10 @@ export function hasObviousUntranslatedEnglish(text) {
     return false;
   }
 
+  if (/^[A-Za-z][A-Za-z0-9_]*(?:,[A-Za-z][A-Za-z0-9_]*)+$/.test(text)) {
+    return false;
+  }
+
   if (/^©\s*\d{4}\s+[A-Z0-9 ]+$/.test(text)) {
     return false;
   }

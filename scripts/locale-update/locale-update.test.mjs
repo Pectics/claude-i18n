@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
+import { hasObviousUntranslatedEnglish } from './shared.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
@@ -45,6 +46,11 @@ function assertFails(scriptPath, args, pattern) {
   assert.notEqual(result.status, 0);
   assert.match(`${result.stdout}\n${result.stderr}`, pattern);
 }
+
+test('untranslated-English detection allows comma-separated technical identifiers', () => {
+  assert.equal(hasObviousUntranslatedEnglish('context,repos,issues,pull_requests'), false);
+  assert.equal(hasObviousUntranslatedEnglish('Choose a plan to continue'), true);
+});
 
 test('prepare and apply support a generic translation output field for non-Chinese target locales', () => {
   const locale = 'es-ES';
