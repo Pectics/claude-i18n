@@ -161,8 +161,8 @@ test('prepare and apply create a full new locale and register it', () => {
     assert.equal(applyOutput.outputField, 'translation');
     assert.equal(fs.existsSync(path.join(pendingDir, locale)), false);
 
-    const sourceMain = readJson(path.join(ROOT_DIR, '.original', 'en-US.json'));
-    const sourceDynamic = readJson(path.join(ROOT_DIR, '.original', 'en-US.dynamic.json'));
+    const sourceMain = readJson(path.join(ROOT_DIR, '.original', 'upstream', 'en-US.json'));
+    const sourceDynamic = readJson(path.join(ROOT_DIR, '.original', 'upstream', 'en-US.dynamic.json'));
     const targetMain = readJson(path.join(targetDir, `${locale}.json`));
     const targetDynamic = readJson(path.join(targetDir, `${locale}.dynamic.json`));
 

@@ -59,9 +59,13 @@ function readLocales(rootDir) {
   return data.locales;
 }
 
-function collectStatistics(rootDir, locales) {
+function collectStatistics(rootDir, locales, statisticsOverride = {}) {
   return Object.fromEntries(
     locales.map((locale) => {
+      if (statisticsOverride[locale]) {
+        const { main, dynamic } = statisticsOverride[locale];
+        return [locale, { main, dynamic, total: main + dynamic }];
+      }
       const localeDir = path.join(rootDir, locale);
       const main = Object.keys(readFlatObject(path.join(localeDir, `${locale}.json`))).length;
       const dynamic = Object.keys(readFlatObject(path.join(localeDir, `${locale}.dynamic.json`))).length;
@@ -129,10 +133,11 @@ function replaceBlock(readmePath, text, name, locales, statistics) {
   return `${text.slice(0, bodyStart)}${lines.join('\n')}${text.slice(end)}`;
 }
 
-export function updateReadmeStats(rootDir = DEFAULT_ROOT_DIR, options = {}) {
+export function buildReadmeStatsUpdates(rootDir = DEFAULT_ROOT_DIR, options = {}) {
   const locales = readLocales(rootDir);
-  const statistics = collectStatistics(rootDir, locales);
+  const statistics = collectStatistics(rootDir, locales, options.statisticsOverride);
   const changedFiles = [];
+  const files = [];
 
   for (const relativePath of README_FILES) {
     const readmePath = path.join(rootDir, relativePath);
@@ -141,15 +146,32 @@ export function updateReadmeStats(rootDir = DEFAULT_ROOT_DIR, options = {}) {
     updated = replaceBlock(readmePath, updated, 'supported', locales, statistics);
     if (updated !== current) {
       changedFiles.push(relativePath);
-      if (!options.check) fs.writeFileSync(readmePath, updated, 'utf8');
+      files.push({ relativePath, filePath: readmePath, content: updated });
     }
   }
+
+  return { locales, statistics, changedFiles, files };
+}
+
+export function updateReadmeStats(rootDir = DEFAULT_ROOT_DIR, options = {}) {
+  const result = buildReadmeStatsUpdates(rootDir, options);
+  const { changedFiles } = result;
 
   if (options.check && changedFiles.length > 0) {
     throw new Error(`README locale statistics are stale: ${changedFiles.join(', ')}`);
   }
 
-  return { locales, statistics, changedFiles };
+  if (!options.check) {
+    for (const file of result.files) {
+      fs.writeFileSync(file.filePath, file.content, 'utf8');
+    }
+  }
+
+  return {
+    locales: result.locales,
+    statistics: result.statistics,
+    changedFiles,
+  };
 }
 
 function main() {

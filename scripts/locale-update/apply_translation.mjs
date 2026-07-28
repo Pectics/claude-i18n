@@ -1,27 +1,37 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import {
   compareMessageStructure,
-  ensureDir,
+  commitFileTransaction,
+  hashJson,
   hasKana,
   hasObviousUntranslatedEnglish,
   readJson,
   readJsonl,
+  serializeJson,
   shouldCheckObviousUntranslatedEnglish,
   shouldRejectJapaneseKana,
-  writeJson,
 } from './shared.mjs';
-import { updateReadmeStats } from './update_readme_stats.mjs';
+import {
+  baselineTransactionEntries,
+  createVerifiedMetadata,
+  readLocaleObject,
+  readVerifiedBaseline,
+} from './baselines.mjs';
+import { buildReadmeStatsUpdates } from './update_readme_stats.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
 const DEFAULT_PENDING_DIR = path.join(ROOT_DIR, '.pending', 'locale-update');
-const LEGACY_OUTPUT_FIELD = 'zh';
 
 function resolveRepoPath(filePath) {
   if (!filePath) return null;
   return path.isAbsolute(filePath) ? filePath : path.join(ROOT_DIR, filePath);
+}
+
+function toRepoRelative(filePath) {
+  return path.relative(ROOT_DIR, filePath).split(path.sep).join('/');
 }
 
 function usage() {
@@ -56,7 +66,7 @@ function outputFieldFor(workManifest) {
   if (typeof workManifest.outputField === 'string' && workManifest.outputField.trim() !== '') {
     return workManifest.outputField;
   }
-  return LEGACY_OUTPUT_FIELD;
+  return 'translation';
 }
 
 function validateChunk(inputRows, outputRows, label, options) {
@@ -68,42 +78,35 @@ function validateChunk(inputRows, outputRows, label, options) {
     const inputRow = inputRows[index];
     const outputRow = outputRows[index];
     const rowLabel = `${label}#${index + 1} (${inputRow.key})`;
-
-    if (inputRow.file !== outputRow.file || inputRow.index !== outputRow.index || inputRow.key !== outputRow.key) {
+    if (
+      inputRow.file !== outputRow.file ||
+      inputRow.index !== outputRow.index ||
+      inputRow.key !== outputRow.key
+    ) {
       throw new Error(`${rowLabel}: file/index/key mismatch`);
     }
+
     const translated = outputRow[options.outputField];
     if (typeof translated !== 'string' || translated.trim() === '') {
       throw new Error(`${rowLabel}: ${options.outputField} is empty or not a string`);
     }
-    if (translated.includes('�')) {
-      throw new Error(`${rowLabel}: contains replacement character`);
-    }
-    if (/\bTODO\b/i.test(translated)) {
-      throw new Error(`${rowLabel}: contains TODO`);
-    }
+    if (translated.includes('�')) throw new Error(`${rowLabel}: contains replacement character`);
+    if (/\bTODO\b/i.test(translated)) throw new Error(`${rowLabel}: contains TODO`);
     if (shouldRejectJapaneseKana(options.targetLocale) && hasKana(translated)) {
       throw new Error(`${rowLabel}: contains Japanese kana`);
     }
-    if (shouldCheckObviousUntranslatedEnglish(options.targetLocale) && hasObviousUntranslatedEnglish(translated)) {
+    if (
+      shouldCheckObviousUntranslatedEnglish(options.targetLocale) &&
+      hasObviousUntranslatedEnglish(translated)
+    ) {
       throw new Error(`${rowLabel}: looks like untranslated English`);
     }
-
     compareMessageStructure(inputRow.en, translated, rowLabel);
   }
 }
 
-function loadWorkManifest(pendingDir, locale) {
-  const manifestPath = path.join(pendingDir, 'translation', locale, 'manifest.json');
-  if (!fs.existsSync(manifestPath)) {
-    throw new Error(`Missing translation manifest: ${manifestPath}`);
-  }
-  return readJson(manifestPath);
-}
-
 function collectTranslations(chunkInfos, fileLabel, options) {
   const translations = new Map();
-
   for (const chunkInfo of chunkInfos) {
     const inputRows = readJsonl(chunkInfo.inputPath);
     if (!fs.existsSync(chunkInfo.outputPath)) {
@@ -111,7 +114,6 @@ function collectTranslations(chunkInfos, fileLabel, options) {
     }
     const outputRows = readJsonl(chunkInfo.outputPath);
     validateChunk(inputRows, outputRows, path.basename(chunkInfo.outputPath), options);
-
     for (const row of outputRows) {
       if (translations.has(row.key)) {
         throw new Error(`${fileLabel}: duplicate translated key ${row.key}`);
@@ -119,114 +121,224 @@ function collectTranslations(chunkInfos, fileLabel, options) {
       translations.set(row.key, row[options.outputField]);
     }
   }
-
   return translations;
 }
 
-function rebuildLocaleFile(fileLabel, baseData, currentTargetData, diffRows, translations) {
-  const diffMap = new Map(diffRows.map((row) => [row.key, row]));
+function rebuildLocaleFile(fileLabel, upstreamData, currentTargetData, diffRows, translations) {
+  const diffMap = new Map();
+  for (const row of diffRows) {
+    if (diffMap.has(row.key)) throw new Error(`${fileLabel}: duplicate diff key ${row.key}`);
+    diffMap.set(row.key, row);
+  }
+
   const result = {};
-
-  for (const [index, key] of Object.keys(baseData).entries()) {
+  for (const [index, key] of Object.keys(upstreamData).entries()) {
     const diffRow = diffMap.get(key);
-    if (diffRow) {
-      if (diffRow.op === 'add' || diffRow.op === 'update') {
-        if (diffRow.index !== index) {
-          throw new Error(`${fileLabel}:${key}: diff index mismatch (${diffRow.index} vs ${index})`);
-        }
-        const translated = translations.get(key);
-        if (typeof translated !== 'string' || translated.length === 0) {
-          throw new Error(`${fileLabel}:${key}: missing translated value`);
-        }
-        result[key] = translated;
-        continue;
+    if (diffRow?.op === 'add' || diffRow?.op === 'update') {
+      if (diffRow.index !== index) {
+        throw new Error(`${fileLabel}:${key}: diff index mismatch (${diffRow.index} vs ${index})`);
       }
-      if (diffRow.op !== 'remove') {
-        throw new Error(`${fileLabel}:${key}: unsupported diff operation ${diffRow.op}`);
+      const translated = translations.get(key);
+      if (typeof translated !== 'string' || translated.length === 0) {
+        throw new Error(`${fileLabel}:${key}: missing translated value`);
       }
+      result[key] = translated;
+      continue;
     }
-
-    if (!Object.prototype.hasOwnProperty.call(currentTargetData, key) || typeof currentTargetData[key] !== 'string') {
+    if (diffRow && diffRow.op !== 'remove') {
+      throw new Error(`${fileLabel}:${key}: unsupported diff operation ${diffRow.op}`);
+    }
+    if (
+      !Object.prototype.hasOwnProperty.call(currentTargetData, key) ||
+      typeof currentTargetData[key] !== 'string'
+    ) {
       throw new Error(`${fileLabel}:${key}: missing existing target value for unchanged key`);
     }
     result[key] = currentTargetData[key];
   }
 
-  const expectedTranslationCount = diffRows.filter((row) => row.op === 'add' || row.op === 'update').length;
+  const expectedTranslationCount = diffRows.filter(
+    (row) => row.op === 'add' || row.op === 'update',
+  ).length;
   if (translations.size !== expectedTranslationCount) {
     throw new Error(
-      `${fileLabel}: translated key count mismatch (${translations.size} vs expected ${expectedTranslationCount})`
+      `${fileLabel}: translated key count mismatch (${translations.size} vs expected ${expectedTranslationCount})`,
     );
   }
-
   return result;
 }
 
-function baseSourcePathFor(workManifest, fileLabel) {
-  const sourceConfig = workManifest.source?.[fileLabel] ?? {};
-  return sourceConfig.base ?? sourceConfig.en;
+function assertHashes(label, expected, actual) {
+  for (const fileLabel of ['main', 'dynamic']) {
+    if (expected?.[fileLabel] !== actual[fileLabel]) {
+      throw new Error(
+        `${label} ${fileLabel} hash conflict: expected ${expected?.[fileLabel] ?? 'missing'}, got ${actual[fileLabel]}`,
+      );
+    }
+  }
+}
+
+function loadManifests(pendingDir, locale) {
+  const localeDir = path.join(pendingDir, locale);
+  const pendingManifestPath = path.join(localeDir, 'manifest.json');
+  const workManifestPath = path.join(localeDir, 'translation', 'manifest.json');
+  if (!fs.existsSync(pendingManifestPath)) {
+    throw new Error(`Missing pending manifest for ${locale}: ${pendingManifestPath}`);
+  }
+  if (!fs.existsSync(workManifestPath)) {
+    throw new Error(`Missing translation manifest for ${locale}: ${workManifestPath}`);
+  }
+
+  const pendingManifest = readJson(pendingManifestPath);
+  const workManifest = readJson(workManifestPath);
+  for (const [label, manifest] of [
+    ['pending', pendingManifest],
+    ['translation', workManifest],
+  ]) {
+    if (manifest.schemaVersion !== 2) {
+      throw new Error(`${label} manifest has unsupported schema version ${manifest.schemaVersion}`);
+    }
+    if (manifest.locale !== locale) {
+      throw new Error(`${label} manifest locale ${manifest.locale} does not match ${locale}`);
+    }
+  }
+  if (JSON.stringify(workManifest.sourceHashes) !== JSON.stringify(pendingManifest.sourceHashes)) {
+    throw new Error('Translation manifest source hashes do not match the pending manifest');
+  }
+
+  return { localeDir, pendingManifest, workManifest };
 }
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const pendingManifest = readJson(path.join(args.pendingDir, 'manifest.json'));
-  const workManifest = loadWorkManifest(args.pendingDir, args.locale);
+  const { localeDir, pendingManifest, workManifest } = loadManifests(
+    args.pendingDir,
+    args.locale,
+  );
   const outputField = outputFieldFor(workManifest);
-  const mainDiffRows = readJsonl(path.join(args.pendingDir, 'main.diff.jsonl'));
-  const dynamicDiffRows = readJsonl(path.join(args.pendingDir, 'dynamic.diff.jsonl'));
+  const baselineMainPath = resolveRepoPath(pendingManifest.source.baseline.main);
+  const baselineDir = path.dirname(baselineMainPath);
+  const baseline = readVerifiedBaseline({
+    baselineDir,
+    locale: args.locale,
+    baseLocale: pendingManifest.baseLocale,
+  });
+  if (
+    path.resolve(resolveRepoPath(pendingManifest.source.baseline.dynamic)) !==
+      path.resolve(baseline.paths.dynamic) ||
+    path.resolve(resolveRepoPath(pendingManifest.source.baseline.metadata)) !==
+      path.resolve(baseline.paths.metadata)
+  ) {
+    throw new Error('Pending manifest baseline paths do not refer to one baseline directory');
+  }
+  assertHashes('Baseline', pendingManifest.sourceHashes.baseline, baseline.hashes);
 
-  const baseMainData = readJson(resolveRepoPath(baseSourcePathFor(workManifest, 'main')));
-  const baseDynamicData = readJson(resolveRepoPath(baseSourcePathFor(workManifest, 'dynamic')));
-  const currentMainData = readJson(resolveRepoPath(workManifest.output.main));
-  const currentDynamicData = readJson(resolveRepoPath(workManifest.output.dynamic));
+  const upstreamMain = readLocaleObject(
+    resolveRepoPath(pendingManifest.source.upstream.main),
+    `${pendingManifest.baseLocale}:upstream:main`,
+  );
+  const upstreamDynamic = readLocaleObject(
+    resolveRepoPath(pendingManifest.source.upstream.dynamic),
+    `${pendingManifest.baseLocale}:upstream:dynamic`,
+  );
+  const upstreamHashes = {
+    main: hashJson(upstreamMain),
+    dynamic: hashJson(upstreamDynamic),
+  };
+  assertHashes('Upstream', pendingManifest.sourceHashes.upstream, upstreamHashes);
 
+  const mainDiffRows = readJsonl(resolveRepoPath(pendingManifest.pendingFiles.mainDiff));
+  const dynamicDiffRows = readJsonl(
+    resolveRepoPath(pendingManifest.pendingFiles.dynamicDiff),
+  );
+  const currentMainData = readLocaleObject(
+    resolveRepoPath(pendingManifest.output.main),
+    `${args.locale}:target:main`,
+  );
+  const currentDynamicData = readLocaleObject(
+    resolveRepoPath(pendingManifest.output.dynamic),
+    `${args.locale}:target:dynamic`,
+  );
   const validationOptions = {
     outputField,
-    targetLocale: workManifest.locale ?? args.locale,
+    targetLocale: workManifest.locale,
   };
-  const mainTranslations = collectTranslations(workManifest.chunks.main, 'main', validationOptions);
-  const dynamicTranslations = collectTranslations(workManifest.chunks.dynamic, 'dynamic', validationOptions);
-
+  const mainTranslations = collectTranslations(
+    workManifest.chunks.main,
+    'main',
+    validationOptions,
+  );
+  const dynamicTranslations = collectTranslations(
+    workManifest.chunks.dynamic,
+    'dynamic',
+    validationOptions,
+  );
   const nextMainData = rebuildLocaleFile(
     'main',
-    baseMainData,
+    upstreamMain,
     currentMainData,
     mainDiffRows,
-    mainTranslations
+    mainTranslations,
   );
   const nextDynamicData = rebuildLocaleFile(
     'dynamic',
-    baseDynamicData,
+    upstreamDynamic,
     currentDynamicData,
     dynamicDiffRows,
-    dynamicTranslations
+    dynamicTranslations,
   );
 
-  const outputMainPath = resolveRepoPath(workManifest.output.main);
-  const outputDynamicPath = resolveRepoPath(workManifest.output.dynamic);
-  ensureDir(path.dirname(outputMainPath));
-  ensureDir(path.dirname(outputDynamicPath));
-  writeJson(outputMainPath, nextMainData);
-  writeJson(outputDynamicPath, nextDynamicData);
+  const nextMetadata = createVerifiedMetadata({
+    locale: args.locale,
+    baseLocale: pendingManifest.baseLocale,
+    mainData: upstreamMain,
+    dynamicData: upstreamDynamic,
+    previousMetadata: baseline.metadata,
+  });
+  const outputMainPath = resolveRepoPath(pendingManifest.output.main);
+  const outputDynamicPath = resolveRepoPath(pendingManifest.output.dynamic);
+  const readmeUpdates = buildReadmeStatsUpdates(ROOT_DIR, {
+    statisticsOverride: {
+      [args.locale]: {
+        main: Object.keys(nextMainData).length,
+        dynamic: Object.keys(nextDynamicData).length,
+      },
+    },
+  });
+  const transactionEntries = [
+    { filePath: outputMainPath, content: serializeJson(nextMainData) },
+    { filePath: outputDynamicPath, content: serializeJson(nextDynamicData) },
+    ...baselineTransactionEntries({
+      baselineDir,
+      baseLocale: pendingManifest.baseLocale,
+      mainData: upstreamMain,
+      dynamicData: upstreamDynamic,
+      metadata: nextMetadata,
+    }),
+    ...readmeUpdates.files.map((file) => ({
+      filePath: file.filePath,
+      content: file.content,
+    })),
+  ];
 
-  const readmeStats = updateReadmeStats(ROOT_DIR);
+  commitFileTransaction(transactionEntries);
+  fs.rmSync(localeDir, { recursive: true, force: true });
 
-  fs.rmSync(args.pendingDir, { recursive: true, force: true });
-
-  console.log(
-    JSON.stringify(
+  process.stdout.write(
+    `${JSON.stringify(
       {
         locale: args.locale,
         baseLocale: pendingManifest.baseLocale,
         outputField,
         main: Object.keys(nextMainData).length,
         dynamic: Object.keys(nextDynamicData).length,
-        updatedReadmes: readmeStats.changedFiles,
-        clearedPendingDir: args.pendingDir,
+        baselineHashes: upstreamHashes,
+        updatedReadmes: readmeUpdates.changedFiles,
+        clearedPendingDir: toRepoRelative(localeDir),
       },
       null,
-      2
-    )
+      2,
+    )}\n`,
   );
 }
 

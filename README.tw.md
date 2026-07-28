@@ -147,13 +147,13 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 - 主介面文案：`zh-CN/zh-CN.json`、`zh-TW/zh-TW.json`
 - Dynamic 文案：`zh-CN/zh-CN.dynamic.json`、`zh-TW/zh-TW.dynamic.json`
-- 英文原文：`.original/en-US.json`、`.original/en-US.dynamic.json`
+- 最新英文原文：`.original/upstream/en-US.json`、`.original/upstream/en-US.dynamic.json`
 
 請保留佔位符、HTML 標籤、ICU MessageFormat、URL、命令、程式碼片段和反引號內容。翻譯可以更自然，但結構不能變。
 
 ### 同步 Claude 上游更新
 
-倉庫的 GitHub Actions 每 6 小時檢查一次 Claude.ai 上游語言檔。發現 key 新增、更新或刪除時，會更新 `bot/locale-update` 分支，並產生 `.pending/locale-update` 下的差異檔。
+倉庫的 GitHub Actions 每 6 小時檢查一次 Claude.ai 上游語言檔。最新快照儲存在 `.original/upstream`；每個目標語言會與 `.original/baselines/<locale>` 中已驗證的獨立基線比較，並在 `.pending/locale-update/<locale>` 下產生自己的差異檔。
 
 每次成功抓取後，GitHub Actions 都會用最新 upstream 快照比對 `main` 中的語言包，並把 `coverage.json` 和預先渲染的 `badges/<locale>.svg` 發布到 GitHub Pages。`bot/locale-update` 中的翻譯在合併進 `main` 前不會計入覆蓋率。
 
@@ -165,7 +165,7 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 # 1. 為目標 locale 產生翻譯分塊
 node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 
-# 2. 翻譯 .pending/locale-update/translation/<locale>/chunks/ 下的 JSONL
+# 2. 翻譯 .pending/locale-update/<locale>/translation/chunks/ 下的 JSONL
 #    輸出寫到 manifest 指定的 out/ 路徑
 #    推薦使用專案內建工作流程：
 #      Claude Code: /apply-locale-update
@@ -175,7 +175,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` 會校驗行數、key 順序、佔位符、HTML 標籤、ICU 結構和明顯未翻譯內容；成功後會重建目標語言包、同步三份 README 的語言包統計，並清理 `.pending/locale-update`。
+`apply_translation.mjs` 會校驗行數、key 順序、佔位符、HTML 標籤、ICU 結構、來源檔案雜湊和明顯未翻譯內容；成功後會重建目標語言包、原子推進該語言的英文基線、同步三份 README 的語言包統計，並只清理 `.pending/locale-update/<locale>`。
 
 ### 新增全新語言
 
@@ -185,7 +185,7 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
 ```
 
-腳本會讀取 `.original/en-US*.json`，可參考 `.original/ja-JP*.json` 和現有 `zh-CN` 語境，產生 `.pending/create-full-locale/<locale>/` 下的分塊任務。
+腳本會讀取 `.original/upstream/en-US*.json`，可參考 `.original/upstream/ja-JP*.json` 和現有 `zh-CN` 語境，產生 `.pending/create-full-locale/<locale>/` 下的分塊任務。
 
 翻譯完成後執行：
 

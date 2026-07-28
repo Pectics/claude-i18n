@@ -147,13 +147,13 @@ Edit the locale files directly:
 
 - Main UI copy: `zh-CN/zh-CN.json`, `zh-TW/zh-TW.json`
 - Dynamic copy: `zh-CN/zh-CN.dynamic.json`, `zh-TW/zh-TW.dynamic.json`
-- English source: `.original/en-US.json`, `.original/en-US.dynamic.json`
+- Latest English source: `.original/upstream/en-US.json`, `.original/upstream/en-US.dynamic.json`
 
 Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans, and backticks. The wording can be more natural; the structure must remain compatible.
 
 ### Sync Claude Upstream Changes
 
-GitHub Actions checks Claude.ai's upstream locale files every 6 hours. When keys are added, updated, or removed, it updates the `bot/locale-update` branch and writes diffs under `.pending/locale-update`.
+GitHub Actions checks Claude.ai's upstream locale files every 6 hours. Latest snapshots are stored under `.original/upstream`; each target locale is compared with its verified baseline under `.original/baselines/<locale>`, and its diff is written under `.pending/locale-update/<locale>`.
 
 After each successful fetch, GitHub Actions compares the locale packs on `main` with the latest upstream snapshot and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages. Translation work on `bot/locale-update` is not counted until it is merged into `main`.
 
@@ -165,7 +165,7 @@ Maintainers usually apply the update like this:
 # 1. Generate translation chunks for the target locale
 node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 
-# 2. Translate JSONL chunks under .pending/locale-update/translation/<locale>/chunks/
+# 2. Translate JSONL chunks under .pending/locale-update/<locale>/translation/chunks/
 #    Write outputs to the manifest-provided out/ paths
 #    Recommended built-in workflow:
 #      Claude Code: /apply-locale-update
@@ -175,7 +175,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 node scripts/locale-update/apply_translation.mjs --locale zh-CN
 ```
 
-`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, and obvious untranslated content. On success it rebuilds the target locale packs, updates the locale statistics in all three READMEs, and clears `.pending/locale-update`.
+`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, source hashes, and obvious untranslated content. On success it rebuilds the target locale packs, atomically advances that locale's English baseline, updates the locale statistics in all three READMEs, and clears only `.pending/locale-update/<locale>`.
 
 ### Add a New Locale
 
@@ -185,7 +185,7 @@ For a brand-new locale, generate a full translation task first:
 node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
 ```
 
-The script reads `.original/en-US*.json`, can use `.original/ja-JP*.json` and existing `zh-CN` as context, and writes chunked work under `.pending/create-full-locale/<locale>/`.
+The script reads `.original/upstream/en-US*.json`, can use `.original/upstream/ja-JP*.json` and existing `zh-CN` as context, and writes chunked work under `.pending/create-full-locale/<locale>/`.
 
 After translating the chunks, run:
 
