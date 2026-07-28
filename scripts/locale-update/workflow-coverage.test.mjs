@@ -14,7 +14,11 @@ test('locale update delegates latest upstream coverage to the reusable Pages wor
   assert.match(workflow, /name: "locale-update: Sync upstream locales"/);
   assert.match(workflow, /name: Sync upstream locale files/);
   assert.match(workflow, /name: Fetch upstream locales and build diff/);
-  assert.match(workflow, /git archive "origin\/\$BASE_REF" \| tar -x -C "\$main_snapshot_dir"/);
+  assert.match(workflow, /"\.original\/upstream"/);
+  assert.match(workflow, /jq --raw-output '\.locales\[\]'/);
+  assert.match(workflow, /--baseline-dir "\.original\/baselines\/\$target_locale"/);
+  assert.match(workflow, /--pending-dir "\$PENDING_DIR"/);
+  assert.doesNotMatch(workflow, /rm -rf "\$PENDING_DIR"/);
   assert.match(workflow, /echo "upstream_ready=true"/);
   assert.match(workflow, /name: Select coverage upstream snapshot/);
   assert.match(workflow, /uses: \.\/\.github\/workflows\/locale-update-pages\.yml/);

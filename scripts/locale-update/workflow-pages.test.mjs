@@ -19,7 +19,8 @@ test('Pages workflow always compares main locale packs with an explicit latest-u
   assert.match(PAGES_WORKFLOW, /--target-root "\$GITHUB_WORKSPACE"/);
   assert.match(PAGES_WORKFLOW, /--upstream-dir "\$UPSTREAM_DIR"/);
   assert.match(PAGES_WORKFLOW, /--head "\$UPDATE_BRANCH"/);
-  assert.match(PAGES_WORKFLOW, /git archive "origin\/\$UPSTREAM_REF" \.original/);
+  assert.match(PAGES_WORKFLOW, /git archive "origin\/\$UPSTREAM_REF" \.original\/upstream/);
+  assert.match(PAGES_WORKFLOW, /UPSTREAM_DIR=\$upstream_root\/\.original\/upstream/);
 });
 
 test('Pages workflow uses artifact deployment permissions and skips healthy unchanged data', () => {
@@ -42,5 +43,6 @@ test('README workflow updates only the bot branch and checks pull requests', () 
   assert.match(README_WORKFLOW, /node scripts\/locale-update\/update_readme_stats\.mjs --check/);
   assert.match(README_WORKFLOW, /docs: Update locale pack statistics/);
   assert.doesNotMatch(README_WORKFLOW, /coverage|deploy-pages/);
-  assert.match(APPLY_SCRIPT, /updateReadmeStats\(ROOT_DIR\)/);
+  assert.match(APPLY_SCRIPT, /buildReadmeStatsUpdates\(ROOT_DIR/);
+  assert.match(APPLY_SCRIPT, /commitFileTransaction\(transactionEntries\)/);
 });
