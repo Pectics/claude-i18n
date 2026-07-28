@@ -1,7 +1,7 @@
 {
   "++8r0fTTdU": "{serverLabel} is still running. You can keep it running and re-open a tab any time by entering {host} in the URL bar.",
-  "++Dgwho30W": "Collect what people sent me",
-  "++FFdxb8fU": "Close other tabs?",
+  "++FFdxb8fU": "Close another tab?",
+  "codexIssue50RemoveProbe": "Remove this Issue 50 release-candidate probe",
   "++lrbVziP/": "Once members start using Claude in your connected Slack workspaces, channel spend and usage will appear here. Data can take up to a day to show up after the first sessions.",
   "+/testAc92": "Confirm that your connector meets <link>Anthropic’s directory policies</link>. All items are required.",
   "+/yYn89HLV": "AWS config directory",
