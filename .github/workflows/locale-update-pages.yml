@@ -4,7 +4,7 @@ on:
   workflow_call:
     inputs:
       upstream_ref:
-        description: Git ref containing the latest upstream .original files
+        description: Git ref containing the latest upstream locale snapshots
         required: true
         type: string
   workflow_dispatch:
@@ -19,8 +19,8 @@ on:
       - main
     paths:
       - locales.json
-      - .original/en-US.json
-      - .original/en-US.dynamic.json
+      - .original/upstream/en-US.json
+      - .original/upstream/en-US.dynamic.json
       - "*/*.json"
 
 permissions:
@@ -97,10 +97,10 @@ jobs:
           upstream_root="$RUNNER_TEMP/latest-upstream"
           rm -rf "$upstream_root"
           mkdir -p "$upstream_root"
-          git archive "origin/$UPSTREAM_REF" .original | tar -x -C "$upstream_root"
-          test -f "$upstream_root/.original/$BASE_LOCALE.json"
-          test -f "$upstream_root/.original/$BASE_LOCALE.dynamic.json"
-          echo "UPSTREAM_DIR=$upstream_root/.original" >> "$GITHUB_ENV"
+          git archive "origin/$UPSTREAM_REF" .original/upstream | tar -x -C "$upstream_root"
+          test -f "$upstream_root/.original/upstream/$BASE_LOCALE.json"
+          test -f "$upstream_root/.original/upstream/$BASE_LOCALE.dynamic.json"
+          echo "UPSTREAM_DIR=$upstream_root/.original/upstream" >> "$GITHUB_ENV"
 
       - name: Generate coverage data and static badges
         shell: bash

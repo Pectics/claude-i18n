@@ -88,8 +88,6 @@ jobs:
       - name: Fetch upstream locales and build diff
         if: steps.branch.outputs.branch_name != ''
         id: fetch
-        env:
-          BASE_REF: ${{ steps.branch.outputs.base_ref }}
         shell: bash
         run: |
           set -euo pipefail
@@ -98,13 +96,8 @@ jobs:
           trap 'rm -rf "$tmp_dir"' EXIT
           fetch_summary="$tmp_dir/fetch-summary.json"
           compare_summary="$tmp_dir/compare-summary.json"
-          diff_summary="$tmp_dir/diff-summary.json"
-          main_snapshot_dir="$tmp_dir/main-snapshot"
-          mkdir -p "$main_snapshot_dir"
-          git archive "origin/$BASE_REF" | tar -x -C "$main_snapshot_dir"
-          main_original_dir="$main_snapshot_dir/.original"
 
-          if python3 - "$BASE_LOCALE" ".original" "$tmp_dir" "$fetch_summary" <<'PY'
+          if python3 - "$BASE_LOCALE" ".original/upstream" "$tmp_dir" "$fetch_summary" <<'PY'
           import sys
           import json
           import os
@@ -322,13 +315,13 @@ jobs:
             exit "$status"
           fi
 
-          python3 - "$tmp_dir" "$main_original_dir" "$fetch_summary" "$compare_summary" <<'PY'
+          python3 - "$tmp_dir" "$fetch_summary" "$compare_summary" <<'PY'
           import json
           import os
           import sys
           from pathlib import Path
 
-          tmp_dir, main_original_dir, fetch_summary_path, compare_summary_path = sys.argv[1:5]
+          tmp_dir, fetch_summary_path, compare_summary_path = sys.argv[1:4]
 
           with open(fetch_summary_path, "r", encoding="utf-8") as file:
               summary = json.load(file)
@@ -340,7 +333,7 @@ jobs:
           for locale in successful_locales:
               for suffix in (".json", ".dynamic.json"):
                   source_path = Path(tmp_dir) / f"{locale}{suffix}"
-                  target_path = Path(".original") / f"{locale}{suffix}"
+                  target_path = Path(".original/upstream") / f"{locale}{suffix}"
                   with open(source_path, "rb") as source_file:
                       source_bytes = source_file.read()
                   target_bytes = None
@@ -350,26 +343,7 @@ jobs:
                   if target_bytes != source_bytes:
                       changed_files.append(target_path.as_posix())
 
-          def read_key_set(directory, locale, suffix):
-              path = Path(directory) / f"{locale}{suffix}"
-              if not path.exists():
-                  return set()
-              with open(path, "r", encoding="utf-8") as file:
-                  data = json.load(file)
-              if not isinstance(data, dict) or isinstance(data, list):
-                  raise SystemExit(f"{path}: expected a flat JSON object")
-              return set(data.keys())
-
           summary["changedFiles"] = changed_files
-          summary["baseLocaleChanged"] = any(
-              path in {f".original/{base_locale}.json", f".original/{base_locale}.dynamic.json"}
-              for path in changed_files
-          )
-          summary["baseLocaleEntryChanged"] = any(
-              read_key_set(main_original_dir, base_locale, suffix) != read_key_set(tmp_dir, base_locale, suffix)
-              for suffix in (".json", ".dynamic.json")
-          )
-
           with open(compare_summary_path, "w", encoding="utf-8") as file:
               json.dump(summary, file, ensure_ascii=False, indent=2)
           PY
@@ -423,54 +397,13 @@ jobs:
           print(summary["baseLocale"])
           PY
           )"
-          base_locale_entry_changed="$(python3 - "$compare_summary" <<'PY'
-          import json
-          import sys
-          with open(sys.argv[1], "r", encoding="utf-8") as file:
-              summary = json.load(file)
-          print("true" if summary["baseLocaleEntryChanged"] else "false")
-          PY
-          )"
-
           echo "upstream_ready=true" >> "$GITHUB_OUTPUT"
 
           pending_created="false"
           needs_translation="false"
-          diff_summary_json="null"
+          diff_summary_json="{}"
 
           if [ "$changed_count" -gt 0 ]; then
-            if [ "$base_locale_entry_changed" = "true" ]; then
-              node scripts/locale-update/build_diff.mjs \
-                --base-locale "$base_locale" \
-                --before-dir "$main_original_dir" \
-                --after-dir "$tmp_dir" \
-                --pending-dir "$PENDING_DIR" \
-                --metadata "$compare_summary" > "$diff_summary"
-
-              pending_created="true"
-            else
-              rm -rf "$PENDING_DIR"
-            fi
-
-            if [ "$pending_created" = "true" ]; then
-              needs_translation="$(python3 - "$diff_summary" <<'PY'
-          import json
-          import sys
-          with open(sys.argv[1], "r", encoding="utf-8") as file:
-              summary = json.load(file)
-          print("true" if summary["needsTranslation"] else "false")
-          PY
-          )"
-              diff_summary_json="$(python3 - "$diff_summary" <<'PY'
-          import json
-          import sys
-          with open(sys.argv[1], "r", encoding="utf-8") as file:
-              summary = json.load(file)
-          print(json.dumps(summary, ensure_ascii=False))
-          PY
-          )"
-            fi
-
             python3 - "$tmp_dir" "$compare_summary" <<'PY'
           import json
           import shutil
@@ -486,14 +419,45 @@ jobs:
               source_path = Path(tmp_dir) / name
               shutil.copyfile(source_path, target_path)
           PY
+
           fi
 
-          if [ "$changed_count" -eq 0 ]; then
+          while IFS= read -r target_locale; do
+            [ -n "$target_locale" ] || continue
+            locale_diff_summary="$tmp_dir/diff-$target_locale.json"
+            node scripts/locale-update/build_diff.mjs \
+              --locale "$target_locale" \
+              --base-locale "$base_locale" \
+              --upstream-dir ".original/upstream" \
+              --baseline-dir ".original/baselines/$target_locale" \
+              --pending-dir "$PENDING_DIR" \
+              --metadata "$compare_summary" > "$locale_diff_summary"
+
+            locale_pending="$(jq --raw-output '.pendingCreated' "$locale_diff_summary")"
+            locale_needs_translation="$(jq --raw-output '.needsTranslation' "$locale_diff_summary")"
+            if [ "$locale_pending" = "true" ]; then
+              pending_created="true"
+            fi
+            if [ "$locale_needs_translation" = "true" ]; then
+              needs_translation="true"
+            fi
+            diff_summary_json="$(
+              jq --compact-output \
+                --arg locale "$target_locale" \
+                --slurpfile summary "$locale_diff_summary" \
+                '. + {($locale): $summary[0]}' \
+                <<< "$diff_summary_json"
+            )"
+          done < <(jq --raw-output '.locales[]' locales.json)
+
+          workflow_changes="$(
+            git status --porcelain=v1 --untracked-files=all -- .original "$PENDING_DIR"
+          )"
+          if [ -z "$workflow_changes" ]; then
             echo "changed=false" >> "$GITHUB_OUTPUT"
-            echo "pending_created=false" >> "$GITHUB_OUTPUT"
-            echo "needs_translation=false" >> "$GITHUB_OUTPUT"
+            echo "pending_created=$pending_created" >> "$GITHUB_OUTPUT"
+            echo "needs_translation=$needs_translation" >> "$GITHUB_OUTPUT"
             echo "base_locale=$base_locale" >> "$GITHUB_OUTPUT"
-            echo "base_locale_entry_changed=$base_locale_entry_changed" >> "$GITHUB_OUTPUT"
             {
               echo "cached_locales_json<<EOF"
               echo "$cached_locales_json"
@@ -508,10 +472,10 @@ jobs:
               echo "$warnings_json"
               echo "EOF"
               echo "diff_summary_json<<EOF"
-              echo "null"
+              echo "$diff_summary_json"
               echo "EOF"
             } >> "$GITHUB_OUTPUT"
-            echo "Fetched upstream files match the update branch baseline."
+            echo "Fetched upstream files and per-locale pending work are current."
             exit 0
           fi
 
@@ -519,7 +483,6 @@ jobs:
           echo "pending_created=$pending_created" >> "$GITHUB_OUTPUT"
           echo "needs_translation=$needs_translation" >> "$GITHUB_OUTPUT"
           echo "base_locale=$base_locale" >> "$GITHUB_OUTPUT"
-          echo "base_locale_entry_changed=$base_locale_entry_changed" >> "$GITHUB_OUTPUT"
           {
             echo "changed_files<<EOF"
             while IFS= read -r file; do
@@ -622,7 +585,6 @@ jobs:
           NEEDS_TRANSLATION: ${{ steps.fetch.outputs.needs_translation }}
           PENDING_CREATED: ${{ steps.fetch.outputs.pending_created }}
           BASE_LOCALE: ${{ steps.fetch.outputs.base_locale }}
-          BASE_LOCALE_ENTRY_CHANGED: ${{ steps.fetch.outputs.base_locale_entry_changed }}
         shell: bash
         run: |
           set -euo pipefail
@@ -639,11 +601,10 @@ jobs:
           successful_locales = json.loads(os.environ["SUCCESSFUL_LOCALES_JSON"])
           failed_locales = json.loads(os.environ["FAILED_LOCALES_JSON"])
           warnings = json.loads(os.environ["WARNINGS_JSON"])
-          diff_summary = json.loads(os.environ["DIFF_SUMMARY_JSON"]) if os.environ["DIFF_SUMMARY_JSON"] != "null" else None
+          diff_summary = json.loads(os.environ["DIFF_SUMMARY_JSON"])
           pending_created = os.environ["PENDING_CREATED"] == "true"
           needs_translation = os.environ["NEEDS_TRANSLATION"] == "true"
           base_locale = os.environ["BASE_LOCALE"]
-          base_locale_entry_changed = os.environ["BASE_LOCALE_ENTRY_CHANGED"] == "true"
 
           lines = [
               "Automated update for upstream locale source files.",
@@ -676,20 +637,23 @@ jobs:
           lines.extend(
               [
                   "",
-                  "Base locale entry status:",
-                  f"- Entry additions/removals detected: `{'yes' if base_locale_entry_changed else 'no'}`",
-                  "",
-                  "Base locale diff summary:",
+                  "Per-locale diff summary:",
               ]
           )
           if diff_summary:
-              for file_label in ("main", "dynamic"):
-                  summary = diff_summary["diffSummary"][file_label]
+              for locale, locale_summary in sorted(diff_summary.items()):
                   lines.append(
-                      f"- `{file_label}`: add {summary['add']}, update {summary['update']}, remove {summary['remove']}, total {summary['total']}"
+                      f"- `{locale}`: pending `{'yes' if locale_summary['pendingCreated'] else 'no'}`, "
+                      f"translation `{'yes' if locale_summary['needsTranslation'] else 'no'}`"
                   )
+                  for file_label in ("main", "dynamic"):
+                      summary = locale_summary["diffSummary"][file_label]
+                      lines.append(
+                          f"  - `{file_label}`: add {summary['add']}, update {summary['update']}, "
+                          f"remove {summary['remove']}, total {summary['total']}"
+                      )
           else:
-              lines.append("- No entry diff generated; base locale entries match the merge target.")
+              lines.append("- No target-locale diff was generated.")
 
           lines.extend(
               [
