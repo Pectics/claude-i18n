@@ -1,7 +1,14 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { ensureDir, ensureFreshWorkDir, readJson, readJsonl, writeJson, writeJsonl } from './shared.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import {
+  ensureDir,
+  ensureFreshWorkDir,
+  readJson,
+  readJsonl,
+  writeJson,
+  writeJsonl,
+} from './shared.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
@@ -33,7 +40,7 @@ function resolveRepoPath(filePath) {
 
 function usage() {
   throw new Error(
-    'Usage: node prepare_translation.mjs --locale <locale> [--pending-dir <path>] [--output-field <field>] [--target-chars <n>] [--max-entries <n>] [--min-entries <n>]'
+    'Usage: node prepare_translation.mjs --locale <locale> [--pending-dir <path>] [--output-field <field>] [--target-chars <n>] [--max-entries <n>] [--min-entries <n>]',
   );
 }
 
@@ -74,56 +81,32 @@ function parseArgs(argv) {
   }
 
   if (!args.locale) usage();
-  validateOutputField(args.outputField);
+  if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(args.outputField)) {
+    throw new Error(`Invalid output field: ${args.outputField}`);
+  }
+  if (RESERVED_OUTPUT_FIELDS.has(args.outputField)) {
+    throw new Error(`Output field conflicts with input metadata field: ${args.outputField}`);
+  }
   return args;
 }
 
-function validateOutputField(outputField) {
-  if (!/^[A-Za-z_][A-Za-z0-9_]*$/.test(outputField)) {
-    throw new Error(`Invalid output field: ${outputField}`);
-  }
-  if (RESERVED_OUTPUT_FIELDS.has(outputField)) {
-    throw new Error(`Output field conflicts with input metadata field: ${outputField}`);
-  }
+function localePendingDir(pendingDir, locale) {
+  return path.join(pendingDir, locale);
 }
 
-function loadPendingManifest(pendingDir) {
-  const manifestPath = path.join(pendingDir, 'manifest.json');
+function loadPendingManifest(pendingDir, locale) {
+  const manifestPath = path.join(localePendingDir(pendingDir, locale), 'manifest.json');
   if (!fs.existsSync(manifestPath)) {
-    throw new Error(`Missing pending manifest: ${manifestPath}`);
+    throw new Error(`Missing pending manifest for ${locale}: ${manifestPath}`);
   }
-  return readJson(manifestPath);
-}
-
-function diffPathForFile(pendingDir, fileLabel) {
-  return path.join(pendingDir, `${fileLabel}.diff.jsonl`);
-}
-
-function targetPathFor(locale, fileLabel) {
-  const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
-  return path.join(ROOT_DIR, locale, `${locale}${suffix}`);
-}
-
-function resolveSourcePath(pendingManifest, fileLabel, role) {
-  const sourceConfig = pendingManifest.source?.[fileLabel] ?? {};
-  const configuredPath = role === 'base'
-    ? sourceConfig.base ?? sourceConfig.en
-    : sourceConfig.reference ?? sourceConfig.ja;
-  if (configuredPath) {
-    return resolveRepoPath(configuredPath);
+  const manifest = readJson(manifestPath);
+  if (manifest.schemaVersion !== 2) {
+    throw new Error(`${manifestPath}: unsupported schema version ${manifest.schemaVersion}`);
   }
-
-  if (role === 'base') {
-    const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
-    return path.join(ROOT_DIR, '.original', `${pendingManifest.baseLocale}${suffix}`);
+  if (manifest.locale !== locale) {
+    throw new Error(`${manifestPath}: manifest locale ${manifest.locale} does not match ${locale}`);
   }
-
-  if (role === 'reference' && pendingManifest.referenceLocale) {
-    const suffix = fileLabel === 'dynamic' ? '.dynamic.json' : '.json';
-    return path.join(ROOT_DIR, '.original', `${pendingManifest.referenceLocale}${suffix}`);
-  }
-
-  return null;
+  return { manifestPath, manifest };
 }
 
 function readTargetData(filePath) {
@@ -146,12 +129,15 @@ function toTranslationTask(row, targetData, referenceLocale) {
     throw new Error(`${row.file}:${row.key}: add/update row is missing numeric index`);
   }
 
-  const currentTarget = Object.prototype.hasOwnProperty.call(targetData, row.key) ? targetData[row.key] : null;
-  const reference = typeof row.afterReference === 'string'
-    ? row.afterReference
-    : typeof row.afterJa === 'string'
-      ? row.afterJa
-      : null;
+  const currentTarget = Object.prototype.hasOwnProperty.call(targetData, row.key)
+    ? targetData[row.key]
+    : null;
+  const reference =
+    typeof row.afterReference === 'string'
+      ? row.afterReference
+      : typeof row.afterJa === 'string'
+        ? row.afterJa
+        : null;
   const task = {
     file: row.file,
     index: row.index,
@@ -162,9 +148,7 @@ function toTranslationTask(row, targetData, referenceLocale) {
     beforeEn: typeof row.beforeEn === 'string' ? row.beforeEn : null,
     currentTarget: typeof currentTarget === 'string' ? currentTarget : null,
   };
-  if (isJapaneseLocale(referenceLocale)) {
-    task.ja = reference;
-  }
+  if (isJapaneseLocale(referenceLocale)) task.ja = reference;
   return task;
 }
 
@@ -205,12 +189,11 @@ function buildChunks(fileLabel, rows, workDir, options) {
       (typeof row.reference === 'string' ? row.reference.length : 0) +
       (typeof row.ja === 'string' ? row.ja.length : 0) +
       (typeof row.currentTarget === 'string' ? row.currentTarget.length : 0);
-
     const shouldFlush =
       currentRows.length > 0 &&
       currentRows.length >= options.minEntries &&
-      (currentRows.length >= options.maxEntries || currentChars + rowChars > options.targetChars);
-
+      (currentRows.length >= options.maxEntries ||
+        currentChars + rowChars > options.targetChars);
     if (shouldFlush) flush();
     currentRows.push(row);
     currentChars += rowChars;
@@ -222,9 +205,8 @@ function buildChunks(fileLabel, rows, workDir, options) {
 
 function maybeCopyPromptTemplate(workDir) {
   const sourcePath = path.join(ROOT_DIR, '.translation', 'prompt-template.txt');
-  const destinationPath = path.join(workDir, 'prompt-template.txt');
   if (fs.existsSync(sourcePath)) {
-    fs.copyFileSync(sourcePath, destinationPath);
+    fs.copyFileSync(sourcePath, path.join(workDir, 'prompt-template.txt'));
   }
 }
 
@@ -240,12 +222,16 @@ function summarizeDiff(rows) {
 
 function main() {
   const args = parseArgs(process.argv.slice(2));
-  const pendingManifest = loadPendingManifest(args.pendingDir);
-  const workDir = path.join(args.pendingDir, 'translation', args.locale);
-  const mainDiffRows = readJsonl(diffPathForFile(args.pendingDir, 'main'));
-  const dynamicDiffRows = readJsonl(diffPathForFile(args.pendingDir, 'dynamic'));
-  const targetMainPath = targetPathFor(args.locale, 'main');
-  const targetDynamicPath = targetPathFor(args.locale, 'dynamic');
+  const { manifestPath: pendingManifestPath, manifest: pendingManifest } =
+    loadPendingManifest(args.pendingDir, args.locale);
+  const localeDir = localePendingDir(args.pendingDir, args.locale);
+  const workDir = path.join(localeDir, 'translation');
+  const mainDiffRows = readJsonl(resolveRepoPath(pendingManifest.pendingFiles.mainDiff));
+  const dynamicDiffRows = readJsonl(
+    resolveRepoPath(pendingManifest.pendingFiles.dynamicDiff),
+  );
+  const targetMainPath = resolveRepoPath(pendingManifest.output.main);
+  const targetDynamicPath = resolveRepoPath(pendingManifest.output.dynamic);
   const targetMainData = readTargetData(targetMainPath);
   const targetDynamicData = readTargetData(targetDynamicPath);
 
@@ -256,53 +242,31 @@ function main() {
     .map((row) => toTranslationTask(row, targetMainData, pendingManifest.referenceLocale))
     .filter(Boolean);
   const dynamicTasks = dynamicDiffRows
-    .map((row) => toTranslationTask(row, targetDynamicData, pendingManifest.referenceLocale))
+    .map((row) =>
+      toTranslationTask(row, targetDynamicData, pendingManifest.referenceLocale),
+    )
     .filter(Boolean);
-
   const mainChunks = buildChunks('main', mainTasks, workDir, args);
   const dynamicChunks = buildChunks('dynamic', dynamicTasks, workDir, args);
-
   const manifestPath = path.join(workDir, 'manifest.json');
   const manifest = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     createdAt: new Date().toISOString(),
     root: '.',
-    pendingDir: toRepoRelative(args.pendingDir),
+    pendingDir: toRepoRelative(localeDir),
     workDir: toRepoRelative(workDir),
     locale: args.locale,
     outputField: args.outputField,
     baseLocale: pendingManifest.baseLocale,
     referenceLocale: pendingManifest.referenceLocale,
-    source: {
-      main: {
-        base: toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'base')),
-        reference: pendingManifest.referenceLocale
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'reference'))
-          : null,
-        en: toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'base')),
-        ja: isJapaneseLocale(pendingManifest.referenceLocale)
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'main', 'reference'))
-          : null,
-      },
-      dynamic: {
-        base: toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'base')),
-        reference: pendingManifest.referenceLocale
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'reference'))
-          : null,
-        en: toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'base')),
-        ja: isJapaneseLocale(pendingManifest.referenceLocale)
-          ? toRepoRelative(resolveSourcePath(pendingManifest, 'dynamic', 'reference'))
-          : null,
-      },
-    },
+    pendingManifest: toRepoRelative(pendingManifestPath),
+    source: pendingManifest.source,
+    sourceHashes: pendingManifest.sourceHashes,
     diff: {
-      main: toRepoRelative(diffPathForFile(args.pendingDir, 'main')),
-      dynamic: toRepoRelative(diffPathForFile(args.pendingDir, 'dynamic')),
+      main: pendingManifest.pendingFiles.mainDiff,
+      dynamic: pendingManifest.pendingFiles.dynamicDiff,
     },
-    output: {
-      main: toRepoRelative(targetMainPath),
-      dynamic: toRepoRelative(targetDynamicPath),
-    },
+    output: pendingManifest.output,
     chunkSizing: {
       targetChars: args.targetChars,
       maxEntries: args.maxEntries,
@@ -326,21 +290,21 @@ function main() {
       dynamic: dynamicChunks,
     },
   };
-
   writeJson(manifestPath, manifest);
 
-  console.log(
-    JSON.stringify(
+  process.stdout.write(
+    `${JSON.stringify(
       {
         locale: args.locale,
+        pendingDir: toRepoRelative(localeDir),
         workDir: toRepoRelative(workDir),
         manifest: toRepoRelative(manifestPath),
         outputField: args.outputField,
         summary: manifest.summary,
       },
       null,
-      2
-    )
+      2,
+    )}\n`,
   );
 }
 

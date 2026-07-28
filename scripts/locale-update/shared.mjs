@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import { createHash } from 'node:crypto';
 
 export function ensureDir(dirPath) {
   fs.mkdirSync(dirPath, { recursive: true });
@@ -25,6 +26,68 @@ export function readJson(filePath) {
 export function writeJson(filePath, data) {
   ensureDir(path.dirname(filePath));
   fs.writeFileSync(filePath, `${JSON.stringify(data, null, 2)}\n`, 'utf8');
+}
+
+export function serializeJson(data) {
+  return `${JSON.stringify(data, null, 2)}\n`;
+}
+
+export function hashJson(data) {
+  return createHash('sha256').update(JSON.stringify(data)).digest('hex');
+}
+
+export function commitFileTransaction(entries) {
+  const transactionId = `${process.pid}-${Date.now()}`;
+  const prepared = [];
+  const seenPaths = new Set();
+  try {
+    entries.forEach((entry, index) => {
+      const filePath = path.resolve(entry.filePath);
+      if (seenPaths.has(filePath)) {
+        throw new Error(`Duplicate transaction target: ${filePath}`);
+      }
+      seenPaths.add(filePath);
+      ensureDir(path.dirname(filePath));
+      const tempPath = path.join(
+        path.dirname(filePath),
+        `.${path.basename(filePath)}.tmp-${transactionId}-${index}`,
+      );
+      const previous = fs.existsSync(filePath) ? fs.readFileSync(filePath) : null;
+      const content = Buffer.isBuffer(entry.content)
+        ? entry.content
+        : Buffer.from(entry.content, 'utf8');
+      fs.writeFileSync(tempPath, content);
+      prepared.push({ filePath, tempPath, previous });
+    });
+  } catch (error) {
+    for (const entry of prepared) fs.rmSync(entry.tempPath, { force: true });
+    throw error;
+  }
+
+  const committed = [];
+  try {
+    for (const entry of prepared) {
+      fs.renameSync(entry.tempPath, entry.filePath);
+      committed.push(entry);
+    }
+  } catch (error) {
+    for (const entry of [...committed].reverse()) {
+      if (entry.previous === null) {
+        fs.rmSync(entry.filePath, { force: true });
+        continue;
+      }
+
+      const rollbackPath = `${entry.tempPath}.rollback`;
+      fs.writeFileSync(rollbackPath, entry.previous);
+      fs.renameSync(rollbackPath, entry.filePath);
+    }
+    throw error;
+  } finally {
+    for (const entry of prepared) {
+      fs.rmSync(entry.tempPath, { force: true });
+      fs.rmSync(`${entry.tempPath}.rollback`, { force: true });
+    }
+  }
 }
 
 export function readJsonl(filePath) {

@@ -1,12 +1,17 @@
-import fs from 'fs';
-import path from 'path';
-import { fileURLToPath } from 'url';
-import { ensureDir, readJson, writeJson, writeJsonl } from './shared.mjs';
+import fs from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
+import { hashJson, readJson, readJsonl, writeJson, writeJsonl } from './shared.mjs';
+import {
+  localeFilePath,
+  readLocaleObject,
+  readVerifiedBaseline,
+} from './baselines.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
-const DEFAULT_BEFORE_DIR = path.join(ROOT_DIR, '.original');
-const DEFAULT_AFTER_DIR = path.join(ROOT_DIR, '.original');
+const DEFAULT_UPSTREAM_DIR = path.join(ROOT_DIR, '.original', 'upstream');
+const DEFAULT_BASELINES_DIR = path.join(ROOT_DIR, '.original', 'baselines');
 const DEFAULT_PENDING_DIR = path.join(ROOT_DIR, '.pending', 'locale-update');
 
 function toRepoRelative(filePath) {
@@ -15,30 +20,35 @@ function toRepoRelative(filePath) {
 
 function usage() {
   throw new Error(
-    'Usage: node build_diff.mjs --base-locale <locale> --metadata <path> [--before-dir <path>] [--after-dir <path>] [--pending-dir <path>]'
+    'Usage: node build_diff.mjs --locale <locale> --base-locale <locale> --metadata <path> [--upstream-dir <path>] [--baseline-dir <path>] [--pending-dir <path>] [--reference-locale <locale|none>]',
   );
 }
 
 function parseArgs(argv) {
   const args = {
+    locale: null,
     baseLocale: null,
-    beforeDir: DEFAULT_BEFORE_DIR,
-    afterDir: DEFAULT_AFTER_DIR,
+    upstreamDir: DEFAULT_UPSTREAM_DIR,
+    baselineDir: null,
     pendingDir: DEFAULT_PENDING_DIR,
     metadata: null,
+    referenceLocale: undefined,
   };
 
   for (let index = 0; index < argv.length; index += 1) {
     const token = argv[index];
     const next = argv[index + 1];
-    if (token === '--base-locale' && next) {
+    if (token === '--locale' && next) {
+      args.locale = next;
+      index += 1;
+    } else if (token === '--base-locale' && next) {
       args.baseLocale = next;
       index += 1;
-    } else if (token === '--before-dir' && next) {
-      args.beforeDir = path.resolve(next);
+    } else if (token === '--upstream-dir' && next) {
+      args.upstreamDir = path.resolve(next);
       index += 1;
-    } else if (token === '--after-dir' && next) {
-      args.afterDir = path.resolve(next);
+    } else if (token === '--baseline-dir' && next) {
+      args.baselineDir = path.resolve(next);
       index += 1;
     } else if (token === '--pending-dir' && next) {
       args.pendingDir = path.resolve(next);
@@ -46,13 +56,16 @@ function parseArgs(argv) {
     } else if (token === '--metadata' && next) {
       args.metadata = path.resolve(next);
       index += 1;
+    } else if (token === '--reference-locale' && next) {
+      args.referenceLocale = /^none|null|false$/i.test(next) ? null : next;
+      index += 1;
     } else {
       usage();
     }
   }
 
-  if (!args.baseLocale) usage();
-  if (!args.metadata) usage();
+  if (!args.locale || !args.baseLocale || !args.metadata) usage();
+  args.baselineDir ??= path.join(DEFAULT_BASELINES_DIR, args.locale);
   return args;
 }
 
@@ -63,13 +76,11 @@ function discoverLocaleList(dirPath, baseLocale) {
 
   for (const entry of fs.readdirSync(dirPath, { withFileTypes: true })) {
     if (!entry.isFile()) continue;
-
-    const { name } = entry;
-    if (name.endsWith('.dynamic.json')) {
-      const locale = name.slice(0, -'.dynamic.json'.length);
+    if (entry.name.endsWith('.dynamic.json')) {
+      const locale = entry.name.slice(0, -'.dynamic.json'.length);
       if (localePattern.test(locale)) dynamicLocales.add(locale);
-    } else if (name.endsWith('.json')) {
-      const locale = name.slice(0, -'.json'.length);
+    } else if (entry.name.endsWith('.json')) {
+      const locale = entry.name.slice(0, -'.json'.length);
       if (localePattern.test(locale)) mainLocales.add(locale);
     }
   }
@@ -77,25 +88,19 @@ function discoverLocaleList(dirPath, baseLocale) {
   const missingDynamic = [...mainLocales].filter((locale) => !dynamicLocales.has(locale)).sort();
   const missingMain = [...dynamicLocales].filter((locale) => !mainLocales.has(locale)).sort();
   const errors = [];
-
-  if (!mainLocales.has(baseLocale)) {
-    errors.push(`${dirPath}: missing base locale ${baseLocale}.json`);
-  }
+  if (!mainLocales.has(baseLocale)) errors.push(`${dirPath}: missing base locale ${baseLocale}.json`);
   if (missingDynamic.length > 0) {
     errors.push(`${dirPath}: missing dynamic files for ${missingDynamic.join(', ')}`);
   }
   if (missingMain.length > 0) {
     errors.push(`${dirPath}: missing main locale files for ${missingMain.join(', ')}`);
   }
-
-  if (errors.length > 0) {
-    throw new Error(errors.join('\n'));
-  }
+  if (errors.length > 0) throw new Error(errors.join('\n'));
 
   return [baseLocale, ...[...mainLocales].filter((locale) => locale !== baseLocale).sort()];
 }
 
-function readMetadata(metadataPath) {
+function readFetchMetadata(metadataPath) {
   const metadata = readJson(metadataPath);
   return {
     successfulLocales: Array.isArray(metadata.successfulLocales) ? metadata.successfulLocales : [],
@@ -105,42 +110,15 @@ function readMetadata(metadataPath) {
   };
 }
 
-function localeFilePath(dirPath, locale, kind) {
-  const suffix = kind === 'dynamic' ? '.dynamic.json' : '.json';
-  return path.join(dirPath, `${locale}${suffix}`);
-}
-
-function readLocaleObject(filePath, label) {
-  const data = readJson(filePath);
-  if (!data || typeof data !== 'object' || Array.isArray(data)) {
-    throw new Error(`${label}: expected a flat JSON object`);
-  }
-  return data;
-}
-
-function maybeReadLocaleObject(filePath) {
-  if (!fs.existsSync(filePath)) return {};
-  return readLocaleObject(filePath, filePath);
-}
-
-function maybeReferenceValue(data, key) {
-  const value = data[key];
-  return typeof value === "string" ? value : null;
-}
-
-function isJapaneseLocale(locale) {
-  return typeof locale === 'string' && /^ja(?:-|$)/i.test(locale);
-}
-
 function referenceFields(referenceData, key, referenceLocale) {
-  const afterReference = maybeReferenceValue(referenceData, key);
+  const afterReference = typeof referenceData[key] === 'string' ? referenceData[key] : null;
   return {
     afterReference,
-    afterJa: isJapaneseLocale(referenceLocale) ? afterReference : null,
+    afterJa: /^ja(?:-|$)/i.test(referenceLocale ?? '') ? afterReference : null,
   };
 }
 
-function buildDiffRows(fileLabel, beforeData, afterData, referenceData, referenceLocale) {
+export function buildDiffRows(fileLabel, beforeData, afterData, referenceData, referenceLocale) {
   const beforeKeys = Object.keys(beforeData);
   const afterKeys = Object.keys(afterData);
   const afterKeySet = new Set(afterKeys);
@@ -167,10 +145,6 @@ function buildDiffRows(fileLabel, beforeData, afterData, referenceData, referenc
 
   afterKeys.forEach((key, index) => {
     const afterEn = afterData[key];
-    if (typeof afterEn !== 'string') {
-      throw new Error(`${fileLabel}: source en value for ${key} is not a string`);
-    }
-
     if (!beforeKeySet.has(key)) {
       rows.push({
         file: fileLabel,
@@ -183,10 +157,7 @@ function buildDiffRows(fileLabel, beforeData, afterData, referenceData, referenc
       });
       summary.add += 1;
       summary.total += 1;
-      return;
-    }
-
-    if (beforeData[key] !== afterEn) {
+    } else if (beforeData[key] !== afterEn) {
       rows.push({
         file: fileLabel,
         op: 'update',
@@ -204,67 +175,216 @@ function buildDiffRows(fileLabel, beforeData, afterData, referenceData, referenc
   return { rows, summary };
 }
 
-function main() {
-  const args = parseArgs(process.argv.slice(2));
-  const baseLocale = args.baseLocale;
-  const locales = discoverLocaleList(args.afterDir, baseLocale);
-  const referenceLocale = locales.length > 1 ? locales[1] : null;
-  const metadata = readMetadata(args.metadata);
+function replaceDirectory(tempDir, targetDir) {
+  const backupDir = `${targetDir}.backup-${process.pid}-${Date.now()}`;
+  let backedUp = false;
+  try {
+    if (fs.existsSync(targetDir)) {
+      fs.renameSync(targetDir, backupDir);
+      backedUp = true;
+    }
+    fs.renameSync(tempDir, targetDir);
+    if (backedUp) fs.rmSync(backupDir, { recursive: true, force: true });
+  } catch (error) {
+    fs.rmSync(targetDir, { recursive: true, force: true });
+    if (backedUp && fs.existsSync(backupDir)) fs.renameSync(backupDir, targetDir);
+    throw error;
+  } finally {
+    fs.rmSync(tempDir, { recursive: true, force: true });
+    fs.rmSync(backupDir, { recursive: true, force: true });
+  }
+}
 
-  const beforeMain = maybeReadLocaleObject(localeFilePath(args.beforeDir, baseLocale, 'main'));
-  const afterMain = readLocaleObject(localeFilePath(args.afterDir, baseLocale, 'main'), `${baseLocale}:main`);
-  const beforeDynamic = maybeReadLocaleObject(localeFilePath(args.beforeDir, baseLocale, 'dynamic'));
-  const afterDynamic = readLocaleObject(localeFilePath(args.afterDir, baseLocale, 'dynamic'), `${baseLocale}:dynamic`);
+function reusablePending(localePendingDir, expected) {
+  const manifestPath = path.join(localePendingDir, 'manifest.json');
+  const mainDiffPath = path.join(localePendingDir, 'main.diff.jsonl');
+  const dynamicDiffPath = path.join(localePendingDir, 'dynamic.diff.jsonl');
+  if (
+    !fs.existsSync(manifestPath) ||
+    !fs.existsSync(mainDiffPath) ||
+    !fs.existsSync(dynamicDiffPath)
+  ) {
+    return null;
+  }
 
-  const afterReferenceMain = referenceLocale
-    ? maybeReadLocaleObject(localeFilePath(args.afterDir, referenceLocale, 'main'))
+  try {
+    const manifest = readJson(manifestPath);
+    const sameManifest =
+      manifest.schemaVersion === 2 &&
+      manifest.locale === expected.locale &&
+      JSON.stringify(manifest.sourceHashes) === JSON.stringify(expected.sourceHashes) &&
+      JSON.stringify(manifest.diffSummary) === JSON.stringify(expected.diffSummary);
+    const sameRows =
+      JSON.stringify(readJsonl(mainDiffPath)) === JSON.stringify(expected.mainRows) &&
+      JSON.stringify(readJsonl(dynamicDiffPath)) === JSON.stringify(expected.dynamicRows);
+    return sameManifest && sameRows ? manifest : null;
+  } catch {
+    return null;
+  }
+}
+
+export function buildLocaleDiff(options) {
+  const {
+    locale,
+    baseLocale,
+    upstreamDir,
+    baselineDir,
+    pendingDir,
+    metadata: metadataPath,
+  } = options;
+  const locales = discoverLocaleList(upstreamDir, baseLocale);
+  const referenceLocale =
+    options.referenceLocale === undefined
+      ? locales.find((candidate) => candidate !== baseLocale) ?? null
+      : options.referenceLocale;
+  if (referenceLocale && !locales.includes(referenceLocale)) {
+    throw new Error(`${upstreamDir}: missing requested reference locale ${referenceLocale}`);
+  }
+
+  const fetchMetadata = readFetchMetadata(metadataPath);
+  const baseline = readVerifiedBaseline({ baselineDir, locale, baseLocale });
+  const upstreamMainPath = localeFilePath(upstreamDir, baseLocale, 'main');
+  const upstreamDynamicPath = localeFilePath(upstreamDir, baseLocale, 'dynamic');
+  const upstreamMain = readLocaleObject(upstreamMainPath, `${baseLocale}:upstream:main`);
+  const upstreamDynamic = readLocaleObject(upstreamDynamicPath, `${baseLocale}:upstream:dynamic`);
+  const referenceMainPath = referenceLocale
+    ? localeFilePath(upstreamDir, referenceLocale, 'main')
+    : null;
+  const referenceDynamicPath = referenceLocale
+    ? localeFilePath(upstreamDir, referenceLocale, 'dynamic')
+    : null;
+  const referenceMain = referenceMainPath
+    ? readLocaleObject(referenceMainPath, `${referenceLocale}:reference:main`)
     : {};
-  const afterReferenceDynamic = referenceLocale
-    ? maybeReadLocaleObject(localeFilePath(args.afterDir, referenceLocale, 'dynamic'))
+  const referenceDynamic = referenceDynamicPath
+    ? readLocaleObject(referenceDynamicPath, `${referenceLocale}:reference:dynamic`)
     : {};
 
-  const mainDiff = buildDiffRows('main', beforeMain, afterMain, afterReferenceMain, referenceLocale);
-  const dynamicDiff = buildDiffRows('dynamic', beforeDynamic, afterDynamic, afterReferenceDynamic, referenceLocale);
+  const mainDiff = buildDiffRows(
+    'main',
+    baseline.mainData,
+    upstreamMain,
+    referenceMain,
+    referenceLocale,
+  );
+  const dynamicDiff = buildDiffRows(
+    'dynamic',
+    baseline.dynamicData,
+    upstreamDynamic,
+    referenceDynamic,
+    referenceLocale,
+  );
+  const localePendingDir = path.join(pendingDir, locale);
+  const pendingTotal = mainDiff.summary.total + dynamicDiff.summary.total;
   const needsTranslation =
-    mainDiff.summary.add + mainDiff.summary.update + dynamicDiff.summary.add + dynamicDiff.summary.update > 0;
+    mainDiff.summary.add +
+      mainDiff.summary.update +
+      dynamicDiff.summary.add +
+      dynamicDiff.summary.update >
+    0;
+  const mainDiffPath = path.join(localePendingDir, 'main.diff.jsonl');
+  const dynamicDiffPath = path.join(localePendingDir, 'dynamic.diff.jsonl');
+  const manifestPath = path.join(localePendingDir, 'manifest.json');
+  const upstreamHashes = {
+    main: hashJson(upstreamMain),
+    dynamic: hashJson(upstreamDynamic),
+  };
+  const referenceHashes = referenceLocale
+    ? {
+        main: hashJson(referenceMain),
+        dynamic: hashJson(referenceDynamic),
+      }
+    : null;
+  const sourceHashes = {
+    baseline: baseline.hashes,
+    upstream: upstreamHashes,
+    reference: referenceHashes,
+  };
 
-  fs.rmSync(args.pendingDir, { recursive: true, force: true });
-  ensureDir(args.pendingDir);
+  if (pendingTotal === 0) {
+    fs.rmSync(localePendingDir, { recursive: true, force: true });
+    return {
+      locale,
+      baseLocale,
+      referenceLocale,
+      pendingDir: toRepoRelative(localePendingDir),
+      pendingCreated: false,
+      needsTranslation: false,
+      diffSummary: {
+        main: mainDiff.summary,
+        dynamic: dynamicDiff.summary,
+      },
+      sourceHashes: {
+        ...sourceHashes,
+      },
+    };
+  }
 
-  const mainDiffPath = path.join(args.pendingDir, 'main.diff.jsonl');
-  const dynamicDiffPath = path.join(args.pendingDir, 'dynamic.diff.jsonl');
-  writeJsonl(mainDiffPath, mainDiff.rows);
-  writeJsonl(dynamicDiffPath, dynamicDiff.rows);
+  const existingManifest = reusablePending(localePendingDir, {
+    locale,
+    sourceHashes,
+    diffSummary: {
+      main: mainDiff.summary,
+      dynamic: dynamicDiff.summary,
+    },
+    mainRows: mainDiff.rows,
+    dynamicRows: dynamicDiff.rows,
+  });
+  if (existingManifest) {
+    return {
+      locale,
+      baseLocale,
+      referenceLocale,
+      pendingDir: toRepoRelative(localePendingDir),
+      pendingCreated: true,
+      needsTranslation,
+      diffSummary: existingManifest.diffSummary,
+      sourceHashes: existingManifest.sourceHashes,
+      pendingFiles: existingManifest.pendingFiles,
+      reusedPending: true,
+    };
+  }
 
-  const manifestPath = path.join(args.pendingDir, 'manifest.json');
+  const tempDir = path.join(
+    pendingDir,
+    `.${locale}.tmp-${process.pid}-${Date.now()}`,
+  );
+  fs.rmSync(tempDir, { recursive: true, force: true });
+  fs.mkdirSync(tempDir, { recursive: true });
+  writeJsonl(path.join(tempDir, 'main.diff.jsonl'), mainDiff.rows);
+  writeJsonl(path.join(tempDir, 'dynamic.diff.jsonl'), dynamicDiff.rows);
+
   const manifest = {
-    schemaVersion: 1,
+    schemaVersion: 2,
     createdAt: new Date().toISOString(),
+    locale,
     baseLocale,
     referenceLocale,
     cachedLocales: locales,
-    successfulLocales: metadata.successfulLocales,
-    failedLocales: metadata.failedLocales,
-    warnings: metadata.warnings,
-    changedFiles: metadata.changedFiles,
+    successfulLocales: fetchMetadata.successfulLocales,
+    failedLocales: fetchMetadata.failedLocales,
+    warnings: fetchMetadata.warnings,
+    changedFiles: fetchMetadata.changedFiles,
     needsTranslation,
     source: {
-      main: {
-        base: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.json`)),
-        reference: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.json`)) : null,
-        en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.json`)),
-        ja: isJapaneseLocale(referenceLocale)
-          ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.json`))
-          : null,
+      baseline: {
+        main: toRepoRelative(baseline.paths.main),
+        dynamic: toRepoRelative(baseline.paths.dynamic),
+        metadata: toRepoRelative(baseline.paths.metadata),
       },
-      dynamic: {
-        base: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.dynamic.json`)),
-        reference: referenceLocale ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.dynamic.json`)) : null,
-        en: toRepoRelative(path.join(ROOT_DIR, '.original', `${baseLocale}.dynamic.json`)),
-        ja: isJapaneseLocale(referenceLocale)
-          ? toRepoRelative(path.join(ROOT_DIR, '.original', `${referenceLocale}.dynamic.json`))
-          : null,
+      upstream: {
+        main: toRepoRelative(upstreamMainPath),
+        dynamic: toRepoRelative(upstreamDynamicPath),
       },
+      reference: {
+        main: referenceMainPath ? toRepoRelative(referenceMainPath) : null,
+        dynamic: referenceDynamicPath ? toRepoRelative(referenceDynamicPath) : null,
+      },
+    },
+    sourceHashes,
+    output: {
+      main: `${locale}/${locale}.json`,
+      dynamic: `${locale}/${locale}.dynamic.json`,
     },
     pendingFiles: {
       manifest: toRepoRelative(manifestPath),
@@ -276,20 +396,26 @@ function main() {
       dynamic: dynamicDiff.summary,
     },
   };
+  writeJson(path.join(tempDir, 'manifest.json'), manifest);
+  fs.mkdirSync(pendingDir, { recursive: true });
+  replaceDirectory(tempDir, localePendingDir);
 
-  writeJson(manifestPath, manifest);
-
-  const summary = {
+  return {
+    locale,
     baseLocale,
     referenceLocale,
-    pendingDir: toRepoRelative(args.pendingDir),
+    pendingDir: toRepoRelative(localePendingDir),
     pendingCreated: true,
     needsTranslation,
     diffSummary: manifest.diffSummary,
+    sourceHashes: manifest.sourceHashes,
     pendingFiles: manifest.pendingFiles,
   };
-
-  console.log(JSON.stringify(summary, null, 2));
 }
 
-main();
+function main() {
+  const args = parseArgs(process.argv.slice(2));
+  process.stdout.write(`${JSON.stringify(buildLocaleDiff(args), null, 2)}\n`);
+}
+
+if (path.resolve(process.argv[1] ?? '') === fileURLToPath(import.meta.url)) main();
