@@ -4,17 +4,17 @@
   "baseLocale": "en-US",
   "status": "verified",
   "initializedAt": "2026-07-28T08:28:46.610Z",
-  "updatedAt": "2026-07-28T08:28:46.610Z",
+  "updatedAt": "2026-08-30T18:22:53.984Z",
   "files": {
     "main": {
       "path": "en-US.json",
-      "keyCount": 20570,
-      "sha256": "1c0c32669861f950632a9456a5b5074971e1d9e9dd05022a42c65b3ce967fc19"
+      "keyCount": 23630,
+      "sha256": "19ddac85547f777a58d2c3fc8249d0960d73edd6455597b728a24a8dadd08760"
     },
     "dynamic": {
       "path": "en-US.dynamic.json",
-      "keyCount": 50,
-      "sha256": "2ea68ce3d2d37de76433e92915eaac285a4dfb9087b45bef615bcc1cf72cf4c4"
+      "keyCount": 47,
+      "sha256": "2f9a8d19033df7a85f0e587840aa079a815cbea4429d558736a72b8053a6eec1"
     }
   }
 }
