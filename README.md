@@ -18,14 +18,15 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 ![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20Build)
 
 | Supported platforms | Supported languages |
-| ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#supported-languages) |
+| --- | --- |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://pectics.github.io/claude-i18n/badges/zh-HK.svg)](#supported-languages) |
 
 <!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
 | Simplified Chinese `zh-CN` | 24,433 | 72 | 24,505 |
-| Traditional Chinese `zh-TW` | 24,433 | 72 | 24,505 |
+| Traditional Chinese (Taiwan) `zh-TW` | 24,433 | 72 | 24,505 |
+| Traditional Chinese (Hong Kong) `zh-HK` | 24,433 | 72 | 24,505 |
 <!-- locale-stats:summary:end -->
 
 </div>
