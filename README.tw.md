@@ -18,8 +18,8 @@
 ![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20建置)
 
 | 支援平台 | 支援語言 |
-| ---: | :--- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://img.shields.io/badge/zh--HK-[WIP]-e5534b)](#支援的語言) |
+| --- | --- |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安裝) [![Edge](.github/badges/edge.svg)](#安裝) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安裝) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#支援的語言) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#支援的語言) [![zh-HK](https://pectics.github.io/claude-i18n/badges/zh-HK.svg)](#支援的語言) |
 
 <!-- locale-stats:summary:start -->
 | 目前語言包 | 主語言包 | Dynamic 語言包 | 合計 |
