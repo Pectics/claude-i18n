@@ -1,0 +1,13 @@
+{"file":"main","op":"add","index":689,"key":"/yedTrcm3j","beforeEn":null,"afterEn":"{count, plural, one {# memory} other {# memories}}","afterReference":"{count, plural, other {#件の記憶}}","afterJa":"{count, plural, other {#件の記憶}}"}
+{"file":"main","op":"add","index":3479,"key":"7P2jWm3E3d","beforeEn":null,"afterEn":"{hostname} · Server stopped","afterReference":"{hostname} · サーバー停止中","afterJa":"{hostname} · サーバー停止中"}
+{"file":"main","op":"add","index":5223,"key":"BwKlDVJAox","beforeEn":null,"afterEn":"{count, plural, one {# session} other {# sessions}} working","afterReference":"{count, plural, one {#件のセッションが進行中} other {#件のセッションが進行中}}","afterJa":"{count, plural, one {#件のセッションが進行中} other {#件のセッションが進行中}}"}
+{"file":"main","op":"add","index":6682,"key":"FojxRDQVQV","beforeEn":null,"afterEn":"{count, plural, one {# needs you} other {# need you}}","afterReference":"{count, plural, one {#件があなたの対応を待っています} other {#件があなたの対応を待っています}}","afterJa":"{count, plural, one {#件があなたの対応を待っています} other {#件があなたの対応を待っています}}"}
+{"file":"main","op":"add","index":9831,"key":"Nq7B8xV+zj","beforeEn":null,"afterEn":"{count, plural, one {# team memory} other {# team memories}}","afterReference":"{count, plural, other {#件のチームの記憶}}","afterJa":"{count, plural, other {#件のチームの記憶}}"}
+{"file":"main","op":"add","index":13871,"key":"YZJzyEQEIv","beforeEn":null,"afterEn":"Reply in this session…","afterReference":"このセッションで返信…","afterJa":"このセッションで返信…"}
+{"file":"main","op":"add","index":14752,"key":"apN7Hr1hNB","beforeEn":null,"afterEn":"Needs you","afterReference":"対応が必要です","afterJa":"対応が必要です"}
+{"file":"main","op":"add","index":17326,"key":"hWoBvZ2G5k","beforeEn":null,"afterEn":"{hostname} · Server running","afterReference":"{hostname} · サーバー稼働中","afterJa":"{hostname} · サーバー稼働中"}
+{"file":"main","op":"add","index":18002,"key":"jIrpaMjEu9","beforeEn":null,"afterEn":"Recap: {recap}","afterReference":"まとめ: {recap}","afterJa":"まとめ: {recap}"}
+{"file":"main","op":"add","index":18455,"key":"kUldmCfe6C","beforeEn":null,"afterEn":"Open session {title} ({state})","afterReference":"セッション{title}を開く（{state}）","afterJa":"セッション{title}を開く（{state}）"}
+{"file":"main","op":"add","index":19434,"key":"n3iuWTTlrN","beforeEn":null,"afterEn":"Saved {saved}","afterReference":"{saved}に保存済み","afterJa":"{saved}に保存済み"}
+{"file":"main","op":"add","index":21866,"key":"tGdFBEPp+l","beforeEn":null,"afterEn":"Sessions finished","afterReference":"完了したセッション","afterJa":"完了したセッション"}
+{"file":"main","op":"add","index":22423,"key":"udwPpX5agR","beforeEn":null,"afterEn":"All background agents stopped","afterReference":"すべてのバックグラウンドエージェントが停止しました","afterJa":"すべてのバックグラウンドエージェントが停止しました"}
