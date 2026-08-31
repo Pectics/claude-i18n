@@ -194,7 +194,7 @@ node scripts/create-full-locale/apply_translation.mjs --locale fr-FR
 ./build.sh
 ```
 
-On success it writes `<locale>/<locale>.json`, `<locale>/<locale>.dynamic.json`, and appends the locale to `locales.json`.
+On success it atomically writes `<locale>/<locale>.json`, `<locale>/<locale>.dynamic.json`, appends the locale to `locales.json`, and initializes the verified English snapshot under `.original/baselines/<locale>/`.
 
 
 ## Recent Changes

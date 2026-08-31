@@ -23,6 +23,7 @@ Stop before preparing chunks when any guard fails:
 - If the fetched upstream branch is ahead of `HEAD`, or the branches have diverged, stop before preparing chunks. Bring the working branch up to date using the repository's normal safe workflow, then rerun all guards. Do not silently merge or rebase unrelated local work.
 - If the user did not specify a target locale, ask for the exact BCP-47 language-region tag and the intended audience/use case.
 - If the target locale directory exists, or the target appears in `locales.json`, refuse because this workflow is only for new full locales.
+- If `.original/baselines/<TARGET_LOCALE>` already exists, stop instead of overwriting or reusing it; a new full locale and its verified baseline must be initialized together.
 - If the requested language is a joke, dead, constructed, private-use, or extremely niche language without a clear product audience, refuse or ask for a concrete application case first.
 - If `.original/upstream/<base>.json`, `.original/upstream/<base>.dynamic.json`, the reference files, or `<context>/<context>.json` and `<context>/<context>.dynamic.json` are missing, stop.
 - If `git status --short` shows unrelated local changes that could be mixed into the new-locale commit, stop and report them.
@@ -114,7 +115,7 @@ Worker pitfalls:
 
 - Keep chunks small enough for the chosen model to finish safely. For `gpt-5.4-mini`, do not assume 300+ row chunks are safe; if workers block or produce weak output, preserve the current work directory and re-prepare with smaller `--target-chars` / `--max-entries`.
 - Do not validate a worker output file while that worker is still running. A mid-write read can look like row-order corruption. Wait for the worker final response, then validate row count, order, `file`/`index`/`key`, and non-empty output fields.
-- If a completed chunk fails validation, discard only that chunk output and re-run that exact chunk. Do not rerun prepare to fix one bad output file.
+- If validation identifies isolated bad rows in an otherwise intact completed chunk, patch only those output rows and rerun the authoritative validator. Re-run the whole chunk with a fresh worker only when row count/order/identity is broken, failures are widespread, or a safe isolated correction is not possible. Never rerun prepare to fix completed output.
 
 ## Preset Subagent Prompt
 
@@ -191,12 +192,19 @@ After all output chunks exist, run:
 node scripts/create-full-locale/apply_translation.mjs --locale <TARGET_LOCALE>
 ```
 
-The apply script validates every chunk, writes the new target files, appends the locale to `locales.json`, and removes only `.pending/create-full-locale/<TARGET_LOCALE>`.
+The apply script validates every chunk, then atomically:
+
+- writes the new target files
+- appends the locale to `locales.json`
+- initializes `.original/baselines/<TARGET_LOCALE>/` from the exact base-source snapshot used by the manifest, including verified `metadata.json`
+
+Only after that transaction succeeds does it remove `.pending/create-full-locale/<TARGET_LOCALE>`. Never construct a baseline from translated target values; the baseline is the untranslated base-locale snapshot against which future upstream changes are diffed.
 
 Then run:
 
 ```bash
 ./build.sh
+node scripts/locale-update/migrate_baselines.mjs --check
 git status --short
 git diff --name-status
 ```
@@ -205,6 +213,9 @@ Expected tracked changes:
 
 - added `<TARGET_LOCALE>/<TARGET_LOCALE>.json`
 - added `<TARGET_LOCALE>/<TARGET_LOCALE>.dynamic.json`
+- added `.original/baselines/<TARGET_LOCALE>/<BASE_LOCALE>.json`
+- added `.original/baselines/<TARGET_LOCALE>/<BASE_LOCALE>.dynamic.json`
+- added `.original/baselines/<TARGET_LOCALE>/metadata.json`
 - modified `locales.json`
 - new workflow scripts or Skill files only when developing this skill
 
@@ -236,5 +247,6 @@ Report:
 - prepare/apply commands run
 - chunk counts translated
 - whether pending work was cleared
+- whether the verified baseline was created and passed `migrate_baselines.mjs --check`
 - files changed, staged, or committed
 - validation commands and results

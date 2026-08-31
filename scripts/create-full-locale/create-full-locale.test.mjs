@@ -94,10 +94,12 @@ test('prepare rejects malformed output field names', () => {
 test('prepare and apply create a full new locale and register it', () => {
   const locale = 'fr-FR';
   const targetDir = path.join(ROOT_DIR, locale);
+  const baselineDir = path.join(ROOT_DIR, '.original', 'baselines', locale);
   const pendingDir = path.join(ROOT_DIR, `.tmp-create-full-locale-test-${process.pid}`);
   const originalLocales = backupLocales();
 
   fs.rmSync(targetDir, { recursive: true, force: true });
+  fs.rmSync(baselineDir, { recursive: true, force: true });
   fs.rmSync(pendingDir, { recursive: true, force: true });
 
   try {
@@ -159,6 +161,8 @@ test('prepare and apply create a full new locale and register it', () => {
     const applyOutput = JSON.parse(runNode(APPLY_SCRIPT, ['--locale', locale, '--pending-dir', pendingDir]));
     assert.equal(applyOutput.locale, locale);
     assert.equal(applyOutput.outputField, 'translation');
+    assert.equal(applyOutput.baselineDir, `.original/baselines/${locale}`);
+    assert.equal(applyOutput.baselineStatus, 'verified');
     assert.equal(fs.existsSync(path.join(pendingDir, locale)), false);
 
     const sourceMain = readJson(path.join(ROOT_DIR, '.original', 'upstream', 'en-US.json'));
@@ -170,12 +174,24 @@ test('prepare and apply create a full new locale and register it', () => {
     assert.deepEqual(Object.keys(targetDynamic), Object.keys(sourceDynamic));
     assert.equal(targetMain[Object.keys(sourceMain)[0]], `${sourceMain[Object.keys(sourceMain)[0]]} [fr-FR]`);
 
+    const baselineMain = readJson(path.join(baselineDir, 'en-US.json'));
+    const baselineDynamic = readJson(path.join(baselineDir, 'en-US.dynamic.json'));
+    const baselineMetadata = readJson(path.join(baselineDir, 'metadata.json'));
+    assert.deepEqual(baselineMain, sourceMain);
+    assert.deepEqual(baselineDynamic, sourceDynamic);
+    assert.equal(baselineMetadata.locale, locale);
+    assert.equal(baselineMetadata.baseLocale, 'en-US');
+    assert.equal(baselineMetadata.status, 'verified');
+    assert.equal(baselineMetadata.files.main.keyCount, Object.keys(sourceMain).length);
+    assert.equal(baselineMetadata.files.dynamic.keyCount, Object.keys(sourceDynamic).length);
+
     const locales = readJson(LOCALES_PATH);
     assert.ok(locales.locales.includes(locale));
     assert.deepEqual(locales.testMetadata, { preserved: true });
   } finally {
     restoreLocales(originalLocales);
     fs.rmSync(targetDir, { recursive: true, force: true });
+    fs.rmSync(baselineDir, { recursive: true, force: true });
     fs.rmSync(pendingDir, { recursive: true, force: true });
   }
 });

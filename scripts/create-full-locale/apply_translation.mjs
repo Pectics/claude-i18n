@@ -3,7 +3,6 @@ import path from 'path';
 import { fileURLToPath } from 'url';
 import {
   compareMessageStructure,
-  ensureDir,
   hasKana,
   hasObviousUntranslatedEnglish,
   readJson,
@@ -11,8 +10,12 @@ import {
   readLocaleObject,
   shouldCheckObviousUntranslatedEnglish,
   shouldRejectJapaneseKana,
-  writeJson,
 } from './shared.mjs';
+import { commitFileTransaction, serializeJson } from '../locale-update/shared.mjs';
+import {
+  baselineTransactionEntries,
+  createVerifiedMetadata,
+} from '../locale-update/baselines.mjs';
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url));
 const ROOT_DIR = path.resolve(__dirname, '..', '..');
@@ -162,9 +165,13 @@ function readLocalesJson() {
   return { localesPath, data };
 }
 
-function writeLocalesJson(localesPath, data) {
+function serializeLocalesJson(data) {
   const version = typeof data.version === 'string' ? data.version : '0000000';
-  writeJson(localesPath, { ...data, version });
+  return serializeJson({ ...data, version });
+}
+
+function baselineDirFor(locale) {
+  return path.join(ROOT_DIR, '.original', 'baselines', locale);
 }
 
 function assertTargetCanBeWritten(locale, manifest) {
@@ -174,6 +181,11 @@ function assertTargetCanBeWritten(locale, manifest) {
 
   if (fs.existsSync(targetDir) || fs.existsSync(outputMainPath) || fs.existsSync(outputDynamicPath)) {
     throw new Error(`Target locale already exists at ${targetDir}`);
+  }
+
+  const baselineDir = baselineDirFor(locale);
+  if (fs.existsSync(baselineDir)) {
+    throw new Error(`Target locale baseline already exists at ${baselineDir}`);
   }
 
   const { data } = readLocalesJson();
@@ -206,15 +218,30 @@ function main() {
 
   const outputMainPath = resolveRepoPath(manifest.output.main);
   const outputDynamicPath = resolveRepoPath(manifest.output.dynamic);
-  ensureDir(path.dirname(outputMainPath));
-  writeJson(outputMainPath, nextMainData);
-  writeJson(outputDynamicPath, nextDynamicData);
-
   const { localesPath, data: localesData } = readLocalesJson();
   if (!localesData.locales.includes(args.locale)) {
     localesData.locales.push(args.locale);
   }
-  writeLocalesJson(localesPath, localesData);
+
+  const baselineDir = baselineDirFor(args.locale);
+  const baselineMetadata = createVerifiedMetadata({
+    locale: args.locale,
+    baseLocale: manifest.baseLocale,
+    mainData: baseMainData,
+    dynamicData: baseDynamicData,
+  });
+  commitFileTransaction([
+    { filePath: outputMainPath, content: serializeJson(nextMainData) },
+    { filePath: outputDynamicPath, content: serializeJson(nextDynamicData) },
+    { filePath: localesPath, content: serializeLocalesJson(localesData) },
+    ...baselineTransactionEntries({
+      baselineDir,
+      baseLocale: manifest.baseLocale,
+      mainData: baseMainData,
+      dynamicData: baseDynamicData,
+      metadata: baselineMetadata,
+    }),
+  ]);
 
   const workDir = workDirFor(args.pendingDir, args.locale);
   fs.rmSync(workDir, { recursive: true, force: true });
@@ -230,6 +257,8 @@ function main() {
         main: Object.keys(nextMainData).length,
         dynamic: Object.keys(nextDynamicData).length,
         registeredLocale: true,
+        baselineDir: toRepoRelative(baselineDir),
+        baselineStatus: baselineMetadata.status,
         clearedWorkDir: toRepoRelative(workDir),
       },
       null,
