@@ -7,7 +7,7 @@ description: Use when the maintainer wants to create a brand-new full target loc
 
 ## Core Boundary
 
-Use this skill only for full creation of a new root locale directory such as `fr-FR/fr-FR.json` and `fr-FR/fr-FR.dynamic.json`. This is not the `bot/locale-update` diff workflow; do not use `.pending/locale-update`, `scripts/locale-update/*`, upstream fetches, online translators, browser translation, web search, or generated `dist/` files as translation sources.
+Use this skill only for full creation of a new root locale directory such as `fr-FR/fr-FR.json` and `fr-FR/fr-FR.dynamic.json`. This is not the `bot/locale-update` diff workflow; do not use `.pending/locale-update`, `scripts/locale-update/*`, locale-upstream fetches, online translators, browser translation, web search, or generated `dist/` files as translation sources. The repository Git fetch required by the remote freshness guard below is metadata synchronization, not a translation source.
 
 The local scripts for this workflow are:
 
@@ -19,6 +19,8 @@ The local scripts for this workflow are:
 
 Stop before preparing chunks when any guard fails:
 
+- Before inspecting locale inputs or running prepare, fetch the configured Git tracking remote and compare the current `HEAD` with its upstream branch. If no upstream branch is configured, stop and report it.
+- If the fetched upstream branch is ahead of `HEAD`, or the branches have diverged, stop before preparing chunks. Bring the working branch up to date using the repository's normal safe workflow, then rerun all guards. Do not silently merge or rebase unrelated local work.
 - If the user did not specify a target locale, ask for the exact BCP-47 language-region tag and the intended audience/use case.
 - If the target locale directory exists, or the target appears in `locales.json`, refuse because this workflow is only for new full locales.
 - If the requested language is a joke, dead, constructed, private-use, or extremely niche language without a clear product audience, refuse or ask for a concrete application case first.
@@ -31,6 +33,17 @@ Default locales:
 - base source: `en-US`
 - reference: `ja-JP`
 - context: `zh-CN`
+
+Remote freshness check:
+
+```bash
+upstream_ref="$(git rev-parse --abbrev-ref --symbolic-full-name '@{upstream}')"
+remote_name="${upstream_ref%%/*}"
+git fetch --prune "$remote_name"
+git rev-list --left-right --count HEAD..."$upstream_ref"
+```
+
+Interpret the counts as `<local-only> <remote-only>`. A nonzero remote-only count means the inputs may be stale and prepare must not run. A nonzero count on both sides means the branches have diverged and also blocks prepare.
 
 ## Prepare
 
