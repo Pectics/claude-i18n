@@ -1,0 +1,20 @@
+{
+  "schemaVersion": 1,
+  "locale": "zh-HK",
+  "baseLocale": "en-US",
+  "status": "verified",
+  "initializedAt": "2026-08-31T07:14:22.126Z",
+  "updatedAt": "2026-08-31T07:14:22.126Z",
+  "files": {
+    "main": {
+      "path": "en-US.json",
+      "keyCount": 24433,
+      "sha256": "2e19724be031700e3b57b4c4f58390db3b6591941308c07468c013ec8d1ef060"
+    },
+    "dynamic": {
+      "path": "en-US.dynamic.json",
+      "keyCount": 72,
+      "sha256": "c7123a8e9008724858c4236db2c700254fe39d79c1b026bf6863858fbea3a2b2"
+    }
+  }
+}
