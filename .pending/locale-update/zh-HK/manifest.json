@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "createdAt": "2026-09-06T03:28:02.100Z",
+  "locale": "zh-HK",
+  "baseLocale": "en-US",
+  "referenceLocale": "ja-JP",
+  "cachedLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "successfulLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "failedLocales": [],
+  "warnings": [],
+  "changedFiles": [
+    ".original/upstream/en-US.json",
+    ".original/upstream/ja-JP.json"
+  ],
+  "needsTranslation": true,
+  "source": {
+    "baseline": {
+      "main": ".original/baselines/zh-HK/en-US.json",
+      "dynamic": ".original/baselines/zh-HK/en-US.dynamic.json",
+      "metadata": ".original/baselines/zh-HK/metadata.json"
+    },
+    "upstream": {
+      "main": ".original/upstream/en-US.json",
+      "dynamic": ".original/upstream/en-US.dynamic.json"
+    },
+    "reference": {
+      "main": ".original/upstream/ja-JP.json",
+      "dynamic": ".original/upstream/ja-JP.dynamic.json"
+    }
+  },
+  "sourceHashes": {
+    "baseline": {
+      "main": "2e19724be031700e3b57b4c4f58390db3b6591941308c07468c013ec8d1ef060",
+      "dynamic": "c7123a8e9008724858c4236db2c700254fe39d79c1b026bf6863858fbea3a2b2"
+    },
+    "upstream": {
+      "main": "a5d611e056792c8ff932b71057efd84cef14933d90d02fd231aea5d765944833",
+      "dynamic": "3e47a327822167240a0699f371a29216abcc46a16c5ad0aaac9301eb3c22ba17"
+    },
+    "reference": {
+      "main": "9713cdc20e98a303e4ff1812207d2b215803505203b408b5539ea2c914fccfa9",
+      "dynamic": "bcaeac38d252558d6406ebd4e998dbcad85a03627204d989fc8fc8697a2f59bf"
+    }
+  },
+  "output": {
+    "main": "zh-HK/zh-HK.json",
+    "dynamic": "zh-HK/zh-HK.dynamic.json"
+  },
+  "pendingFiles": {
+    "manifest": ".pending/locale-update/zh-HK/manifest.json",
+    "mainDiff": ".pending/locale-update/zh-HK/main.diff.jsonl",
+    "dynamicDiff": ".pending/locale-update/zh-HK/dynamic.diff.jsonl"
+  },
+  "diffSummary": {
+    "main": {
+      "add": 2958,
+      "update": 4,
+      "remove": 869,
+      "total": 3831
+    },
+    "dynamic": {
+      "add": 7,
+      "update": 0,
+      "remove": 0,
+      "total": 7
+    }
+  }
+}
