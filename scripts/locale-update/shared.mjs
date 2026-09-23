@@ -224,7 +224,7 @@ export function extractBacktickSegments(text) {
 }
 
 export function extractUrls(text) {
-  return (text.match(/https?:\/\/[^\s<>()"'`，。！？；：、“”‘’「」『』《》]+/gu) || []).map((url) =>
+  return (text.match(/https?:\/\/[^\s<>()"'`，。！？；：、“”‘’「」『』《》]*/gu) || []).map((url) =>
     url.replace(/[.,!?;:)\]}>"'`。，！？；：）】｝〉》」』]+$/gu, ''),
   );
 }
