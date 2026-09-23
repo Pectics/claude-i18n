@@ -39,7 +39,7 @@ test('ignore script deploys preview branches with earlier deploy-relevant change
     git(['commit', '-m', 'base'], repoRoot);
 
     git(['switch', '-c', 'feature'], repoRoot);
-    writeFile(path.join(repoRoot, 'locales.json'), '{"locales":["zh-CN"]}\n');
+    writeFile(path.join(repoRoot, 'locales.json'), '{"locales":["zh-Hans"]}\n');
     git(['add', 'locales.json'], repoRoot);
     git(['commit', '-m', 'change deploy file'], repoRoot);
     writeFile(path.join(repoRoot, 'README.md'), 'base\nnotes\n');
@@ -107,16 +107,16 @@ test('ignore script deploys production builds for every configured locale direct
     git(['config', 'user.email', 'test@example.com'], repoRoot);
     git(['config', 'user.name', 'Test User'], repoRoot);
     copyIgnoreScript(repoRoot);
-    writeFile(path.join(repoRoot, 'locales.json'), '{"locales":["zh-CN","zh-TW"]}\n');
-    writeFile(path.join(repoRoot, 'zh-CN', 'zh-CN.json'), '{"hello":"\u4f60\u597d"}\n');
-    writeFile(path.join(repoRoot, 'zh-TW', 'zh-TW.json'), '{"hello":"\u4f60\u597d"}\n');
+    writeFile(path.join(repoRoot, 'locales.json'), '{"locales":["zh-Hans","zh-Hant"]}\n');
+    writeFile(path.join(repoRoot, 'zh-Hans', 'zh-Hans.json'), '{"hello":"\u4f60\u597d"}\n');
+    writeFile(path.join(repoRoot, 'zh-Hant', 'zh-Hant.json'), '{"hello":"\u4f60\u597d"}\n');
     git(['add', '.'], repoRoot);
     git(['commit', '-m', 'base'], repoRoot);
 
     const baseSha = git(['rev-parse', 'HEAD'], repoRoot).trim();
-    writeFile(path.join(repoRoot, 'zh-TW', 'zh-TW.json'), '{"hello":"\u60a8\u597d"}\n');
-    git(['add', 'zh-TW/zh-TW.json'], repoRoot);
-    git(['commit', '-m', 'update zh-TW only'], repoRoot);
+    writeFile(path.join(repoRoot, 'zh-Hant', 'zh-Hant.json'), '{"hello":"\u60a8\u597d"}\n');
+    git(['add', 'zh-Hant/zh-Hant.json'], repoRoot);
+    git(['commit', '-m', 'update zh-Hant only'], repoRoot);
 
     const result = spawnSync('bash', ['./ignore.sh'], {
       cwd: repoRoot,
@@ -131,7 +131,7 @@ test('ignore script deploys production builds for every configured locale direct
     });
 
     assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
-    assert.match(result.stdout, /zh-TW\/zh-TW\.json/);
+    assert.match(result.stdout, /zh-Hant\/zh-Hant\.json/);
   } finally {
     fs.rmSync(repoRoot, { recursive: true, force: true });
   }

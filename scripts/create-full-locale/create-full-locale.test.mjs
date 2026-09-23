@@ -63,7 +63,7 @@ test('prepare rejects non-canonical target locale tags', () => {
 });
 
 test('prepare rejects an existing root target locale', () => {
-  assertFails(PREPARE_SCRIPT, ['--locale', 'zh-CN'], /already exists/);
+  assertFails(PREPARE_SCRIPT, ['--locale', 'zh-Hans'], /already exists/);
 });
 
 test('prepare rejects a target locale already listed in locales.json', () => {
@@ -122,7 +122,7 @@ test('prepare and apply create a full new locale and register it', () => {
     assert.equal(manifest.outputField, 'translation');
     assert.equal(manifest.baseLocale, 'en-US');
     assert.equal(manifest.referenceLocale, 'ja-JP');
-    assert.equal(manifest.contextLocale, 'zh-CN');
+    assert.equal(manifest.contextLocale, 'zh-Hans');
     assert.ok(manifest.chunks.main.length > 0);
     assert.ok(manifest.chunks.dynamic.length > 0);
 

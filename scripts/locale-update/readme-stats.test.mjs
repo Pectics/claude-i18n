@@ -21,15 +21,15 @@ function readmeFixture(language) {
 <!-- locale-stats:summary:start -->
 | Pack | Main | Dynamic | Total |
 | --- | ---: | ---: | ---: |
-| ${labels[0]} \`zh-CN\` | 999 | 999 | 999 |
-| ${labels[1]} \`zh-TW\` | 999 | 999 | 999 |
+| ${labels[0]} \`zh-Hans\` | 999 | 999 | 999 |
+| ${labels[1]} \`zh-Hant\` | 999 | 999 | 999 |
 <!-- locale-stats:summary:end -->
 middle
 <!-- locale-stats:supported:start -->
 | Language | Locale | Main | Dynamic | Status |
 | --- | --- | ---: | ---: | --- |
-| ${labels[0]} | \`zh-CN\` | 999 | 999 | ${labels[2]} |
-| ${labels[1]} | \`zh-TW\` | 999 | 999 | ${labels[2]} |
+| ${labels[0]} | \`zh-Hans\` | 999 | 999 | ${labels[2]} |
+| ${labels[1]} | \`zh-Hant\` | 999 | 999 | ${labels[2]} |
 <!-- locale-stats:supported:end -->
 outro
 `;
@@ -37,11 +37,11 @@ outro
 
 function createFixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'readme-stats-'));
-  writeJson(path.join(root, 'locales.json'), { locales: ['zh-CN', 'zh-TW'] });
-  writeJson(path.join(root, 'zh-CN', 'zh-CN.json'), { a: 1, b: 2, c: 3 });
-  writeJson(path.join(root, 'zh-CN', 'zh-CN.dynamic.json'), { d: 1 });
-  writeJson(path.join(root, 'zh-TW', 'zh-TW.json'), { a: 1 });
-  writeJson(path.join(root, 'zh-TW', 'zh-TW.dynamic.json'), { d: 1, e: 2 });
+  writeJson(path.join(root, 'locales.json'), { locales: ['zh-Hans', 'zh-Hant'] });
+  writeJson(path.join(root, 'zh-Hans', 'zh-Hans.json'), { a: 1, b: 2, c: 3 });
+  writeJson(path.join(root, 'zh-Hans', 'zh-Hans.dynamic.json'), { d: 1 });
+  writeJson(path.join(root, 'zh-Hant', 'zh-Hant.json'), { a: 1 });
+  writeJson(path.join(root, 'zh-Hant', 'zh-Hant.dynamic.json'), { d: 1, e: 2 });
   fs.writeFileSync(path.join(root, 'README.md'), readmeFixture('en'), 'utf8');
   fs.writeFileSync(path.join(root, 'README.zh.md'), readmeFixture('zh'), 'utf8');
   fs.writeFileSync(path.join(root, 'README.tw.md'), readmeFixture('tw'), 'utf8');
@@ -56,16 +56,16 @@ test('updates both locale tables in all localized READMEs while preserving their
     const result = updateReadmeStats(root);
     assert.deepEqual(result.changedFiles, ['README.md', 'README.zh.md', 'README.tw.md']);
     assert.deepEqual(result.statistics, {
-      'zh-CN': { main: 3, dynamic: 1, total: 4 },
-      'zh-TW': { main: 1, dynamic: 2, total: 3 },
+      'zh-Hans': { main: 3, dynamic: 1, total: 4 },
+      'zh-Hant': { main: 1, dynamic: 2, total: 3 },
     });
 
     for (const readme of ['README.md', 'README.zh.md', 'README.tw.md']) {
       const text = fs.readFileSync(path.join(root, readme), 'utf8');
-      assert.match(text, /`zh-CN` \| 3 \| 1 \| 4 \|/);
-      assert.match(text, /`zh-TW` \| 1 \| 2 \| 3 \|/);
-      assert.match(text, /`zh-CN` \| 3 \| 1 \|/);
-      assert.match(text, /`zh-TW` \| 1 \| 2 \|/);
+      assert.match(text, /`zh-Hans` \| 3 \| 1 \| 4 \|/);
+      assert.match(text, /`zh-Hant` \| 1 \| 2 \| 3 \|/);
+      assert.match(text, /`zh-Hans` \| 3 \| 1 \|/);
+      assert.match(text, /`zh-Hant` \| 1 \| 2 \|/);
     }
     assert.match(fs.readFileSync(path.join(root, 'README.zh.md'), 'utf8'), /简体中文/);
     assert.match(fs.readFileSync(path.join(root, 'README.tw.md'), 'utf8'), /繁體中文/);
@@ -81,12 +81,12 @@ test('formats large key counts with stable thousands separators', () => {
   const root = createFixture();
   try {
     writeJson(
-      path.join(root, 'zh-CN', 'zh-CN.json'),
+      path.join(root, 'zh-Hans', 'zh-Hans.json'),
       Object.fromEntries(Array.from({ length: 1234 }, (_, index) => [`key${index}`, index])),
     );
     updateReadmeStats(root);
     const text = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
-    assert.match(text, /`zh-CN` \| 1,234 \| 1 \| 1,235 \|/);
+    assert.match(text, /`zh-Hans` \| 1,234 \| 1 \| 1,235 \|/);
   } finally {
     fs.rmSync(root, { recursive: true, force: true });
   }
@@ -94,9 +94,9 @@ test('formats large key counts with stable thousands separators', () => {
 
 test('rejects missing, malformed, or non-object locale JSON', () => {
   for (const mutate of [
-    (root) => fs.rmSync(path.join(root, 'zh-CN', 'zh-CN.dynamic.json')),
-    (root) => fs.writeFileSync(path.join(root, 'zh-CN', 'zh-CN.json'), '{invalid', 'utf8'),
-    (root) => writeJson(path.join(root, 'zh-CN', 'zh-CN.json'), []),
+    (root) => fs.rmSync(path.join(root, 'zh-Hans', 'zh-Hans.dynamic.json')),
+    (root) => fs.writeFileSync(path.join(root, 'zh-Hans', 'zh-Hans.json'), '{invalid', 'utf8'),
+    (root) => writeJson(path.join(root, 'zh-Hans', 'zh-Hans.json'), []),
   ]) {
     const root = createFixture();
     try {
@@ -123,9 +123,9 @@ test('rejects damaged markers and locale rows that do not match manifest order',
     const wrongOrderPath = path.join(wrongOrderRoot, 'README.md');
     const wrongOrder = fs
       .readFileSync(wrongOrderPath, 'utf8')
-      .replace('`zh-CN` | 999 | 999 | 999', '`swap` | 999 | 999 | 999')
-      .replace('`zh-TW` | 999 | 999 | 999', '`zh-CN` | 999 | 999 | 999')
-      .replace('`swap` | 999 | 999 | 999', '`zh-TW` | 999 | 999 | 999');
+      .replace('`zh-Hans` | 999 | 999 | 999', '`swap` | 999 | 999 | 999')
+      .replace('`zh-Hant` | 999 | 999 | 999', '`zh-Hans` | 999 | 999 | 999')
+      .replace('`swap` | 999 | 999 | 999', '`zh-Hant` | 999 | 999 | 999');
     fs.writeFileSync(wrongOrderPath, wrongOrder, 'utf8');
     assert.throws(() => updateReadmeStats(wrongOrderRoot), /does not match locales\.json/);
   } finally {

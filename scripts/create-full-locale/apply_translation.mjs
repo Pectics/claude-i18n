@@ -47,8 +47,8 @@ function parseArgs(argv) {
   }
 
   if (!args.locale) usage();
-  if (!/^[a-z]{2,3}-[A-Z]{2}$/.test(args.locale)) {
-    throw new Error(`Invalid target locale: ${args.locale}. Use canonical language-region tags like fr-FR.`);
+  if (!/^[a-z]{2,3}-(?:[A-Z]{2}|[A-Z][a-z]{3})$/.test(args.locale)) {
+    throw new Error(`Invalid target locale: ${args.locale}. Use canonical language-region or language-script tags like fr-FR or zh-Hans.`);
   }
   return args;
 }

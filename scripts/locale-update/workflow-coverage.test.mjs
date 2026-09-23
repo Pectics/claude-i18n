@@ -41,8 +41,8 @@ test('locale update reuses only an open bot PR and safely replaces a stale remot
 test('all README coverage badges use Pages after cutover', () => {
   for (const readme of ['README.md', 'README.zh.md', 'README.tw.md']) {
     const text = fs.readFileSync(path.join(ROOT_DIR, readme), 'utf8');
-    assert.match(text, /https:\/\/pectics\.github\.io\/claude-i18n\/badges\/zh-CN\.svg/);
-    assert.match(text, /https:\/\/pectics\.github\.io\/claude-i18n\/badges\/zh-TW\.svg/);
+    assert.match(text, /https:\/\/pectics\.github\.io\/claude-i18n\/badges\/zh-Hans\.svg/);
+    assert.match(text, /https:\/\/pectics\.github\.io\/claude-i18n\/badges\/zh-Hant\.svg/);
     assert.doesNotMatch(text, /bot\/coverage-data/);
   }
 });

@@ -19,14 +19,13 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 | Supported platforms | Supported languages |
 | --- | --- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#supported-languages) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#supported-languages) [![zh-HK](https://pectics.github.io/claude-i18n/badges/zh-HK.svg)](#supported-languages) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#installation) [![Edge](.github/badges/edge.svg)](#installation) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#installation) | [![zh-Hans](https://pectics.github.io/claude-i18n/badges/zh-Hans.svg)](#supported-languages) [![zh-Hant](https://pectics.github.io/claude-i18n/badges/zh-Hant.svg)](#supported-languages) |
 
 <!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
-| Simplified Chinese `zh-CN` | 24,433 | 72 | 24,505 |
-| Traditional Chinese (Taiwan) `zh-TW` | 24,433 | 72 | 24,505 |
-| Traditional Chinese (Hong Kong) `zh-HK` | 24,433 | 72 | 24,505 |
+| Simplified Chinese `zh-Hans` | 31,371 | 47 | 31,418 |
+| Traditional Chinese `zh-Hant` | 31,371 | 47 | 31,418 |
 <!-- locale-stats:summary:end -->
 
 </div>
@@ -55,7 +54,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 | Firefox Desktop or macOS Safari | Experimental userscript | [userscript/README.md](userscript/README.md) |
 | Manual install or archival package | `.crx` from Releases | [Releases](https://github.com/Pectics/claude-i18n/releases) |
 
-After installation, open [Claude.ai](https://claude.ai), go to the language setting from the bottom-left account menu, and select the Chinese option for `zh-CN` or `zh-TW`.
+After installation, open [Claude.ai](https://claude.ai), go to the language setting from the bottom-left account menu, and select the Chinese option for `zh-Hans` or `zh-Hant`.
 
 ### Store Build
 
@@ -103,7 +102,7 @@ Claude.ai already has a locale-loading pipeline; it just only accepts official l
 
 1. `hook.js` is injected into the page's main world at `document_start`, before Claude.ai finishes wiring its locale state.
 2. When Claude.ai builds the official locale array, the extension appends extra locales from the remote `locales.json`.
-3. When same-origin app requests carry `locale=zh-CN` or `locale=zh-TW`, the transport locale falls back to `en-US`, while the browser remembers the user's selected extension locale.
+3. When same-origin app requests carry `locale=zh-Hans` or `locale=zh-Hant`, the transport locale falls back to `en-US`, while the browser remembers the user's selected extension locale.
 4. When the page requests `/i18n/*.json` or `/i18n/dynamic/*.json`, the extension backend returns the matching locale pack.
 5. Same-origin JSON responses with top-level `locale` or `gated_messages.locale` are restored in the browser to the user's selected extension locale.
 
@@ -114,7 +113,7 @@ Claude.ai already has a locale-loading pipeline; it just only accepts official l
 | `extension/hook.js` | Main-world page hook for locale-list injection, request rewriting, response restoration, and i18n interception. |
 | `extension/script.js` | Message bridge between the page and the extension background worker. |
 | `extension/service.js` | Background worker that reads the remote manifest, downloads locale packs, and maintains cache state. |
-| `locales.json` | Hosted locale manifest, currently listing `zh-CN` and `zh-TW`. |
+| `locales.json` | Hosted locale manifest, currently listing `zh-Hans` and `zh-Hant`. |
 | `<locale>/<locale>.json` | Main UI locale pack. |
 | `<locale>/<locale>.dynamic.json` | Dynamic / `gated_messages` locale pack. |
 
@@ -133,8 +132,8 @@ Counts come from the locale files currently in this repository.
 <!-- locale-stats:supported:start -->
 | Language | Locale | Main pack | Dynamic pack | Status |
 | --- | --- | ---: | ---: | --- |
-| Simplified Chinese | `zh-CN` | 24,433 | 72 | Available |
-| Traditional Chinese | `zh-TW` | 24,433 | 72 | Available |
+| Simplified Chinese | `zh-Hans` | 31,371 | 47 | Available |
+| Traditional Chinese | `zh-Hant` | 31,371 | 47 | Available |
 <!-- locale-stats:supported:end -->
 
 Additional locales are welcome when they have a real product audience. Use the full-locale creation flow below instead of copying directories by hand.
@@ -146,8 +145,8 @@ Additional locales are welcome when they have a real product audience. Use the f
 
 Edit the locale files directly:
 
-- Main UI copy: `zh-CN/zh-CN.json`, `zh-TW/zh-TW.json`
-- Dynamic copy: `zh-CN/zh-CN.dynamic.json`, `zh-TW/zh-TW.dynamic.json`
+- Main UI copy: `zh-Hans/zh-Hans.json`, `zh-Hant/zh-Hant.json`
+- Dynamic copy: `zh-Hans/zh-Hans.dynamic.json`, `zh-Hant/zh-Hant.dynamic.json`
 - Latest English source: `.original/upstream/en-US.json`, `.original/upstream/en-US.dynamic.json`
 
 Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans, and backticks. The wording can be more natural; the structure must remain compatible.
@@ -164,7 +163,7 @@ Maintainers usually apply the update like this:
 
 ```bash
 # 1. Generate translation chunks for the target locale
-node scripts/locale-update/prepare_translation.mjs --locale zh-CN
+node scripts/locale-update/prepare_translation.mjs --locale zh-Hans
 
 # 2. Translate JSONL chunks under .pending/locale-update/<locale>/translation/chunks/
 #    Write outputs to the manifest-provided out/ paths
@@ -173,7 +172,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 #      Codex:       /apply-locale-update
 
 # 3. Validate and apply translations
-node scripts/locale-update/apply_translation.mjs --locale zh-CN
+node scripts/locale-update/apply_translation.mjs --locale zh-Hans
 ```
 
 `apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, source hashes, and obvious untranslated content. On success it rebuilds the target locale packs, atomically advances that locale's English baseline, updates the locale statistics in all three READMEs, and clears only `.pending/locale-update/<locale>`.
@@ -186,7 +185,7 @@ For a brand-new locale, generate a full translation task first:
 node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
 ```
 
-The script reads `.original/upstream/en-US*.json`, can use `.original/upstream/ja-JP*.json` and existing `zh-CN` as context, and writes chunked work under `.pending/create-full-locale/<locale>/`.
+The script reads `.original/upstream/en-US*.json`, can use `.original/upstream/ja-JP*.json` and existing `zh-Hans` as context, and writes chunked work under `.pending/create-full-locale/<locale>/`.
 
 After translating the chunks, run:
 

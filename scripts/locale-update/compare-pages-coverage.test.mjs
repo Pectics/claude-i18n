@@ -33,8 +33,8 @@ async function withServer(routes, callback) {
 function createArtifact() {
   const artifactDir = fs.mkdtempSync(path.join(os.tmpdir(), 'pages-coverage-'));
   const coverage = {
-    'zh-CN': { covered: 9, total: 10, ratio: 0.9 },
-    'zh-TW': { covered: 8, total: 10, ratio: 0.8 },
+    'zh-Hans': { covered: 9, total: 10, ratio: 0.9 },
+    'zh-Hant': { covered: 8, total: 10, ratio: 0.8 },
   };
   writeJson(path.join(artifactDir, 'coverage.json'), coverage);
   return { artifactDir, coverage };
@@ -46,8 +46,8 @@ test('skips deployment only when coverage and every badge are healthy', async ()
     await withServer(
       {
         '/coverage.json': { type: 'application/json', body: JSON.stringify(coverage) },
-        '/badges/zh-CN.svg': { type: 'image/svg+xml', body: '<svg>CN</svg>' },
-        '/badges/zh-TW.svg': { type: 'image/svg+xml', body: '<svg>TW</svg>' },
+        '/badges/zh-Hans.svg': { type: 'image/svg+xml', body: '<svg>CN</svg>' },
+        '/badges/zh-Hant.svg': { type: 'image/svg+xml', body: '<svg>TW</svg>' },
       },
       async (baseUrl) => {
         assert.deepEqual(await comparePagesCoverage({ artifactDir, baseUrl }), {
@@ -68,17 +68,17 @@ test('requests deployment for changed coverage, missing badges, and invalid SVG'
       {
         '/coverage.json': {
           type: 'application/json',
-          body: JSON.stringify({ ...coverage, 'zh-CN': { covered: 10, total: 10, ratio: 1 } }),
+          body: JSON.stringify({ ...coverage, 'zh-Hans': { covered: 10, total: 10, ratio: 1 } }),
         },
       },
       {
         '/coverage.json': { type: 'application/json', body: JSON.stringify(coverage) },
-        '/badges/zh-CN.svg': { body: '<svg>CN</svg>' },
+        '/badges/zh-Hans.svg': { body: '<svg>CN</svg>' },
       },
       {
         '/coverage.json': { type: 'application/json', body: JSON.stringify(coverage) },
-        '/badges/zh-CN.svg': { body: '<html>bad</html>' },
-        '/badges/zh-TW.svg': { body: '<svg>TW</svg>' },
+        '/badges/zh-Hans.svg': { body: '<html>bad</html>' },
+        '/badges/zh-Hant.svg': { body: '<svg>TW</svg>' },
       },
     ]) {
       await withServer(routes, async (baseUrl) => {

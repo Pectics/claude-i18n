@@ -8,7 +8,7 @@ const ROOT_DIR = path.resolve(__dirname, '..', '..');
 const DEFAULT_PENDING_DIR = path.join(ROOT_DIR, '.pending', 'create-full-locale');
 const DEFAULT_BASE_LOCALE = 'en-US';
 const DEFAULT_REFERENCE_LOCALE = 'ja-JP';
-const DEFAULT_CONTEXT_LOCALE = 'zh-CN';
+const DEFAULT_CONTEXT_LOCALE = 'zh-Hans';
 const DEFAULT_TARGET_CHARS = 12000;
 const DEFAULT_MAX_ENTRIES = 300;
 const DEFAULT_MIN_ENTRIES = 50;
@@ -26,7 +26,7 @@ const RESERVED_OUTPUT_FIELDS = new Set([
 
 function usage() {
   throw new Error(
-    'Usage: node prepare_translation.mjs --locale <locale> [--base-locale en-US] [--reference-locale ja-JP|none] [--context-locale zh-CN] [--pending-dir <path>] [--output-field translation] [--target-chars <n>] [--max-entries <n>] [--min-entries <n>]',
+    'Usage: node prepare_translation.mjs --locale <locale> [--base-locale en-US] [--reference-locale ja-JP|none] [--context-locale zh-Hans] [--pending-dir <path>] [--output-field translation] [--target-chars <n>] [--max-entries <n>] [--min-entries <n>]',
   );
 }
 
@@ -97,8 +97,8 @@ function validatePositiveInteger(value, label) {
 }
 
 function validateLocaleTag(locale, role) {
-  if (!/^[a-z]{2,3}-[A-Z]{2}$/.test(locale)) {
-    throw new Error(`Invalid ${role} locale: ${locale}. Use canonical language-region tags like fr-FR.`);
+  if (!/^[a-z]{2,3}-(?:[A-Z]{2}|[A-Z][a-z]{3})$/.test(locale)) {
+    throw new Error(`Invalid ${role} locale: ${locale}. Use canonical language-region or language-script tags like fr-FR or zh-Hans.`);
   }
 }
 
