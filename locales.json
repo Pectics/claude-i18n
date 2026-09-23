@@ -1,8 +1,7 @@
 {
   "version": "0000000",
   "locales": [
-    "zh-CN",
-    "zh-TW",
-    "zh-HK"
+    "zh-Hans",
+    "zh-Hant"
   ]
 }

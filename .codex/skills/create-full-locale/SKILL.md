@@ -33,7 +33,7 @@ Default locales:
 
 - base source: `en-US`
 - reference: `ja-JP`
-- context: `zh-CN`
+- context: `zh-Hans`
 
 Remote freshness check:
 
@@ -59,7 +59,7 @@ Optional flags:
 ```bash
 --base-locale en-US
 --reference-locale ja-JP
---context-locale zh-CN
+--context-locale zh-Hans
 --pending-dir .pending/create-full-locale
 --output-field translation
 --target-chars 12000

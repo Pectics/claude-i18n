@@ -7,7 +7,7 @@ description: "Use when applying the claude-i18n pending locale-update branch wor
 
 ## Core Boundary
 
-This skill is for the repository's `locale-update` flow. Use it when the maintainer wants the pending locale diff translated and applied locally, without writing a custom prompt. The target locale is a community-supported optional locale such as `zh-CN`, `zh-TW`, or another future locale; do not assume the workflow is Simplified-Chinese-specific.
+This skill is for the repository's `locale-update` flow. Use it when the maintainer wants the pending locale diff translated and applied locally, without writing a custom prompt. The target locale is a community-supported optional locale such as `zh-Hans`, `zh-Hant`, or another future locale; do not assume the workflow is Simplified-Chinese-specific.
 
 Use the local workflow and scripts as the source of truth:
 

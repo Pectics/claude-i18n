@@ -19,14 +19,13 @@
 
 | 支持平台 | 支持语言 |
 | --- | --- |
-| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安装) [![Edge](.github/badges/edge.svg)](#安装) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安装) | [![zh-CN](https://pectics.github.io/claude-i18n/badges/zh-CN.svg)](#支持的语言) [![zh-TW](https://pectics.github.io/claude-i18n/badges/zh-TW.svg)](#支持的语言) [![zh-HK](https://pectics.github.io/claude-i18n/badges/zh-HK.svg)](#支持的语言) |
+| [![Chrome](https://img.shields.io/badge/Chrome-4285f4?logo=googlechrome&logoColor=white)](#安装) [![Edge](.github/badges/edge.svg)](#安装) [![Userscript](https://img.shields.io/badge/Userscript-6f42c1?logo=tampermonkey&logoColor=white)](#安装) | [![zh-Hans](https://pectics.github.io/claude-i18n/badges/zh-Hans.svg)](#支持的语言) [![zh-Hant](https://pectics.github.io/claude-i18n/badges/zh-Hant.svg)](#支持的语言) |
 
 <!-- locale-stats:summary:start -->
 | 当前语言包 | 主语言包 | Dynamic 语言包 | 合计 |
 | --- | ---: | ---: | ---: |
-| 简体中文 `zh-CN` | 24,433 | 72 | 24,505 |
-| 繁體中文（台灣） `zh-TW` | 24,433 | 72 | 24,505 |
-| 繁體中文（香港） `zh-HK` | 24,433 | 72 | 24,505 |
+| 简体中文 `zh-Hans` | 31,371 | 47 | 31,418 |
+| 繁體中文 `zh-Hant` | 31,371 | 47 | 31,418 |
 <!-- locale-stats:summary:end -->
 
 </div>
@@ -55,7 +54,7 @@
 | Firefox Desktop 或 macOS Safari | 用户脚本实验版 | [userscript/README.md](userscript/README.md) |
 | 手动安装或留档 | Releases 里的 `.crx` | [Releases](https://github.com/Pectics/claude-i18n/releases) |
 
-安装后打开 [Claude.ai](https://claude.ai)，在左下角账号菜单进入语言设置，选择 `zh-CN` 或 `zh-TW` 对应的中文选项即可。
+安装后打开 [Claude.ai](https://claude.ai)，在左下角账号菜单进入语言设置，选择 `zh-Hans` 或 `zh-Hant` 对应的中文选项即可。
 
 ### 应用商店版本
 
@@ -103,7 +102,7 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 
 1. `hook.js` 在 `document_start` 注入页面主世界，尽早接管语言列表和 `fetch`。
 2. 当 Claude.ai 构建官方语言数组时，扩展把远端 `locales.json` 中的额外 locale 追加进去。
-3. 当同源应用请求携带 `locale=zh-CN` 或 `locale=zh-TW` 时，请求里的 locale 会回退为 `en-US`，浏览器本地记住用户实际选择的扩展 locale。
+3. 当同源应用请求携带 `locale=zh-Hans` 或 `locale=zh-Hant` 时，请求里的 locale 会回退为 `en-US`，浏览器本地记住用户实际选择的扩展 locale。
 4. 当页面请求 `/i18n/*.json` 或 `/i18n/dynamic/*.json` 时，扩展后台按 locale 返回对应语言包。
 5. 同源 JSON 响应里的顶层 `locale` 和 `gated_messages.locale` 会在浏览器端恢复成用户选择的扩展 locale。
 
@@ -114,7 +113,7 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 | `extension/hook.js` | 页面主世界 hook；负责语言列表注入、请求改写、响应恢复和 i18n 请求接管。 |
 | `extension/script.js` | 页面与扩展后台之间的消息桥。 |
 | `extension/service.js` | 扩展后台；读取远端 manifest、下载语言包、维护缓存。 |
-| `locales.json` | 托管端语言列表，当前包含 `zh-CN` 和 `zh-TW`。 |
+| `locales.json` | 托管端语言列表，当前包含 `zh-Hans` 和 `zh-Hant`。 |
 | `<locale>/<locale>.json` | 主界面语言包。 |
 | `<locale>/<locale>.dynamic.json` | Dynamic / `gated_messages` 相关语言包。 |
 
@@ -133,8 +132,8 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 <!-- locale-stats:supported:start -->
 | 语言 | Locale | 主语言包 | Dynamic 语言包 | 状态 |
 | --- | --- | ---: | ---: | --- |
-| 简体中文 | `zh-CN` | 24,433 | 72 | 可用 |
-| 繁體中文 | `zh-TW` | 24,433 | 72 | 可用 |
+| 简体中文 | `zh-Hans` | 31,371 | 47 | 可用 |
+| 繁體中文 | `zh-Hant` | 31,371 | 47 | 可用 |
 <!-- locale-stats:supported:end -->
 
 欢迎继续补充其他真正有使用场景的 locale。新增语言建议走下方的完整语言创建流程，而不是手工复制目录。
@@ -146,8 +145,8 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 
 直接编辑对应 locale 文件即可：
 
-- 主界面文案：`zh-CN/zh-CN.json`、`zh-TW/zh-TW.json`
-- Dynamic 文案：`zh-CN/zh-CN.dynamic.json`、`zh-TW/zh-TW.dynamic.json`
+- 主界面文案：`zh-Hans/zh-Hans.json`、`zh-Hant/zh-Hant.json`
+- Dynamic 文案：`zh-Hans/zh-Hans.dynamic.json`、`zh-Hant/zh-Hant.dynamic.json`
 - 最新英文原文：`.original/upstream/en-US.json`、`.original/upstream/en-US.dynamic.json`
 
 请保留占位符、HTML 标签、ICU MessageFormat、URL、命令、代码片段和反引号内容。翻译可以更自然，但结构不能变。
@@ -164,7 +163,7 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 
 ```bash
 # 1. 为目标 locale 生成翻译分块
-node scripts/locale-update/prepare_translation.mjs --locale zh-CN
+node scripts/locale-update/prepare_translation.mjs --locale zh-Hans
 
 # 2. 翻译 .pending/locale-update/<locale>/translation/chunks/ 下的 JSONL
 #    输出写到 manifest 指定的 out/ 路径
@@ -173,7 +172,7 @@ node scripts/locale-update/prepare_translation.mjs --locale zh-CN
 #      Codex:       /apply-locale-update
 
 # 3. 校验并应用翻译
-node scripts/locale-update/apply_translation.mjs --locale zh-CN
+node scripts/locale-update/apply_translation.mjs --locale zh-Hans
 ```
 
 `apply_translation.mjs` 会校验行数、key 顺序、占位符、HTML 标签、ICU 结构、源文件哈希和明显未翻译内容；成功后会重建目标语言包、原子推进该语言的英文基线、同步三份 README 的语言包统计，并只清理 `.pending/locale-update/<locale>`。
@@ -186,7 +185,7 @@ node scripts/locale-update/apply_translation.mjs --locale zh-CN
 node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
 ```
 
-脚本会读取 `.original/upstream/en-US*.json`，可参考 `.original/upstream/ja-JP*.json` 和现有 `zh-CN` 语境，生成 `.pending/create-full-locale/<locale>/` 下的分块任务。
+脚本会读取 `.original/upstream/en-US*.json`，可参考 `.original/upstream/ja-JP*.json` 和现有 `zh-Hans` 语境，生成 `.pending/create-full-locale/<locale>/` 下的分块任务。
 
 翻译完成后运行：
 

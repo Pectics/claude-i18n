@@ -156,20 +156,20 @@ test('per-locale baselines recover historical updates missed by only one locale'
     );
     writeFetchMetadata(metadataPath);
 
-    const cnBaseline = path.join(root, 'baselines', 'zh-CN');
-    const twBaseline = path.join(root, 'baselines', 'zh-TW');
+    const cnBaseline = path.join(root, 'baselines', 'zh-Hans');
+    const twBaseline = path.join(root, 'baselines', 'zh-Hant');
     writeBaseline(
       cnBaseline,
-      'zh-CN',
+      'zh-Hans',
       { stable: 'Stable', historical: 'Historical update' },
       {},
     );
-    writeBaseline(twBaseline, 'zh-TW', { stable: 'Stable' }, {});
+    writeBaseline(twBaseline, 'zh-Hant', { stable: 'Stable' }, {});
 
     runNodeJson(
       BUILD_SCRIPT,
       buildArgs({
-        locale: 'zh-CN',
+        locale: 'zh-Hans',
         upstreamDir,
         baselineDir: cnBaseline,
         pendingDir,
@@ -179,7 +179,7 @@ test('per-locale baselines recover historical updates missed by only one locale'
     runNodeJson(
       BUILD_SCRIPT,
       buildArgs({
-        locale: 'zh-TW',
+        locale: 'zh-Hant',
         upstreamDir,
         baselineDir: twBaseline,
         pendingDir,
@@ -188,26 +188,26 @@ test('per-locale baselines recover historical updates missed by only one locale'
     );
 
     assert.deepEqual(
-      readJsonl(path.join(pendingDir, 'zh-CN', 'main.diff.jsonl')).map((row) => row.key),
+      readJsonl(path.join(pendingDir, 'zh-Hans', 'main.diff.jsonl')).map((row) => row.key),
       ['latest'],
     );
     assert.deepEqual(
-      readJsonl(path.join(pendingDir, 'zh-TW', 'main.diff.jsonl')).map((row) => row.key),
+      readJsonl(path.join(pendingDir, 'zh-Hant', 'main.diff.jsonl')).map((row) => row.key),
       ['historical', 'latest'],
     );
-    const twManifest = readJson(path.join(pendingDir, 'zh-TW', 'manifest.json'));
+    const twManifest = readJson(path.join(pendingDir, 'zh-Hant', 'manifest.json'));
     assert.equal(twManifest.schemaVersion, 2);
-    assert.equal(twManifest.locale, 'zh-TW');
+    assert.equal(twManifest.locale, 'zh-Hant');
     assert.match(twManifest.sourceHashes.baseline.main, /^[a-f0-9]{64}$/);
     assert.match(twManifest.sourceHashes.upstream.main, /^[a-f0-9]{64}$/);
 
-    writeJson(path.join(pendingDir, 'zh-TW', 'translation', 'sentinel.json'), {
+    writeJson(path.join(pendingDir, 'zh-Hant', 'translation', 'sentinel.json'), {
       preserved: true,
     });
     const reused = runNodeJson(
       BUILD_SCRIPT,
       buildArgs({
-        locale: 'zh-TW',
+        locale: 'zh-Hant',
         upstreamDir,
         baselineDir: twBaseline,
         pendingDir,
@@ -216,7 +216,7 @@ test('per-locale baselines recover historical updates missed by only one locale'
     );
     assert.equal(reused.reusedPending, true);
     assert.deepEqual(
-      readJson(path.join(pendingDir, 'zh-TW', 'translation', 'sentinel.json')),
+      readJson(path.join(pendingDir, 'zh-Hant', 'translation', 'sentinel.json')),
       { preserved: true },
     );
   } finally {

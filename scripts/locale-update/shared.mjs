@@ -183,6 +183,10 @@ export function hasObviousUntranslatedEnglish(text) {
     return false;
   }
 
+  if (text === 'Acme Inc') {
+    return false;
+  }
+
   if (text === 'Research Labs Premium') {
     return false;
   }
@@ -194,7 +198,7 @@ export function hasObviousUntranslatedEnglish(text) {
   const wordMatches = text.match(/[A-Za-z][A-Za-z'’-]*/g) || [];
   const words = wordMatches.filter((word) => word.length >= 2);
   const whitelistedBrandPattern =
-    /\bClaude\b|\bAnthropic\b|\bClaude Code\b|\bClaude Code Desktop\b|\bClaude for Chrome\b|\bCowork\b|\bDispatch\b|\bCanvas\b|\bArtifact\b|\bMCP\b|\bAPI\b|\bOAuth\b|\bSAML\b|\bSCIM\b|\bSSO\b|\bAWS\b|\bAmazon\b|\bAmazon Bedrock\b|\bGoogle\b|\bGitHub\b|\bSlack\b|\bMicrosoft 365\b|\bMicrosoft Office\b|\bMicrosoft Foundry\b|\bVS Code\b|\bCursor\b|\bWindsurf\b|\bOpus\b|\bSonnet\b|\bHaiku\b/;
+    /\bClaude\b|\bAnthropic\b|\bClaude Code\b|\bClaude Code Desktop\b|\bClaude for Chrome\b|\bCowork\b|\bDispatch\b|\bCanvas\b|\bArtifact\b|\bMCP\b|\bAPI\b|\bOAuth\b|\bSAML\b|\bSCIM\b|\bSSO\b|\bAWS\b|\bAmazon\b|\bAmazon Bedrock\b|\bApple Pay\b|\bAtkinson Hyperlegible Next\b|\bGoogle\b|\bGitHub\b|\bSlack\b|\bMicrosoft 365\b|\bMicrosoft Office\b|\bMicrosoft Foundry\b|\bVS Code\b|\bCursor\b|\bWindsurf\b|\bOpus\b|\bSonnet\b|\bHaiku\b/;
 
   const titleCaseLike = words.length > 0 && words.every((word) => /^[A-Z][a-z]+(?:['’-][A-Z][a-z]+)?$/.test(word) || /^[A-Z0-9]+$/.test(word));
 
@@ -220,7 +224,7 @@ export function extractBacktickSegments(text) {
 }
 
 export function extractUrls(text) {
-  return (text.match(/https?:\/\/[^\s<>()]+/g) || []).map((url) =>
+  return (text.match(/https?:\/\/[^\s<>()"'`，。！？；：、“”‘’「」『』《》]+/gu) || []).map((url) =>
     url.replace(/[.,!?;:)\]}>"'`。，！？；：）】｝〉》」』]+$/gu, ''),
   );
 }
@@ -335,6 +339,13 @@ function parseBraceNode(rawContent) {
   return { type: 'raw', text: normalizeWhitespace(content) };
 }
 
+const QUOTED_BRACE_PAIRS = new Map([
+  ['“', '”'],
+  ['‘', '’'],
+  ['「', '」'],
+  ['『', '』'],
+]);
+
 export function parseMessageStructure(text) {
   const nodes = [];
   let index = 0;
@@ -342,6 +353,16 @@ export function parseMessageStructure(text) {
   while (index < text.length) {
     const openIndex = text.indexOf('{', index);
     if (openIndex === -1) break;
+    const openingQuote = text[openIndex - 1];
+    const closingQuote = text[openIndex + 1];
+    // A brace displayed in matching quote marks is a literal, not an ICU token.
+    const isQuotedLiteralBrace =
+      ((openingQuote === "'" || openingQuote === '"') && closingQuote === openingQuote) ||
+      QUOTED_BRACE_PAIRS.get(openingQuote) === closingQuote;
+    if (isQuotedLiteralBrace) {
+      index = openIndex + 1;
+      continue;
+    }
     const { content, endIndex } = readBalancedBlock(text, openIndex);
     nodes.push(parseBraceNode(content));
     index = endIndex + 1;
