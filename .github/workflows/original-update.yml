@@ -1,0 +1,125 @@
+name: "original-update: Sync upstream snapshots"
+
+on:
+  schedule:
+    - cron: "0 */6 * * *"
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: original-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      changed: ${{ steps.commit.outputs.changed }}
+      snapshot_ref: ${{ steps.commit.outputs.snapshot_ref }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Set up Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: "3.x"
+
+      - name: Install fetch dependency
+        run: python3 -m pip install --quiet curl_cffi
+
+      - name: Fetch and validate all upstream files
+        shell: python
+        run: |
+          import json
+          import time
+          from pathlib import Path
+          from curl_cffi import requests
+
+          def unique_object(pairs):
+              result = {}
+              for key, value in pairs:
+                  if key in result:
+                      raise ValueError(f"Duplicate JSON key: {key}")
+                  result[key] = value
+              return result
+
+          def reject_constant(value):
+              raise ValueError(f"Invalid JSON constant: {value}")
+
+          snapshots = {}
+          for locale in ("en-US", "ja-JP"):
+              for remote_prefix, suffix in (("", ".json"), ("dynamic/", ".dynamic.json")):
+                  url = f"https://claude.ai/i18n/{remote_prefix}{locale}.json"
+                  for attempt in range(5):
+                      try:
+                          response = requests.get(
+                              url,
+                              headers={"accept": "application/json", "referer": "https://claude.ai/"},
+                              impersonate="chrome",
+                              timeout=60,
+                          )
+                          if response.status_code != 200:
+                              raise ValueError(f"HTTP {response.status_code}")
+                          content = response.content
+                          data = json.loads(
+                              content.decode("utf-8-sig"),
+                              object_pairs_hook=unique_object,
+                              parse_constant=reject_constant,
+                          )
+                          if not isinstance(data, dict) or not data:
+                              raise ValueError("Expected a non-empty JSON object")
+                          if any(not key or not isinstance(value, str) for key, value in data.items()):
+                              raise ValueError("Expected non-empty keys and string values")
+                          target = Path(".original/upstream") / f"{locale}{suffix}"
+                          snapshots[target] = content
+                          print(f"Validated {target.name}: {len(data)} entries")
+                          break
+                      except Exception as error:
+                          if attempt == 4:
+                              raise RuntimeError(f"Failed to fetch valid locale JSON from {url}") from error
+                          print(f"Retrying {url}: {error}")
+                          time.sleep(5 * 2 ** attempt)
+
+          # Do not replace any snapshot until all four responses are valid.
+          for target, content in snapshots.items():
+              target.write_bytes(content)
+
+      - name: Commit and push changed snapshots
+        id: commit
+        shell: bash
+        run: |
+          set -euo pipefail
+          git add -- \
+            .original/upstream/en-US.json \
+            .original/upstream/en-US.dynamic.json \
+            .original/upstream/ja-JP.json \
+            .original/upstream/ja-JP.dynamic.json
+          if git diff --cached --quiet; then
+            echo "Upstream snapshots are unchanged."
+            echo "changed=false" >> "$GITHUB_OUTPUT"
+            exit 0
+          fi
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git commit -m "chore: Update official English and Japanese snapshots"
+          git push origin HEAD:main
+          echo "changed=true" >> "$GITHUB_OUTPUT"
+          echo "snapshot_ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+  sync-reference:
+    name: Sync Japanese reference after upstream update
+    needs: update
+    if: needs.update.outputs.changed == 'true'
+    permissions:
+      contents: read
+    uses: ./.github/workflows/crowdin-reference.yml
+    with:
+      snapshot_ref: ${{ needs.update.outputs.snapshot_ref }}
+    secrets:
+      CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}

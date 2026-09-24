@@ -1,6 +1,15 @@
 name: "Crowdin: Sync Japanese reference"
 
 on:
+  workflow_call:
+    inputs:
+      snapshot_ref:
+        description: Commit containing the updated upstream snapshots
+        required: true
+        type: string
+    secrets:
+      CROWDIN_PERSONAL_TOKEN:
+        required: true
   push:
     branches: [main]
     paths:
@@ -25,6 +34,8 @@ jobs:
     steps:
       - name: Checkout main
         uses: actions/checkout@v6
+        with:
+          ref: ${{ inputs.snapshot_ref || github.sha }}
 
       - name: Upload Japanese reference to Crowdin
         uses: crowdin/github-action@v3
