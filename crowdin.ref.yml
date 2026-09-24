@@ -1,0 +1,9 @@
+project_id_env: CROWDIN_PROJECT_ID
+api_token_env: CROWDIN_PERSONAL_TOKEN
+
+files:
+  - source: /.original/upstream/en-US.json
+    translation: /.original/upstream/ja-JP.json
+    
+  - source: /.original/upstream/en-US.dynamic.json
+    translation: /.original/upstream/ja-JP.dynamic.json
