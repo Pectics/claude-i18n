@@ -2,8 +2,12 @@ name: "Crowdin: Sync Japanese reference"
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
+    paths:
+      - '.github/workflows/crowdin-reference.yml'
+      - 'crowdin.ref.yml'
+      - '.original/upstream/en-US*.json'
+      - '.original/upstream/ja-JP*.json'
 
 permissions:
   contents: read
