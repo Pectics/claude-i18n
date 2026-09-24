@@ -1,0 +1,112 @@
+name: "locale-stats: Update README and Pages"
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - .original/upstream/en-US.json
+      - .original/upstream/en-US.dynamic.json
+      - "*/*.json"
+      - locales.json
+      - scripts/locale-stats/**
+      - .github/workflows/locale-stats.yml
+  workflow_call:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  pages: write
+  id-token: write
+
+concurrency:
+  group: locale-stats
+  cancel-in-progress: false
+
+env:
+  PAGES_BASE_URL: https://pectics.github.io/claude-i18n
+  PAGES_ARTIFACT_DIR: coverage-pages-artifact
+
+jobs:
+  build:
+    name: Update README and build coverage artifact
+    runs-on: ubuntu-latest
+    outputs:
+      changed: ${{ steps.compare.outputs.changed }}
+      snapshot: ${{ steps.snapshot.outputs.sha }}
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: Calculate and push README statistics from latest main
+        shell: bash
+        run: bash scripts/locale-stats/sync_locale_stats.sh
+
+      - name: Generate coverage and badges from the same snapshot
+        shell: bash
+        run: |
+          set -euo pipefail
+          rm -rf "$PAGES_ARTIFACT_DIR"
+          node scripts/locale-stats/generate_coverage.mjs \
+            --upstream-dir "$GITHUB_WORKSPACE/.original/upstream" \
+            --target-root "$GITHUB_WORKSPACE" \
+            --output-dir "$PAGES_ARTIFACT_DIR"
+          touch "$PAGES_ARTIFACT_DIR/.nojekyll"
+
+      - name: Compare with current Pages deployment
+        id: compare
+        shell: bash
+        run: |
+          set -euo pipefail
+          comparison="$(node scripts/locale-stats/compare_pages_coverage.mjs \
+            --artifact-dir "$PAGES_ARTIFACT_DIR" \
+            --base-url "$PAGES_BASE_URL" \
+            --cache-bust "$GITHUB_RUN_ID")"
+          echo "changed=$(jq --raw-output '.changed' <<< "$comparison")" >> "$GITHUB_OUTPUT"
+          echo "$comparison" | jq .
+
+      - name: Confirm main still matches the calculated snapshot
+        id: snapshot
+        if: steps.compare.outputs.changed == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          test "$(git rev-parse HEAD)" = "$(git rev-parse origin/main)"
+          echo "sha=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
+
+      - name: Upload GitHub Pages artifact
+        if: steps.compare.outputs.changed == 'true'
+        uses: actions/upload-pages-artifact@v4
+        with:
+          path: ${{ env.PAGES_ARTIFACT_DIR }}
+
+  deploy:
+    name: Deploy locale coverage to Pages
+    if: needs.build.outputs.changed == 'true'
+    needs: build
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - name: Checkout latest main before deployment
+        uses: actions/checkout@v6
+        with:
+          ref: main
+
+      - name: Reject an artifact from an outdated main snapshot
+        env:
+          EXPECTED_SHA: ${{ needs.build.outputs.snapshot }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch --no-tags origin main
+          test "$(git rev-parse origin/main)" = "$EXPECTED_SHA"
+
+      - name: Deploy GitHub Pages artifact
+        id: deployment
+        uses: actions/deploy-pages@v4
