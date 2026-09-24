@@ -57,18 +57,17 @@ if [ "$is_preview_branch" = "true" ]; then
   fi
 else
   base_ref="${VERCEL_GIT_PREVIOUS_SHA:-}"
-  if [ -n "$base_ref" ] && ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
-    echo "Previous Vercel SHA is not available in this clone; falling back to the parent commit."
-    base_ref=""
-  fi
-
   if [ -z "$base_ref" ]; then
-    if git rev-parse --verify "$head_ref^" >/dev/null 2>&1; then
-      base_ref="$head_ref^"
-    else
-      echo "No comparison commit found; deploy."
-      exit 1
-    fi
+    echo "Previous Vercel SHA is unavailable; deploy."
+    exit 1
+  fi
+  if ! git cat-file -e "$base_ref^{commit}" 2>/dev/null; then
+    echo "Previous Vercel SHA is not available in this clone; deploy."
+    exit 1
+  fi
+  if [ "$(git rev-parse "$base_ref")" = "$(git rev-parse "$head_ref")" ]; then
+    echo "Previous Vercel SHA matches the current commit; deploy."
+    exit 1
   fi
 fi
 

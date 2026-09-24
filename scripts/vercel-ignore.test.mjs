@@ -136,3 +136,74 @@ test('ignore script deploys production builds for every configured locale direct
     fs.rmSync(repoRoot, { recursive: true, force: true });
   }
 });
+
+test('ignore script deploys a rebase merge when the previous deployment SHA is unavailable', () => {
+  const repoRoot = fs.mkdtempSync(path.join(os.tmpdir(), 'vercel-ignore-rebase-'));
+
+  try {
+    git(['init', '-b', 'main'], repoRoot);
+    git(['config', 'user.email', 'test@example.com'], repoRoot);
+    git(['config', 'user.name', 'Test User'], repoRoot);
+    copyIgnoreScript(repoRoot);
+    writeFile(path.join(repoRoot, 'locales.json'), '{"locales":["zh-Hans"]}\n');
+    writeFile(path.join(repoRoot, 'zh-Hans', 'zh-Hans.json'), '{"hello":"old"}\n');
+    git(['add', '.'], repoRoot);
+    git(['commit', '-m', 'previous deployment'], repoRoot);
+    const previousSha = git(['rev-parse', 'HEAD'], repoRoot).trim();
+
+    writeFile(path.join(repoRoot, 'zh-Hans', 'zh-Hans.json'), '{"hello":"new"}\n');
+    git(['add', '.'], repoRoot);
+    git(['commit', '-m', 'update deployed locale'], repoRoot);
+    writeFile(path.join(repoRoot, '.pending', 'locale-update', 'manifest.json'), '{}\n');
+    git(['add', '.'], repoRoot);
+    git(['commit', '-m', 'update pending files'], repoRoot);
+    const headSha = git(['rev-parse', 'HEAD'], repoRoot).trim();
+
+    for (const unavailableSha of ['', headSha, '0'.repeat(40)]) {
+      const result = spawnSync('bash', ['./ignore.sh'], {
+        cwd: repoRoot,
+        encoding: 'utf8',
+        env: {
+          ...process.env,
+          VERCEL_ENV: 'production',
+          VERCEL_GIT_COMMIT_SHA: headSha,
+          VERCEL_GIT_COMMIT_REF: 'main',
+          VERCEL_GIT_PREVIOUS_SHA: unavailableSha,
+        },
+      });
+      assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
+      assert.match(result.stdout, /deploy\./);
+    }
+
+    const result = spawnSync('bash', ['./ignore.sh'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        VERCEL_ENV: 'production',
+        VERCEL_GIT_COMMIT_SHA: headSha,
+        VERCEL_GIT_COMMIT_REF: 'main',
+        VERCEL_GIT_PREVIOUS_SHA: previousSha,
+      },
+    });
+    assert.equal(result.status, 1, `${result.stdout}\n${result.stderr}`);
+    assert.match(result.stdout, /zh-Hans\/zh-Hans\.json/);
+
+    const deployedSha = git(['rev-parse', 'HEAD^'], repoRoot).trim();
+    const skipped = spawnSync('bash', ['./ignore.sh'], {
+      cwd: repoRoot,
+      encoding: 'utf8',
+      env: {
+        ...process.env,
+        VERCEL_ENV: 'production',
+        VERCEL_GIT_COMMIT_SHA: headSha,
+        VERCEL_GIT_COMMIT_REF: 'main',
+        VERCEL_GIT_PREVIOUS_SHA: deployedSha,
+      },
+    });
+    assert.equal(skipped.status, 0, `${skipped.stdout}\n${skipped.stderr}`);
+    assert.match(skipped.stdout, /No deployment-relevant changes/);
+  } finally {
+    fs.rmSync(repoRoot, { recursive: true, force: true });
+  }
+});
