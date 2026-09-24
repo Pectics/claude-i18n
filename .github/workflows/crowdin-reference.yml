@@ -1,0 +1,39 @@
+name: "Crowdin: Sync Japanese reference"
+
+on:
+  push:
+    branches:
+      - main
+
+permissions:
+  contents: read
+
+concurrency:
+  group: crowdin-reference
+  cancel-in-progress: false
+
+jobs:
+  upload:
+    name: Upload official Japanese translations
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+
+    steps:
+      - name: Checkout main
+        uses: actions/checkout@v6
+
+      - name: Upload Japanese reference to Crowdin
+        uses: crowdin/github-action@v3
+        with:
+          config: crowdin.ref.yml
+          crowdin_branch_name: main
+          upload_sources: false
+          upload_translations: true
+          upload_language: ja
+          import_eq_suggestions: true
+          download_translations: false
+          push_translations: false
+          create_pull_request: false
+        env:
+          CROWDIN_PROJECT_ID: "933715"
+          CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
