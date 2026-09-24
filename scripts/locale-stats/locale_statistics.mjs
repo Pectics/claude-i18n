@@ -29,11 +29,11 @@ export function readLocales(rootDir) {
   return data.locales;
 }
 
-export function readSource(upstreamDir, baseLocale = 'en-US') {
-  const main = readFlatObject(path.join(upstreamDir, `${baseLocale}.json`));
-  const dynamic = readFlatObject(path.join(upstreamDir, `${baseLocale}.dynamic.json`));
+export function readSource(originalDir, baseLocale = 'en-US') {
+  const main = readFlatObject(path.join(originalDir, `${baseLocale}.json`));
+  const dynamic = readFlatObject(path.join(originalDir, `${baseLocale}.dynamic.json`));
   const total = Object.keys(main).length + Object.keys(dynamic).length;
-  if (total === 0) throw new Error(`${upstreamDir}: upstream locale ${baseLocale} has no keys`);
+  if (total === 0) throw new Error(`${originalDir}: original locale ${baseLocale} has no keys`);
   return { main, dynamic, total };
 }
 

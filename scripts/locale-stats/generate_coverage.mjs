@@ -17,14 +17,14 @@ const BADGE_COLORS = {
 
 function usage() {
   throw new Error(
-    'Usage: node generate_coverage.mjs --output-dir <path> [--base-locale <locale>] [--upstream-dir <path>] [--target-root <path>] [--curl-bin <path>] [--shields-base-url <url>]',
+    'Usage: node generate_coverage.mjs --output-dir <path> [--base-locale <locale>] [--original-dir <path>] [--target-root <path>] [--curl-bin <path>] [--shields-base-url <url>]',
   );
 }
 
 function parseArgs(argv) {
   const args = {
     baseLocale: 'en-US',
-    upstreamDir: path.join(DEFAULT_ROOT_DIR, '.original', 'upstream'),
+    originalDir: path.join(DEFAULT_ROOT_DIR, '.original'),
     targetRoot: DEFAULT_ROOT_DIR,
     outputDir: null,
     curlBin: 'curl',
@@ -37,8 +37,8 @@ function parseArgs(argv) {
     if (token === '--base-locale' && next) {
       args.baseLocale = next;
       index += 1;
-    } else if (token === '--upstream-dir' && next) {
-      args.upstreamDir = path.resolve(next);
+    } else if (token === '--original-dir' && next) {
+      args.originalDir = path.resolve(next);
       index += 1;
     } else if (token === '--target-root' && next) {
       args.targetRoot = path.resolve(next);
@@ -69,7 +69,7 @@ function roundRatio(value) {
 }
 
 function calculateCoverage(args) {
-  const source = readSource(args.upstreamDir, args.baseLocale);
+  const source = readSource(args.originalDir, args.baseLocale);
   const { total } = source;
 
   const locales = readLocales(args.targetRoot);

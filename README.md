@@ -147,15 +147,15 @@ Edit the locale files directly:
 
 - Main UI copy: `zh-Hans/zh-Hans.json`, `zh-Hant/zh-Hant.json`
 - Dynamic copy: `zh-Hans/zh-Hans.dynamic.json`, `zh-Hant/zh-Hant.dynamic.json`
-- Latest English source: `.original/upstream/en-US.json`, `.original/upstream/en-US.dynamic.json`
+- Latest English source: `.original/en-US.json`, `.original/en-US.dynamic.json`
 
 Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans, and backticks. The wording can be more natural; the structure must remain compatible.
 
-### Sync Claude Upstream Changes
+### Sync Claude Original Changes
 
-GitHub Actions checks Claude.ai's English and Japanese locale files every 6 hours and stores valid snapshots under `.original/upstream`. The Japanese files are translation references and do not enter the statistics.
+GitHub Actions checks Claude.ai's English and Japanese locale files every 6 hours and stores valid snapshots under `.original`. The Japanese files are translation references and do not enter the statistics.
 
-When English sources or published locale packs change on `main`, the [locale statistics workflow](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml) updates the three READMEs and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages when needed. It also runs after an upstream snapshot changes, independently of the Crowdin Japanese reference sync. Maintainers can run it manually to initialize or restore Pages.
+When English sources or published locale packs change on `main`, the [locale statistics workflow](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml) updates the three READMEs and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages when needed. It also runs after an original snapshot changes, independently of the Crowdin Japanese reference sync. Maintainers can run it manually to initialize or restore Pages.
 
 Coverage badges are green at 90% or higher, yellow at 75% or higher, red below 75%, and gray with `invalid` when a locale pack cannot be read.
 

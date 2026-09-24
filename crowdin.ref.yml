@@ -4,8 +4,8 @@ api_token_env: CROWDIN_PERSONAL_TOKEN
 preserve_hierarchy: true
 
 files:
-  - source: /.original/upstream/en-US.json
-    translation: /.original/upstream/%locale%.json
+  - source: /.original/en-US.json
+    translation: /.original/%locale%.json
     
-  - source: /.original/upstream/en-US.dynamic.json
-    translation: /.original/upstream/%locale%.dynamic.json
+  - source: /.original/en-US.dynamic.json
+    translation: /.original/%locale%.dynamic.json

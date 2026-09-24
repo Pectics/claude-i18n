@@ -1,4 +1,4 @@
-name: "original-update: Sync upstream snapshots"
+name: "original-update: Sync original snapshots"
 
 on:
   schedule:
@@ -35,7 +35,7 @@ jobs:
       - name: Install fetch dependency
         run: python3 -m pip install --quiet curl_cffi
 
-      - name: Fetch and validate all upstream files
+      - name: Fetch and validate all original files
         shell: python
         run: |
           import json
@@ -78,7 +78,7 @@ jobs:
                               raise ValueError("Expected a non-empty JSON object")
                           if any(not key or not isinstance(value, str) for key, value in data.items()):
                               raise ValueError("Expected non-empty keys and string values")
-                          target = Path(".original/upstream") / f"{locale}{suffix}"
+                          target = Path(".original") / f"{locale}{suffix}"
                           snapshots[target] = content
                           print(f"Validated {target.name}: {len(data)} entries")
                           break
@@ -98,12 +98,12 @@ jobs:
         run: |
           set -euo pipefail
           git add -- \
-            .original/upstream/en-US.json \
-            .original/upstream/en-US.dynamic.json \
-            .original/upstream/ja-JP.json \
-            .original/upstream/ja-JP.dynamic.json
+            .original/en-US.json \
+            .original/en-US.dynamic.json \
+            .original/ja-JP.json \
+            .original/ja-JP.dynamic.json
           if git diff --cached --quiet; then
-            echo "Upstream snapshots are unchanged."
+            echo "Original snapshots are unchanged."
             echo "changed=false" >> "$GITHUB_OUTPUT"
             exit 0
           fi
@@ -115,7 +115,7 @@ jobs:
           echo "snapshot_ref=$(git rev-parse HEAD)" >> "$GITHUB_OUTPUT"
 
   sync-reference:
-    name: Sync Japanese reference after upstream update
+    name: Sync Japanese reference after original update
     needs: update
     if: needs.update.outputs.changed == 'true'
     permissions:
@@ -127,7 +127,7 @@ jobs:
       CROWDIN_PERSONAL_TOKEN: ${{ secrets.CROWDIN_PERSONAL_TOKEN }}
 
   sync-stats:
-    name: Update main locale statistics after upstream update
+    name: Update main locale statistics after original update
     needs: update
     if: needs.update.outputs.changed == 'true'
     permissions:

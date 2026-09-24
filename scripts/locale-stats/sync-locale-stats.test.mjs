@@ -41,8 +41,8 @@ test('README sync retries a moved main, recalculates, and skips a second unchang
       copy(file, path.join(seed, file));
     }
     writeJson(path.join(seed, 'locales.json'), { locales: ['zh-Hans', 'zh-Hant'] });
-    writeJson(path.join(seed, '.original/upstream/en-US.json'), { a: '' });
-    writeJson(path.join(seed, '.original/upstream/en-US.dynamic.json'), {});
+    writeJson(path.join(seed, '.original/en-US.json'), { a: '' });
+    writeJson(path.join(seed, '.original/en-US.dynamic.json'), {});
     for (const locale of ['zh-Hans', 'zh-Hant']) {
       writeJson(path.join(seed, locale, `${locale}.json`), { a: '' });
       writeJson(path.join(seed, locale, `${locale}.dynamic.json`), {});
@@ -63,8 +63,8 @@ if [ "\${1:-}" = push ] && [ "\${2:-}" = origin ] && [ ! -f "$CONFLICT_DONE" ]; 
   touch "$CONFLICT_DONE"
   "$REAL_GIT" -C "$COMPETING_CLONE" fetch origin main >/dev/null
   "$REAL_GIT" -C "$COMPETING_CLONE" checkout -B main origin/main >/dev/null
-  "$NODE_BIN" -e 'const fs=require("fs"); fs.writeFileSync(process.argv[1], JSON.stringify({b:""})+"\\n")' "$COMPETING_CLONE/.original/upstream/en-US.json"
-  "$REAL_GIT" -C "$COMPETING_CLONE" add .original/upstream/en-US.json
+  "$NODE_BIN" -e 'const fs=require("fs"); fs.writeFileSync(process.argv[1], JSON.stringify({b:""})+"\\n")' "$COMPETING_CLONE/.original/en-US.json"
+  "$REAL_GIT" -C "$COMPETING_CLONE" add .original/en-US.json
   "$REAL_GIT" -C "$COMPETING_CLONE" commit -m 'concurrent source change' >/dev/null
   "$REAL_GIT" -C "$COMPETING_CLONE" push origin main >/dev/null
 fi

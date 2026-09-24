@@ -33,7 +33,7 @@ function parseArgs(argv) {
 }
 
 function collectStatistics(rootDir, locales, statisticsOverride = {}) {
-  const source = readSource(path.join(rootDir, '.original', 'upstream'));
+  const source = readSource(path.join(rootDir, '.original'));
   return Object.fromEntries(
     locales.map((locale) => {
       if (statisticsOverride[locale]) {

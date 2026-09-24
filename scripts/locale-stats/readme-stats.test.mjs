@@ -38,8 +38,8 @@ outro
 
 function createFixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'readme-stats-'));
-  writeJson(path.join(root, '.original', 'upstream', 'en-US.json'), { a: 1, b: 2, c: 3 });
-  writeJson(path.join(root, '.original', 'upstream', 'en-US.dynamic.json'), { d: 1, e: 2 });
+  writeJson(path.join(root, '.original', 'en-US.json'), { a: 1, b: 2, c: 3 });
+  writeJson(path.join(root, '.original', 'en-US.dynamic.json'), { d: 1, e: 2 });
   writeJson(path.join(root, 'locales.json'), { locales: ['zh-Hans', 'zh-Hant'] });
   writeJson(path.join(root, 'zh-Hans', 'zh-Hans.json'), { a: 1, b: 2, c: 3 });
   writeJson(path.join(root, 'zh-Hans', 'zh-Hans.dynamic.json'), { d: 1 });
@@ -84,7 +84,7 @@ test('formats large key counts with stable thousands separators', () => {
   const root = createFixture();
   try {
     const largePack = Object.fromEntries(Array.from({ length: 1234 }, (_, index) => [`key${index}`, index]));
-    writeJson(path.join(root, '.original', 'upstream', 'en-US.json'), largePack);
+    writeJson(path.join(root, '.original', 'en-US.json'), largePack);
     writeJson(path.join(root, 'zh-Hans', 'zh-Hans.json'), largePack);
     updateReadmeStats(root);
     const text = fs.readFileSync(path.join(root, 'README.md'), 'utf8');
@@ -97,8 +97,8 @@ test('formats large key counts with stable thousands separators', () => {
 test('counts main and dynamic intersections independently, including empty packs and extra old keys', () => {
   const root = createFixture();
   try {
-    writeJson(path.join(root, '.original', 'upstream', 'en-US.json'), { added: '', same: '' });
-    writeJson(path.join(root, '.original', 'upstream', 'en-US.dynamic.json'), { same: '' });
+    writeJson(path.join(root, '.original', 'en-US.json'), { added: '', same: '' });
+    writeJson(path.join(root, '.original', 'en-US.dynamic.json'), { same: '' });
     writeJson(path.join(root, 'zh-Hans', 'zh-Hans.json'), { same: '', removed: 'old' });
     writeJson(path.join(root, 'zh-Hans', 'zh-Hans.dynamic.json'), { same: '', extra: 'old' });
     writeJson(path.join(root, 'zh-Hant', 'zh-Hant.json'), {});
@@ -110,7 +110,7 @@ test('counts main and dynamic intersections independently, including empty packs
       'zh-Hant': { main: 0, dynamic: 0, total: 0 },
     });
     assert.match(fs.readFileSync(path.join(root, 'README.md'), 'utf8'), /`zh-Hans` \| 1 \| 1 \| 2 \|/);
-    const source = readSource(path.join(root, '.original', 'upstream'));
+    const source = readSource(path.join(root, '.original'));
     for (const locale of ['zh-Hans', 'zh-Hant']) {
       assert.equal(statistics[locale].total, countTarget(source, readTarget(root, locale)).total);
     }
@@ -127,8 +127,8 @@ test('damaged targets skip every README in workflow mode, while damaged or empty
         ['README.md', 'README.zh.md', 'README.tw.md'].map((name) => [name, fs.readFileSync(path.join(root, name), 'utf8')]),
       );
       if (damageSource) {
-        writeJson(path.join(root, '.original', 'upstream', 'en-US.json'), {});
-        writeJson(path.join(root, '.original', 'upstream', 'en-US.dynamic.json'), {});
+        writeJson(path.join(root, '.original', 'en-US.json'), {});
+        writeJson(path.join(root, '.original', 'en-US.dynamic.json'), {});
         assert.throws(() => updateReadmeStats(root, { skipInvalidTargets: true }), /has no keys/);
       } else {
         fs.writeFileSync(path.join(root, 'zh-Hant', 'zh-Hant.json'), '{invalid', 'utf8');

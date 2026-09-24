@@ -147,13 +147,13 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 
 - 主界面文案：`zh-Hans/zh-Hans.json`、`zh-Hant/zh-Hant.json`
 - Dynamic 文案：`zh-Hans/zh-Hans.dynamic.json`、`zh-Hant/zh-Hant.dynamic.json`
-- 最新英文原文：`.original/upstream/en-US.json`、`.original/upstream/en-US.dynamic.json`
+- 最新英文原文：`.original/en-US.json`、`.original/en-US.dynamic.json`
 
 请保留占位符、HTML 标签、ICU MessageFormat、URL、命令、代码片段和反引号内容。翻译可以更自然，但结构不能变。
 
 ### 同步 Claude 上游更新
 
-仓库的 GitHub Actions 每 6 小时检查一次 Claude.ai 的英文和日文语言文件，并将有效快照保存到 `.original/upstream`。日文仅作为翻译参考，不参与统计。
+仓库的 GitHub Actions 每 6 小时检查一次 Claude.ai 的英文和日文语言文件，并将有效快照保存到 `.original`。日文仅作为翻译参考，不参与统计。
 
 英文源文件或 `main` 中发布的目标语言包变化时，[语言包统计工作流](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml)会更新三份 README，并在需要时把 `coverage.json` 和预先渲染的 `badges/<locale>.svg` 发布到 GitHub Pages。上游快照变化后也会调用统计流程，且不受 Crowdin 日文参考同步结果影响。维护者可手动运行该工作流以初始化或恢复 Pages。
 

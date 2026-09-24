@@ -20,7 +20,7 @@ function readJson(filePath) {
 
 function createFixture() {
   const root = fs.mkdtempSync(path.join(os.tmpdir(), 'locale-coverage-'));
-  const upstreamDir = path.join(root, 'upstream');
+  const originalDir = path.join(root, 'original');
   const targetRoot = path.join(root, 'target');
   const outputDir = path.join(root, 'output');
   const curlBin = path.join(root, 'fake-curl.sh');
@@ -52,7 +52,7 @@ fi
     'utf8',
   );
   fs.chmodSync(curlBin, 0o755);
-  return { root, upstreamDir, targetRoot, outputDir, curlBin };
+  return { root, originalDir, targetRoot, outputDir, curlBin };
 }
 
 function runGenerate(fixture, extraArgs = [], extraEnv = {}) {
@@ -63,8 +63,8 @@ function runGenerate(fixture, extraArgs = [], extraEnv = {}) {
         GENERATE_SCRIPT,
         '--base-locale',
         'en-US',
-        '--upstream-dir',
-        fixture.upstreamDir,
+        '--original-dir',
+        fixture.originalDir,
         '--target-root',
         fixture.targetRoot,
         '--output-dir',
@@ -78,18 +78,18 @@ function runGenerate(fixture, extraArgs = [], extraEnv = {}) {
   );
 }
 
-test('calculates each locale from upstream key intersections and ignores extra target keys', () => {
+test('calculates each locale from original key intersections and ignores extra target keys', () => {
   const fixture = createFixture();
   try {
-    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), { a: 1, b: 2, c: 3, same: 4 });
-    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), { same: 1, dynamic: 2 });
+    writeJson(path.join(fixture.originalDir, 'en-US.json'), { a: 1, b: 2, c: 3, same: 4 });
+    writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), { same: 1, dynamic: 2 });
     writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-Hant', 'zh-Hans'] });
     writeJson(path.join(fixture.targetRoot, 'zh-Hant', 'zh-Hant.json'), {
       a: 'A',
       b: 'B',
       c: 'C',
       same: 'S',
-      removedUpstreamKey: 'old',
+      removedOriginalKey: 'old',
     });
     writeJson(path.join(fixture.targetRoot, 'zh-Hant', 'zh-Hant.dynamic.json'), {
       same: 'S',
@@ -116,8 +116,8 @@ test('calculates each locale from upstream key intersections and ignores extra t
 test('keeps main and dynamic namespaces separate when a key exists in both', () => {
   const fixture = createFixture();
   try {
-    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), { duplicate: 1 });
-    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), { duplicate: 2 });
+    writeJson(path.join(fixture.originalDir, 'en-US.json'), { duplicate: 1 });
+    writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), { duplicate: 2 });
     writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-Hans'] });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.json'), { duplicate: 'translated' });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.dynamic.json'), {});
@@ -132,10 +132,10 @@ test('keeps main and dynamic namespaces separate when a key exists in both', () 
 test('uses green, yellow, red, and invalid badge states at the configured thresholds', () => {
   const fixture = createFixture();
   try {
-    const upstream = Object.fromEntries(Array.from({ length: 20 }, (_, index) => [`key${index}`, index]));
-    const targetWith = (count) => Object.fromEntries(Object.keys(upstream).slice(0, count).map((key) => [key, key]));
-    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), upstream);
-    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), {});
+    const original = Object.fromEntries(Array.from({ length: 20 }, (_, index) => [`key${index}`, index]));
+    const targetWith = (count) => Object.fromEntries(Object.keys(original).slice(0, count).map((key) => [key, key]));
+    writeJson(path.join(fixture.originalDir, 'en-US.json'), original);
+    writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), {});
     writeJson(path.join(fixture.targetRoot, 'locales.json'), {
       locales: ['ga-AA', 'ya-AA', 'ra-AA', 'ia-AA'],
     });
@@ -163,8 +163,8 @@ test('uses green, yellow, red, and invalid badge states at the configured thresh
 test('replaces generated badges while preserving unrelated output files', () => {
   const fixture = createFixture();
   try {
-    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), { a: 1 });
-    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), {});
+    writeJson(path.join(fixture.originalDir, 'en-US.json'), { a: 1 });
+    writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), {});
     writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-Hans'] });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.json'), { a: 'A' });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.dynamic.json'), {});
@@ -181,11 +181,11 @@ test('replaces generated badges while preserving unrelated output files', () => 
   }
 });
 
-test('fails instead of publishing when upstream has no keys', () => {
+test('fails instead of publishing when original has no keys', () => {
   const fixture = createFixture();
   try {
-    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), {});
-    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), {});
+    writeJson(path.join(fixture.originalDir, 'en-US.json'), {});
+    writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), {});
     writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-Hans'] });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.json'), {});
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.dynamic.json'), {});
@@ -197,18 +197,18 @@ test('fails instead of publishing when upstream has no keys', () => {
   }
 });
 
-test('fails on invalid upstream JSON but renders missing target data as invalid', () => {
+test('fails on invalid original JSON but renders missing target data as invalid', () => {
   const invalidFixture = createFixture();
   const missingFixture = createFixture();
   try {
-    fs.mkdirSync(invalidFixture.upstreamDir, { recursive: true });
-    fs.writeFileSync(path.join(invalidFixture.upstreamDir, 'en-US.json'), '{invalid', 'utf8');
-    writeJson(path.join(invalidFixture.upstreamDir, 'en-US.dynamic.json'), {});
+    fs.mkdirSync(invalidFixture.originalDir, { recursive: true });
+    fs.writeFileSync(path.join(invalidFixture.originalDir, 'en-US.json'), '{invalid', 'utf8');
+    writeJson(path.join(invalidFixture.originalDir, 'en-US.dynamic.json'), {});
     writeJson(path.join(invalidFixture.targetRoot, 'locales.json'), { locales: ['zh-Hans'] });
     assert.throws(() => runGenerate(invalidFixture), /Unexpected token|Expected property name/);
 
-    writeJson(path.join(missingFixture.upstreamDir, 'en-US.json'), { a: 1 });
-    writeJson(path.join(missingFixture.upstreamDir, 'en-US.dynamic.json'), {});
+    writeJson(path.join(missingFixture.originalDir, 'en-US.json'), { a: 1 });
+    writeJson(path.join(missingFixture.originalDir, 'en-US.dynamic.json'), {});
     writeJson(path.join(missingFixture.targetRoot, 'locales.json'), { locales: ['zh-Hans'] });
     writeJson(path.join(missingFixture.targetRoot, 'zh-Hans', 'zh-Hans.json'), { a: 'A' });
     const payload = runGenerate(missingFixture);
@@ -226,8 +226,8 @@ test('fails on invalid upstream JSON but renders missing target data as invalid'
 test('renders malformed target JSON as invalid without replacing a valid language count', () => {
   const fixture = createFixture();
   try {
-    writeJson(path.join(fixture.upstreamDir, 'en-US.json'), { a: '' });
-    writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), { d: '' });
+    writeJson(path.join(fixture.originalDir, 'en-US.json'), { a: '' });
+    writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), { d: '' });
     writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-Hans', 'zh-Hant'] });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.json'), { a: '' });
     writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.dynamic.json'), {});
@@ -246,8 +246,8 @@ test('preserves existing artifacts when Shields download fails or returns non-SV
   for (const extraEnv of [{ FAKE_CURL_FAIL: '1' }, { FAKE_CURL_HTML: '1' }]) {
     const fixture = createFixture();
     try {
-      writeJson(path.join(fixture.upstreamDir, 'en-US.json'), { a: 1 });
-      writeJson(path.join(fixture.upstreamDir, 'en-US.dynamic.json'), {});
+      writeJson(path.join(fixture.originalDir, 'en-US.json'), { a: 1 });
+      writeJson(path.join(fixture.originalDir, 'en-US.dynamic.json'), {});
       writeJson(path.join(fixture.targetRoot, 'locales.json'), { locales: ['zh-Hans'] });
       writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.json'), { a: 'A' });
       writeJson(path.join(fixture.targetRoot, 'zh-Hans', 'zh-Hans.dynamic.json'), {});

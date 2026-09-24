@@ -7,7 +7,7 @@ import test from 'node:test';
 const root = path.resolve(path.dirname(fileURLToPath(import.meta.url)), '..', '..');
 const workflowDir = path.join(root, '.github', 'workflows');
 const stats = fs.readFileSync(path.join(workflowDir, 'locale-stats.yml'), 'utf8');
-const upstream = fs.readFileSync(path.join(workflowDir, 'original-update.yml'), 'utf8');
+const original = fs.readFileSync(path.join(workflowDir, 'original-update.yml'), 'utf8');
 const sync = fs.readFileSync(path.join(root, 'scripts', 'locale-stats', 'sync_locale_stats.sh'), 'utf8');
 
 test('the sole statistics workflow handles main changes, explicit calls, and manual recovery', () => {
@@ -26,14 +26,14 @@ test('the sole statistics workflow handles main changes, explicit calls, and man
 });
 
 test('the source refresh calls statistics only after a changed push and independently of Crowdin', () => {
-  assert.match(upstream, /echo "changed=false"/);
-  assert.match(upstream, /git push origin HEAD:main\n\s+echo "changed=true"/);
-  assert.match(upstream, /sync-reference:[\s\S]*?needs: update\n\s+if: needs\.update\.outputs\.changed == 'true'/);
-  assert.match(upstream, /sync-stats:[\s\S]*?needs: update\n\s+if: needs\.update\.outputs\.changed == 'true'/);
-  assert.match(upstream, /uses: \.\/\.github\/workflows\/locale-stats\.yml/);
-  assert.doesNotMatch(upstream, /sync-stats:[\s\S]*needs: \[.*sync-reference/);
+  assert.match(original, /echo "changed=false"/);
+  assert.match(original, /git push origin HEAD:main\n\s+echo "changed=true"/);
+  assert.match(original, /sync-reference:[\s\S]*?needs: update\n\s+if: needs\.update\.outputs\.changed == 'true'/);
+  assert.match(original, /sync-stats:[\s\S]*?needs: update\n\s+if: needs\.update\.outputs\.changed == 'true'/);
+  assert.match(original, /uses: \.\/\.github\/workflows\/locale-stats\.yml/);
+  assert.doesNotMatch(original, /sync-stats:[\s\S]*needs: \[.*sync-reference/);
   for (const permission of ['contents: write', 'pages: write', 'id-token: write']) {
-    assert.ok(upstream.includes(permission));
+    assert.ok(original.includes(permission));
     assert.ok(stats.includes(permission));
   }
 });
