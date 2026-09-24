@@ -1,3 +1,3 @@
 files:
   - source: .original/upstream/en-US.json
-    translation: '%osx_locale%/%osx_locale%.json'
+    translation: /%osx_locale%/%osx_locale%.json
