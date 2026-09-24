@@ -147,7 +147,7 @@ Edit the locale files directly:
 
 - Main UI copy: `zh-Hans/zh-Hans.json`, `zh-Hant/zh-Hant.json`
 - Dynamic copy: `zh-Hans/zh-Hans.dynamic.json`, `zh-Hant/zh-Hant.dynamic.json`
-- Latest English source: `.original/upstream/en-US.json`, `.original/upstream/en-US.dynamic.json`
+- Latest English source: `.original/en-US.json`, `.original/en-US.dynamic.json`
 
 Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans, and backticks. The wording can be more natural; the structure must remain compatible.
 

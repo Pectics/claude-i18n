@@ -98,10 +98,10 @@ jobs:
         run: |
           set -euo pipefail
           git add -- \
-            .original/upstream/en-US.json \
-            .original/upstream/en-US.dynamic.json \
-            .original/upstream/ja-JP.json \
-            .original/upstream/ja-JP.dynamic.json
+            .original/en-US.json \
+            .original/en-US.dynamic.json \
+            .original/ja-JP.json \
+            .original/ja-JP.dynamic.json
           if git diff --cached --quiet; then
             echo "Upstream snapshots are unchanged."
             echo "changed=false" >> "$GITHUB_OUTPUT"

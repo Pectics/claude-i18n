@@ -147,7 +147,7 @@ Claude.ai 原本就有多語言載入管線，問題在於它只接受官方 loc
 
 - 主介面文案：`zh-Hans/zh-Hans.json`、`zh-Hant/zh-Hant.json`
 - Dynamic 文案：`zh-Hans/zh-Hans.dynamic.json`、`zh-Hant/zh-Hant.dynamic.json`
-- 最新英文原文：`.original/upstream/en-US.json`、`.original/upstream/en-US.dynamic.json`
+- 最新英文原文：`.original/en-US.json`、`.original/en-US.dynamic.json`
 
 請保留佔位符、HTML 標籤、ICU MessageFormat、URL、命令、程式碼片段和反引號內容。翻譯可以更自然，但結構不能變。
 

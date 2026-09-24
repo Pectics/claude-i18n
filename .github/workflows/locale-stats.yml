@@ -5,8 +5,8 @@ on:
     branches:
       - main
     paths:
-      - .original/upstream/en-US.json
-      - .original/upstream/en-US.dynamic.json
+      - .original/en-US.json
+      - .original/en-US.dynamic.json
       - "*/*.json"
       - locales.json
       - scripts/locale-stats/**

@@ -15,8 +15,8 @@ on:
     paths:
       - '.github/workflows/crowdin-reference.yml'
       - 'crowdin.ref.yml'
-      - '.original/upstream/en-US*.json'
-      - '.original/upstream/ja-JP*.json'
+      - '.original/en-US*.json'
+      - '.original/ja-JP*.json'
 
 permissions:
   contents: read
