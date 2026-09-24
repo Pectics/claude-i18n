@@ -14,7 +14,7 @@
 
 [![Issues](https://img.shields.io/github/issues/Pectics/claude-i18n?label=议题)](https://github.com/Pectics/claude-i18n/issues)
 [![Pull Requests](https://img.shields.io/github/issues-pr/Pectics/claude-i18n?label=拉取请求)](https://github.com/Pectics/claude-i18n/pulls)
-[![Locale Update](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-update.yml?label=语言包更新)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-update.yml)
+[![Locale Stats](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-stats.yml?label=语言包统计)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml)
 ![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20构建)
 
 | 支持平台 | 支持语言 |
@@ -127,7 +127,7 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 
 ## 支持的语言
 
-统计来自当前仓库中的语言包文件。
+统计以 `main` 中目标语言包与对应英文源文件共有的 key 为准，主包和 Dynamic 包分别计数；英文已删除的旧 key 不计入。覆盖率以两包交集之和除以两份英文源文件的 key 总数。只检查 key，不检查译文内容或审核状态。
 
 <!-- locale-stats:supported:start -->
 | 语言 | Locale | 主语言包 | Dynamic 语言包 | 状态 |
@@ -153,48 +153,25 @@ Claude.ai 本来就有多语言加载管线，问题在于它只接受官方 loc
 
 ### 同步 Claude 上游更新
 
-仓库的 GitHub Actions 每 6 小时检查一次 Claude.ai 上游语言文件。最新快照保存在 `.original/upstream`；每个目标语言会与 `.original/baselines/<locale>` 中已验证的独立基线比较，并在 `.pending/locale-update/<locale>` 下生成自己的差异文件。
+仓库的 GitHub Actions 每 6 小时检查一次 Claude.ai 的英文和日文语言文件，并将有效快照保存到 `.original/upstream`。日文仅作为翻译参考，不参与统计。
 
-每次成功抓取后，GitHub Actions 都会用最新 upstream 快照对比 `main` 中的语言包，并把 `coverage.json` 和预先渲染的 `badges/<locale>.svg` 发布到 GitHub Pages。`bot/locale-update` 中的翻译在合并进 `main` 前不会计入覆盖率。
+英文源文件或 `main` 中发布的目标语言包变化时，[语言包统计工作流](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml)会更新三份 README，并在需要时把 `coverage.json` 和预先渲染的 `badges/<locale>.svg` 发布到 GitHub Pages。上游快照变化后也会调用统计流程，且不受 Crowdin 日文参考同步结果影响。维护者可手动运行该工作流以初始化或恢复 Pages。
 
 覆盖率达到 90% 时 badge 显示为绿色，达到 75% 时显示为黄色，低于 75% 时显示为红色；语言包无法读取时则显示灰色 `invalid`。
 
-维护者通常按这个流程处理：
+直接修改已发布的目标语言 JSON 文件，并将变更提交到 `main`。统计工作流会依据这些文件重算 README 条目数和 Pages 覆盖率。
 
-```bash
-# 1. 为目标 locale 生成翻译分块
-node scripts/locale-update/prepare_translation.mjs --locale zh-Hans
-
-# 2. 翻译 .pending/locale-update/<locale>/translation/chunks/ 下的 JSONL
-#    输出写到 manifest 指定的 out/ 路径
-#    推荐使用项目内置工作流：
-#      Claude Code: /apply-locale-update
-#      Codex:       /apply-locale-update
-
-# 3. 校验并应用翻译
-node scripts/locale-update/apply_translation.mjs --locale zh-Hans
-```
-
-`apply_translation.mjs` 会校验行数、key 顺序、占位符、HTML 标签、ICU 结构、源文件哈希和明显未翻译内容；成功后会重建目标语言包、原子推进该语言的英文基线、同步三份 README 的语言包统计，并只清理 `.pending/locale-update/<locale>`。
+旧的 pending 差异翻译脚本和 Skill 已移除。定时工作流不再自动生成翻译分支或 pending 差异。
 
 ### 添加全新语言
 
-全新 locale 不再建议手工创建目录。请先生成完整翻译任务：
+参照对应英文源文件创建 `<locale>/<locale>.json` 和 `<locale>/<locale>.dynamic.json`，把新语言加入 `locales.json`，再重建托管产物：
 
 ```bash
-node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
-```
-
-脚本会读取 `.original/upstream/en-US*.json`，可参考 `.original/upstream/ja-JP*.json` 和现有 `zh-Hans` 语境，生成 `.pending/create-full-locale/<locale>/` 下的分块任务。
-
-翻译完成后运行：
-
-```bash
-node scripts/create-full-locale/apply_translation.mjs --locale fr-FR
 ./build.sh
 ```
 
-成功后会写入 `<locale>/<locale>.json`、`<locale>/<locale>.dynamic.json`，并把 locale 追加到 `locales.json`。
+新语言进入 `main` 后，统计工作流会从 `locales.json` 读取并计入统计。
 
 
 ## 近期更新

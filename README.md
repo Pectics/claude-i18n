@@ -14,7 +14,7 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 
 [![Issues](https://img.shields.io/github/issues/Pectics/claude-i18n?label=Issues)](https://github.com/Pectics/claude-i18n/issues)
 [![Pull Requests](https://img.shields.io/github/issues-pr/Pectics/claude-i18n?label=Pull%20Requests)](https://github.com/Pectics/claude-i18n/pulls)
-[![Locale Update](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-update.yml?label=Locale%20Update)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-update.yml)
+[![Locale Stats](https://img.shields.io/github/actions/workflow/status/Pectics/claude-i18n/locale-stats.yml?label=Locale%20Stats)](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml)
 ![Vercel Build](https://img.shields.io/github/checks-status/Pectics/claude-i18n/main?label=Vercel%20Build)
 
 | Supported platforms | Supported languages |
@@ -127,7 +127,7 @@ Claude.ai already has a locale-loading pipeline; it just only accepts official l
 
 ## Supported Languages
 
-Counts come from the locale files currently in this repository.
+Counts use the keys shared by each locale pack and its matching English source file on `main`. Main and dynamic packs are counted separately; removed English keys do not count. Coverage is their combined count divided by the combined English key count. Translation text and approval status are not checked.
 
 <!-- locale-stats:supported:start -->
 | Language | Locale | Main pack | Dynamic pack | Status |
@@ -153,48 +153,25 @@ Preserve placeholders, HTML tags, ICU MessageFormat, URLs, commands, code spans,
 
 ### Sync Claude Upstream Changes
 
-GitHub Actions checks Claude.ai's upstream locale files every 6 hours. Latest snapshots are stored under `.original/upstream`; each target locale is compared with its verified baseline under `.original/baselines/<locale>`, and its diff is written under `.pending/locale-update/<locale>`.
+GitHub Actions checks Claude.ai's English and Japanese locale files every 6 hours and stores valid snapshots under `.original/upstream`. The Japanese files are translation references and do not enter the statistics.
 
-After each successful fetch, GitHub Actions compares the locale packs on `main` with the latest upstream snapshot and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages. Translation work on `bot/locale-update` is not counted until it is merged into `main`.
+When English sources or published locale packs change on `main`, the [locale statistics workflow](https://github.com/Pectics/claude-i18n/actions/workflows/locale-stats.yml) updates the three READMEs and publishes `coverage.json` plus pre-rendered `badges/<locale>.svg` files to GitHub Pages when needed. It also runs after an upstream snapshot changes, independently of the Crowdin Japanese reference sync. Maintainers can run it manually to initialize or restore Pages.
 
 Coverage badges are green at 90% or higher, yellow at 75% or higher, red below 75%, and gray with `invalid` when a locale pack cannot be read.
 
-Maintainers usually apply the update like this:
+Update the published locale JSON files directly and submit the changes to `main`. The statistics workflow recalculates the README counts and Pages coverage from those files.
 
-```bash
-# 1. Generate translation chunks for the target locale
-node scripts/locale-update/prepare_translation.mjs --locale zh-Hans
-
-# 2. Translate JSONL chunks under .pending/locale-update/<locale>/translation/chunks/
-#    Write outputs to the manifest-provided out/ paths
-#    Recommended built-in workflow:
-#      Claude Code: /apply-locale-update
-#      Codex:       /apply-locale-update
-
-# 3. Validate and apply translations
-node scripts/locale-update/apply_translation.mjs --locale zh-Hans
-```
-
-`apply_translation.mjs` validates row counts, key order, placeholders, HTML tags, ICU structure, source hashes, and obvious untranslated content. On success it rebuilds the target locale packs, atomically advances that locale's English baseline, updates the locale statistics in all three READMEs, and clears only `.pending/locale-update/<locale>`.
+The retired pending-diff translation scripts and Skill have been removed. The scheduled workflow does not create translation branches or pending diffs.
 
 ### Add a New Locale
 
-For a brand-new locale, generate a full translation task first:
+Create `<locale>/<locale>.json` and `<locale>/<locale>.dynamic.json` from the matching English source files, add the locale to `locales.json`, and rebuild hosted artifacts:
 
 ```bash
-node scripts/create-full-locale/prepare_translation.mjs --locale fr-FR
-```
-
-The script reads `.original/upstream/en-US*.json`, can use `.original/upstream/ja-JP*.json` and existing `zh-Hans` as context, and writes chunked work under `.pending/create-full-locale/<locale>/`.
-
-After translating the chunks, run:
-
-```bash
-node scripts/create-full-locale/apply_translation.mjs --locale fr-FR
 ./build.sh
 ```
 
-On success it atomically writes `<locale>/<locale>.json`, `<locale>/<locale>.dynamic.json`, appends the locale to `locales.json`, and initializes the verified English snapshot under `.original/baselines/<locale>/`.
+The statistics workflow reads the new locale from `locales.json` after it reaches `main`.
 
 
 ## Recent Changes
