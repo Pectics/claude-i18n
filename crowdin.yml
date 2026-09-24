@@ -1,0 +1,5 @@
+files:
+  - source: /.original/upstream/en-US.json
+    translation: /%osx_locale%/%osx_locale%.json
+  - source: /.original/upstream/en-US.dynamic.json
+    translation: /%osx_locale%/%osx_locale%.dynamic.json
