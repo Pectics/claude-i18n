@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 2,
+  "createdAt": "2026-09-24T03:40:16.178Z",
+  "locale": "zh-Hans",
+  "baseLocale": "en-US",
+  "referenceLocale": "ja-JP",
+  "cachedLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "successfulLocales": [
+    "en-US",
+    "ja-JP"
+  ],
+  "failedLocales": [],
+  "warnings": [],
+  "changedFiles": [
+    ".original/upstream/en-US.json",
+    ".original/upstream/ja-JP.json"
+  ],
+  "needsTranslation": true,
+  "source": {
+    "baseline": {
+      "main": ".original/baselines/zh-Hans/en-US.json",
+      "dynamic": ".original/baselines/zh-Hans/en-US.dynamic.json",
+      "metadata": ".original/baselines/zh-Hans/metadata.json"
+    },
+    "upstream": {
+      "main": ".original/upstream/en-US.json",
+      "dynamic": ".original/upstream/en-US.dynamic.json"
+    },
+    "reference": {
+      "main": ".original/upstream/ja-JP.json",
+      "dynamic": ".original/upstream/ja-JP.dynamic.json"
+    }
+  },
+  "sourceHashes": {
+    "baseline": {
+      "main": "629e3fb5894b4e1254b7249ce69a373a6cfa86b330bc5e5356006f235f04a6ed",
+      "dynamic": "2f9a8d19033df7a85f0e587840aa079a815cbea4429d558736a72b8053a6eec1"
+    },
+    "upstream": {
+      "main": "526541addb7d702b4a805b8785b32be30b695710d78ba9b44d2c96e415c03c77",
+      "dynamic": "2f9a8d19033df7a85f0e587840aa079a815cbea4429d558736a72b8053a6eec1"
+    },
+    "reference": {
+      "main": "f89511d368c077cb1444d076d35bb92fb7633e532adcec3e95dec83431e5da8d",
+      "dynamic": "947c3fb3bb23073209cc87bffb16bd8315e7e4f7d6e84d973b0a7f9c66781db1"
+    }
+  },
+  "output": {
+    "main": "zh-Hans/zh-Hans.json",
+    "dynamic": "zh-Hans/zh-Hans.dynamic.json"
+  },
+  "pendingFiles": {
+    "manifest": ".pending/locale-update/zh-Hans/manifest.json",
+    "mainDiff": ".pending/locale-update/zh-Hans/main.diff.jsonl",
+    "dynamicDiff": ".pending/locale-update/zh-Hans/dynamic.diff.jsonl"
+  },
+  "diffSummary": {
+    "main": {
+      "add": 709,
+      "update": 0,
+      "remove": 491,
+      "total": 1200
+    },
+    "dynamic": {
+      "add": 0,
+      "update": 0,
+      "remove": 0,
+      "total": 0
+    }
+  }
+}
