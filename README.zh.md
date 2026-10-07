@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> **项目状态**
+> 
+> Claude.ai 已原生支持简体中文和繁体中文。 \
+> claude-i18n 现已转向为官方暂未支持的语言提供社区驱动的本地化支持。
+
 <div align="center">
 
 <img src="extension/assets/logo.512x.png" width="120" alt="Claude i18n Logo" />
