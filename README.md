@@ -1,3 +1,9 @@
+> [!IMPORTANT]
+> **Project status**
+>
+> Claude.ai now officially supports Simplified Chinese and Traditional Chinese. \
+> claude-i18n is shifting its focus toward community-driven localization for languages that are not yet officially supported by Claude.
+
 <div align="center">
 
 <img src="extension/assets/logo.512x.png" width="120" alt="Claude i18n Logo" />
