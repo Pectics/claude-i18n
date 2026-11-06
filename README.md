@@ -30,8 +30,8 @@ English | [简体中文](README.zh.md) | [繁體中文](README.tw.md)
 <!-- locale-stats:summary:start -->
 | Current locale pack | Main pack | Dynamic pack | Total |
 | --- | ---: | ---: | ---: |
-| Simplified Chinese `zh-Hans` | 27,195 | 47 | 27,242 |
-| Traditional Chinese `zh-Hant` | 27,195 | 47 | 27,242 |
+| Simplified Chinese `zh-Hans` | 27,179 | 47 | 27,226 |
+| Traditional Chinese `zh-Hant` | 27,179 | 47 | 27,226 |
 <!-- locale-stats:summary:end -->
 
 </div>
@@ -138,8 +138,8 @@ Counts use the keys shared by each locale pack and its matching English source f
 <!-- locale-stats:supported:start -->
 | Language | Locale | Main pack | Dynamic pack | Status |
 | --- | --- | ---: | ---: | --- |
-| Simplified Chinese | `zh-Hans` | 27,195 | 47 | Available |
-| Traditional Chinese | `zh-Hant` | 27,195 | 47 | Available |
+| Simplified Chinese | `zh-Hans` | 27,179 | 47 | Available |
+| Traditional Chinese | `zh-Hant` | 27,179 | 47 | Available |
 <!-- locale-stats:supported:end -->
 
 Additional locales are welcome when they have a real product audience. Use the full-locale creation flow below instead of copying directories by hand.
